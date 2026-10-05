@@ -1988,6 +1988,22 @@ body.no-auth .role-badge, body.no-auth .nav-logout { display: none; }
 .wz-own-row .cr-input{margin:0}
 @media (max-width:760px){.rc-wrap,.rc-grid{grid-template-columns:1fr}.wz-tiles{grid-template-columns:repeat(2,1fr)}.wz-ops{grid-template-columns:repeat(2,1fr)}}
 
+/* розкладка Прийому: по центру, з полями */
+.rc-body{width:100%;max-width:1040px;margin:0 auto;padding:0 28px 32px}
+.rc-body.narrow{max-width:420px}
+.rc-under{margin-top:14px}
+.rc-body .rc-back{display:block;margin-bottom:16px}
+.rc-body.narrow .rc-mgr{justify-content:center}
+.rc-grid{gap:24px}
+/* без збільшення подвійним тапом (iPad) */
+html,body,button,input,textarea,select,.page,.rc-body,.iw-ovl,.kp-key{touch-action:manipulation}
+
+.rc-seg{display:flex;gap:6px;margin:6px 0 10px}
+.rc-seg .ic-seg{flex:1;padding:11px 0;font-size:14px}
+.rc-q{font-size:16px;padding:14px;text-align:left}
+.rc-body.narrow .cr-box{padding-bottom:14px}
+@media (min-width:621px){.nav-item[data-page='create']{display:none}}
+
 </style>
 </head>
 <body data-theme="light">
@@ -7383,7 +7399,7 @@ loadPrice();
   function say(t) { if (typeof toast === "function") toast(t); }
 
   /* ═══════════════════════ ПРИЙОМ ═══════════════════════ */
-  var RC = { digits: "", client: null, newName: "", newMsg: "", picked: {}, histAll: false };
+  var RC = { mode: "name", q: "", digits: "", client: null, newName: "", newMsg: "", picked: {}, histAll: false };
 
   function rcLocal(s) {
     var d = String(s || "").replace(/\D/g, "");
@@ -7460,55 +7476,67 @@ loadPrice();
     }).join("") + "</div></div>";
   }
 
-  function rcIdHTML() {
-    var d = RC.digits, right = "";
+  function rcSugHTML(c) {
+    var cnt = ORDERS.filter(function (o) { return rcLocal(gv(o, "Телефон")) === c.key; }).length;
+    return "<div class='rc-sug-row' onclick=\"rcPick('" + c.key + "')\"><div class='rc-av'>" + h(rcInitials(c.name)) + "</div><div><div class='rc-nm'>" + h(c.name || "Без імені") + "</div><div class='rc-ph'>" + h(fmtPhone(c.phone)) + "</div></div><div class='rc-meta'>" + cnt + " замовл.</div></div>";
+  }
+  function rcResultsHTML() {
     var all = rcClients();
+    if (RC.mode === "name") {
+      var q = RC.q.trim().toLowerCase();
+      if (!q) return "<div class='rc-empty'>Введіть ім'я або назву магазину клієнта.</div>";
+      var m = all.filter(function (c) { return String(c.name || "").toLowerCase().indexOf(q) !== -1; });
+      m.sort(function (a, b) { return (String(a.name).toLowerCase().indexOf(q) === 0 ? 0 : 1) - (String(b.name).toLowerCase().indexOf(q) === 0 ? 0 : 1); });
+      m = m.slice(0, 6);
+      if (!m.length) return "<div class='rc-empty'>Такого клієнта немає.<br>Для нового клієнта оберіть «Телефон» і введіть номер.</div>";
+      return "<div class='rc-sug'>" + m.map(rcSugHTML).join("") + "</div>";
+    }
+    var d = RC.digits, out = "";
     var matches = d.length >= 2 ? all.filter(function (c) { return c.key.indexOf(d) !== -1; }) : [];
     matches.sort(function (a, b) { return (a.key.indexOf(d) === 0 ? 0 : 1) - (b.key.indexOf(d) === 0 ? 0 : 1); });
     matches = matches.slice(0, 5);
-    if (d.length < 2) {
-      right = "<div class='rc-empty'>Введіть номер телефону клієнта.<br>Після кількох цифр з'явиться підказка з іменем.</div>";
-    } else {
-      if (matches.length) {
-        right = "<div class='rc-sug'>" + matches.map(function (c) {
-          var cnt = ORDERS.filter(function (o) { return rcLocal(gv(o, "Телефон")) === c.key; }).length;
-          return "<div class='rc-sug-row' onclick=\"rcPick('" + c.key + "')\"><div class='rc-av'>" + h(rcInitials(c.name)) + "</div><div><div class='rc-nm'>" + h(c.name || "Без імені") + "</div><div class='rc-ph'>" + h(fmtPhone(c.phone)) + "</div></div><div class='rc-meta'>" + cnt + " замовл.</div></div>";
-        }).join("") + "</div>";
-      }
-      if (d.length === 9 && !matches.some(function (c) { return c.key === d; })) {
-        right += "<div class='rc-new' onclick='rcNew()'><div class='pl'>+</div><div><div style='font-size:14.5px'>Створити нового клієнта</div><div style='font-size:11.5px;opacity:.8;margin-top:2px'>" + h(rcFmt(d)) + "</div></div></div>";
-      } else if (!matches.length) {
-        right = "<div class='rc-empty'>Такого номера ще немає в базі.<br>Продовжуйте вводити; на 9 цифрах можна створити нового клієнта.</div>";
-      }
+    if (d.length < 2) return "<div class='rc-empty'>Введіть номер телефону клієнта.<br>Після кількох цифр з'явиться підказка з іменем.</div>";
+    if (matches.length) out = "<div class='rc-sug'>" + matches.map(rcSugHTML).join("") + "</div>";
+    if (d.length === 9 && !matches.some(function (c) { return c.key === d; })) {
+      out += "<div class='rc-new' onclick='rcNew()'><div class='pl'>+</div><div><div style='font-size:14.5px'>Створити нового клієнта</div><div style='font-size:11.5px;opacity:.8;margin-top:2px'>" + h(rcFmt(d)) + "</div></div></div>";
+    } else if (!matches.length) {
+      out = "<div class='rc-empty'>Такого номера ще немає в базі.<br>Продовжуйте вводити; на 9 цифрах можна створити нового клієнта.</div>";
     }
+    return out;
+  }
+  function rcIdHTML() {
+    var d = RC.digits, field;
+    var seg = "<div class='cr-seg rc-seg'><button class='ic-seg" + (RC.mode === "name" ? " on" : "") + "' onclick=\"rcMode('name')\">Ім'я</button><button class='ic-seg" + (RC.mode === "phone" ? " on" : "") + "' onclick=\"rcMode('phone')\">Телефон</button></div>";
     var keys = "";
-    ["1", "2", "3", "4", "5", "6", "7", "8", "9"].forEach(function (k) { keys += "<button class='kp-key' onclick=\"rcKey('" + k + "')\">" + k + "</button>"; });
-    keys += "<span></span><button class='kp-key' onclick=\"rcKey('0')\">0</button><button class='kp-key kp-del' onclick='rcDel()'>⌫</button>";
+    if (RC.mode === "name") {
+      field = "<input class='cr-input rc-q' id='rc-q' type='text' autocomplete='off' autocorrect='off' placeholder=\"Ім'я або магазин\" value=\"" + h(RC.q) + "\" oninput='rcQ(this.value)'>";
+    } else {
+      field = "<div class='kp-display'>" + (d.length ? h(rcFmt(d)) : "<span style='color:var(--txt-3)'>+380 </span>") + "</div>";
+      ["1", "2", "3", "4", "5", "6", "7", "8", "9"].forEach(function (k) { keys += "<button class='kp-key' onclick=\"rcKey('" + k + "')\">" + k + "</button>"; });
+      keys = "<div class='kp-grid rc-keys'>" + keys + "<span></span><button class='kp-key' onclick=\"rcKey('0')\">0</button><button class='kp-key kp-del' onclick='rcDel()'>⌫</button></div>";
+    }
     return "<div class='page-header'><div class='page-title'>Прийом</div></div>" +
-      "<div class='rc-wrap'><div class='cr-box'>" +
-        "<div class='cr-block-label first'>Телефон клієнта</div>" +
-        "<div class='kp-display'>" + (d.length ? h(rcFmt(d)) : "<span style='color:var(--txt-3)'>+380 </span>") + "</div>" +
-        "<div class='kp-grid rc-keys'>" + keys + "</div>" +
-        "<div class='rc-hint'>Пізніше тут можна буде вводити номер клубної картки</div>" +
-      "</div><div><div class='cr-block-label first'>Клієнт</div>" + right + rcMgrPills() + "</div></div>";
+      "<div class='rc-body narrow'><div class='cr-box'>" +
+        "<div class='cr-block-label first'>Клієнт</div>" + seg + field + keys +
+      "</div><div class='rc-under' id='rc-results'>" + rcResultsHTML() + "</div>" + rcMgrPills() + "</div>";
   }
 
   function rcCardHTML() {
     var c = RC.client;
     var back = "<span class='rc-back' onclick='rcReset()'>← Інший номер</span>";
-    var head = "<div class='page-header'><div class='page-title'>Прийом</div></div>" + back;
+    var head = "<div class='page-header'><div class='page-title'>Прийом</div></div><div class='rc-body'>" + back;
     if (c.isNew) {
       var msgs = ["telegram", "whatsapp", "viber"].map(function (m) {
         var lbl = (typeof MSG_LABELS !== "undefined" && MSG_LABELS[m]) || m;
         return "<button class='cr-pill" + (RC.newMsg === m ? " active" : "") + "' onclick=\"rcMsg('" + m + "')\">" + h(lbl) + "</button>";
       }).join("");
-      return head + "<div class='cr-box' style='max-width:520px'>" +
+      return head + "<div class='cr-box' style='max-width:520px;margin:0 auto'>" +
         "<div class='rc-head'><div class='rc-av big'>+</div><div><div class='rc-cname'>Новий клієнт</div><div class='rc-cphone'>" + h(rcFmt(c.key)) + "</div></div></div>" +
         "<div class='cr-block-label first'>Ім'я або магазин</div>" +
         "<input class='cr-input' id='rc-newname' placeholder=\"Ім'я або магазин\" value=\"" + h(RC.newName) + "\" oninput='rcNewName(this.value)'>" +
         "<div class='cr-block-label'>Месенджер <span class='cr-opt-note'>необов'язково</span></div><div class='cr-pills'>" + msgs + "</div>" +
         "<button class='rc-main-btn' id='rc-go' style='margin-top:10px' " + (RC.newName.trim() ? "" : "disabled") + " onclick='rcStartOrder()'>Оформити замовлення</button>" +
-        rcMgrPills() + "</div>";
+        rcMgrPills() + "</div></div>";
     }
     var orders = rcOrdersOf(c.key);
     var infos = orders.map(function (o) { return { o: o, i: rcInfo(o) }; });
@@ -7545,7 +7573,7 @@ loadPrice();
       "<div class='rc-head'><div class='rc-av big'>" + h(rcInitials(c.name)) + "</div><div><div class='rc-cname'>" + h(c.name || "Без імені") + (rating ? " <span title='" + h(rating.label) + "'>" + rating.dot + "</span>" : "") + "</div><div class='rc-cphone'>" + h(fmtPhone(c.phone)) + "</div></div></div>" +
       "<div class='rc-stats'><div class='rc-stat'><div class='k'>Замовлень</div><div class='v'>" + infos.length + "</div></div><div class='rc-stat'><div class='k'>В роботі</div><div class='v'>" + inWork + "</div></div><div class='rc-stat'><div class='k'>Бонуси</div><div class='v'>" + money(bonus) + "</div></div></div>" +
       "<button class='rc-main-btn' onclick='rcStartOrder()'>Оформити замовлення</button>" + rcMgrPills() +
-      "</div><div>" + readyBox + "<div class='cr-box'><div class='cr-block-label first'>Історія</div>" + hist + "</div></div></div>";
+      "</div><div>" + readyBox + "<div class='cr-box'><div class='cr-block-label first'>Історія</div>" + hist + "</div></div></div></div>";
   }
 
   var _rcRender = function () {
@@ -7559,6 +7587,8 @@ loadPrice();
   };
   renderers.reception = _rcRender;
 
+  window.rcMode = function (m) { if (RC.mode === m) return; RC.mode = m; _rcRender(); if (m === "name") { var i = $("rc-q"); if (i) i.focus(); } };
+  window.rcQ = function (v) { RC.q = v; var b = $("rc-results"); if (b) b.innerHTML = rcResultsHTML(); };
   window.rcKey = function (k) { if (RC.digits.length < 9) { RC.digits += k; _rcRender(); } };
   window.rcDel = function () { RC.digits = RC.digits.slice(0, -1); _rcRender(); };
   window.rcMgr = function (p) { NO.manager = p; _rcRender(); };
@@ -7570,7 +7600,7 @@ loadPrice();
   window.rcNew = function () { RC.client = { isNew: true, key: RC.digits, phone: RC.digits }; RC.newName = ""; RC.newMsg = ""; _rcRender(); };
   window.rcNewName = function (v) { RC.newName = v; var b = $("rc-go"); if (b) b.disabled = !v.trim(); };
   window.rcMsg = function (m) { RC.newMsg = (RC.newMsg === m) ? "" : m; var nn = RC.newName; _rcRender(); var i = $("rc-newname"); if (i) i.value = nn; };
-  window.rcReset = function () { RC.client = null; RC.digits = ""; RC.picked = {}; RC.histAll = false; _rcRender(); };
+  window.rcReset = function () { RC.client = null; RC.digits = ""; RC.q = ""; RC.picked = {}; RC.histAll = false; _rcRender(); };
   window.rcPickOrd = function (num) { if (RC.picked[num]) delete RC.picked[num]; else RC.picked[num] = 1; _rcRender(); };
   window.rcHist = function () { RC.histAll = !RC.histAll; _rcRender(); };
 
