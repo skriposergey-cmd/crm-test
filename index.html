@@ -1877,6 +1877,118 @@ body.no-auth .role-badge, body.no-auth .nav-logout { display: none; }
        font-family:'Commissioner',sans-serif;font-size:13px;letter-spacing:.03em;cursor:pointer;}
   .iw-done:hover{background:#8f7550;}
 </style>
+<style id="v2-css">
+/* ═══════════ V2: ПРИЙОМ + ВІЗАРД РЕЧІ (додано) ═══════════ */
+.rc-wrap{display:grid;grid-template-columns:330px 1fr;gap:20px;align-items:start}
+.rc-keys{margin-top:0}
+.rc-hint{font-size:11.5px;color:var(--txt-3);text-align:center;margin-top:12px}
+.rc-empty{padding:30px 16px;text-align:center;color:var(--txt-3);font-size:13px;line-height:1.6}
+.rc-sug{border:1px solid var(--line);border-radius:11px;background:var(--surface);overflow:hidden}
+.rc-sug-row{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line-soft);cursor:pointer}
+.rc-sug-row:last-child{border-bottom:none}
+.rc-sug-row:active{background:var(--hover)}
+.rc-av{width:38px;height:38px;border-radius:50%;background:var(--accent-soft);color:var(--cognac);display:flex;align-items:center;justify-content:center;font-family:'Tenor Sans',serif;font-size:15px;flex-shrink:0}
+.rc-av.big{width:54px;height:54px;font-size:20px}
+.rc-nm{font-size:14.5px;color:var(--txt)}
+.rc-ph{font-size:11.5px;color:var(--txt-3);margin-top:2px}
+.rc-meta{margin-left:auto;font-size:11.5px;color:var(--txt-3);text-align:right;white-space:nowrap}
+.rc-new{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1.5px dashed var(--cognac);border-radius:11px;color:var(--cognac);cursor:pointer;margin-top:10px}
+.rc-new:active{background:var(--accent-soft)}
+.rc-new .pl{width:38px;height:38px;border-radius:50%;border:1.5px dashed var(--cognac);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.rc-mgr{display:flex;align-items:center;gap:10px;margin-top:16px;font-size:12px;color:var(--txt-3);flex-wrap:wrap}
+.rc-mgr .cr-pills{margin:0}
+.rc-back{font-size:12.5px;color:var(--txt-2);cursor:pointer;margin-bottom:14px;display:inline-block}
+.rc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+.rc-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.rc-cname{font-family:'Tenor Sans',serif;font-size:20px;color:var(--txt)}
+.rc-cphone{font-size:13px;color:var(--txt-3);margin-top:3px}
+.rc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.rc-stat{border:1px solid var(--line);border-radius:9px;padding:10px 12px;background:var(--surface)}
+.rc-stat .k{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--txt-3)}
+.rc-stat .v{font-family:'Tenor Sans',serif;font-size:18px;margin-top:4px;color:var(--txt)}
+.rc-main-btn{width:100%;background:var(--leather);color:#fff;border:none;border-radius:10px;padding:16px;font-size:15px;font-family:'Commissioner',sans-serif;cursor:pointer}
+.rc-main-btn:active{background:var(--brown)}
+.rc-main-btn[disabled]{background:var(--field-border);color:var(--txt-2);cursor:not-allowed}
+.rc-ghost-btn{background:var(--accent-soft);border:1px solid var(--cognac-border);border-radius:10px;color:var(--cognac);padding:13px 16px;font-size:13.5px;font-weight:500;cursor:pointer;font-family:'Commissioner',sans-serif;white-space:nowrap}
+.rc-ord{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--line-soft);cursor:pointer}
+.rc-ord:last-child{border-bottom:none}
+.rc-ord .oi{flex:1;min-width:0}
+.rc-ord .num{font-size:12.5px;font-weight:500;color:var(--txt)}
+.rc-ord .ds{font-size:12px;color:var(--txt-3);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rc-ord .sm{font-size:13px;white-space:nowrap;color:var(--txt)}
+.rc-chk{width:26px;height:26px;border-radius:6px;border:1.5px solid var(--field-border);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;cursor:pointer;flex-shrink:0;background:var(--surface)}
+.rc-chk.on{background:var(--cognac);border-color:var(--cognac)}
+.rc-due{font-size:11px;color:var(--st-postponed-fg);background:var(--st-postponed-bg);border-radius:10px;padding:2px 9px;white-space:nowrap}
+.rc-open{font-size:12px;color:var(--cognac);border:1px solid var(--cognac-border);border-radius:8px;padding:7px 12px;background:transparent;cursor:pointer;font-family:'Commissioner',sans-serif;white-space:nowrap}
+.rc-issue-bar{display:flex;gap:8px;margin-top:12px}
+.rc-issue-bar .rc-main-btn{flex:1;padding:13px 10px;font-size:13.5px}
+.rc-note{font-size:11.5px;color:var(--txt-3);margin-top:10px;line-height:1.5}
+.rc-more{font-size:12.5px;color:var(--cognac);cursor:pointer;padding-top:10px}
+.rc-ovl{position:fixed;inset:0;background:rgba(30,26,22,.45);display:flex;align-items:center;justify-content:center;z-index:9000}
+.rc-card{background:var(--surface);border-radius:14px;padding:20px;width:340px;max-width:92vw;box-shadow:0 20px 60px rgba(0,0,0,.28)}
+.rc-chipbar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);margin-bottom:14px;font-size:13px}
+.rc-chipbar b{font-weight:500;color:var(--txt)}
+.rc-chipbar span{color:var(--txt-3);margin-left:8px;font-size:12px}
+.rc-chipbar a{color:var(--cognac);font-size:12px;cursor:pointer;white-space:nowrap}
+
+/* візард речі */
+.iwin.wz{height:min(780px,calc(100dvh - 56px));display:flex;flex-direction:column;position:relative}
+.iwin.wz .iw-body{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:6px 22px 18px}
+.iwin.wz .iw-foot{gap:10px}
+.wz-rail{padding:16px 40px 6px;flex-shrink:0}
+.wz-rail .cr-rail{margin:0}
+.wz-rail .cr-rdot{width:26px;height:26px;font-size:12px}
+.wz-recap{padding:9px 13px;border-radius:9px;background:var(--surface-2);border:1px solid var(--line-soft);font-size:12.5px;color:var(--txt-2);display:flex;justify-content:space-between;gap:10px;margin:8px 0 4px}
+.wz-recap b{color:var(--txt);font-weight:500}
+.wz-recap a{color:var(--cognac);cursor:pointer;font-size:12px}
+.wz-h{font-family:'Tenor Sans',serif;font-size:19px;margin:12px 0 3px;color:var(--txt)}
+.wz-sub{font-size:12.5px;color:var(--txt-3);margin-bottom:12px}
+.wz-lbl{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--cognac);margin:16px 0 8px}
+.wz-lbl i{font-style:normal;letter-spacing:0;text-transform:none;color:var(--txt-3);margin-left:6px;font-size:11px}
+.wz-lbl.first{margin-top:4px}
+.wz-warn{font-size:11.5px;color:#B54B3F;margin:8px 0}
+.wz-chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}
+.wz-segs{display:flex;gap:8px;flex-wrap:wrap}
+.wz-segs .ic-seg{flex:1;min-width:90px;padding:12px 0}
+.wz-ops{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.wz-ops .ic-op-tile,.wz-tiles .ic-op-tile{min-width:0;flex:none}
+.wz-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.wz-tiles .ic-op-tile{min-height:74px;justify-content:space-between;font-weight:400;text-align:left}
+.wz-bd{font-size:11.5px;font-weight:600;background:rgba(255,255,255,.25);border-radius:10px;padding:1px 8px;margin-left:8px;color:#fff}
+.wz-mn{position:absolute;bottom:7px;right:7px;width:30px;height:30px;border-radius:50%;border:1px solid rgba(255,255,255,.7);color:#fff;font-size:17px;display:flex;align-items:center;justify-content:center}
+.wz-all{width:100%;display:block;margin-top:12px;background:var(--accent-soft);border:1px solid var(--cognac-border);border-radius:8px;color:var(--cognac);font-size:13.5px;font-weight:500;padding:13px;cursor:pointer;font-family:'Commissioner',sans-serif}
+.wz-sel{border:1px solid var(--cognac-border);border-radius:10px;overflow:hidden}
+.wz-sr{display:flex;align-items:center;gap:10px;padding:9px 12px;border-bottom:1px solid var(--line-soft);background:rgba(160,132,92,.04)}
+.wz-sr:last-child{border-bottom:none}
+.wz-sr .nm{flex:1;font-size:13.5px;line-height:1.25;color:var(--txt);min-width:0;overflow-wrap:anywhere}
+.wz-sr .nm small{display:block;font-size:11px;color:var(--txt-3);margin-top:2px}
+.wz-step{display:inline-flex;align-items:center;border:1px solid var(--field-border);border-radius:8px;background:var(--surface);overflow:hidden}
+.wz-step button{width:38px;height:36px;border:none;background:none;font-size:18px;color:var(--cognac);cursor:pointer}
+.wz-step button:active{background:var(--cognac-light)}
+.wz-step button[disabled]{opacity:.3}
+.wz-step .n{min-width:32px;text-align:center;font-size:13.5px;font-weight:500;color:var(--txt)}
+.wz-sum{min-width:74px;text-align:right;font-family:'Tenor Sans',serif;font-size:15px;cursor:pointer;border-bottom:1px dashed var(--cognac-border);color:var(--txt)}
+.wz-x{width:32px;height:32px;border:none;background:none;color:#E24B4A;font-size:16px;cursor:pointer}
+.wz-prw{display:flex;align-items:center;gap:10px;padding:8px 12px 11px;background:var(--surface-2);border-bottom:1px solid var(--line-soft);font-size:12px;color:var(--txt-3)}
+.wz-prw .wz-step{margin-left:auto}
+.wz-prw .n{cursor:pointer}
+.wz-sheet{position:absolute;inset:0;background:var(--surface);display:flex;flex-direction:column;z-index:20}
+.wz-sh-h{display:flex;align-items:center;gap:10px;padding:13px 16px;border-bottom:1px solid var(--line-soft)}
+.wz-sh-h .t{font-family:'Tenor Sans',serif;font-size:15px;color:var(--txt)}
+.wz-sh-h .cr-input{flex:1;margin:0;padding:10px 12px}
+.wz-sh-b{flex:1;display:flex;min-height:0}
+.wz-rail2{width:140px;border-right:1px solid var(--line-soft);overflow-y:auto;padding:8px 0;background:var(--surface-2)}
+.wz-rail2 .d{padding:14px 15px;font-size:13.5px;color:var(--txt-2);cursor:pointer;border-left:3px solid transparent}
+.wz-rail2 .d.on{color:var(--cognac);background:var(--cognac-light);border-left-color:var(--cognac);font-weight:500}
+.wz-rail2 .d small{display:block;font-size:10.5px;color:var(--txt-3);margin-top:2px;font-weight:300}
+.wz-pane{flex:1;overflow-y:auto;padding:16px;-webkit-overflow-scrolling:touch}
+.wz-empty{padding:16px;border:1px dashed var(--line);border-radius:10px;text-align:center;font-size:12.5px;color:var(--txt-3);grid-column:1/-1}
+.wz-own{margin-top:18px;border-top:1px solid var(--line-soft);padding-top:12px}
+.wz-own-row{display:flex;gap:8px}
+.wz-own-row .cr-input{margin:0}
+@media (max-width:760px){.rc-wrap,.rc-grid{grid-template-columns:1fr}.wz-tiles{grid-template-columns:repeat(2,1fr)}.wz-ops{grid-template-columns:repeat(2,1fr)}}
+
+</style>
 </head>
 <body data-theme="light">
 
@@ -7253,5 +7365,638 @@ loadPrice();
 <script src="js/tailor.js?v=1"></script>
 <script src="js/clients.js?v=1"></script>
 <script src="js/keypad.js?v=1"></script>
+<script id="v2-js">
+/* ═══════════ V2: ПРИЙОМ + ВІЗАРД РЕЧІ ═══════════
+   Додано окремим блоком наприкінці файлу. Дані й функції основного коду
+   (ORDERS, ITEMS, NO, PRICE, openOrder, pickModel, toggleOp ...) не змінюються,
+   підміняються лише рендер вікна речі (renderItemEditor) та додається сторінка «Прийом». */
+(function () {
+  "use strict";
+
+  /* Стартова сторінка після входу. Щоб повернути список замовлень — "orders". */
+  var START_PAGE = "reception";
+
+  function $(id) { return document.getElementById(id); }
+  function h(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+  function jq(s) { return String(s == null ? "" : s).replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/"/g, "&quot;"); }
+  function money(n) { return (parseInt(n) || 0).toLocaleString("uk-UA") + " ₴"; }
+  function say(t) { if (typeof toast === "function") toast(t); }
+
+  /* ═══════════════════════ ПРИЙОМ ═══════════════════════ */
+  var RC = { digits: "", client: null, newName: "", newMsg: "", picked: {}, histAll: false };
+
+  function rcLocal(s) {
+    var d = String(s || "").replace(/\D/g, "");
+    if (d.indexOf("380") === 0) d = d.slice(3);
+    return d.slice(-9);
+  }
+  function rcFmt(local) {
+    if (local.length >= 9) return fmtPhone("+380" + local);
+    var a = local.slice(0, 2), b = local.slice(2, 5), c = local.slice(5, 7), e = local.slice(7, 9);
+    return "+380 " + [a, b, c, e].filter(Boolean).join(" ");
+  }
+  function rcInitials(name) {
+    var p = String(name || "").trim().split(/\s+/).filter(Boolean);
+    if (!p.length) return "?";
+    return (p[0].charAt(0) + (p[1] ? p[1].charAt(0) : "")).toUpperCase();
+  }
+  function rcClients() {
+    var map = {}, order = [];
+    ORDERS.forEach(function (o) {
+      if (typeof isOrderDeleted === "function" && isOrderDeleted(o)) return;
+      var ph = gv(o, "Телефон"), k = rcLocal(ph);
+      if (k.length < 9) return;
+      if (!map[k]) { map[k] = { key: k, phone: ph, name: gv(o, "Ім'я клієнта") }; order.push(k); }
+      else { map[k].phone = ph; if (gv(o, "Ім'я клієнта")) map[k].name = gv(o, "Ім'я клієнта"); }
+    });
+    TAILOR.forEach(function (t) {
+      if (gv(t, "Примітка").indexOf("[ВИДАЛЕНО] ") === 0) return;
+      var ph = gv(t, "Телефон"), k = rcLocal(ph);
+      if (k.length < 9) return;
+      if (!map[k]) { map[k] = { key: k, phone: ph, name: gv(t, "Ім'я клієнта") }; order.push(k); }
+    });
+    return order.map(function (k) { return map[k]; });
+  }
+  function rcOrdersOf(key) {
+    var list = ORDERS.filter(function (o) {
+      if (typeof isOrderDeleted === "function" && isOrderDeleted(o)) return false;
+      return rcLocal(gv(o, "Телефон")) === key;
+    });
+    list.forEach(function (o, i) { o.__rcIdx = i; });
+    list.sort(function (a, b) {
+      var da = (typeof orderDate === "function" && orderDate(a)) || null;
+      var db = (typeof orderDate === "function" && orderDate(b)) || null;
+      if (da && db && da.getTime() !== db.getTime()) return db - da;
+      return b.__rcIdx - a.__rcIdx;
+    });
+    return list;
+  }
+  function rcInfo(o) {
+    var num = gv(o, "Номер замовлення");
+    var its = ITEMS.filter(function (i) { return gv(i, "Номер замовлення") === num; });
+    var st = getStatus(num);
+    var pending = its.filter(function (i) { return gv(i, "Статус") !== "📦 Виданий"; });
+    var readyAll = pending.length > 0 && pending.every(function (i) { return gv(i, "Статус") === "✅ Готово"; });
+    var total = orderTotal(num);
+    var payStr = gv(o, "Оплата");
+    var ps = computePayStatus(total, payStr, extractAmt(payStr), extractAmt(gv(o, "Сума доплати")));
+    var desc = its.map(function (i) {
+      var t = [gv(i, "Тип"), gv(i, "Бренд")].filter(Boolean).join(" ");
+      var s = gv(i, "Послуги");
+      return t + (s ? ": " + s : "");
+    }).join(" · ");
+    return { num: num, st: st, total: total, toPay: ps.toPay, paid: (ps.isPaid || total <= 0 || ps.toPay <= 0), readyAll: readyAll, desc: desc };
+  }
+  function rcBadge(st) {
+    var m = (typeof STATUS_META !== "undefined" && STATUS_META[st]) || ["", ""];
+    return "<span class='badge " + m[1] + "'>" + h(m[0]) + "</span>";
+  }
+  function rcMgrPills() {
+    var list = (typeof PARTNERS !== "undefined" && PARTNERS.length) ? PARTNERS : [];
+    if (!list.length) return "";
+    if (!NO.manager) NO.manager = list[0];
+    return "<div class='rc-mgr'>Хто приймає: <div class='cr-pills'>" + list.map(function (p) {
+      return "<button class='cr-pill" + (NO.manager === p ? " active" : "") + "' onclick=\"rcMgr('" + jq(p) + "')\">" + h(p) + "</button>";
+    }).join("") + "</div></div>";
+  }
+
+  function rcIdHTML() {
+    var d = RC.digits, right = "";
+    var all = rcClients();
+    var matches = d.length >= 2 ? all.filter(function (c) { return c.key.indexOf(d) !== -1; }) : [];
+    matches.sort(function (a, b) { return (a.key.indexOf(d) === 0 ? 0 : 1) - (b.key.indexOf(d) === 0 ? 0 : 1); });
+    matches = matches.slice(0, 5);
+    if (d.length < 2) {
+      right = "<div class='rc-empty'>Введіть номер телефону клієнта.<br>Після кількох цифр з'явиться підказка з іменем.</div>";
+    } else {
+      if (matches.length) {
+        right = "<div class='rc-sug'>" + matches.map(function (c) {
+          var cnt = ORDERS.filter(function (o) { return rcLocal(gv(o, "Телефон")) === c.key; }).length;
+          return "<div class='rc-sug-row' onclick=\"rcPick('" + c.key + "')\"><div class='rc-av'>" + h(rcInitials(c.name)) + "</div><div><div class='rc-nm'>" + h(c.name || "Без імені") + "</div><div class='rc-ph'>" + h(fmtPhone(c.phone)) + "</div></div><div class='rc-meta'>" + cnt + " замовл.</div></div>";
+        }).join("") + "</div>";
+      }
+      if (d.length === 9 && !matches.some(function (c) { return c.key === d; })) {
+        right += "<div class='rc-new' onclick='rcNew()'><div class='pl'>+</div><div><div style='font-size:14.5px'>Створити нового клієнта</div><div style='font-size:11.5px;opacity:.8;margin-top:2px'>" + h(rcFmt(d)) + "</div></div></div>";
+      } else if (!matches.length) {
+        right = "<div class='rc-empty'>Такого номера ще немає в базі.<br>Продовжуйте вводити; на 9 цифрах можна створити нового клієнта.</div>";
+      }
+    }
+    var keys = "";
+    ["1", "2", "3", "4", "5", "6", "7", "8", "9"].forEach(function (k) { keys += "<button class='kp-key' onclick=\"rcKey('" + k + "')\">" + k + "</button>"; });
+    keys += "<span></span><button class='kp-key' onclick=\"rcKey('0')\">0</button><button class='kp-key kp-del' onclick='rcDel()'>⌫</button>";
+    return "<div class='page-header'><div class='page-title'>Прийом</div></div>" +
+      "<div class='rc-wrap'><div class='cr-box'>" +
+        "<div class='cr-block-label first'>Телефон клієнта</div>" +
+        "<div class='kp-display'>" + (d.length ? h(rcFmt(d)) : "<span style='color:var(--txt-3)'>+380 </span>") + "</div>" +
+        "<div class='kp-grid rc-keys'>" + keys + "</div>" +
+        "<div class='rc-hint'>Пізніше тут можна буде вводити номер клубної картки</div>" +
+      "</div><div><div class='cr-block-label first'>Клієнт</div>" + right + rcMgrPills() + "</div></div>";
+  }
+
+  function rcCardHTML() {
+    var c = RC.client;
+    var back = "<span class='rc-back' onclick='rcReset()'>← Інший номер</span>";
+    var head = "<div class='page-header'><div class='page-title'>Прийом</div></div>" + back;
+    if (c.isNew) {
+      var msgs = ["telegram", "whatsapp", "viber"].map(function (m) {
+        var lbl = (typeof MSG_LABELS !== "undefined" && MSG_LABELS[m]) || m;
+        return "<button class='cr-pill" + (RC.newMsg === m ? " active" : "") + "' onclick=\"rcMsg('" + m + "')\">" + h(lbl) + "</button>";
+      }).join("");
+      return head + "<div class='cr-box' style='max-width:520px'>" +
+        "<div class='rc-head'><div class='rc-av big'>+</div><div><div class='rc-cname'>Новий клієнт</div><div class='rc-cphone'>" + h(rcFmt(c.key)) + "</div></div></div>" +
+        "<div class='cr-block-label first'>Ім'я або магазин</div>" +
+        "<input class='cr-input' id='rc-newname' placeholder=\"Ім'я або магазин\" value=\"" + h(RC.newName) + "\" oninput='rcNewName(this.value)'>" +
+        "<div class='cr-block-label'>Месенджер <span class='cr-opt-note'>необов'язково</span></div><div class='cr-pills'>" + msgs + "</div>" +
+        "<button class='rc-main-btn' id='rc-go' style='margin-top:10px' " + (RC.newName.trim() ? "" : "disabled") + " onclick='rcStartOrder()'>Оформити замовлення</button>" +
+        rcMgrPills() + "</div>";
+    }
+    var orders = rcOrdersOf(c.key);
+    var infos = orders.map(function (o) { return { o: o, i: rcInfo(o) }; });
+    var inWork = infos.filter(function (x) { return x.i.st === "work" || x.i.st === "new" || x.i.st === "partial"; }).length;
+    var bonus = clientBonusBalance(c.phone);
+    var rating = (typeof clientRating === "function") ? clientRating(c.phone) : null;
+    var readyList = infos.filter(function (x) { return x.i.st !== "issued" && x.i.readyAll; });
+    var nPick = 0, sumPick = 0, payReady = [];
+    readyList.forEach(function (x) { if (x.i.paid) payReady.push(x); if (RC.picked[x.i.num]) { nPick++; sumPick += x.i.total; } });
+    var readyBox;
+    if (readyList.length) {
+      readyBox = "<div class='cr-box' style='margin-bottom:14px'><div class='cr-block-label first'>Готові до видачі <span class='cr-opt-note'>" + readyList.length + "</span></div>" +
+        readyList.map(function (x) {
+          var left = x.i.paid
+            ? "<div class='rc-chk" + (RC.picked[x.i.num] ? " on" : "") + "' onclick=\"rcPickOrd('" + jq(x.i.num) + "')\">" + (RC.picked[x.i.num] ? "✓" : "") + "</div>"
+            : "";
+          var right = x.i.paid
+            ? "<div class='sm rc-sm'>" + money(x.i.total) + "</div>"
+            : "<span class='rc-due'>До сплати " + money(x.i.toPay) + "</span><button class='rc-open' onclick=\"event.stopPropagation();openOrder('" + jq(x.i.num) + "')\">Відкрити</button>";
+          return "<div class='rc-ord'>" + left + "<div class='oi'><div class='num'>" + h(x.i.num) + "</div><div class='ds'>" + h(x.i.desc) + "</div></div>" + right + "</div>";
+        }).join("") +
+        "<div class='rc-issue-bar'><button class='rc-main-btn' " + (nPick ? "" : "disabled") + " onclick='rcIssue(false)'>" + (nPick ? "Видати вибрані (" + nPick + ") · " + money(sumPick) : "Оберіть, що видати") + "</button>" +
+        (payReady.length ? "<button class='rc-ghost-btn' onclick='rcIssue(true)'>Видати всі</button>" : "") + "</div>" +
+        "<div class='rc-note'>Замовлення з доплатою відкриваються у своїй картці: там приймається оплата, потім видача.</div></div>";
+    } else {
+      readyBox = "<div class='cr-box' style='margin-bottom:14px'><div class='cr-block-label first'>Готові до видачі</div><div style='font-size:13px;color:var(--txt-3)'>Готових замовлень немає</div></div>";
+    }
+    var shown = RC.histAll ? infos : infos.slice(0, 6);
+    var hist = shown.map(function (x) {
+      return "<div class='rc-ord' onclick=\"openOrder('" + jq(x.i.num) + "')\"><div class='oi'><div class='num'>" + h(x.i.num) + "</div><div class='ds'>" + h(x.i.desc) + "</div></div><div class='sm rc-sm'>" + money(x.i.total) + "</div>" + rcBadge(x.i.st) + "</div>";
+    }).join("") || "<div style='font-size:13px;color:var(--txt-3)'>Замовлень ще немає</div>";
+    if (infos.length > 6) hist += "<div class='rc-more' onclick='rcHist()'>" + (RC.histAll ? "Згорнути" : "Показати всі (" + infos.length + ")") + "</div>";
+    return head + "<div class='rc-grid'><div>" +
+      "<div class='rc-head'><div class='rc-av big'>" + h(rcInitials(c.name)) + "</div><div><div class='rc-cname'>" + h(c.name || "Без імені") + (rating ? " <span title='" + h(rating.label) + "'>" + rating.dot + "</span>" : "") + "</div><div class='rc-cphone'>" + h(fmtPhone(c.phone)) + "</div></div></div>" +
+      "<div class='rc-stats'><div class='rc-stat'><div class='k'>Замовлень</div><div class='v'>" + infos.length + "</div></div><div class='rc-stat'><div class='k'>В роботі</div><div class='v'>" + inWork + "</div></div><div class='rc-stat'><div class='k'>Бонуси</div><div class='v'>" + money(bonus) + "</div></div></div>" +
+      "<button class='rc-main-btn' onclick='rcStartOrder()'>Оформити замовлення</button>" + rcMgrPills() +
+      "</div><div>" + readyBox + "<div class='cr-box'><div class='cr-block-label first'>Історія</div>" + hist + "</div></div></div>";
+  }
+
+  var _rcRender = function () {
+    var page = $("page-reception");
+    if (!page) return;
+    if (typeof dataLoaded !== "undefined" && !dataLoaded) {
+      page.innerHTML = "<div class='page-header'><div class='page-title'>Прийом</div></div><div class='rc-empty'>Завантаження клієнтів…</div>";
+      return;
+    }
+    page.innerHTML = RC.client ? rcCardHTML() : rcIdHTML();
+  };
+  renderers.reception = _rcRender;
+
+  window.rcKey = function (k) { if (RC.digits.length < 9) { RC.digits += k; _rcRender(); } };
+  window.rcDel = function () { RC.digits = RC.digits.slice(0, -1); _rcRender(); };
+  window.rcMgr = function (p) { NO.manager = p; _rcRender(); };
+  window.rcPick = function (key) {
+    var c = rcClients().filter(function (x) { return x.key === key; })[0];
+    if (!c) return;
+    RC.client = c; RC.picked = {}; RC.histAll = false; _rcRender();
+  };
+  window.rcNew = function () { RC.client = { isNew: true, key: RC.digits, phone: RC.digits }; RC.newName = ""; RC.newMsg = ""; _rcRender(); };
+  window.rcNewName = function (v) { RC.newName = v; var b = $("rc-go"); if (b) b.disabled = !v.trim(); };
+  window.rcMsg = function (m) { RC.newMsg = (RC.newMsg === m) ? "" : m; var nn = RC.newName; _rcRender(); var i = $("rc-newname"); if (i) i.value = nn; };
+  window.rcReset = function () { RC.client = null; RC.digits = ""; RC.picked = {}; RC.histAll = false; _rcRender(); };
+  window.rcPickOrd = function (num) { if (RC.picked[num]) delete RC.picked[num]; else RC.picked[num] = 1; _rcRender(); };
+  window.rcHist = function () { RC.histAll = !RC.histAll; _rcRender(); };
+
+  window.rcStartOrder = function () {
+    var c = RC.client; if (!c) return;
+    var name = c.isNew ? RC.newName.trim() : (c.name || "");
+    if (!name) { say("Введіть ім'я клієнта"); return; }
+    if (typeof priceLoaded !== "undefined" && !priceLoaded) { say("Прайс ще завантажується, зачекайте секунду"); return; }
+    var hasWork = NO.items && NO.items.some(function (i) { return i.services && i.services.length; });
+    if (hasWork && !confirm("Є незавершене замовлення. Почати нове? Введені дані зникнуть.")) return;
+    var mgr = NO.manager || ((typeof PARTNERS !== "undefined" && PARTNERS.length) ? PARTNERS[0] : "");
+    var phone = c.isNew ? fmtPhone(c.key) : c.phone;
+    var msg = c.isNew ? RC.newMsg : clientMessenger(c.phone);
+    NO = { manager: mgr, client: name, phone: phone, messenger: msg || "", items: [], payment: "", prepay: "", prepayMethod: "", deadline: "", delivery: "Самовивіз" };
+    itemCounter = 0;
+    createStep = 2;
+    showPage("create");
+    if (!NO.items.length) addItem();
+    openItemModal(NO.items[NO.items.length - 1].id);
+  };
+
+  /* Видача: кілька замовлень одразу */
+  window.rcIssue = function (all) {
+    var c = RC.client; if (!c) return;
+    var infos = rcOrdersOf(c.key).map(rcInfo).filter(function (i) { return i.st !== "issued" && i.readyAll && i.paid; });
+    var nums = infos.filter(function (i) { return all || RC.picked[i.num]; }).map(function (i) { return i.num; });
+    if (!nums.length) return;
+    var names = masterNamesForRole();
+    if (!isAdmin() && names.length === 1) { rcConfirmIssue(nums, names[0]); return; }
+    if (!names.length) { say("Додайте майстрів у налаштуваннях"); return; }
+    var ovl = document.createElement("div");
+    ovl.className = "rc-ovl"; ovl.id = "rc-master";
+    ovl.innerHTML = "<div class='rc-card'><div class='cr-block-label first'>Хто видає?</div><div class='cr-pills' style='margin-top:10px'>" +
+      names.map(function (m) { return "<button class='cr-pill' onclick=\"rcConfirmIssue(" + jq(JSON.stringify(nums)).replace(/&quot;/g, "&quot;") + ",'" + jq(m) + "')\">" + h(m) + "</button>"; }).join("") +
+      "</div><button class='rc-ghost-btn' style='width:100%;margin-top:12px' onclick='rcCloseMaster()'>Скасувати</button></div>";
+    document.body.appendChild(ovl);
+  };
+  window.rcCloseMaster = function () { var o = $("rc-master"); if (o) o.parentNode.removeChild(o); };
+  window.rcConfirmIssue = async function (nums, master) {
+    rcCloseMaster();
+    if (typeof nums === "string") { try { nums = JSON.parse(nums); } catch (e) { nums = []; } }
+    var nowVal = new Date().toLocaleDateString("uk-UA", { day: "2-digit", month: "2-digit", year: "numeric" }) + " " + new Date().toLocaleTimeString("uk-UA", { hour: "2-digit", minute: "2-digit" });
+    var done = 0;
+    for (var n = 0; n < nums.length; n++) {
+      var num = nums[n];
+      var its = ITEMS.filter(function (i) { return gv(i, "Номер замовлення") === num; });
+      for (var idx = 0; idx < its.length; idx++) {
+        var it = its[idx];
+        if (gv(it, "Статус") === "📦 Виданий") continue;
+        var wasNotified = !!gv(it, "Сповіщено");
+        it["Статус"] = "📦 Виданий"; it["Хто видав"] = master; it["Дата видачі"] = nowVal;
+        if (!wasNotified) it["Сповіщено"] = nowVal;
+        var itemNum = gv(it, "Номер виробу") || (num + "-" + (idx + 1));
+        try {
+          await fetch(API_URL.replace("/order", "/status"), { method: "POST", mode: "cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ item_num: itemNum, status: "📦 Виданий", master: master }) });
+          if (!wasNotified) await fetch(API_URL.replace("/order", "/notify"), { method: "POST", mode: "cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ item_num: itemNum, notified: true }) });
+        } catch (e) { console.error("issue failed", e); }
+      }
+      done++;
+    }
+    RC.picked = {};
+    _rcRender();
+    say("Видано замовлень: " + done);
+  };
+
+  /* смужка клієнта на кроці «Речі» */
+  var _origCreate = renderers.create;
+  renderers.create = function () {
+    _origCreate.apply(this, arguments);
+    try {
+      if (!NO.client || !NO.phone) return;
+      var box = document.querySelector(".cr-step[data-cstep='2'] .cr-box");
+      if (!box) return;
+      var d = document.createElement("div");
+      d.className = "rc-chipbar";
+      d.innerHTML = "<div><b>" + h(NO.client) + "</b><span>" + h(fmtPhone(NO.phone)) + (NO.manager ? " · приймає: " + h(NO.manager) : "") + "</span></div><a onclick='setCreateStep(1)'>Змінити</a>";
+      box.insertBefore(d, box.firstChild);
+    } catch (e) { console.error(e); }
+  };
+
+  /* сторінка і пункт меню */
+  (function mountReception() {
+    var pc = $("page-create");
+    if (pc && !$("page-reception")) {
+      var pg = document.createElement("div");
+      pg.className = "page"; pg.id = "page-reception";
+      pc.parentNode.insertBefore(pg, pc);
+    }
+    var first = document.querySelector(".nav-item[data-page='create']");
+    if (first && !document.querySelector(".nav-item[data-page='reception']")) {
+      var b = document.createElement("button");
+      b.className = "nav-item"; b.setAttribute("data-page", "reception");
+      b.setAttribute("onclick", "rcReset();showPage('reception')");
+      b.innerHTML = "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round'><rect x='5' y='2' width='14' height='20' rx='2'/><line x1='9' y1='6' x2='15' y2='6'/><circle cx='9' cy='11' r='.6'/><circle cx='12' cy='11' r='.6'/><circle cx='15' cy='11' r='.6'/><circle cx='9' cy='15' r='.6'/><circle cx='12' cy='15' r='.6'/><circle cx='15' cy='15' r='.6'/></svg>Прийом";
+      first.parentNode.insertBefore(b, first);
+    }
+  })();
+
+  /* ═══════════════════════ ВІЗАРД РЕЧІ ═══════════════════════ */
+  function wzItem(id) { return NO.items.find(function (i) { return i.id === id; }); }
+  function wzCatLabel(it) { return (PRICE[it.category] && PRICE[it.category].label) || ""; }
+  function wzNorm(s) { return String(s || "").toLowerCase().replace(/^[^a-zа-яіїєґ0-9]+/i, "").replace(/\s+/g, " ").trim(); }
+
+  /* Плоский список послуг категорії (для плиток): індекс у масиві використовується в onclick */
+  var WZ_LIST = [];
+  function wzBuildList(it) { WZ_LIST = allServicesFlat(it.category); }
+  function wzIsCoreLine(name) { return CORE_OPS.some(function (op) { return name.indexOf(op + " — ") === 0; }); }
+  function wzFreq(it) {
+    var freq = {};
+    SERVICES.forEach(function (s) { var n = wzNorm(gv(s, "Назва")); if (n) freq[n] = (freq[n] || 0) + 1; });
+    var idxs = [];
+    WZ_LIST.forEach(function (s, i) { if (!wzIsCoreLine(s.name)) idxs.push(i); });
+    idxs.sort(function (a, b) { return (freq[wzNorm(WZ_LIST[b].name)] || 0) - (freq[wzNorm(WZ_LIST[a].name)] || 0) || a - b; });
+    return idxs.slice(0, 6);
+  }
+  function wzFindSvc(it, name) {
+    for (var i = 0; i < it.services.length; i++) {
+      var s = it.services[i];
+      if (s.kind === "other" && !s.custom && s.baseName === name) return i;
+    }
+    return -1;
+  }
+  function wzSync(s) { s.qty = s.qty || 1; s.price = s.unit * s.qty; s.name = s.baseName + (s.qty > 1 ? " × " + s.qty : ""); }
+  function wzFloor(it, s) {
+    if (s.kind === "core") { var p = opPriceFor(it, s.op); return p ? (parseInt(p.price) || 0) : 0; }
+    return s.custom ? 0 : (s.base || 0);
+  }
+
+  window.wzAdd = function (id, li) {
+    var it = wzItem(id), l = WZ_LIST[li]; if (!it || !l) return;
+    var i = wzFindSvc(it, l.name);
+    if (i >= 0) { it.services[i].qty = (it.services[i].qty || 1) + 1; wzSync(it.services[i]); }
+    else it.services.push({ kind: "other", name: l.name, baseName: l.name, base: parseInt(l.price) || 0, unit: parseInt(l.price) || 0, qty: 1, price: parseInt(l.price) || 0 });
+    renderItems(); updateReceipt();
+  };
+  window.wzDec = function (id, li) {
+    var it = wzItem(id), l = WZ_LIST[li]; if (!it || !l) return;
+    var i = wzFindSvc(it, l.name); if (i < 0) return;
+    var s = it.services[i];
+    s.qty = (s.qty || 1) - 1;
+    if (s.qty <= 0) it.services.splice(i, 1); else wzSync(s);
+    renderItems(); updateReceipt();
+  };
+  window.wzQty = function (id, si, d) {
+    var it = wzItem(id); if (!it || !it.services[si]) return;
+    var s = it.services[si]; if (s.kind === "core") return;
+    s.qty = (s.qty || 1) + d;
+    if (s.qty <= 0) { it.services.splice(si, 1); } else wzSync(s);
+    renderItems(); updateReceipt();
+  };
+  window.wzRm = function (id, si) { var it = wzItem(id); if (!it) return; it.services.splice(si, 1); it.wzPr = {}; renderItems(); updateReceipt(); };
+  window.wzPrToggle = function (id, si) { var it = wzItem(id); if (!it) return; it.wzPr = it.wzPr || {}; it.wzPr[si] = !it.wzPr[si]; renderItems(); };
+  function wzSetUnit(it, si, v) {
+    var s = it.services[si]; if (!s) return;
+    var floor = wzFloor(it, s);
+    v = parseInt(v); if (isNaN(v)) return;
+    if (v < floor) { v = floor; say("Ціна не може бути нижчою за прайс: " + money(floor)); }
+    if (s.kind === "core") s.price = v; else { s.unit = v; wzSync(s); }
+  }
+  window.wzPrStep = function (id, si, d) {
+    var it = wzItem(id); if (!it || !it.services[si]) return;
+    var s = it.services[si];
+    var cur = s.kind === "core" ? s.price : s.unit;
+    wzSetUnit(it, si, cur + d); renderItems(); updateReceipt();
+  };
+  window.wzPrKeypad = function (id, si) {
+    var it = wzItem(id); if (!it || !it.services[si]) return;
+    var s = it.services[si];
+    var cur = s.kind === "core" ? s.price : s.unit;
+    openPriceKeypad(cur, null, function (fv) { wzSetUnit(it, si, fv); renderItems(); updateReceipt(); });
+  };
+
+  /* кроки */
+  window.wzGo = function (id, n) { var it = wzItem(id); if (!it) return; it.wzStep = n; it.wzSheet = false; renderItems(); };
+  window.wzNext = function (id) {
+    var it = wzItem(id); if (!it) return;
+    if (it.wzStep === 1 && !it.model) { say("Оберіть вид виробу"); return; }
+    if (it.wzStep === 2 && !it.services.length) { say("Додайте хоча б одну послугу"); return; }
+    if (it.wzStep < 3) { it.wzStep++; renderItems(); } else { closeItemModal(); }
+  };
+  window.wzSet = function (id, key, val) { var it = wzItem(id); if (!it) return; it[key] = (it[key] === val ? "" : val); renderItems(); };
+
+  /* крок 1 */
+  window.wzModelInput = function (id, v) { var it = wzItem(id); if (!it) return; it.wzMq = v; var box = $("wz-models"); if (box) box.innerHTML = wzModelChips(it); };
+  function wzModelChips(it) {
+    var q = (it.wzMq || "").trim().toLowerCase();
+    var list = modelsFor(it.category).map(function (v) { return v["Тип"]; });
+    var out = list.filter(function (t) { return !q || t.toLowerCase().indexOf(q) !== -1; });
+    var total = out.length;
+    out = out.slice(0, q ? 30 : 16);
+    if (it.model && out.indexOf(it.model) === -1 && !q) out.unshift(it.model);
+    var html = out.map(function (t) {
+      return "<button class='cr-pill" + (t === it.model ? " active" : "") + "' onclick=\"pickModel(" + it.id + ",'" + jq(t) + "')\">" + h(t) + "</button>";
+    }).join("");
+    if (!q && total > out.length) html += "<span style='font-size:11.5px;color:var(--txt-3);align-self:center'>Ще " + (total - out.length) + ": почніть вводити назву</span>";
+    var exact = q && list.some(function (t) { return t.toLowerCase() === q; });
+    if (q && !exact) html += "<button class='cr-pill' onclick=\"pickModel(" + it.id + ",'" + jq((it.wzMq || "").trim()) + "')\">+ Додати «" + h((it.wzMq || "").trim()) + "» як новий вид</button>";
+    if (!html) html = "<span style='font-size:12px;color:var(--txt-3)'>Лист «Види» порожній: впишіть назву вище</span>";
+    return html;
+  }
+  window.wzBrandInput = function (id, v) { var it = wzItem(id); if (!it) return; it.brand = v; var box = $("wz-brands"); if (box) box.innerHTML = wzBrandChips(it); var t = $("iw-title"); if (t) t.innerHTML = wzTitle(it); };
+  function wzBrandChips(it) {
+    var q = (it.brand || "").trim().toLowerCase();
+    var freq = {};
+    ITEMS.forEach(function (i) { var b = gv(i, "Бренд"); if (b) freq[b] = (freq[b] || 0) + 1; });
+    var list = BRANDS.slice().sort(function (a, b) { return (freq[b] || 0) - (freq[a] || 0); });
+    var out = list.filter(function (b) { return !q || b.toLowerCase().indexOf(q) !== -1; });
+    var exact = q && out.some(function (b) { return b.toLowerCase() === q; });
+    out = out.slice(0, q ? 8 : 10);
+    return out.map(function (b) {
+      return "<button class='cr-pill" + (b.toLowerCase() === q ? " active" : "") + "' onclick=\"wzBrandPick(" + it.id + ",'" + jq(b) + "')\">" + h(b) + "</button>";
+    }).join("");
+  }
+  window.wzBrandPick = function (id, b) { var it = wzItem(id); if (!it) return; it.brand = (it.brand === b ? "" : b); renderItems(); updateReceipt(); };
+
+  function wzStep1(it) {
+    var isBag = it.category === "bags";
+    if (!it.mode) it.mode = "care";
+    var isCare = it.mode === "care";
+    var cats = Object.keys(PRICE).map(function (k) {
+      return "<button class='ic-seg" + (k === it.category ? " on" : "") + "' onclick=\"changeCategory(" + it.id + ",'" + jq(k) + "')\">" + h(PRICE[k].label) + "</button>";
+    }).join("");
+    var s = "<div class='wz-h'>Що приймаємо?</div><div class='wz-sub'>Оберіть тип і вид, бренд за бажанням</div>" +
+      "<div class='wz-lbl first'>Вид виробу</div><div class='wz-segs'>" + cats + "</div>" +
+      "<div class='wz-lbl'>Вид</div><input class='cr-input' autocomplete='off' placeholder='Оберіть або впишіть' value=\"" + h(it.wzMq != null ? it.wzMq : (it.model || "")) + "\" oninput='wzModelInput(" + it.id + ",this.value)'>" +
+      "<div class='wz-chips' id='wz-models'>" + wzModelChips(it) + "</div>";
+    if (isBag && isCare && it.model && it.model !== "Поясний ремінь") {
+      s += "<div class='wz-lbl'>Розмір і матеріал <i>впливає на ціну чищення</i></div><div class='wz-segs'>" +
+        ["S", "M", "L"].map(function (z) { return "<button class='ic-seg" + (it.size === z ? " on" : "") + "' onclick=\"setItemSize(" + it.id + ",'" + z + "')\">" + z + "</button>"; }).join("") +
+        [["шкіряна", "Шкіра"], ["текстильна", "Текстиль"]].map(function (m) { return "<button class='ic-seg" + (it.material === m[0] ? " on" : "") + "' onclick=\"setItemMaterial(" + it.id + ",'" + m[0] + "')\">" + m[1] + "</button>"; }).join("") + "</div>";
+    } else if (!isBag && isCare && it.model && !modelInfo(it.category, it.model)) {
+      s += "<div class='wz-warn'>⚠ Не вдалося визначити тарифну групу автоматично для нового виду. Оберіть вручну, інакше не знайдеться ціна.</div><div class='wz-chips'>" +
+        shoeSizeGroups().map(function (g) { return "<button class='cr-pill" + (it.size === g ? " active" : "") + "' onclick=\"setItemSize(" + it.id + ",'" + jq(g) + "')\">" + h(g) + "</button>"; }).join("") + "</div>";
+    }
+    s += "<div class='wz-lbl'>Бренд <i>необов'язково</i></div><input class='cr-input' autocomplete='off' placeholder='Впишіть або оберіть' value=\"" + h(it.brand || "") + "\" oninput='wzBrandInput(" + it.id + ",this.value)'>" +
+      "<div class='wz-chips' id='wz-brands'>" + wzBrandChips(it) + "</div>";
+    return s;
+  }
+
+  /* крок 2 */
+  function wzTile(it, li, withMinus) {
+    var l = WZ_LIST[li]; var i = wzFindSvc(it, l.name); var s = i >= 0 ? it.services[i] : null;
+    return "<button class='ic-op-tile" + (s ? " on" : "") + "' onclick='wzAdd(" + it.id + "," + li + ")'><span>" + h(l.name) + "</span><span class='ic-op-price'>" + (l.from ? "від " : "") + money(l.price) + (s ? "<span class='wz-bd'>×" + (s.qty || 1) + "</span>" : "") + "</span>" +
+      (s ? "<span class='wz-mn' onclick='event.stopPropagation();wzDec(" + it.id + "," + li + ")'>−</span>" : "") + "</button>";
+  }
+  function wzSelected(it) {
+    if (!it.services.length) return "";
+    var order = it.services.map(function (s, i) { return i; }).sort(function (a, b) { return ((it.services[b].kind === "core") ? 1 : 0) - ((it.services[a].kind === "core") ? 1 : 0) || a - b; });
+    var s = "<div class='wz-lbl'>Обрано <i>" + it.services.length + "</i></div><div class='wz-sel'>";
+    order.forEach(function (si) {
+      var sv = it.services[si];
+      var core = sv.kind === "core";
+      var unit = core ? sv.price : sv.unit, qty = core ? 1 : (sv.qty || 1), base = wzFloor(it, sv);
+      var raised = unit > base && base > 0;
+      var nm = core ? sv.name : (sv.baseName || sv.name);
+      var sub = (qty > 1 ? qty + " × " + money(unit) : (core ? "рівень" : money(unit) + " за 1")) + (raised ? " · ціну підвищено" : "");
+      s += "<div class='wz-sr'><div class='nm'>" + h(nm) + "<small>" + h(sub) + "</small></div>" +
+        (core ? "" : "<span class='wz-step'><button onclick='wzQty(" + it.id + "," + si + ",-1)'>−</button><span class='n'>" + qty + "</span><button onclick='wzQty(" + it.id + "," + si + ",1)'>+</button></span>") +
+        "<span class='wz-sum' onclick='wzPrToggle(" + it.id + "," + si + ")'>" + money(sv.price) + "</span><button class='wz-x' onclick='wzRm(" + it.id + "," + si + ")'>×</button></div>";
+      if (it.wzPr && it.wzPr[si]) {
+        s += "<div class='wz-prw'>Ціна за 1" + (base ? " (не нижче прайсу " + money(base) + ")" : "") + "<span class='wz-step'><button " + (unit <= base ? "disabled" : "") + " onclick='wzPrStep(" + it.id + "," + si + ",-50)'>−</button><span class='n' style='min-width:56px' onclick='wzPrKeypad(" + it.id + "," + si + ")'>" + unit + "</span><button onclick='wzPrStep(" + it.id + "," + si + ",50)'>+</button></span></div>";
+      }
+    });
+    return s + "</div>";
+  }
+  function wzStep2(it) {
+    wzBuildList(it);
+    if (!it.mode) it.mode = "care";
+    var isCare = it.mode === "care";
+    var s = "<div class='wz-h'>Що робимо?</div><div class='wz-sub'>Торкніться послуги, щоб додати. Ще раз торкніться, щоб збільшити кількість</div>" +
+      "<div class='wz-segs'><button class='ic-seg" + (isCare ? " on" : "") + "' onclick=\"setItemMode(" + it.id + ",'care')\">Догляд / фарбування</button><button class='ic-seg" + (!isCare ? " on" : "") + "' onclick=\"setItemMode(" + it.id + ",'repair')\">Ремонт / інше</button></div>";
+    if (isCare) {
+      s += "<div class='wz-lbl'>Рівень <i>кожен наступний уже включає попередній</i></div><div class='wz-ops'>" + CORE_OPS.map(function (op) {
+        var added = it.services.some(function (x) { return x.kind === "core" && x.op === op; });
+        var p = it.model ? opPriceFor(it, op) : null;
+        var price = p ? ((p.from ? "від " : "") + (parseInt(p.price) || 0).toLocaleString("uk-UA") + " ₴") : "—";
+        return "<button class='ic-op-tile" + (added ? " on" : "") + ((!p && !added) ? " off" : "") + "' onclick=\"toggleOp(" + it.id + ",'" + jq(op) + "')\"><span class='ic-op-name'>" + h(op) + "</span><span class='ic-op-price'>" + price + "</span></button>";
+      }).join("") + "</div>";
+    }
+    s += wzSelected(it);
+    var fr = wzFreq(it);
+    s += "<div class='wz-lbl'>Часті послуги <i>для цього виду виробу</i></div><div class='wz-tiles'>" + (fr.length ? fr.map(function (li) { return wzTile(it, li); }).join("") : "<div class='wz-empty'>У прайсі немає послуг для цієї категорії</div>") + "</div>" +
+      "<button class='wz-all' onclick='wzSheetOpen(" + it.id + ")'>Усі послуги →</button>";
+    return s;
+  }
+
+  /* шторка «Усі послуги» */
+  window.wzSheetOpen = function (id) { var it = wzItem(id); if (!it) return; it.wzSheet = true; it.wzQ = ""; renderItems(); };
+  window.wzSheetClose = function (id) { var it = wzItem(id); if (!it) return; it.wzSheet = false; renderItems(); };
+  window.wzDept = function (id, d) { var it = wzItem(id); if (!it) return; it.wzDept = d; it.wzQ = ""; renderItems(); };
+  window.wzSearch = function (id, v) { var it = wzItem(id); if (!it) return; it.wzQ = v; wzSheetBody(it); };
+  function wzSheetList(it) {
+    var q = (it.wzQ || "").trim().toLowerCase(), idxs = [];
+    var dept = it.wzDept || "Часті";
+    var fr = wzFreq(it);
+    WZ_LIST.forEach(function (s, i) {
+      if (q) {
+        var w = q.split(/\s+/).filter(Boolean), nm = s.name.toLowerCase();
+        if (w.every(function (x) { return nm.indexOf(x) !== -1; })) idxs.push(i);
+      } else if (dept === "Часті" ? fr.indexOf(i) !== -1 : s.department === dept) idxs.push(i);
+    });
+    return idxs;
+  }
+  function wzSheetBody(it) {
+    var pane = $("wz-grid"); if (!pane) return;
+    var l = wzSheetList(it);
+    pane.innerHTML = l.length ? l.map(function (li) { return wzTile(it, li); }).join("") : "<div class='wz-empty'>Нічого не знайдено</div>";
+  }
+  function wzSheet(it) {
+    var depts = ["Часті"].concat(allDepartments(it.category));
+    var cur = it.wzDept || "Часті";
+    var q = (it.wzQ || "").trim();
+    var cnt = it.services.filter(function (x) { return x.kind !== "core"; }).length;
+    var rail = depts.map(function (d) {
+      var c = d === "Часті" ? wzFreq(it).length : WZ_LIST.filter(function (s) { return s.department === d; }).length;
+      return "<div class='d" + (d === cur && !q ? " on" : "") + "' onclick=\"wzDept(" + it.id + ",'" + jq(d) + "')\">" + h(d) + "<small>" + c + " послуг</small></div>";
+    }).join("");
+    var l = wzSheetList(it);
+    return "<div class='wz-sheet'><div class='wz-sh-h'><div class='t'>Усі послуги</div><input class='cr-input' id='wz-q' placeholder='Знайти' autocomplete='off' value=\"" + h(q) + "\" oninput='wzSearch(" + it.id + ",this.value)'><button class='iw-done' onclick='wzSheetClose(" + it.id + ")'>" + (cnt ? "Готово (" + cnt + ")" : "Готово") + "</button></div>" +
+      "<div class='wz-sh-b'><div class='wz-rail2'>" + rail + "</div><div class='wz-pane'><div class='wz-tiles' id='wz-grid'>" +
+      (l.length ? l.map(function (li) { return wzTile(it, li); }).join("") : "<div class='wz-empty'>Нічого не знайдено</div>") + "</div>" +
+      "<div class='wz-own'><div class='wz-lbl first'>Своя послуга</div><div class='wz-own-row'><input class='cr-input' id='wz-own-n' placeholder='Назва послуги' autocomplete='off'><input class='cr-input' id='wz-own-p' type='number' inputmode='numeric' placeholder='₴' style='width:96px;flex:none'><button class='rc-ghost-btn' onclick='wzOwn(" + it.id + ")'>Додати</button></div>" +
+      "<div class='rc-note'>Якщо така послуга вже є в прайсі, вона додасться за ціною з прайсу.</div></div></div></div></div>";
+  }
+  window.wzOwn = function (id) {
+    var it = wzItem(id); if (!it) return;
+    var n = ($("wz-own-n").value || "").trim(), p = parseInt($("wz-own-p").value || "0");
+    if (!n) { say("Вкажіть назву послуги"); return; }
+    var all = allServicesFlat(); var q = wzNorm(n);
+    var hit = all.filter(function (s) { return wzNorm(s.name) === q; })[0];
+    if (!hit) {
+      var words = q.split(" ").filter(Boolean);
+      var cand = all.filter(function (s) { var nm = wzNorm(s.name); return words.every(function (w) { return nm.indexOf(w) !== -1; }); });
+      if (cand.length === 1) hit = cand[0];
+    }
+    if (hit) {
+      var i = wzFindSvc(it, hit.name);
+      if (i >= 0) { it.services[i].qty = (it.services[i].qty || 1) + 1; wzSync(it.services[i]); }
+      else it.services.push({ kind: "other", name: hit.name, baseName: hit.name, base: parseInt(hit.price) || 0, unit: parseInt(hit.price) || 0, qty: 1, price: parseInt(hit.price) || 0 });
+      say("Така послуга є в прайсі: додано за ціною прайсу (" + money(hit.price) + ")");
+    } else {
+      if (!p) { say("Вкажіть ціну"); return; }
+      it.services.push({ kind: "other", name: "📝 " + n, baseName: "📝 " + n, base: 0, unit: p, qty: 1, price: p, custom: true });
+    }
+    renderItems(); updateReceipt();
+  };
+
+  /* крок 3 */
+  function wzChips(it, list, key) {
+    return "<div class='wz-chips'>" + list.map(function (x) {
+      return "<button class='cr-pill" + (it[key] === x ? " active" : "") + "' onclick=\"wzSet(" + it.id + ",'" + key + "','" + jq(x) + "')\">" + h(x) + "</button>";
+    }).join("") + "</div>";
+  }
+  function wzStep3(it) {
+    return "<div class='wz-h'>Деталі речі</div><div class='wz-sub'>Усе необов'язково, можна одразу натиснути «Готово»</div>" +
+      "<div class='wz-lbl first'>Колір</div><input class='cr-input' autocomplete='off' placeholder='Оберіть або впишіть' value=\"" + h(it.color || "") + "\" oninput='wzColorInput(" + it.id + ",this.value)'>" + wzChips(it, colorList().slice(0, 14), "color") +
+      "<div class='wz-lbl'>Матеріал</div>" + wzChips(it, MATERIALS, "matNote") +
+      "<div class='wz-lbl'>Стан</div>" + wzChips(it, CONDITIONS, "condition") +
+      "<div class='wz-lbl'>Коментар <i>видно клієнту</i></div><textarea class='cr-input' rows='3' placeholder='Напр.: без шнурків, без устілок, пильник у комплекті…' oninput='setItemNote(" + it.id + ",this.value)' style='resize:none'>" + h(it.note || "") + "</textarea>";
+  }
+  window.wzColorInput = function (id, v) { var it = wzItem(id); if (it) it.color = v; };
+
+  function wzTitle(it) {
+    var idx = NO.items.indexOf(it);
+    var t = "Річ <span>№" + (idx + 1) + "</span>";
+    if (it.model) t += " · " + h(it.model) + (it.brand && it.brand.trim() ? " · " + h(it.brand.trim()) : "");
+    return t;
+  }
+
+  /* головний рендер вікна речі (підміна оригінальної функції) */
+  window.renderItemEditor = function (id) {
+    var it = wzItem(id);
+    if (!it) { closeItemModal(); return; }
+    ensureItemModal();
+    if (!it.wzStep) it.wzStep = (it.model && it.services && it.services.length) ? 2 : 1;
+    var ovl = $("iw-ovl"), win = ovl.querySelector(".iwin"), body = $("iw-body"), foot = win.querySelector(".iw-foot");
+    win.classList.add("wz");
+    var prevScroll = body ? body.scrollTop : 0;
+    var t = $("iw-title"); if (t) t.innerHTML = wzTitle(it);
+
+    var step = it.wzStep;
+    var L = ["Виріб", "Послуги", "Деталі"], rail = "<div class='cr-rail'>";
+    for (var n = 1; n <= 3; n++) {
+      var done = n < step, cls = (n === step ? "active " : "") + (done ? "done" : "");
+      rail += "<div class='cr-rstep " + cls + "' " + (done ? "onclick='wzGo(" + it.id + "," + n + ")'" : "") + "><div class='cr-rdot'>" + (done ? "✓" : n) + "</div><div class='cr-rlbl'>" + L[n - 1] + "</div></div>";
+      if (n < 3) rail += "<div class='cr-rline " + (done ? "done" : "") + "'></div>";
+    }
+    rail += "</div>";
+    var railEl = $("wz-rail");
+    if (!railEl) { railEl = document.createElement("div"); railEl.id = "wz-rail"; railEl.className = "wz-rail"; win.insertBefore(railEl, body); }
+    railEl.innerHTML = rail;
+
+    var recap = "";
+    if (step > 1) recap = "<div class='wz-recap'><span><b>" + h(it.model || wzCatLabel(it)) + "</b>" + (it.brand && it.brand.trim() ? " · " + h(it.brand.trim()) : "") + (step === 3 ? " &nbsp;·&nbsp; послуг: <b>" + it.services.length + "</b>" : "") + "</span><a onclick='wzGo(" + it.id + ",1)'>Змінити</a></div>";
+    var content = step === 1 ? wzStep1(it) : (step === 2 ? wzStep2(it) : wzStep3(it));
+    body.innerHTML = recap + content;
+    body.scrollTop = prevScroll;
+
+    var dis = (step === 1 && !it.model) || (step === 2 && !it.services.length);
+    var f = "";
+    if (step === 1) f += "<button class='iw-del' onclick='removeItem(" + it.id + "); closeItemModal();'>Видалити річ</button>";
+    else f += "<button class='cr-head-btn' onclick='wzGo(" + it.id + "," + (step - 1) + ")'>← Назад</button>";
+    f += "<span class='iw-sum'>" + (step >= 2 ? fmtUAH(itemSum(it)) : "") + "</span>";
+    f += "<button class='iw-done' " + (dis ? "style='opacity:.4'" : "") + " onclick='wzNext(" + it.id + ")'>" + (step === 3 ? "Готово" : "Далі →") + "</button>";
+    foot.innerHTML = f;
+
+    var old = win.querySelector(".wz-sheet"); if (old) old.parentNode.removeChild(old);
+    if (it.wzSheet && step === 2) {
+      wzBuildList(it);
+      var tmp = document.createElement("div"); tmp.innerHTML = wzSheet(it);
+      win.appendChild(tmp.firstChild);
+    }
+  };
+
+  /* При відкритті вікна речі — стартуємо з першого кроку для нової речі */
+  var _origOpen = window.openItemModal;
+  window.openItemModal = function (id) {
+    var it = wzItem(id);
+    if (it) { it.wzSheet = false; it.wzMq = undefined; it.wzPr = {}; if (!(it.model && it.services && it.services.length)) it.wzStep = 1; else it.wzStep = it.wzStep || 2; }
+    _origOpen(id);
+  };
+
+  /* стартова сторінка */
+  showPage(START_PAGE);
+})();
+
+</script>
 </body>
 </html>
