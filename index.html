@@ -4,6 +4,45 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Rewise CRM</title>
+<script>
+/* TEST-GUARD: вмикається ТІЛЬКИ на тестовому адресі (/crm-test/). На бойовому адресі нічого не робить. */
+(function () {
+  var isTest = /\/crm-test(\/|$)/.test(location.pathname);
+  if (!isTest) return;
+  window.IS_TEST_ENV = true;
+  var realFetch = window.fetch.bind(window);
+  var lastToast = 0;
+  function toast() {
+    var now = Date.now();
+    if (now - lastToast < 2500) return;
+    lastToast = now;
+    var t = document.createElement("div");
+    t.textContent = "ТЕСТ: зміни не збережено і нікуди не надіслано";
+    t.style.cssText = "position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#B3261E;color:#fff;padding:10px 16px;border-radius:12px;font:500 14px sans-serif;z-index:2147483647;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,.3)";
+    (document.body || document.documentElement).appendChild(t);
+    setTimeout(function () { if (t.parentNode) t.parentNode.removeChild(t); }, 2200);
+  }
+  window.fetch = function (url, opts) {
+    var method = ((opts && opts.method) || "GET").toUpperCase();
+    if (method !== "GET" && method !== "HEAD") {
+      toast();
+      return Promise.resolve(new Response(JSON.stringify({ ok: true, success: true, test: true }), { status: 200, headers: { "Content-Type": "application/json" } }));
+    }
+    return realFetch(url, opts);
+  };
+  document.title = "ТЕСТ · Rewise CRM";
+  function ribbon() {
+    var r = document.createElement("div");
+    r.textContent = "ТЕСТ";
+    r.style.cssText = "position:fixed;top:env(safe-area-inset-top,0px);left:50%;transform:translateX(-50%);background:#B3261E;color:#fff;font:700 11px sans-serif;letter-spacing:2px;padding:2px 14px;border-radius:0 0 10px 10px;z-index:2147483647;pointer-events:none";
+    document.body.appendChild(r);
+    var s = document.createElement("div");
+    s.style.cssText = "position:fixed;left:0;right:0;top:0;height:3px;background:#B3261E;z-index:2147483646;pointer-events:none";
+    document.body.appendChild(s);
+  }
+  if (document.body) ribbon(); else document.addEventListener("DOMContentLoaded", ribbon);
+})();
+</script>
 
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#1E1E1E">
