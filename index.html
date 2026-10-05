@@ -2004,6 +2004,15 @@ html,body,button,input,textarea,select,.page,.rc-body,.iw-ovl,.kp-key{touch-acti
 .rc-body.narrow .cr-box{padding-bottom:14px}
 @media (min-width:621px){.nav-item[data-page='create']{display:none}}
 
+.rc-grid>*{min-width:0}
+.rc-body .cr-box{overflow:hidden}
+.rc-ord .oi{overflow:hidden}
+.rc-ord .num{display:flex;gap:8px;align-items:baseline}
+.rc-ord .ds{color:var(--txt-2)}
+.rc-ord .ds .tm{color:var(--txt-3)}
+.rc-ord>*{flex-shrink:0}.rc-ord>.oi{flex-shrink:1}
+#page-reception{overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0}
+
 </style>
 </head>
 <body data-theme="light">
@@ -7456,12 +7465,10 @@ loadPrice();
     var total = orderTotal(num);
     var payStr = gv(o, "Оплата");
     var ps = computePayStatus(total, payStr, extractAmt(payStr), extractAmt(gv(o, "Сума доплати")));
-    var desc = its.map(function (i) {
-      var t = [gv(i, "Тип"), gv(i, "Бренд")].filter(Boolean).join(" ");
-      var s = gv(i, "Послуги");
-      return t + (s ? ": " + s : "");
-    }).join(" · ");
-    return { num: num, st: st, total: total, toPay: ps.toPay, paid: (ps.isPaid || total <= 0 || ps.toPay <= 0), readyAll: readyAll, desc: desc };
+    var cnt = its.length;
+    var desc = orderItemName(num) + (cnt > 1 ? "" : "");
+    var term = gv(o, "Термін") || "";
+    return { num: num, st: st, total: total, toPay: ps.toPay, paid: (ps.isPaid || total <= 0 || ps.toPay <= 0), readyAll: readyAll, desc: desc, term: term };
   }
   function rcBadge(st) {
     var m = (typeof STATUS_META !== "undefined" && STATUS_META[st]) || ["", ""];
@@ -7564,11 +7571,11 @@ loadPrice();
     } else {
       readyBox = "<div class='cr-box' style='margin-bottom:14px'><div class='cr-block-label first'>Готові до видачі</div><div style='font-size:13px;color:var(--txt-3)'>Готових замовлень немає</div></div>";
     }
-    var shown = RC.histAll ? infos : infos.slice(0, 6);
+    var shown = RC.histAll ? infos : infos.slice(0, 4);
     var hist = shown.map(function (x) {
-      return "<div class='rc-ord' onclick=\"openOrder('" + jq(x.i.num) + "')\"><div class='oi'><div class='num'>" + h(x.i.num) + "</div><div class='ds'>" + h(x.i.desc) + "</div></div><div class='sm rc-sm'>" + money(x.i.total) + "</div>" + rcBadge(x.i.st) + "</div>";
+      return "<div class='rc-ord' onclick=\"openOrder('" + jq(x.i.num) + "')\"><div class='oi'><div class='num'>" + h(x.i.num) + "</div><div class='ds'>" + h(x.i.desc) + (x.i.term ? " <span class='tm'>· " + h(x.i.term) + "</span>" : "") + "</div></div><div class='sm rc-sm'>" + money(x.i.total) + "</div>" + rcBadge(x.i.st) + "</div>";
     }).join("") || "<div style='font-size:13px;color:var(--txt-3)'>Замовлень ще немає</div>";
-    if (infos.length > 6) hist += "<div class='rc-more' onclick='rcHist()'>" + (RC.histAll ? "Згорнути" : "Показати всі (" + infos.length + ")") + "</div>";
+    if (infos.length > 4) hist += "<div class='rc-more' onclick='rcHist()'>" + (RC.histAll ? "Згорнути" : "Показати всі (" + infos.length + ")") + "</div>";
     return head + "<div class='rc-grid'><div>" +
       "<div class='rc-head'><div class='rc-av big'>" + h(rcInitials(c.name)) + "</div><div><div class='rc-cname'>" + h(c.name || "Без імені") + (rating ? " <span title='" + h(rating.label) + "'>" + rating.dot + "</span>" : "") + "</div><div class='rc-cphone'>" + h(fmtPhone(c.phone)) + "</div></div></div>" +
       "<div class='rc-stats'><div class='rc-stat'><div class='k'>Замовлень</div><div class='v'>" + infos.length + "</div></div><div class='rc-stat'><div class='k'>В роботі</div><div class='v'>" + inWork + "</div></div><div class='rc-stat'><div class='k'>Бонуси</div><div class='v'>" + money(bonus) + "</div></div></div>" +
