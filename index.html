@@ -2027,7 +2027,8 @@ html,body,button,input,textarea,select,.page,.rc-body,.iw-ovl,.kp-key{touch-acti
 .rcw-day i.dd{background:#8E887E}
 .rcw-day.t{background:linear-gradient(180deg,rgba(179,150,107,.22),rgba(179,150,107,0))}
 .rcw-day.sel:after{content:"";position:absolute;left:28%;right:28%;bottom:-1px;height:2px;background:var(--cognac)}
-.rcw-pop{position:absolute;left:0;right:0;top:calc(100% + 8px)}
+.rcw-pop{margin:10px auto 0;max-width:440px;width:100%}
+.rc-home.day-open .rc-mid{display:none}
 .rcw-pop-in{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 34px rgba(0,0,0,.18);padding:6px 16px 8px}
 .rcw-pop-h{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:600;color:var(--txt);padding:8px 0}
 .rcw-pop-h a{font-size:22px;line-height:1;color:var(--txt-3);cursor:pointer;padding:0 4px}
@@ -2099,7 +2100,7 @@ html,body,button,input,textarea,select,.page,.rc-body,.iw-ovl,.kp-key{touch-acti
 .nav-home .nh-shine{position:absolute;inset:0;border-radius:50%;overflow:hidden;pointer-events:none}
 .nav-home .nh-shine:before{content:"";position:absolute;top:-10%;bottom:-10%;width:34%;left:-50%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.85),rgba(255,255,255,0));transform:skewX(-18deg);animation:nhsw 4.5s ease-in-out infinite}
 @keyframes nhsw{0%,70%{left:-50%}100%{left:130%}}
-.nav-home .nh-ring{position:absolute;left:-9px;top:-9px;width:74px;height:74px;pointer-events:none;transform:rotate(-90deg);opacity:0}
+.nav-home .nh-ring{position:absolute;left:50%;top:50%;margin:-37px 0 0 -37px;width:74px;height:74px;pointer-events:none;transform:rotate(-90deg);opacity:0}
 .nav-home .nh-ring circle{fill:none;stroke:#F0EBE3;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:232.5;stroke-dashoffset:232.5}
 .nav-home.holding{transform:scale(.94)}
 .nav-home.holding .nh-ring{opacity:1}
@@ -2111,11 +2112,21 @@ html,body,button,input,textarea,select,.page,.rc-body,.iw-ovl,.kp-key{touch-acti
   .nav .nav-grp{display:flex;flex:1;min-width:0;align-items:center}
   .nav .nav-home{width:64px;height:64px;margin:-40px 16px 0}
   .nav .nav-home .nh-r{font-size:20px}
-  .nav .nav-home .nh-ring{left:-9px;top:-9px}
   .nav .nav-home:after{inset:5px}
 }
 #page-reception .rc-body.narrow{max-width:420px;padding:0}
 @media (max-width:768px),(orientation:portrait) and (max-width:1180px),(orientation:landscape) and (max-height:520px){.rc-home{padding-top:50px}}
+
+/* Головна без прокрутки: екран фіксований по висоті */
+body.on-home .main{height:100vh;height:100dvh;min-height:0;overflow:hidden}
+body.on-home #page-reception{min-height:0;overflow:hidden}
+body.on-home .rc-home{overflow-y:auto;overflow-x:hidden;scrollbar-width:none}
+body.on-home .rc-home::-webkit-scrollbar{display:none}
+@media (max-width:768px),(orientation:portrait) and (max-width:1180px),(orientation:landscape) and (max-height:520px){
+  body.on-home .main{height:100dvh;padding-bottom:var(--navh,84px);box-sizing:border-box}
+  body.on-home{overflow:hidden}
+  .rc-home{padding-bottom:48px}
+}
 
 </style>
 </head>
@@ -7628,7 +7639,10 @@ loadPrice();
     }
     return "<div class='rcw'>" + out + "</div>" + (RC.day ? "<div class='rcw-pop'>" + rcPopHTML(RC.day) + "</div>" : "");
   }
-  function rcWeekRefresh() { var w = $("rcw-wrap"); if (w) w.innerHTML = rcWeekInner(); }
+  function rcWeekRefresh() {
+    var w = $("rcw-wrap"); if (w) w.innerHTML = rcWeekInner();
+    var hm = document.querySelector("#page-reception .rc-home"); if (hm) hm.classList.toggle("day-open", !!RC.day);
+  }
   window.rcDay = function (k) {
     if (RC.day === k) { RC.day = null; rcWeekRefresh(); return; }
     var list = rcDue()[k];
@@ -7718,7 +7732,7 @@ loadPrice();
       ["1", "2", "3", "4", "5", "6", "7", "8", "9"].forEach(function (k) { keys += "<button class='kp-key' onclick=\"rcKey('" + k + "')\">" + k + "</button>"; });
       keys = "<div class='kp-grid rc-keys'>" + keys + "<span></span><button class='kp-key' onclick=\"rcKey('0')\">0</button><button class='kp-key kp-del' onclick='rcDel()'>⌫</button></div>";
     }
-    return "<div class='rc-home'>" +
+    return "<div class='rc-home" + (RC.day ? " day-open" : "") + "'>" +
       "<div class='rcw-wrap' id='rcw-wrap'>" + rcWeekInner() + "</div>" +
       "<div class='rc-body narrow rc-mid'><div class='cr-box'>" +
         "<div class='cr-block-label first'>Клієнт</div>" + seg + field + keys +
@@ -7985,6 +7999,11 @@ loadPrice();
       if (isVis) seen++;
       (seen <= split ? L : R).appendChild(it);
     });
+    setNavH();
+  }
+  function setNavH() {
+    var nav = document.querySelector("nav.nav");
+    if (nav) document.documentElement.style.setProperty("--navh", nav.offsetHeight + "px");
   }
 
   var _sp = window.showPage;
@@ -7992,6 +8011,8 @@ loadPrice();
     _sp(name);
     var d = $("nav-home");
     if (d) d.classList.toggle("active", currentPage === "reception");
+    document.body.classList.toggle("on-home", currentPage === "reception");
+    setNavH();
   };
 
   /* ═══════════════════════ ВІЗАРД РЕЧІ ═══════════════════════ */
