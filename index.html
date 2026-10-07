@@ -2013,6 +2013,110 @@ html,body,button,input,textarea,select,.page,.rc-body,.iw-ovl,.kp-key{touch-acti
 .rc-ord>*{flex-shrink:0}.rc-ord>.oi{flex-shrink:1}
 #page-reception{overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0}
 
+/* ═══════════ ГОЛОВНА ═══════════ */
+.nav-theme{display:none !important}
+#page-reception{padding:0}
+.rc-home{flex:1;display:flex;flex-direction:column;width:100%;max-width:760px;margin:0 auto;padding:22px 28px 34px;min-height:0}
+.rc-mid{margin-top:26px;padding:0;max-width:420px;width:100%;align-self:center}
+.rcw-wrap{position:relative;z-index:5}
+.rcw{display:grid;grid-template-columns:repeat(7,1fr);border-bottom:1px solid var(--line);padding:0 2px}
+.rcw-day{text-align:center;padding:8px 0 12px;position:relative;border-radius:8px 8px 0 0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.rcw-day small{display:block;font-size:11px;color:var(--txt-3)}
+.rcw-day b{display:block;font-family:'Tenor Sans',serif;font-weight:400;font-size:20px;margin:3px 0;color:var(--txt)}
+.rcw-day i{display:block;width:5px;height:5px;border-radius:50%;margin:0 auto}
+.rcw-day i.dd{background:#8E887E}
+.rcw-day.t{background:linear-gradient(180deg,rgba(179,150,107,.22),rgba(179,150,107,0))}
+.rcw-day.sel:after{content:"";position:absolute;left:28%;right:28%;bottom:-1px;height:2px;background:var(--cognac)}
+.rcw-pop{position:absolute;left:0;right:0;top:calc(100% + 8px)}
+.rcw-pop-in{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 34px rgba(0,0,0,.18);padding:6px 16px 8px}
+.rcw-pop-h{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:600;color:var(--txt);padding:8px 0}
+.rcw-pop-h a{font-size:22px;line-height:1;color:var(--txt-3);cursor:pointer;padding:0 4px}
+.rcw-row{display:grid;grid-template-columns:78px 1fr auto 14px;gap:10px;align-items:center;padding:12px 0;border-top:1px solid var(--line);font-size:15px;cursor:pointer}
+.rcw-row .nu{font-size:13px;font-weight:700;color:var(--cognac)}
+.rcw-row .nm{color:var(--txt);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rcw-row em{font-style:normal;font-size:12px;color:var(--txt-3);text-align:right}
+.rcw-row em.rdy{color:var(--st-ready-fg)}
+.rcw-row .ch{color:var(--txt-3);font-size:18px;text-align:right}
+/* підсвітка клієнтів у списку пошуку */
+.rc-sug-row{border-left:4px solid transparent}
+.rc-sug-row.s-ready{background:var(--st-ready-bg);border-left-color:#639922}
+.rc-sug-row.s-work{background:var(--st-work-bg);border-left-color:#EF9F27}
+.rc-sug-row.s-new{background:var(--st-new-bg);border-left-color:#378ADD}
+.rc-sug-row.s-ready .rc-meta{color:var(--st-ready-fg)}.rc-sug-row.s-work .rc-meta{color:var(--st-work-fg)}.rc-sug-row.s-new .rc-meta{color:var(--st-new-fg)}
+/* фраза дня */
+.rcq{margin:auto auto 0;width:100%;max-width:440px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 22px 12px;text-align:center}
+.rc-mid + .rcq{margin-top:auto}
+.rcq-t{font-family:'Tenor Sans',serif;font-size:13px;color:var(--txt-2);line-height:1.6;letter-spacing:.02em}
+.rcq-a{font-family:'Tenor Sans',serif;font-size:9px;color:var(--cognac);letter-spacing:.15em;text-transform:uppercase;margin-top:8px}
+.rcq-c{display:flex;justify-content:center;align-items:center;gap:22px;margin-top:12px;padding-top:8px;border-top:1px solid var(--line-soft)}
+.rcq-i{width:34px;height:34px;display:grid;place-items:center;color:var(--txt-3);cursor:pointer}
+.rcq-i svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.rcq-i.on{color:var(--cognac)}.rcq-i.on svg{fill:currentColor}
+.rc-home .rc-body.narrow .rc-under{margin-top:12px}
+/* картка клієнта */
+#page-reception .rc-body{max-width:760px;padding:18px 28px 40px}
+.rcc-hdr{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 16px;margin-bottom:14px}
+.rcc-nm{font-family:'Tenor Sans',serif;font-size:22px;color:var(--txt);cursor:pointer}
+.rcc-nm i{font-style:normal;color:var(--cognac);margin-left:8px}
+.rcc-ph{font-size:14px;color:var(--txt-2)}
+.rcc-st{font-size:13px;color:var(--txt-3)}
+.rcc-cta{margin-top:10px;background:linear-gradient(180deg,#B3966B,#97784F);color:#fff;border:none;border-radius:11px;padding:14px 30px;font-size:15px;font-family:'Commissioner',sans-serif;cursor:pointer;white-space:nowrap;box-shadow:0 6px 18px rgba(160,132,92,.45),0 0 0 3px rgba(160,132,92,.15)}
+.rcc-cta:active{transform:scale(.98)}
+.rcc-hdr .rc-mgr{justify-content:center;margin-top:10px}
+.rcc-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.rct{cursor:pointer;border:2px solid transparent}
+.rct.sel{border-color:var(--cognac)}
+.rct.t-all{background:var(--surface);border-color:var(--line)}.rct.t-all.sel{border-color:var(--cognac)}
+.rct.t-all .plan-tile-val{color:var(--leather)}
+.rcc-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:14px;overflow:hidden}
+.rcc-ch{display:flex;align-items:center;gap:10px;padding:14px 16px 4px;font-size:15px;font-weight:600;color:var(--txt)}
+.rcc-ch em{font-style:normal;font-size:11px;font-weight:500;background:var(--hover);color:var(--txt-2);border-radius:10px;padding:1px 8px}
+.rcc-none{padding:20px 16px;font-size:13px;color:var(--txt-3)}
+.rcr{display:grid;grid-template-columns:62px 1fr 128px 62px 96px 14px;align-items:center;gap:8px;padding:13px 16px;border-top:1px solid var(--line-soft);cursor:pointer}
+.rcr.head{border-top:none;padding:10px 16px 6px;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--txt-2);font-weight:700;cursor:default}
+.rcr .nu{font-size:13px;font-weight:700;color:var(--cognac)}
+.rcr .tx{min-width:0}
+.rcr .t1{font-size:15px;font-weight:600;color:var(--txt);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rcr .t2{font-size:12.5px;color:var(--txt-2);margin-top:2px}
+.rcr .pg{display:flex;flex-direction:column;gap:5px}
+.rcr .pg .bar{display:flex;gap:3px}
+.rcr .pg .bar b{flex:1;height:7px;border-radius:3px;background:var(--line)}
+.rcr .pg .lab{font-size:11.5px;color:var(--txt-2)}
+.rcr .pg.rd .bar b.f{background:#7FB05A}.rcr .pg.wk .bar b.f{background:#D9A24C}.rcr .pg.nw .bar b.f{background:#5E9BD6}.rcr .pg.is .bar b.f{background:#B4B2A9}
+.rcr .tm{font-size:14px;font-weight:600;text-align:center;color:var(--txt)}
+.rcr .tm small{display:block;font-size:11px;font-weight:600;color:var(--txt-3);margin-top:2px}
+.rcs{text-align:right;font-size:15px;font-weight:600;white-space:nowrap;color:var(--txt)}
+.rcs .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#6FA84A;margin-right:7px;vertical-align:middle}
+.rcs.ok{opacity:.5}.rcs .ck{margin-right:6px;font-weight:500}
+.rcr .ch{color:var(--txt-3);font-size:18px;text-align:right}
+@media (max-width:620px){.rcr{grid-template-columns:52px 1fr 84px 14px}.rcr .tm,.rcr.head div:nth-child(4){display:none}.rcr .pg .lab{display:none}.rcc-tiles{grid-template-columns:repeat(2,1fr)}.rc-home{padding:14px 16px 28px}}
+/* диск RW */
+.nav-home{position:relative;width:56px;height:56px;border-radius:50%;flex:none;display:grid;place-items:center;cursor:pointer;margin:0 0 14px;overflow:visible;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent;
+ background:radial-gradient(circle at 32% 24%,rgba(255,255,255,.9) 0,rgba(255,255,255,0) 44%),linear-gradient(180deg,#F7F3EC,#E2DACB);
+ box-shadow:0 0 0 4px var(--nav-bg),0 8px 22px rgba(0,0,0,.45),0 0 22px 3px rgba(240,235,227,.3),inset 0 2px 3px rgba(255,255,255,.9),inset 0 -4px 8px rgba(120,100,70,.25);transition:transform .15s}
+.nav-home .nh-r{position:relative;z-index:2;font-family:'Tenor Sans',serif;font-size:17px;letter-spacing:.06em;color:#3A322B;pointer-events:none}
+.nav-home:after{content:"";position:absolute;inset:5px;border-radius:50%;border:1px solid rgba(58,50,43,.35);pointer-events:none}
+.nav-home .nh-shine{position:absolute;inset:0;border-radius:50%;overflow:hidden;pointer-events:none}
+.nav-home .nh-shine:before{content:"";position:absolute;top:-10%;bottom:-10%;width:34%;left:-50%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.85),rgba(255,255,255,0));transform:skewX(-18deg);animation:nhsw 4.5s ease-in-out infinite}
+@keyframes nhsw{0%,70%{left:-50%}100%{left:130%}}
+.nav-home .nh-ring{position:absolute;left:-9px;top:-9px;width:74px;height:74px;pointer-events:none;transform:rotate(-90deg);opacity:0}
+.nav-home .nh-ring circle{fill:none;stroke:#F0EBE3;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:232.5;stroke-dashoffset:232.5}
+.nav-home.holding{transform:scale(.94)}
+.nav-home.holding .nh-ring{opacity:1}
+.nav-home.holding .nh-ring circle{animation:nhfill 1.7s linear forwards}
+@keyframes nhfill{to{stroke-dashoffset:0}}
+.nav-home.active{box-shadow:0 0 0 4px var(--nav-bg),0 0 0 5px rgba(240,235,227,.7),0 8px 22px rgba(0,0,0,.45),0 0 22px 3px rgba(240,235,227,.3),inset 0 2px 3px rgba(255,255,255,.9),inset 0 -4px 8px rgba(120,100,70,.25)}
+.nav-logo{display:none}
+@media (max-width:768px),(orientation:portrait) and (max-width:1180px),(orientation:landscape) and (max-height:520px){
+  .nav .nav-grp{display:flex;flex:1;min-width:0;align-items:center}
+  .nav .nav-home{width:64px;height:64px;margin:-40px 16px 0}
+  .nav .nav-home .nh-r{font-size:20px}
+  .nav .nav-home .nh-ring{left:-9px;top:-9px}
+  .nav .nav-home:after{inset:5px}
+}
+#page-reception .rc-body.narrow{max-width:420px;padding:0}
+@media (max-width:768px),(orientation:portrait) and (max-width:1180px),(orientation:landscape) and (max-height:520px){.rc-home{padding-top:50px}}
+
 </style>
 </head>
 <body data-theme="light">
@@ -2274,7 +2378,7 @@ function showPage(name) {
   if (GROUP_DEFAULT[name]) name = groupTab[name] || GROUP_DEFAULT[name];
   // На телефоні доступні лише робочі розділи — решту повертаємо на список замовлень
   if (window.matchMedia && window.matchMedia("(max-width: 620px)").matches) {
-    const phoneAllowed = { orders:1, tailor:1, clients:1, pricelist:1, create:1 };
+    const phoneAllowed = { orders:1, tailor:1, clients:1, pricelist:1, create:1, reception:1 };
     if (!phoneAllowed[name]) name = "orders";
   }
   currentPage = name;
@@ -7408,7 +7512,7 @@ loadPrice();
   function say(t) { if (typeof toast === "function") toast(t); }
 
   /* ═══════════════════════ ПРИЙОМ ═══════════════════════ */
-  var RC = { mode: "name", q: "", digits: "", client: null, newName: "", newMsg: "", picked: {}, histAll: false };
+  var RC = { mode: "name", q: "", digits: "", client: null, newName: "", newMsg: "", picked: {}, histAll: false, tile: null, day: null };
 
   function rcLocal(s) {
     var d = String(s || "").replace(/\D/g, "");
@@ -7483,15 +7587,107 @@ loadPrice();
     }).join("") + "</div></div>";
   }
 
+  /* ───────── Дні тижня, терміни, смуга тижня ───────── */
+  var WDAY = ["Нд", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
+  function rcWd(d) { return WDAY[d.getDay()]; }
+  function p2(n) { return (n < 10 ? "0" : "") + n; }
+  function dKey(d) { return d.getFullYear() + "-" + p2(d.getMonth() + 1) + "-" + p2(d.getDate()); }
+  function dFromKey(k) { var a = k.split("-"); return new Date(+a[0], +a[1] - 1, +a[2]); }
+  function rcDue() {
+    var map = {};
+    ORDERS.forEach(function (o) {
+      if (typeof isOrderDeleted === "function" && isOrderDeleted(o)) return;
+      var num = gv(o, "Номер замовлення"); if (!num) return;
+      if (getStatus(num) === "issued") return;
+      var d = parseDeadline(gv(o, "Термін")); if (!d) return;
+      var k = dKey(d); (map[k] = map[k] || []).push(o);
+    });
+    return map;
+  }
+  function itemsOf(num) { return ITEMS.filter(function (i) { return gv(i, "Номер замовлення") === num; }); }
+  function doneCount(its) { return its.filter(function (i) { var s = gv(i, "Статус"); return s === "✅ Готово" || s === "📦 Виданий"; }).length; }
+
+  function rcPopHTML(k) {
+    var list = rcDue()[k] || [], d = dFromKey(k);
+    var rows = list.map(function (o) {
+      var num = gv(o, "Номер замовлення"), its = itemsOf(num), n = its.length, kk = doneCount(its);
+      var info = rcInfo(o);
+      var rd = info.readyAll ? "готово" : (kk + " з " + n);
+      return "<div class='rcw-row' onclick=\"rcOpenOrd('" + jq(num) + "')\"><span class='nu'>" + h(num) + "</span><span class='nm'>" + h(gv(o, "Ім'я клієнта") || "Без імені") + "</span><em class='" + (info.readyAll ? "rdy" : "") + "'>" + rd + "</em><span class='ch'>›</span></div>";
+    }).join("");
+    return "<div class='rcw-pop-in'><div class='rcw-pop-h'><span>" + rcWd(d) + " " + p2(d.getDate()) + "." + p2(d.getMonth() + 1) + " · на видачу " + list.length + "</span><a onclick='rcDayClose()'>×</a></div>" + rows + "</div>";
+  }
+  function rcWeekInner() {
+    var now = new Date(); now.setHours(0, 0, 0, 0);
+    var dow = (now.getDay() + 6) % 7, mon = new Date(now); mon.setDate(now.getDate() - dow);
+    var due = rcDue(), out = "";
+    for (var i = 0; i < 7; i++) {
+      var d = new Date(mon); d.setDate(mon.getDate() + i);
+      var k = dKey(d), has = due[k] && due[k].length;
+      out += "<div class='rcw-day" + (d.getTime() === now.getTime() ? " t" : "") + (RC.day === k ? " sel" : "") + "' onclick=\"rcDay('" + k + "')\"><small>" + rcWd(d) + "</small><b>" + d.getDate() + "</b><i class='" + (has ? "dd" : "nd") + "'></i></div>";
+    }
+    return "<div class='rcw'>" + out + "</div>" + (RC.day ? "<div class='rcw-pop'>" + rcPopHTML(RC.day) + "</div>" : "");
+  }
+  function rcWeekRefresh() { var w = $("rcw-wrap"); if (w) w.innerHTML = rcWeekInner(); }
+  window.rcDay = function (k) {
+    if (RC.day === k) { RC.day = null; rcWeekRefresh(); return; }
+    var list = rcDue()[k];
+    if (!list || !list.length) { if (RC.day) { RC.day = null; rcWeekRefresh(); } return; }
+    RC.day = k; rcWeekRefresh();
+  };
+  window.rcDayClose = function () { if (RC.day) { RC.day = null; rcWeekRefresh(); } };
+  window.rcOpenOrd = function (num) { RC.day = null; rcWeekRefresh(); openOrder(num); };
+  document.addEventListener("click", function (e) {
+    if (!RC.day || !e.target || !document.body.contains(e.target)) return;
+    if (!(e.target.closest && e.target.closest(".rcw-wrap"))) { RC.day = null; rcWeekRefresh(); }
+  });
+
+  /* ───────── Фраза дня ───────── */
+  var ICO_HEART = "<svg viewBox='0 0 24 24'><path d='M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z'/></svg>";
+  var ICO_X = "<svg viewBox='0 0 24 24'><path d='M6 6l12 12M18 6L6 18'/></svg>";
+  function rcQuoteInner() {
+    try {
+      var st = qEnsureToday();
+      var quote = QUOTES.filter(function (q) { return q.id === st.currentId; })[0];
+      if (!quote) return "";
+      return "<div class='rcq-t'>\u201C" + h(quote.text) + "\u201D</div><div class='rcq-a'>Rewise Studio</div>" +
+        "<div class='rcq-c'><span class='rcq-i" + (st.reaction === "approved" ? " on" : "") + "' onclick=\"rcQReact('approved')\">" + ICO_HEART + "</span>" +
+        "<span class='rcq-i" + (st.reaction === "rejected" ? " on" : "") + "' onclick=\"rcQReact('rejected')\">" + ICO_X + "</span></div>";
+    } catch (e) { return ""; }
+  }
+  window.rcQReact = function (type) {
+    try {
+      var st = qEnsureToday();
+      st.reaction = (st.reaction === type) ? null : type;
+      qSaveState(st);
+      var b = $("rcq"); if (b) b.innerHTML = rcQuoteInner();
+    } catch (e) { console.error(e); }
+  };
+
+  /* ───────── Пошук клієнта ───────── */
+  function rcClientState(key) {
+    var best = "";
+    rcOrdersOf(key).forEach(function (o) {
+      var i = rcInfo(o);
+      if (i.st === "issued") return;
+      var s = i.readyAll ? "ready" : (i.st === "new" ? "new" : "work");
+      var rank = { ready: 3, work: 2, "new": 1 };
+      if (!best || rank[s] > rank[best]) best = s;
+    });
+    return best;
+  }
+  var RC_STATE_TXT = { ready: "є готове до видачі", work: "в роботі", "new": "новий замовлення" };
+  RC_STATE_TXT["new"] = "нове замовлення";
   function rcSugHTML(c) {
     var cnt = ORDERS.filter(function (o) { return rcLocal(gv(o, "Телефон")) === c.key; }).length;
-    return "<div class='rc-sug-row' onclick=\"rcPick('" + c.key + "')\"><div class='rc-av'>" + h(rcInitials(c.name)) + "</div><div><div class='rc-nm'>" + h(c.name || "Без імені") + "</div><div class='rc-ph'>" + h(fmtPhone(c.phone)) + "</div></div><div class='rc-meta'>" + cnt + " замовл.</div></div>";
+    var s = rcClientState(c.key);
+    return "<div class='rc-sug-row" + (s ? " s-" + s : "") + "' onclick=\"rcPick('" + c.key + "')\"><div class='rc-av'>" + h(rcInitials(c.name)) + "</div><div><div class='rc-nm'>" + h(c.name || "Без імені") + "</div><div class='rc-ph'>" + h(fmtPhone(c.phone)) + "</div></div><div class='rc-meta'>" + (s ? RC_STATE_TXT[s] : cnt + " замовл.") + "</div></div>";
   }
   function rcResultsHTML() {
     var all = rcClients();
     if (RC.mode === "name") {
       var q = RC.q.trim().toLowerCase();
-      if (!q) return "<div class='rc-empty'>Введіть ім'я або назву магазину клієнта.</div>";
+      if (!q) return "";
       var m = all.filter(function (c) { return String(c.name || "").toLowerCase().indexOf(q) !== -1; });
       m.sort(function (a, b) { return (String(a.name).toLowerCase().indexOf(q) === 0 ? 0 : 1) - (String(b.name).toLowerCase().indexOf(q) === 0 ? 0 : 1); });
       m = m.slice(0, 6);
@@ -7516,22 +7712,50 @@ loadPrice();
     var seg = "<div class='cr-seg rc-seg'><button class='ic-seg" + (RC.mode === "name" ? " on" : "") + "' onclick=\"rcMode('name')\">Ім'я</button><button class='ic-seg" + (RC.mode === "phone" ? " on" : "") + "' onclick=\"rcMode('phone')\">Телефон</button></div>";
     var keys = "";
     if (RC.mode === "name") {
-      field = "<input class='cr-input rc-q' id='rc-q' type='text' autocomplete='off' autocorrect='off' placeholder=\"Ім'я або магазин\" value=\"" + h(RC.q) + "\" oninput='rcQ(this.value)'>";
+      field = "<input class='cr-input rc-q' id='rc-q' type='text' autocomplete='off' autocorrect='off' placeholder=\"Ім'я або магазин\" value=\"" + h(RC.q) + "\" onfocus='rcDayClose()' oninput='rcQ(this.value)'>";
     } else {
       field = "<div class='kp-display'>" + (d.length ? h(rcFmt(d)) : "<span style='color:var(--txt-3)'>+380 </span>") + "</div>";
       ["1", "2", "3", "4", "5", "6", "7", "8", "9"].forEach(function (k) { keys += "<button class='kp-key' onclick=\"rcKey('" + k + "')\">" + k + "</button>"; });
       keys = "<div class='kp-grid rc-keys'>" + keys + "<span></span><button class='kp-key' onclick=\"rcKey('0')\">0</button><button class='kp-key kp-del' onclick='rcDel()'>⌫</button></div>";
     }
-    return "<div class='page-header'><div class='page-title'>Прийом</div></div>" +
-      "<div class='rc-body narrow'><div class='cr-box'>" +
+    return "<div class='rc-home'>" +
+      "<div class='rcw-wrap' id='rcw-wrap'>" + rcWeekInner() + "</div>" +
+      "<div class='rc-body narrow rc-mid'><div class='cr-box'>" +
         "<div class='cr-block-label first'>Клієнт</div>" + seg + field + keys +
-      "</div><div class='rc-under' id='rc-results'>" + rcResultsHTML() + "</div>" + rcMgrPills() + "</div>";
+      "</div><div class='rc-under' id='rc-results'>" + rcResultsHTML() + "</div>" + rcMgrPills() + "</div>" +
+      "<div class='rcq' id='rcq'>" + rcQuoteInner() + "</div>" +
+    "</div>";
+  }
+
+  /* ───────── Картка клієнта ───────── */
+  function rcRowHTML(x) {
+    var o = x.o, i = x.i, its = itemsOf(i.num), n = its.length, k = doneCount(its);
+    var f = its[0], t1 = f ? ([gv(f, "Бренд"), gv(f, "Тип")].filter(Boolean).join(" · ") || "Виріб") : "—";
+    var t2 = n + " " + pluralUk(n, "річ", "речі", "речей");
+    var cls = i.st === "issued" ? "is" : (i.readyAll ? "rd" : (i.st === "new" ? "nw" : "wk"));
+    var bar = ""; for (var b = 0; b < n; b++) bar += "<b" + (b < k ? " class='f'" : "") + "></b>";
+    var lab = i.st === "issued" ? "видано" : (i.readyAll ? "готово" : k + " з " + n + " готово");
+    var d = parseDeadline(i.term), tm;
+    if (d) tm = p2(d.getDate()) + "." + p2(d.getMonth() + 1) + "<small>" + rcWd(d) + "</small>";
+    else if (String(i.term).indexOf("Терміново") !== -1) tm = "⚡<small>терміново</small>";
+    else tm = "—";
+    var sum = i.paid ? "<div class='rcs ok'><span class='ck'>✓</span>" + money(i.total) + "</div>" : "<div class='rcs'><i class='dot'></i>" + money(i.toPay > 0 ? i.total : i.total) + "</div>";
+    return "<div class='rcr' onclick=\"openOrder('" + jq(i.num) + "')\"><div class='nu'>" + h(i.num) + "</div><div class='tx'><div class='t1'>" + h(t1) + "</div><div class='t2'>" + t2 + "</div></div>" +
+      "<div class='pg " + cls + "'><div class='bar'>" + bar + "</div><div class='lab'>" + lab + "</div></div><div class='tm'>" + tm + "</div>" + sum + "<div class='ch'>›</div></div>";
+  }
+  var RC_COLH = "<div class='rcr head'><div>№</div><div>Виріб</div><div>Готовність</div><div style='text-align:center'>Термін</div><div style='text-align:right'>Сума</div><div></div></div>";
+  function rcSection(title, list, limit) {
+    var shown = limit ? list.slice(0, limit) : list;
+    var more = (limit && list.length > limit) ? "<div class='rc-more' onclick='rcHist()'>" + (RC.histAll ? "Згорнути" : "Показати всі (" + list.length + ")") + "</div>" : "";
+    if (limit && RC.histAll) { shown = list; more = list.length > limit ? "<div class='rc-more' onclick='rcHist()'>Згорнути</div>" : ""; }
+    return "<div class='rcc-card'><div class='rcc-ch'><span>" + title + "</span><em>" + list.length + "</em></div>" + RC_COLH +
+      (shown.length ? shown.map(rcRowHTML).join("") : "<div class='rcc-none'>Немає замовлень</div>") + more + "</div>";
   }
 
   function rcCardHTML() {
     var c = RC.client;
     var back = "<span class='rc-back' onclick='rcReset()'>← Інший номер</span>";
-    var head = "<div class='page-header'><div class='page-title'>Прийом</div></div><div class='rc-body'>" + back;
+    var head = "<div class='rc-body'>" + back;
     if (c.isNew) {
       var msgs = ["telegram", "whatsapp", "viber"].map(function (m) {
         var lbl = (typeof MSG_LABELS !== "undefined" && MSG_LABELS[m]) || m;
@@ -7547,67 +7771,57 @@ loadPrice();
     }
     var orders = rcOrdersOf(c.key);
     var infos = orders.map(function (o) { return { o: o, i: rcInfo(o) }; });
-    var inWork = infos.filter(function (x) { return x.i.st === "work" || x.i.st === "new" || x.i.st === "partial"; }).length;
+    var readyL = infos.filter(function (x) { return x.i.st !== "issued" && x.i.readyAll; });
+    var workL = infos.filter(function (x) { return x.i.st !== "issued" && !x.i.readyAll; });
+    var histL = infos.filter(function (x) { return x.i.st === "issued"; });
+    var sum = 0; infos.forEach(function (x) { sum += x.i.total; });
     var bonus = clientBonusBalance(c.phone);
     var rating = (typeof clientRating === "function") ? clientRating(c.phone) : null;
-    var readyList = infos.filter(function (x) { return x.i.st !== "issued" && x.i.readyAll; });
-    var nPick = 0, sumPick = 0, payReady = [];
-    readyList.forEach(function (x) { if (x.i.paid) payReady.push(x); if (RC.picked[x.i.num]) { nPick++; sumPick += x.i.total; } });
-    var readyBox;
-    if (readyList.length) {
-      readyBox = "<div class='cr-box' style='margin-bottom:14px'><div class='cr-block-label first'>Готові до видачі <span class='cr-opt-note'>" + readyList.length + "</span></div>" +
-        readyList.map(function (x) {
-          var left = x.i.paid
-            ? "<div class='rc-chk" + (RC.picked[x.i.num] ? " on" : "") + "' onclick=\"rcPickOrd('" + jq(x.i.num) + "')\">" + (RC.picked[x.i.num] ? "✓" : "") + "</div>"
-            : "";
-          var right = x.i.paid
-            ? "<div class='sm rc-sm'>" + money(x.i.total) + "</div>"
-            : "<span class='rc-due'>До сплати " + money(x.i.toPay) + "</span><button class='rc-open' onclick=\"event.stopPropagation();openOrder('" + jq(x.i.num) + "')\">Відкрити</button>";
-          return "<div class='rc-ord'>" + left + "<div class='oi'><div class='num'>" + h(x.i.num) + "</div><div class='ds'>" + h(x.i.desc) + "</div></div>" + right + "</div>";
-        }).join("") +
-        "<div class='rc-issue-bar'><button class='rc-main-btn' " + (nPick ? "" : "disabled") + " onclick='rcIssue(false)'>" + (nPick ? "Видати вибрані (" + nPick + ") · " + money(sumPick) : "Оберіть, що видати") + "</button>" +
-        (payReady.length ? "<button class='rc-ghost-btn' onclick='rcIssue(true)'>Видати всі</button>" : "") + "</div>" +
-        "<div class='rc-note'>Замовлення з доплатою відкриваються у своїй картці: там приймається оплата, потім видача.</div></div>";
-    } else {
-      readyBox = "<div class='cr-box' style='margin-bottom:14px'><div class='cr-block-label first'>Готові до видачі</div><div style='font-size:13px;color:var(--txt-3)'>Готових замовлень немає</div></div>";
-    }
-    var shown = RC.histAll ? infos : infos.slice(0, 4);
-    var hist = shown.map(function (x) {
-      return "<div class='rc-ord' onclick=\"openOrder('" + jq(x.i.num) + "')\"><div class='oi'><div class='num'>" + h(x.i.num) + "</div><div class='ds'>" + h(x.i.desc) + (x.i.term ? " <span class='tm'>· " + h(x.i.term) + "</span>" : "") + "</div></div><div class='sm rc-sm'>" + money(x.i.total) + "</div>" + rcBadge(x.i.st) + "</div>";
-    }).join("") || "<div style='font-size:13px;color:var(--txt-3)'>Замовлень ще немає</div>";
-    if (infos.length > 4) hist += "<div class='rc-more' onclick='rcHist()'>" + (RC.histAll ? "Згорнути" : "Показати всі (" + infos.length + ")") + "</div>";
-    return head + "<div class='rc-grid'><div>" +
-      "<div class='rc-head'><div class='rc-av big'>" + h(rcInitials(c.name)) + "</div><div><div class='rc-cname'>" + h(c.name || "Без імені") + (rating ? " <span title='" + h(rating.label) + "'>" + rating.dot + "</span>" : "") + "</div><div class='rc-cphone'>" + h(fmtPhone(c.phone)) + "</div></div></div>" +
-      "<div class='rc-stats'><div class='rc-stat'><div class='k'>Замовлень</div><div class='v'>" + infos.length + "</div></div><div class='rc-stat'><div class='k'>В роботі</div><div class='v'>" + inWork + "</div></div><div class='rc-stat'><div class='k'>Бонуси</div><div class='v'>" + money(bonus) + "</div></div></div>" +
-      "<button class='rc-main-btn' onclick='rcStartOrder()'>Оформити замовлення</button>" + rcMgrPills() +
-      "</div><div>" + readyBox + "<div class='cr-box'><div class='cr-block-label first'>Історія</div>" + hist + "</div></div></div></div>";
+    var msgKey = (typeof clientMessenger === "function") ? clientMessenger(c.phone) : "";
+    var msgLbl = msgKey && typeof MSG_LABELS !== "undefined" ? MSG_LABELS[msgKey] : "";
+    var tile = RC.tile || (readyL.length ? "ready" : (workL.length ? "work" : "all"));
+    var tiles = [["work", "В роботі", workL.length, "t-work"], ["ready", "Видати", readyL.length, "t-ready"], ["hist", "Історія", histL.length, "t-notify"], ["all", "Усі", infos.length, "t-all"]].map(function (t) {
+      return "<div class='plan-tile rct " + t[3] + (tile === t[0] ? " sel" : "") + "' onclick=\"rcTile('" + t[0] + "')\"><div class='plan-tile-val'>" + t[2] + "</div><div class='plan-tile-lbl'>" + t[1] + "</div></div>";
+    }).join("");
+    var body;
+    if (tile === "ready") body = rcSection("Готові до видачі", readyL);
+    else if (tile === "work") body = rcSection("В роботі", workL);
+    else if (tile === "hist") body = rcSection("Історія", histL, 6);
+    else body = (readyL.length ? rcSection("Готові до видачі", readyL) : "") + (workL.length ? rcSection("В роботі", workL) : "") + (histL.length ? rcSection("Історія", histL, 6) : "") || rcSection("Замовлення", []);
+    var hdr = "<div class='rcc-hdr'><div class='rc-av big'>" + h(rcInitials(c.name)) + "</div>" +
+      "<div class='rcc-nm' onclick=\"openClientCard('" + jq(c.phone) + "')\">" + h(c.name || "Без імені") + (rating ? " <span title='" + h(rating.label) + "'>" + rating.dot + "</span>" : "") + "<i>›</i></div>" +
+      "<div class='rcc-ph'>" + h(fmtPhone(c.phone)) + (msgLbl ? " · " + h(msgLbl) : "") + "</div>" +
+      "<div class='rcc-st'>" + infos.length + " " + pluralUk(infos.length, "замовлення", "замовлення", "замовлень") + " на " + money(sum) + " · бонуси " + money(bonus) + "</div>" +
+      "<button class='rcc-cta' onclick='rcStartOrder()'>+ Оформити нове замовлення</button>" + rcMgrPills() + "</div>";
+    return head + hdr + "<div class='rcc-tiles'>" + tiles + "</div>" + body + "</div>";
   }
 
   var _rcRender = function () {
     var page = $("page-reception");
     if (!page) return;
     if (typeof dataLoaded !== "undefined" && !dataLoaded) {
-      page.innerHTML = "<div class='page-header'><div class='page-title'>Прийом</div></div><div class='rc-empty'>Завантаження клієнтів…</div>";
+      page.innerHTML = "<div class='rc-empty'>Завантаження клієнтів…</div>";
       return;
     }
     page.innerHTML = RC.client ? rcCardHTML() : rcIdHTML();
   };
   renderers.reception = _rcRender;
+  window.rcTile = function (t) { RC.tile = t; _rcRender(); };
 
   window.rcMode = function (m) { if (RC.mode === m) return; RC.mode = m; _rcRender(); if (m === "name") { var i = $("rc-q"); if (i) i.focus(); } };
   window.rcQ = function (v) { RC.q = v; var b = $("rc-results"); if (b) b.innerHTML = rcResultsHTML(); };
-  window.rcKey = function (k) { if (RC.digits.length < 9) { RC.digits += k; _rcRender(); } };
+  window.rcKey = function (k) { if (RC.digits.length < 9) { RC.digits += k; RC.day = null; _rcRender(); } };
   window.rcDel = function () { RC.digits = RC.digits.slice(0, -1); _rcRender(); };
   window.rcMgr = function (p) { NO.manager = p; _rcRender(); };
   window.rcPick = function (key) {
     var c = rcClients().filter(function (x) { return x.key === key; })[0];
     if (!c) return;
-    RC.client = c; RC.picked = {}; RC.histAll = false; _rcRender();
+    RC.client = c; RC.picked = {}; RC.histAll = false; RC.tile = null; RC.day = null; _rcRender();
   };
   window.rcNew = function () { RC.client = { isNew: true, key: RC.digits, phone: RC.digits }; RC.newName = ""; RC.newMsg = ""; _rcRender(); };
   window.rcNewName = function (v) { RC.newName = v; var b = $("rc-go"); if (b) b.disabled = !v.trim(); };
   window.rcMsg = function (m) { RC.newMsg = (RC.newMsg === m) ? "" : m; var nn = RC.newName; _rcRender(); var i = $("rc-newname"); if (i) i.value = nn; };
-  window.rcReset = function () { RC.client = null; RC.digits = ""; RC.q = ""; RC.picked = {}; RC.histAll = false; _rcRender(); };
+  window.rcReset = function () { RC.client = null; RC.digits = ""; RC.q = ""; RC.picked = {}; RC.histAll = false; RC.tile = null; RC.day = null; _rcRender(); };
   window.rcPickOrd = function (num) { if (RC.picked[num]) delete RC.picked[num]; else RC.picked[num] = 1; _rcRender(); };
   window.rcHist = function () { RC.histAll = !RC.histAll; _rcRender(); };
 
@@ -7688,7 +7902,7 @@ loadPrice();
     } catch (e) { console.error(e); }
   };
 
-  /* сторінка і пункт меню */
+  /* сторінка Головна */
   (function mountReception() {
     var pc = $("page-create");
     if (pc && !$("page-reception")) {
@@ -7696,15 +7910,89 @@ loadPrice();
       pg.className = "page"; pg.id = "page-reception";
       pc.parentNode.insertBefore(pg, pc);
     }
-    var first = document.querySelector(".nav-item[data-page='create']");
-    if (first && !document.querySelector(".nav-item[data-page='reception']")) {
-      var b = document.createElement("button");
-      b.className = "nav-item"; b.setAttribute("data-page", "reception");
-      b.setAttribute("onclick", "rcReset();showPage('reception')");
-      b.innerHTML = "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round'><rect x='5' y='2' width='14' height='20' rx='2'/><line x1='9' y1='6' x2='15' y2='6'/><circle cx='9' cy='11' r='.6'/><circle cx='12' cy='11' r='.6'/><circle cx='15' cy='11' r='.6'/><circle cx='9' cy='15' r='.6'/><circle cx='12' cy='15' r='.6'/><circle cx='15' cy='15' r='.6'/></svg>Прийом";
-      first.parentNode.insertBefore(b, first);
-    }
   })();
+
+  /* ───────── Диск RW на нижній панелі: тап = Головна, утримання 2 с = тема ───────── */
+  var BAR_MQ = "(max-width: 768px), (orientation: portrait) and (max-width: 1180px), (orientation: landscape) and (max-height: 520px)";
+  var HOLD_MS = 2000, RING_DELAY = 300;
+  (function mountHome() {
+    var nav = document.querySelector("nav.nav");
+    if (!nav || $("nav-home")) return;
+    var d = document.createElement("div");
+    d.className = "nav-home"; d.id = "nav-home";
+    d.setAttribute("role", "button"); d.setAttribute("aria-label", "Головна");
+    d.innerHTML = "<span class='nh-r'>RW</span><i class='nh-shine'></i><svg class='nh-ring' viewBox='0 0 80 80'><circle cx='40' cy='40' r='37'></circle></svg>";
+    var tShow = null, tHold = null, held = false;
+    function clear() { clearTimeout(tShow); clearTimeout(tHold); d.classList.remove("holding"); }
+    d.addEventListener("pointerdown", function () {
+      held = false; clear();
+      tShow = setTimeout(function () { d.classList.add("holding"); }, RING_DELAY);
+      tHold = setTimeout(function () {
+        held = true; d.classList.remove("holding");
+        if (typeof toggleTheme === "function") toggleTheme();
+        say(document.body.getAttribute("data-theme") === "dark" ? "Темна тема" : "Світла тема");
+      }, HOLD_MS);
+    });
+    ["pointerup", "pointerleave", "pointercancel"].forEach(function (ev) { d.addEventListener(ev, clear); });
+    d.addEventListener("contextmenu", function (e) { e.preventDefault(); });
+    d.addEventListener("click", function () {
+      if (held) { held = false; return; }
+      rcReset(); showPage("reception");
+    });
+    nav.appendChild(d);
+    placeHome();
+    var t = null;
+    function again() { clearTimeout(t); t = setTimeout(placeHome, 60); }
+    window.addEventListener("resize", again);
+    window.addEventListener("orientationchange", again);
+    if (window.MutationObserver) new MutationObserver(again).observe(document.body, { attributes: true, attributeFilter: ["data-role"] });
+    /* підказка один раз */
+    var seen = false;
+    try { seen = !!localStorage.getItem("rw_home_hint"); } catch (e) {}
+    if (!seen) setTimeout(function () {
+      say("Утримуйте RW 2 секунди, щоб змінити тему");
+      try { localStorage.setItem("rw_home_hint", "1"); } catch (e) {}
+    }, 3500);
+  })();
+
+  /* Диск стоїть рівно посередині нижньої панелі: ліва й права групи однакової ширини */
+  function placeHome() {
+    var nav = document.querySelector("nav.nav"), disc = $("nav-home");
+    if (!nav || !disc) return;
+    Array.prototype.slice.call(nav.querySelectorAll(".nav-grp")).forEach(function (g) {
+      while (g.firstChild) nav.insertBefore(g.firstChild, g);
+      nav.removeChild(g);
+    });
+    var items = Array.prototype.slice.call(nav.querySelectorAll(":scope > .nav-item"));
+    var bar = window.matchMedia && window.matchMedia(BAR_MQ).matches;
+    if (!bar || !items.length) {
+      nav.classList.remove("has-home-bar");
+      var first = items[0];
+      nav.insertBefore(disc, nav.querySelector(".nav-item") || null);
+      return;
+    }
+    nav.classList.add("has-home-bar");
+    var vis = items.filter(function (i) { return i.offsetParent !== null || getComputedStyle(i).display !== "none"; });
+    var n = vis.length, split = Math.ceil(n / 2);
+    var L = document.createElement("div"), R = document.createElement("div");
+    L.className = "nav-grp"; R.className = "nav-grp";
+    nav.insertBefore(L, items[0]);
+    nav.insertBefore(disc, items[0]);
+    nav.insertBefore(R, items[0]);
+    var seen = 0;
+    items.forEach(function (it) {
+      var isVis = vis.indexOf(it) !== -1;
+      if (isVis) seen++;
+      (seen <= split ? L : R).appendChild(it);
+    });
+  }
+
+  var _sp = window.showPage;
+  window.showPage = function (name) {
+    _sp(name);
+    var d = $("nav-home");
+    if (d) d.classList.toggle("active", currentPage === "reception");
+  };
 
   /* ═══════════════════════ ВІЗАРД РЕЧІ ═══════════════════════ */
   function wzItem(id) { return NO.items.find(function (i) { return i.id === id; }); }
