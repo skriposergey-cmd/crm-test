@@ -65,7 +65,7 @@ renderers.tailor = function() {
         "<div class='tc-sub'>" + (gv(t,"Телефон")||"") + "</div>" +
         "<div class='tc-product'>" + (gv(t,"Виріб")||"—") + "</div>" +
         "<div class='tc-foot'>" +
-          "<span class='tc-date" + (warn ? " warn" : "") + "'>" + (gv(t,"Термін")||"—") + "</span>" +
+          "<span class='tc-date" + (warn ? " warn" : "") + "'>" + dowDate(gv(t,"Термін")||"—") + "</span>" +
           "<span class='tc-price'>" + (price ? price.toLocaleString("uk-UA") + " ₴" : "—") + "</span>" +
         "</div>" +
       "</div>" +
@@ -316,7 +316,7 @@ function openTailor(num) {
       "<div class='detail-col'>" +
         "<div class='dblock'><div class='dblock-label'>Виріб</div>" +
           row("Що виготовляємо", gv(t,"Виріб")) + row("Матеріал", gv(t,"Матеріал")) +
-          row("Термін", gv(t,"Термін")) + row("Прийняв", gv(t,"Приймальник")) +
+          row("Термін", dowDate(gv(t,"Термін"))) + row("Прийняв", gv(t,"Приймальник")) +
           "<div class='d-pay-total'><span class='pl'>Вартість</span><span class='pv'>" + (gv(t,"Вартість")||"—") + "</span></div></div>" +
         "<div class='dblock'><div class='dblock-label'>Оплата</div>" +
           row("Тип", gv(t,"Оплата")) + row("Спосіб передоплати", gv(t,"Спосіб передоплати")) +
