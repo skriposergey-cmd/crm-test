@@ -1926,10 +1926,6 @@ body.no-auth .role-badge, body.no-auth .nav-logout { display: none; }
 .rc-more{font-size:12.5px;color:var(--cognac);cursor:pointer;padding-top:10px}
 .rc-ovl{position:fixed;inset:0;background:rgba(30,26,22,.45);display:flex;align-items:center;justify-content:center;z-index:9000}
 .rc-card{background:var(--surface);border-radius:14px;padding:20px;width:340px;max-width:92vw;box-shadow:0 20px 60px rgba(0,0,0,.28)}
-.rc-chipbar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);margin-bottom:14px;font-size:13px}
-.rc-chipbar b{font-weight:500;color:var(--txt)}
-.rc-chipbar span{color:var(--txt-3);margin-left:8px;font-size:12px}
-.rc-chipbar a{color:var(--cognac);font-size:12px;cursor:pointer;white-space:nowrap}
 
 /* візард речі */
 .iwin.wz{height:min(780px,calc(100dvh - 56px));display:flex;flex-direction:column;position:relative}
@@ -2027,8 +2023,7 @@ html,body,button,input,textarea,select,.page,.rc-body,.iw-ovl,.kp-key{touch-acti
 .rcw-day i.dd{background:#8E887E}
 .rcw-day.t{background:linear-gradient(180deg,rgba(179,150,107,.22),rgba(179,150,107,0))}
 .rcw-day.sel:after{content:"";position:absolute;left:28%;right:28%;bottom:-1px;height:2px;background:var(--cognac)}
-.rcw-pop{margin:10px auto 0;max-width:440px;width:100%}
-.rc-home.day-open .rc-mid{display:none}
+.rcw-pop{position:absolute;left:0;right:0;top:calc(100% + 8px)}
 .rcw-pop-in{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 34px rgba(0,0,0,.18);padding:6px 16px 8px}
 .rcw-pop-h{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:600;color:var(--txt);padding:8px 0}
 .rcw-pop-h a{font-size:22px;line-height:1;color:var(--txt-3);cursor:pointer;padding:0 4px}
@@ -2100,7 +2095,7 @@ html,body,button,input,textarea,select,.page,.rc-body,.iw-ovl,.kp-key{touch-acti
 .nav-home .nh-shine{position:absolute;inset:0;border-radius:50%;overflow:hidden;pointer-events:none}
 .nav-home .nh-shine:before{content:"";position:absolute;top:-10%;bottom:-10%;width:34%;left:-50%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.85),rgba(255,255,255,0));transform:skewX(-18deg);animation:nhsw 4.5s ease-in-out infinite}
 @keyframes nhsw{0%,70%{left:-50%}100%{left:130%}}
-.nav-home .nh-ring{position:absolute;left:50%;top:50%;margin:-37px 0 0 -37px;width:74px;height:74px;pointer-events:none;transform:rotate(-90deg);opacity:0}
+.nav-home .nh-ring{position:absolute;left:-9px;top:-9px;width:74px;height:74px;pointer-events:none;transform:rotate(-90deg);opacity:0}
 .nav-home .nh-ring circle{fill:none;stroke:#F0EBE3;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:232.5;stroke-dashoffset:232.5}
 .nav-home.holding{transform:scale(.94)}
 .nav-home.holding .nh-ring{opacity:1}
@@ -2112,21 +2107,154 @@ html,body,button,input,textarea,select,.page,.rc-body,.iw-ovl,.kp-key{touch-acti
   .nav .nav-grp{display:flex;flex:1;min-width:0;align-items:center}
   .nav .nav-home{width:64px;height:64px;margin:-40px 16px 0}
   .nav .nav-home .nh-r{font-size:20px}
+  .nav .nav-home .nh-ring{left:-9px;top:-9px}
   .nav .nav-home:after{inset:5px}
 }
 #page-reception .rc-body.narrow{max-width:420px;padding:0}
 @media (max-width:768px),(orientation:portrait) and (max-width:1180px),(orientation:landscape) and (max-height:520px){.rc-home{padding-top:50px}}
 
-/* Головна без прокрутки: екран фіксований по висоті */
-body.on-home .main{height:100vh;height:100dvh;min-height:0;overflow:hidden}
-body.on-home #page-reception{min-height:0;overflow:hidden}
-body.on-home .rc-home{overflow-y:auto;overflow-x:hidden;scrollbar-width:none}
-body.on-home .rc-home::-webkit-scrollbar{display:none}
+/* Головна: карточка фрази дня повністю видима над нижньою панеллю.
+   100vh на iPad вищий за видиму область (панель Safari / PWA), тому висота йде через dvh */
 @media (max-width:768px),(orientation:portrait) and (max-width:1180px),(orientation:landscape) and (max-height:520px){
-  body.on-home .main{height:100dvh;padding-bottom:var(--navh,84px);box-sizing:border-box}
-  body.on-home{overflow:hidden}
-  .rc-home{padding-bottom:48px}
+  body,.main{min-height:100vh;min-height:100dvh}
+  .main{padding-bottom:calc(86px + env(safe-area-inset-bottom))}
+  .rc-home{padding-bottom:28px}
+  .rcq{margin-bottom:6px}
 }
+/* ── редагування замовлення: ціна по кожній послузі ── */
+.eo-svcs{margin-bottom:9px}
+.eo-row{display:flex;gap:8px;align-items:center;margin-top:6px}
+.eo-nm{flex:1;min-width:0;background:var(--field-bg);border:1px solid var(--field-border);border-radius:6px;padding:9px 11px;font-size:13px;font-weight:300;color:var(--txt)}
+input.eo-nm{width:auto}
+.eo-pr{width:104px!important;flex:none;text-align:right}
+.eo-pr.ch{border-color:var(--cognac);background:rgba(163,134,92,.14)}
+.eo-was{font-size:11px;color:var(--txt-3);white-space:nowrap;min-width:78px;text-align:right}
+.eo-x{border:0;background:none;color:var(--txt-3);font-size:20px;line-height:1;padding:4px 6px;cursor:pointer}
+.eo-foot{display:flex;justify-content:space-between;align-items:center;margin-top:9px;gap:10px}
+.eo-add{background:none;border:1px dashed var(--cognac);color:var(--cognac);border-radius:8px;padding:8px 12px;font-family:'Commissioner',sans-serif;font-size:12.5px;cursor:pointer}
+.eo-sum{font-size:13px;font-weight:600;color:var(--txt)}
+.eo-note{margin-top:8px;font-size:12px;color:var(--txt-2);background:rgba(163,134,92,.12);border-radius:8px;padding:8px 10px;line-height:1.35}
+.eo-note.warn{background:rgba(179,38,30,.1);color:#B3261E}
+
+/* розділити замовлення */
+.sp-lab{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cognac);margin:12px 0 6px}
+.sp-item{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--field-border);border-radius:12px;padding:10px 12px;margin-bottom:7px;font-size:13.5px;cursor:pointer}
+.sp-item .sp-nm{flex:1;min-width:0}.sp-item small{display:block;color:var(--txt-3);font-size:11.5px;margin-top:2px}
+.sp-item.sel{border-color:var(--cognac);background:rgba(163,134,92,.12)}
+.sp-item.dis{opacity:.5;cursor:default}
+.sp-chk{width:22px;height:22px;border:1.5px solid var(--field-border);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;background:var(--surface);flex:none}
+.sp-item.sel .sp-chk{background:var(--cognac);border-color:var(--cognac)}
+.sp-chips{display:flex;gap:6px;flex-wrap:wrap}
+.sp-chips>span{border:1px solid var(--field-border);background:var(--surface);border-radius:16px;padding:7px 12px;font-size:12.5px;cursor:pointer;position:relative}
+.sp-chips>span.on{background:var(--cognac);color:#fff;border-color:var(--cognac)}
+.sp-date input{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer}
+.sp-row{display:flex;gap:10px;margin-top:10px}.sp-row>div{flex:1}
+.sp-fld{background:var(--surface);border:1px solid var(--field-border);border-radius:9px;padding:9px 11px;font-size:13px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.sp-fld input{border:0;outline:0;font-size:13px;width:80px;text-align:right;background:transparent;font-family:inherit;color:var(--txt)}
+.sp-pv{display:flex;gap:10px}
+.sp-pv>div{flex:1;background:var(--surface);border:1px solid var(--field-border);border-radius:12px;padding:10px 12px;font-size:12.5px;line-height:1.55}
+.sp-pv h4{margin:0 0 3px;font-size:14px}.sp-pv .g{color:var(--txt-3)}
+.sp-pv .new{border-color:var(--cognac)}
+.sp-err{color:#E24B4A;font-size:12px;margin-top:6px;min-height:16px}
+.sp-btns{display:flex;gap:10px;margin-top:6px}
+.sp-btns button{border-radius:9px;padding:13px;font-size:13.5px;cursor:pointer;font-family:inherit}
+.sp-c{flex:1;border:1px solid var(--field-border);background:none;color:var(--txt-2)}
+.sp-s{flex:2;border:0;background:var(--cognac);color:#fff}.sp-s:disabled{opacity:.4;cursor:default}
+.n-manage-wide{grid-column:1/-1}
+
+/* ═══ ПЛАН (нова версія) ═══ */
+.pl-wrap .plan-filter-row{margin:12px 0 14px}
+.pl-date{height:38px;margin:12px 0 14px;display:flex;align-items:center}
+.pl-date .plan-cal-page-block{padding:0;margin:0;border:0}
+.pl-tiles{gap:10px;margin-bottom:14px}
+.pl-tile{cursor:pointer;border:2px solid transparent;padding:10px 6px;text-align:left;padding-left:12px}
+.pl-tile.sel{border-color:var(--cognac)}
+.plan-tile.t-new{background:var(--st-new-bg)}.plan-tile.t-new .plan-tile-val{color:var(--st-new-fg)}
+.pl-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:14px;overflow:hidden}
+.pl-ch{display:flex;align-items:center;padding:14px 16px 4px;font-size:15px;font-weight:600;color:var(--txt)}
+.pl-ch em{font-style:normal;font-size:11px;font-weight:600;background:var(--hover);color:var(--txt-2);border-radius:10px;padding:2px 8px;margin-left:8px}
+.pl-none{padding:18px 16px;font-size:13px;color:var(--txt-3);text-align:center}
+.pl-quiet{font-size:12px;color:var(--txt-3);text-align:center;padding:6px 0 12px;cursor:pointer}
+.pl-r{position:relative;display:grid;grid-template-columns:44px minmax(0,1fr) 100px 50px 84px 64px;align-items:center;gap:8px;padding:11px 36px 11px 14px;border-top:1px solid var(--line-soft);cursor:pointer;min-height:56px}
+.pl-r.head{border-top:none;padding-top:10px;padding-bottom:4px;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--txt-2);font-weight:700;cursor:default;min-height:0}
+.pl-r .nu{font-size:12.5px;font-weight:700;color:var(--cognac);line-height:1.25}
+.pl-r .tx{min-width:0}.pl-r .t1{font-size:14.5px;font-weight:600;color:var(--txt);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pl-r .t2{font-size:12px;color:var(--txt-2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pl-r .pg{display:flex;flex-direction:column;gap:5px;min-width:0}.pl-r .pg .bar{display:flex;gap:3px}.pl-r .pg .bar b{flex:1;height:7px;border-radius:3px;background:var(--line)}
+.pl-r .pg .lab{font-size:11px;color:var(--txt-2);white-space:nowrap}
+.pl-r .pg.rd .bar b.f{background:#7FB05A}.pl-r .pg.wk .bar b.f{background:#D9A24C}.pl-r .pg.nw .bar b.f{background:#5E9BD6}
+.pl-r .tm{font-size:13.5px;font-weight:600;text-align:center;color:var(--txt);white-space:nowrap}
+.pl-r .tm small{display:block;font-size:10.5px;font-weight:600;color:var(--txt-3);margin-top:2px}
+.pl-r .tm.late,.pl-r .tm.late small{color:#B3261E}
+.pl-s{text-align:right;font-size:14px;font-weight:600;white-space:nowrap;color:var(--txt)}
+.pl-s .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#6FA84A;margin-right:6px;vertical-align:middle}
+.pl-s.ok{opacity:.5}.pl-s .ck{margin-right:5px;font-weight:500}
+.pl-chv{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:24px;height:30px;text-align:center;line-height:30px;color:var(--txt-3);font-size:16px;cursor:pointer}
+.pl-r.open .pl-chv{color:var(--cognac)}
+.pl-xp{background:var(--bg);border-top:1px dashed var(--line);padding:6px 16px 10px 62px}
+.pl-xi b{display:block;font-size:12.5px;margin:8px 0 3px;color:var(--txt)}
+.pl-xs{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:12.5px;min-height:34px}.pl-xs span{flex:1;min-width:0;color:var(--txt)}.pl-xs em{font-style:normal;color:var(--txt-2)}
+.pl-xs i{font-style:normal;font-size:10.5px;border-radius:8px;padding:2px 8px;background:var(--line-soft);color:var(--txt-2);white-space:nowrap}
+.pl-xs i.dn{background:var(--st-ready-bg);color:var(--st-ready-fg)}.pl-xs i.wk{background:var(--st-work-bg);color:var(--st-work-fg)}
+/* кнопки (утримання 2 с) */
+.pl-b{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;border-radius:9px;padding:8px 6px;font-size:12px;font-weight:600;text-align:center;white-space:nowrap;cursor:pointer;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;touch-action:none;min-height:34px}
+.pl-b.pl-sm{padding:6px 10px;min-height:30px;font-size:11.5px}
+.pl-b::after{content:"";position:absolute;left:0;top:0;bottom:0;width:0;pointer-events:none;background:rgba(160,132,92,.3)}
+.pl-b.holding::after{width:100%;transition:width 2s linear}
+.pl-b-new{background:rgba(79,134,198,.09);border:1px solid rgba(79,134,198,.4);color:var(--st-new-fg)}.pl-b-new::after{background:rgba(79,134,198,.3)}
+.pl-b-done{background:rgba(106,160,68,.09);border:1px solid rgba(106,160,68,.42);color:var(--st-ready-fg)}.pl-b-done::after{background:rgba(106,160,68,.3)}
+.pl-b-give{background:rgba(74,66,56,.07);border:1px solid rgba(74,66,56,.35);color:var(--txt)}.pl-b-give::after{background:rgba(74,66,56,.25)}
+.pl-b-bell{background:rgba(224,169,43,.09);border:1px solid rgba(224,169,43,.45);color:var(--st-work-fg);font-size:15px}.pl-b-bell::after{background:rgba(224,169,43,.3)}
+.pl-b.pl-ico{width:34px;padding:0}
+/* праве меню */
+.pl-terms{font-size:12px;color:var(--txt-3);text-align:center;margin:-6px 0 12px;cursor:pointer}
+.pl-wk{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:12px;cursor:pointer}
+.pl-wk h5,.pl-ls h5{margin:0 0 6px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--cognac)}
+.pl-ar{position:absolute;right:12px;top:10px;color:var(--txt-3);font-size:15px}
+.pl-sw{display:flex;background:var(--line-soft);border-radius:8px;padding:2px;margin:0 0 10px}.pl-sw span{flex:1;text-align:center;font-size:11px;padding:4px 0;border-radius:6px;cursor:pointer;color:var(--txt-2)}.pl-sw span.on{background:var(--surface);color:var(--txt);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.15)}
+.pl-big{font-family:'Tenor Sans',serif;font-size:25px;line-height:1.1;white-space:nowrap;color:var(--txt)}
+.pl-sub{font-size:11.5px;color:var(--txt-3);margin:3px 0 10px;white-space:nowrap}
+.pl-bars{display:flex;gap:4px;align-items:flex-end;height:50px;overflow:hidden}.pl-bars div{flex:1;text-align:center;font-size:9.5px;color:var(--txt-3);display:flex;flex-direction:column;justify-content:flex-end;height:100%}
+.pl-bars b{display:block;border-radius:2px 2px 0 0;background:rgba(160,132,92,.38);margin-bottom:3px}.pl-bars .td b{background:var(--cognac)}.pl-bars .fu b{opacity:.45}
+.pl-ls{--a:212,154,36;position:relative;border:1px solid rgba(var(--a),.28);border-radius:14px;padding:11px 14px;margin-bottom:12px;cursor:pointer;background:rgba(var(--a),.06)}
+.pl-ls.pl-db{--a:179,38,30}
+.pl-ls h5{display:flex;justify-content:space-between;color:rgb(var(--a));padding-bottom:7px;margin-bottom:4px;border-bottom:2px solid rgba(var(--a),.7)}
+.pl-ls h5 em{font-style:normal;color:var(--txt-2);letter-spacing:0}
+.pl-ls.pulse{animation:plbre 5s ease-in-out infinite}.pl-ls.pl-db.pulse{animation-delay:1s}
+@keyframes plbre{0%,100%{background:rgba(var(--a),0);border-color:rgba(var(--a),.10);box-shadow:0 0 0 0 rgba(var(--a),0)}50%{background:rgba(var(--a),.18);border-color:rgba(var(--a),.45);box-shadow:0 0 12px rgba(var(--a),.2)}}
+@media (prefers-reduced-motion:reduce){.pl-ls.pulse{animation:none;background:rgba(var(--a),.08)}}
+.pl-lr{display:flex;align-items:center;gap:8px;padding:7px 0;font-size:13px;color:var(--txt)}.pl-lr+.pl-lr{border-top:1px solid var(--line-soft)}
+.pl-lr .nm{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pl-lr .nm small{display:block;font-size:11px;color:var(--txt-3)}
+.pl-lr b.red,.red{color:#B3261E}.pl-lr.dim{color:var(--txt-3);font-size:12px}
+.pl-more{font-size:12px;color:var(--cognac);padding-top:6px}
+/* вікна */
+.pl-ovl{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:250;display:flex;align-items:center;justify-content:center;padding:20px}
+.pl-md{width:min(700px,100%);max-height:94vh;overflow-y:auto;background:var(--bg);border-radius:20px;padding:20px 22px;box-shadow:0 20px 60px rgba(0,0,0,.35);-webkit-overflow-scrolling:touch}
+.pl-mh{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.pl-mh b{font-family:'Tenor Sans',serif;font-size:21px;font-weight:400;color:var(--txt)}
+.pl-x{width:34px;height:34px;border-radius:50%;background:var(--line-soft);text-align:center;line-height:34px;cursor:pointer;font-size:15px;color:var(--txt)}
+.pl-seg{display:inline-flex;background:var(--line-soft);border-radius:10px;padding:3px;margin-bottom:10px}.pl-seg span{padding:7px 14px;font-size:13px;border-radius:8px;cursor:pointer;color:var(--txt-2);white-space:nowrap}.pl-seg span.on{background:var(--surface);color:var(--txt);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.15)}
+.pl-r1{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.pl-nv{display:flex;align-items:center;gap:6px;margin-left:auto;margin-bottom:10px}.pl-nv i{font-style:normal;width:34px;height:34px;border-radius:10px;background:var(--surface);border:1px solid var(--line);text-align:center;line-height:32px;cursor:pointer;font-size:16px;color:var(--txt)}.pl-nv b{font-size:14px;min-width:110px;text-align:center;color:var(--txt)}
+.pl-today{font-size:12px;border:1px solid var(--field-border);border-radius:10px;padding:8px 10px;cursor:pointer;background:var(--surface);margin-bottom:10px;color:var(--txt)}
+.pl-chips{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap;align-items:center}.pl-chips small{font-size:11px;color:var(--txt-3)}
+.pl-chip{border:1px solid var(--field-border);background:var(--surface);border-radius:16px;padding:5px 12px;font-size:12px;cursor:pointer;color:var(--txt-2)}.pl-chip.on{background:var(--cognac);border-color:var(--cognac);color:#fff}
+.pl-hero{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}.pl-big2{font-family:'Tenor Sans',serif;font-size:36px;line-height:1.1;color:var(--txt)}
+.pl-dl{font-size:13px;font-weight:700;border-radius:9px;padding:3px 9px}.pl-dl.up{background:var(--st-ready-bg);color:var(--st-ready-fg)}.pl-dl.dn{background:var(--st-work-bg);color:var(--st-work-fg)}
+.pl-hs{font-size:13px;color:var(--txt-2);margin-bottom:12px}.pl-hs b{color:var(--txt)}
+.pl-chart{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 14px 10px}
+.pl-cb{display:flex;gap:4px;align-items:flex-end;height:210px}.pl-cb div{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;font-size:10px;color:var(--txt-3);position:relative}
+.pl-cb b{display:block;width:100%;border-radius:4px 4px 0 0;background:rgba(160,132,92,.38)}.pl-cb .td b{background:var(--cognac)}.pl-cb .fu b{opacity:.45}
+.pl-cb u{position:absolute;left:-1px;right:-1px;border-top:2px solid var(--txt-2);opacity:.55}.pl-cb span{margin-top:4px;white-space:nowrap;min-height:12px}
+.pl-lg{display:flex;gap:16px;font-size:11.5px;color:var(--txt-3);margin-top:8px}.pl-lg i{display:inline-block;width:12px;height:8px;border-radius:2px;background:rgba(160,132,92,.38);margin-right:5px}.pl-lg i.p{background:none;border-top:2px solid var(--txt-2);height:0;opacity:.55;vertical-align:middle}
+.pl-kp{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.pl-kp div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px}.pl-kp small{display:block;font-size:11px;color:var(--txt-3)}.pl-kp b{font-family:'Tenor Sans',serif;font-weight:400;font-size:19px;color:var(--txt)}
+.pl-dr{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line-soft);cursor:pointer;font-size:13px;color:var(--txt)}
+.pl-dr .l{flex:1;min-width:0}.pl-dr .l b{font-size:15px}.pl-dr .l b small{font-weight:400;color:var(--cognac);font-size:12px;margin-left:6px}.pl-dr .l small{color:var(--txt-3);font-size:11.5px}
+.pl-dr .s{font-weight:700;font-size:15px;min-width:84px;text-align:right}
+.pl-dg{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--txt-2);font-weight:700;margin:12px 0 2px}.pl-dg.late{color:#B3261E}
+@media (orientation:portrait) and (max-width:1180px){.pl-wrap .plan-side{width:230px}}
+.plan-tiles.pl-tiles{grid-template-columns:repeat(4,1fr)}
+.pl-tile{text-align:left;padding:10px 10px}
+.pl-tile .plan-tile-lbl{white-space:nowrap;letter-spacing:.02em}
 
 </style>
 </head>
@@ -4176,7 +4304,7 @@ function renderOrdersList() {
       "</div>" +
       "<div class='olr-3" + (warn ? " warn" : "") + "'>" +
         "<span class='olr-item'>" + orderItemName(num) + "<span class='olr-count'> · " + itemsCnt + " " + pluralUk(itemsCnt, "річ", "речі", "речей") + "</span></span>" +
-        "<span class='olr-mt'>" + (master ? master + " · " : "") + term + "</span>" +
+        "<span class='olr-mt'>" + (master ? master + " · " : "") + dowDate(term) + "</span>" +
       "</div>" +
     "</div>";
   };
@@ -4762,7 +4890,7 @@ renderers.myworks = function() {
     const termDate = term ? parseDeadline(term) : null;
     const late = termDate && termDate < today;
     const dueHTML = term
-      ? "<span class='mw-due" + (late ? " late" : "") + "'>Термін " + term + (late ? " (протерміновано)" : "") + "</span>"
+      ? "<span class='mw-due" + (late ? " late" : "") + "'>Термін " + dowDate(term) + (late ? " (протерміновано)" : "") + "</span>"
       : "";
 
     let actionHTML = "";
@@ -5502,7 +5630,7 @@ function openClientHistory(phone, currentNum) {
     const isCurrent = num === currentNum;
     return "<div class='hist-row" + (isCurrent ? " hist-current" : "") + "' onclick=\"closeClientHistory();openOrder('" + num + "')\">" +
       "<div class='hist-row-top'><span class='hist-num'>" + num + (isCurrent ? " · поточне" : "") + "</span><span class='badge " + meta[1] + "'>" + meta[0] + "</span></div>" +
-      "<div class='hist-row-bottom'><span class='hist-date'>" + date + "</span><span class='hist-total'>" + total.toLocaleString("uk-UA") + " ₴</span></div>" +
+      "<div class='hist-row-bottom'><span class='hist-date'>" + dowDate(date) + "</span><span class='hist-total'>" + total.toLocaleString("uk-UA") + " ₴</span></div>" +
     "</div>";
   }).join("");
 
@@ -5845,7 +5973,7 @@ function openPunctList(kind) {
       const days = entry.days;
       return "<div class='punct-row' onclick=\"openOrder('" + num + "')\">" +
         "<div class='punct-main'><div class='punct-title'>" + num + " · " + (gv(o,"Ім'я клієнта")||"—") + "</div>" +
-        "<div class='punct-sub'>" + orderItemName(num) + " · термін " + (gv(o,"Термін")||"—") + "</div></div>" +
+        "<div class='punct-sub'>" + orderItemName(num) + " · термін " + dowDate(gv(o,"Термін")||"—") + "</div></div>" +
         (days > 0 ? "<span class='badge b-postponed'>+" + days + " дн.</span>" : "<span class='badge b-ready'>вчасно</span>") +
       "</div>";
     }).join("");
@@ -6121,6 +6249,17 @@ document.addEventListener("click", function(e){ var pop = document.getElementByI
 /* ═══════════════ ЧІП «ТЕРМІН» + КАЛЕНДАР-ПЕРЕГЛЯД У КАРТЦІ ЗАМОВЛЕННЯ ═══════════════
    На відміну від rwcal у формі створення — тут лише перегляд (редагування терміну — через «Редагувати»). */
 const CAL_ICON_SM = "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='5' width='18' height='16' rx='2'/><line x1='16' y1='3' x2='16' y2='7'/><line x1='8' y1='3' x2='8' y2='7'/><line x1='3' y1='11' x2='21' y2='11'/></svg>";
+/* День тижня перед датою (лише для персоналу: у чеках для клієнта не використовується).
+   «28.09.2026 18:35» -> «Пн, 28.09.2026 18:35». Якщо року немає («08.10 12:30»), беремо поточний. Не дата: повертаємо як є. */
+function dowDate(str) {
+  const s = String(str == null ? "" : str);
+  const m = s.match(/(\d{1,2})\.(\d{1,2})(?:\.(\d{4}))?/);
+  if (!m) return s;
+  const y = m[3] ? parseInt(m[3], 10) : new Date().getFullYear();
+  const d = new Date(y, parseInt(m[2], 10) - 1, parseInt(m[1], 10));
+  if (isNaN(d.getTime()) || d.getDate() !== parseInt(m[1], 10)) return s;
+  return ["Нд","Пн","Вт","Ср","Чт","Пт","Сб"][d.getDay()] + ", " + s;
+}
 function chipDateLabel(term) {
   const d = parseDeadline(term);
   if (!d) return term || "—";
@@ -6359,7 +6498,7 @@ function openOrder(num) {
           if (si < SERVICE_STATUSES.length - 1) svcRail += "<div class='svc-line" + (si < svcCurIdx ? " done" : "") + "'></div>";
         });
         svcRail += "</div>";
-        const svcMeta = svcMaster ? "<div class='svc-meta'>" + svcMaster + (gv(sv,"Дата готово") ? " · готово " + gv(sv,"Дата готово") : (gv(sv,"Дата в роботі") ? " · з " + gv(sv,"Дата в роботі") : "")) + "</div>" : "";
+        const svcMeta = svcMaster ? "<div class='svc-meta'>" + svcMaster + (gv(sv,"Дата готово") ? " · готово " + dowDate(gv(sv,"Дата готово")) : (gv(sv,"Дата в роботі") ? " · з " + dowDate(gv(sv,"Дата в роботі")) : "")) + "</div>" : "";
         return "<div class='svc-card" + (svcDone ? " done" : "") + "'>" +
           "<div class='svc-top'><span class='svc-name'>" + svcName + "</span>" +
           "<span class='svc-price'>" + (svcPrice ? svcPrice.toLocaleString("uk-UA") + " ₴" : "") + "</span></div>" +
@@ -6400,9 +6539,9 @@ function openOrder(num) {
     let historyHTML = "";
     const receiver = gv(o,"Приймальник");
     const dCreated = gv(o,"Дата створення");
-    if (receiver || dCreated) historyHTML += "<div class='n-hist-row'><span class='hl'>Прийнято</span><span>" + (receiver || "—") + (dCreated ? " · " + dCreated : "") + "</span></div>";
-    if (notified) historyHTML += "<div class='n-hist-row'><span class='hl'>Сповістив</span><span>" + (notifiedBy || "—") + " · " + notified + "</span></div>";
-    if (issuedBy || dIssue) historyHTML += "<div class='n-hist-row'><span class='hl'>Видав</span><span>" + (issuedBy || "—") + (dIssue ? " · " + dIssue : "") + "</span></div>";
+    if (receiver || dCreated) historyHTML += "<div class='n-hist-row'><span class='hl'>Прийнято</span><span>" + (receiver || "—") + (dCreated ? " · " + dowDate(dCreated) : "") + "</span></div>";
+    if (notified) historyHTML += "<div class='n-hist-row'><span class='hl'>Сповістив</span><span>" + (notifiedBy || "—") + " · " + dowDate(notified) + "</span></div>";
+    if (issuedBy || dIssue) historyHTML += "<div class='n-hist-row'><span class='hl'>Видав</span><span>" + (issuedBy || "—") + (dIssue ? " · " + dowDate(dIssue) : "") + "</span></div>";
 
     return "<div class='n-item" + (collapsedByDefault ? " collapsed" : "") + "'>" +
       "<div class='n-ihead' onclick=\"this.parentElement.classList.toggle('collapsed')\"><span class='n-inum'>№" + (idx+1) + "</span><span class='n-iname'>" + iname + "</span>" +
@@ -6519,7 +6658,7 @@ function openOrder(num) {
       "<span class='detail-title'>Замовлення " + num + "</span>" +
       "<span class='badge " + stMeta[1] + "'>" + stMeta[0] + "</span>" +
     "</div>" +
-    "<div class='detail-created'>Створено: " + (gv(o,"Дата створення") || "—") + (gv(o,"Приймальник") ? " · " + gv(o,"Приймальник") : "") + "</div>" +
+    "<div class='detail-created'>Створено: " + dowDate(gv(o,"Дата створення") || "—") + (gv(o,"Приймальник") ? " · " + gv(o,"Приймальник") : "") + "</div>" +
     "</div>" +
     "<div class='card-inner ord-grid'>" +
     "<div class='ord-left'>" +
@@ -6530,6 +6669,7 @@ function openOrder(num) {
         "<div class='n-manage-row'>" +
           "<button class='n-manage-btn' onclick=\"openEditOrder('" + num + "')\">Редагувати</button>" +
           "<button class='n-manage-btn danger admin-only' onclick=\"openDeleteOrderConfirm('" + num + "')\">Видалити</button>" +
+          (its.length > 1 ? "<button class='n-manage-btn n-manage-wide admin-only' onclick=\"openSplitOrder('" + num + "')\">Розділити замовлення</button>" : "") +
         "</div>" +
       "</div>" +
     "</div>" +
@@ -7639,10 +7779,7 @@ loadPrice();
     }
     return "<div class='rcw'>" + out + "</div>" + (RC.day ? "<div class='rcw-pop'>" + rcPopHTML(RC.day) + "</div>" : "");
   }
-  function rcWeekRefresh() {
-    var w = $("rcw-wrap"); if (w) w.innerHTML = rcWeekInner();
-    var hm = document.querySelector("#page-reception .rc-home"); if (hm) hm.classList.toggle("day-open", !!RC.day);
-  }
+  function rcWeekRefresh() { var w = $("rcw-wrap"); if (w) w.innerHTML = rcWeekInner(); }
   window.rcDay = function (k) {
     if (RC.day === k) { RC.day = null; rcWeekRefresh(); return; }
     var list = rcDue()[k];
@@ -7732,7 +7869,7 @@ loadPrice();
       ["1", "2", "3", "4", "5", "6", "7", "8", "9"].forEach(function (k) { keys += "<button class='kp-key' onclick=\"rcKey('" + k + "')\">" + k + "</button>"; });
       keys = "<div class='kp-grid rc-keys'>" + keys + "<span></span><button class='kp-key' onclick=\"rcKey('0')\">0</button><button class='kp-key kp-del' onclick='rcDel()'>⌫</button></div>";
     }
-    return "<div class='rc-home" + (RC.day ? " day-open" : "") + "'>" +
+    return "<div class='rc-home'>" +
       "<div class='rcw-wrap' id='rcw-wrap'>" + rcWeekInner() + "</div>" +
       "<div class='rc-body narrow rc-mid'><div class='cr-box'>" +
         "<div class='cr-block-label first'>Клієнт</div>" + seg + field + keys +
@@ -7901,21 +8038,6 @@ loadPrice();
     say("Видано замовлень: " + done);
   };
 
-  /* смужка клієнта на кроці «Речі» */
-  var _origCreate = renderers.create;
-  renderers.create = function () {
-    _origCreate.apply(this, arguments);
-    try {
-      if (!NO.client || !NO.phone) return;
-      var box = document.querySelector(".cr-step[data-cstep='2'] .cr-box");
-      if (!box) return;
-      var d = document.createElement("div");
-      d.className = "rc-chipbar";
-      d.innerHTML = "<div><b>" + h(NO.client) + "</b><span>" + h(fmtPhone(NO.phone)) + (NO.manager ? " · приймає: " + h(NO.manager) : "") + "</span></div><a onclick='setCreateStep(1)'>Змінити</a>";
-      box.insertBefore(d, box.firstChild);
-    } catch (e) { console.error(e); }
-  };
-
   /* сторінка Головна */
   (function mountReception() {
     var pc = $("page-create");
@@ -7999,11 +8121,6 @@ loadPrice();
       if (isVis) seen++;
       (seen <= split ? L : R).appendChild(it);
     });
-    setNavH();
-  }
-  function setNavH() {
-    var nav = document.querySelector("nav.nav");
-    if (nav) document.documentElement.style.setProperty("--navh", nav.offsetHeight + "px");
   }
 
   var _sp = window.showPage;
@@ -8011,8 +8128,6 @@ loadPrice();
     _sp(name);
     var d = $("nav-home");
     if (d) d.classList.toggle("active", currentPage === "reception");
-    document.body.classList.toggle("on-home", currentPage === "reception");
-    setNavH();
   };
 
   /* ═══════════════════════ ВІЗАРД РЕЧІ ═══════════════════════ */
@@ -8024,12 +8139,42 @@ loadPrice();
   var WZ_LIST = [];
   function wzBuildList(it) { WZ_LIST = allServicesFlat(it.category); }
   function wzIsCoreLine(name) { return CORE_OPS.some(function (op) { return name.indexOf(op + " — ") === 0; }); }
+  /* Історія послуг по виду виробу (Тип): лічильник за назвами з листів «Послуги» і «Вироби».
+     Видалені замовлення не враховуємо. Для старих виробів без рядків у «Послуги» беремо текст «Послуги» виробу. */
+  var WZ_HC = null, WZ_HK = "";
+  function wzStripQty(n) { return String(n || "").replace(/\s*×\s*\d+\s*$/, ""); }
+  function wzHist() {
+    var key = ORDERS.length + ":" + ITEMS.length + ":" + SERVICES.length;
+    if (WZ_HC && WZ_HK === key) return WZ_HC;
+    var dead = {}, typeOf = {}, detailed = {}, hist = {};
+    ORDERS.forEach(function (o) { if (gv(o, "Примітка").indexOf("[ВИДАЛЕНО] ") === 0) dead[gv(o, "Номер замовлення")] = true; });
+    ITEMS.forEach(function (i) { if (!dead[gv(i, "Номер замовлення")]) typeOf[gv(i, "Номер виробу")] = gv(i, "Тип"); });
+    function bump(t, name) {
+      var n = wzNorm(wzStripQty(name)); if (!t || !n) return;
+      var h = hist[t] || (hist[t] = {}); h[n] = (h[n] || 0) + 1;
+    }
+    SERVICES.forEach(function (sv) {
+      var inum = gv(sv, "Номер виробу"); detailed[inum] = true;
+      if (typeOf[inum]) bump(typeOf[inum], gv(sv, "Назва"));
+    });
+    ITEMS.forEach(function (i) {
+      var inum = gv(i, "Номер виробу");
+      if (detailed[inum] || dead[gv(i, "Номер замовлення")]) return;
+      var txt = gv(i, "Послуги"); if (!txt) return;
+      txt.split(/\s*,\s*/).forEach(function (part) { bump(gv(i, "Тип"), part); });
+    });
+    WZ_HC = hist; WZ_HK = key;
+    return hist;
+  }
+  /* Часті послуги (режим «Ремонт»): лише з історії саме цього виду, без відділів догляду, фарбування, реставрації; топ-6.
+     Історії немає: нічого не пропонуємо. */
   function wzFreq(it) {
-    var freq = {};
-    SERVICES.forEach(function (s) { var n = wzNorm(gv(s, "Назва")); if (n) freq[n] = (freq[n] || 0) + 1; });
-    var idxs = [];
-    WZ_LIST.forEach(function (s, i) { if (!wzIsCoreLine(s.name)) idxs.push(i); });
-    idxs.sort(function (a, b) { return (freq[wzNorm(WZ_LIST[b].name)] || 0) - (freq[wzNorm(WZ_LIST[a].name)] || 0) || a - b; });
+    var h = wzHist()[it.model] || {};
+    var idxs = [], careDept = {};
+    /* відділи, де лежать рядки рівнів (догляд, фарбування, реставрація), це не ремонт */
+    WZ_LIST.forEach(function (s) { if (wzIsCoreLine(s.name)) careDept[s.department] = true; });
+    WZ_LIST.forEach(function (s, i) { if (!wzIsCoreLine(s.name) && !careDept[s.department] && (h[wzNorm(s.name)] || 0) > 0) idxs.push(i); });
+    idxs.sort(function (a, b) { return (h[wzNorm(WZ_LIST[b].name)] || 0) - (h[wzNorm(WZ_LIST[a].name)] || 0) || a - b; });
     return idxs.slice(0, 6);
   }
   function wzFindSvc(it, name) {
@@ -8197,9 +8342,13 @@ loadPrice();
       }).join("") + "</div>";
     }
     s += wzSelected(it);
-    var fr = wzFreq(it);
-    s += "<div class='wz-lbl'>Часті послуги <i>для цього виду виробу</i></div><div class='wz-tiles'>" + (fr.length ? fr.map(function (li) { return wzTile(it, li); }).join("") : "<div class='wz-empty'>У прайсі немає послуг для цієї категорії</div>") + "</div>" +
-      "<button class='wz-all' onclick='wzSheetOpen(" + it.id + ")'>Усі послуги →</button>";
+    if (!isCare) {
+      var fr = wzFreq(it);
+      s += "<div class='wz-lbl'>Часті послуги <i>для виду «" + h(it.model || "") + "»</i></div>";
+      if (fr.length) s += "<div class='wz-tiles'>" + fr.map(function (li) { return wzTile(it, li); }).join("") + "</div>";
+      else s += "<div class='wz-empty'>Історії ремонтів для цього виду поки немає. Скористайтесь «Усі послуги»</div>";
+    }
+    s += "<button class='wz-all' onclick='wzSheetOpen(" + it.id + ")'>Усі послуги →</button>";
     return s;
   }
 
@@ -8208,9 +8357,15 @@ loadPrice();
   window.wzSheetClose = function (id) { var it = wzItem(id); if (!it) return; it.wzSheet = false; renderItems(); };
   window.wzDept = function (id, d) { var it = wzItem(id); if (!it) return; it.wzDept = d; it.wzQ = ""; renderItems(); };
   window.wzSearch = function (id, v) { var it = wzItem(id); if (!it) return; it.wzQ = v; wzSheetBody(it); };
+  function wzDeptCur(it) {
+    if (it.wzDept) return it.wzDept;
+    if (wzFreq(it).length) return "Часті";
+    var all = allDepartments(it.category);
+    return all.length ? all[0] : "Часті";
+  }
   function wzSheetList(it) {
     var q = (it.wzQ || "").trim().toLowerCase(), idxs = [];
-    var dept = it.wzDept || "Часті";
+    var dept = wzDeptCur(it);
     var fr = wzFreq(it);
     WZ_LIST.forEach(function (s, i) {
       if (q) {
@@ -8226,8 +8381,8 @@ loadPrice();
     pane.innerHTML = l.length ? l.map(function (li) { return wzTile(it, li); }).join("") : "<div class='wz-empty'>Нічого не знайдено</div>";
   }
   function wzSheet(it) {
-    var depts = ["Часті"].concat(allDepartments(it.category));
-    var cur = it.wzDept || "Часті";
+    var depts = (wzFreq(it).length ? ["Часті"] : []).concat(allDepartments(it.category));
+    var cur = wzDeptCur(it);
     var q = (it.wzQ || "").trim();
     var cnt = it.services.filter(function (x) { return x.kind !== "core"; }).length;
     var rail = depts.map(function (d) {
@@ -8337,6 +8492,697 @@ loadPrice();
     var it = wzItem(id);
     if (it) { it.wzSheet = false; it.wzMq = undefined; it.wzPr = {}; if (!(it.model && it.services && it.services.length)) it.wzStep = 1; else it.wzStep = it.wzStep || 2; }
     _origOpen(id);
+  };
+
+  /* ═══════════ Редагування замовлення: ціна по кожній послузі ═══════════ */
+  function eoFmt(n) { return (parseInt(n) || 0).toLocaleString("uk-UA") + " ₴"; }
+  function eoSvcSum(it) { var s = 0; it.svcs.forEach(function (x) { s += (parseInt(x.price) || 0); }); return s; }
+  function eoSufNum(num) { var t = String(num).split("-").pop(); return /^\d+$/.test(t) ? parseInt(t, 10) : 0; }
+
+  window.openEditOrder = function (num) {
+    if (!isAdmin()) { toast("Редагування доступне лише адміністратору"); return; }
+    var o = ORDERS.find(function (x) { return gv(x, "Номер замовлення") === num; });
+    if (!o) return;
+    var its = ITEMS.filter(function (i) { return gv(i, "Номер замовлення") === num; });
+    editState = {
+      num: num,
+      client: gv(o, "Ім'я клієнта"),
+      phone: gv(o, "Телефон"),
+      messenger: gv(o, "Месенджер"),
+      payment: isPrepayStr(gv(o, "Оплата")) ? "Передплата" : (gv(o, "Оплата") || ""),
+      deadline: gv(o, "Термін"),
+      items: its.map(function (it) {
+        var inum = gv(it, "Номер виробу");
+        var sv = servicesOfItem(inum);
+        var total = extractAmt(gv(it, "Сума"));
+        var e = { num: inum, type: gv(it, "Тип"), brand: gv(it, "Бренд"), servicesRaw: gv(it, "Послуги"), total: total, detailed: sv.length > 0, svcs: [], mismatch: 0, aligned: false };
+        sv.forEach(function (s) {
+          var p = extractAmt(gv(s, "Ціна"));
+          e.svcs.push({ num: gv(s, "Номер послуги"), name: gv(s, "Назва"), price: p, orig: p, isNew: false });
+        });
+        if (e.detailed) {
+          var sum = eoSvcSum(e);
+          if (sum !== total) {
+            if (e.svcs.length === 1) { e.svcs[0].price = total; e.aligned = true; }
+            else e.mismatch = total - sum;
+          }
+        }
+        return e;
+      })
+    };
+    renderEditForm();
+  };
+
+  var _eoOrigRender = window.renderEditForm;
+  window.renderEditForm = function () {
+    _eoOrigRender();
+    var body = document.getElementById("odm-body");
+    if (!body || !editState) return;
+    var cards = body.querySelectorAll(".edit-item");
+    editState.items.forEach(function (it, i) {
+      if (!it.detailed || !cards[i]) return;
+      var rows = cards[i].querySelectorAll(".ic-row");
+      if (rows.length < 2) return;
+      var h = "<div class='eo-svcs'>";
+      it.svcs.forEach(function (s, j) {
+        var ch = !s.isNew && s.price !== s.orig;
+        h += "<div class='eo-row'>";
+        if (s.isNew) h += "<input class='ic-mini eo-nm' id='eo-nm-" + i + "-" + j + "' placeholder='Назва послуги' value=\"" + escHtml(s.name) + "\" oninput='eoName(" + i + "," + j + ",this)'>";
+        else h += "<div class='eo-nm'>" + escHtml(s.name) + "</div>";
+        h += "<span class='eo-was' id='eo-was-" + i + "-" + j + "'>" + (ch ? "було " + eoFmt(s.orig) : "") + "</span>";
+        h += "<input class='ic-mini eo-pr" + (ch ? " ch" : "") + "' id='eo-pr-" + i + "-" + j + "' type='number' inputmode='numeric' min='0' value='" + s.price + "' oninput='eoPrice(" + i + "," + j + ",this)'>";
+        if (s.isNew) h += "<button class='eo-x' onclick='eoRemove(" + i + "," + j + ")'>×</button>";
+        h += "</div>";
+      });
+      h += "<div class='eo-foot'><button class='eo-add' onclick='eoAdd(" + i + ")'>+ Додати послугу</button><span class='eo-sum' id='eo-sum-" + i + "'>Сума виробу: " + eoFmt(eoSvcSum(it)) + "</span></div>";
+      if (it.aligned) h += "<div class='eo-note'>Сума виробу в замовленні була " + eoFmt(it.total) + ", а послуга " + eoFmt(it.svcs[0].orig) + ". Ціну послуги вирівняно, збережіть зміни.</div>";
+      else if (it.mismatch) h += "<div class='eo-note warn'>Сума виробу в таблиці " + eoFmt(it.total) + ", а послуги дають " + eoFmt(eoSvcSum(it)) + ". Розподіліть різницю " + eoFmt(Math.abs(it.mismatch)) + " по цінах послуг, інакше сума стане " + eoFmt(eoSvcSum(it)) + ".</div>";
+      h += "</div>";
+      var tmp = document.createElement("div"); tmp.innerHTML = h;
+      rows[1].parentNode.replaceChild(tmp.firstChild, rows[1]);
+    });
+  };
+
+  window.eoPrice = function (i, j, el) {
+    var it = editState.items[i], s = it.svcs[j];
+    s.price = parseInt(el.value) || 0;
+    var ch = !s.isNew && s.price !== s.orig;
+    el.className = "ic-mini eo-pr" + (ch ? " ch" : "");
+    var w = document.getElementById("eo-was-" + i + "-" + j); if (w) w.textContent = ch ? "було " + eoFmt(s.orig) : "";
+    var t = document.getElementById("eo-sum-" + i); if (t) t.textContent = "Сума виробу: " + eoFmt(eoSvcSum(it));
+  };
+  window.eoName = function (i, j, el) { editState.items[i].svcs[j].name = el.value; };
+  window.eoAdd = function (i) {
+    var it = editState.items[i];
+    it.svcs.push({ num: "", name: "", price: 0, orig: 0, isNew: true });
+    renderEditForm();
+    var el = document.getElementById("eo-nm-" + i + "-" + (it.svcs.length - 1)); if (el) el.focus();
+  };
+  window.eoRemove = function (i, j) { editState.items[i].svcs.splice(j, 1); renderEditForm(); };
+
+  window.saveEditOrder = async function () {
+    var e = editState;
+    if (!e.client.trim()) { alert("Введіть ім'я клієнта"); return; }
+    if (!e.phone.trim()) { alert("Введіть телефон"); return; }
+    var o = ORDERS.find(function (x) { return gv(x, "Номер замовлення") === e.num; });
+    if (o) { o["Ім'я клієнта"] = e.client; o["Телефон"] = e.phone; o["Месенджер"] = e.messenger; o["Термін"] = e.deadline; }
+
+    var oldItems = ITEMS.filter(function (i) { return gv(i, "Номер замовлення") === e.num; });
+    var oldByNum = {}; var maxN = 0;
+    oldItems.forEach(function (it) { var n = gv(it, "Номер виробу"); oldByNum[n] = it; if (eoSufNum(n) > maxN) maxN = eoSufNum(n); });
+    var nextN = maxN + 1;
+    var payloadItems = [], newList = [], svcCalls = [], keepNums = {};
+
+    e.items.forEach(function (it, idx) {
+      var num = it.num, obj = num ? oldByNum[num] : null;
+      if (!obj) {
+        var cand = e.num + "-" + (idx + 1);
+        if (oldByNum[cand]) { cand = e.num + "-" + nextN; nextN++; }
+        num = cand;
+        obj = { "Номер замовлення": e.num, "Номер виробу": num, "Статус": "🆕 Новий", "Дата прийому": "", "Дата в роботі": "", "Дата готово": "", "Дата видачі": "", "Сповіщено": "" };
+        it.num = it.num || "";
+      }
+      keepNums[num] = true;
+      var services = it.servicesRaw, total = it.total;
+      if (it.detailed) {
+        var named = it.svcs.filter(function (s) { return !s.isNew || s.name.trim(); });
+        it.svcs.forEach(function (s) {
+          if (!s.isNew && s.price !== s.orig) svcCalls.push({ kind: "price", svc: s, item: num });
+          else if (s.isNew && s.name.trim()) svcCalls.push({ kind: "add", svc: s, item: num });
+        });
+        total = 0; named.forEach(function (s) { total += (parseInt(s.price) || 0); });
+        services = named.map(function (s) { return s.name; }).join(", ");
+      }
+      obj["Тип"] = it.type; obj["Бренд"] = it.brand; obj["Послуги"] = services;
+      obj["Сума"] = total.toLocaleString("uk-UA") + " ₴";
+      newList.push(obj);
+      payloadItems.push({ item_num: it.num || "", type: it.type, brand: it.brand, services: services, total: total.toLocaleString("uk-UA") + " ₴" });
+    });
+
+    /* локально: оновлюємо ціни/нові послуги */
+    svcCalls.forEach(function (c) {
+      if (c.kind === "price") {
+        var row = SERVICES.find(function (x) { return gv(x, "Номер послуги") === c.svc.num; });
+        if (row) row["Ціна"] = String(c.svc.price);
+      } else {
+        var mx = 0;
+        SERVICES.forEach(function (x) { if (gv(x, "Номер виробу") === c.item && eoSufNum(gv(x, "Номер послуги")) > mx) mx = eoSufNum(gv(x, "Номер послуги")); });
+        c.svc.num = c.item + "-" + (mx + 1);
+        SERVICES.push({ "Номер послуги": c.svc.num, "Номер виробу": c.item, "Номер замовлення": e.num, "Назва": c.svc.name.trim(), "Ціна": String(c.svc.price), "Статус": "🆕 Новий", "Майстер": "" });
+      }
+    });
+    SERVICES = SERVICES.filter(function (x) { return gv(x, "Номер замовлення") !== e.num || keepNums[gv(x, "Номер виробу")]; });
+    ITEMS = ITEMS.filter(function (i) { return gv(i, "Номер замовлення") !== e.num; }).concat(newList);
+    openOrder(e.num);
+
+    /* на сервер: спершу послуги, потім вироби і клієнт */
+    var bad = 0;
+    async function post(path, body) {
+      try {
+        var r = await fetch(API_URL.replace("/order", path), { method: "POST", mode: "cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+        if (!r.ok) bad++;
+      } catch (err) { console.error("edit save failed", path, err); bad++; }
+    }
+    for (var k = 0; k < svcCalls.length; k++) {
+      var c = svcCalls[k];
+      if (c.kind === "price") await post("/service/price", { svc_num: c.svc.num, price: c.svc.price });
+      else await post("/service/add", { item_num: c.item, name: c.svc.name.trim(), price: c.svc.price });
+    }
+    await post("/items/update", { order_num: e.num, items: payloadItems });
+    await post("/order/update", { order_num: e.num, client: e.client, phone: e.phone, messenger: e.messenger, deadline: e.deadline });
+    toast(bad ? "Не всі зміни збережено (" + bad + "). Перевірте замовлення" : "Зміни збережено");
+  };
+
+  /* ═══ РОЗДІЛИТИ ЗАМОВЛЕННЯ ═══ */
+  var SP = null;
+  function spF(n) { return Number(n).toLocaleString("uk-UA") + " ₴"; }
+  function spOrder(num) { return ORDERS.find(function (x) { return gv(x, "Номер замовлення") === num; }); }
+  function spItems() {
+    return itemsOf(SP.num).map(function (i) {
+      return { num: gv(i, "Номер виробу"), type: gv(i, "Тип"), brand: gv(i, "Бренд"), svc: gv(i, "Послуги"), st: gv(i, "Статус"), sum: extractAmt(gv(i, "Сума")) };
+    });
+  }
+  function spDates() {
+    var out = [], o = spOrder(SP.num), cur = gv(o, "Термін");
+    var d0 = parseDeadline(cur);
+    function fmt(d) { return p2(d.getDate()) + "." + p2(d.getMonth() + 1) + "." + d.getFullYear(); }
+    var base = d0 || new Date();
+    if (d0) out.push(fmt(d0));
+    [7, 14].forEach(function (n) { var d = new Date(base); d.setDate(d.getDate() + n); out.push(fmt(d)); });
+    out.push("Без терміну");
+    return out;
+  }
+  window.openSplitOrder = function (num) {
+    if (!isAdmin()) { toast("Розділення доступне лише адміністратору"); return; }
+    var o = spOrder(num); if (!o) return;
+    if (extractAmt(gv(o, "Сума доплати")) > 0) { toast("Замовлення вже має остаточну оплату — розділити не можна"); return; }
+    var pay = gv(o, "Оплата") || "";
+    SP = { num: num, sel: {}, dl: "", tr: 0, busy: false, prepay: isPrepayStr(pay) ? extractAmt(pay) : 0, pay: pay };
+    var its = spItems();
+    if (its.filter(function (i) { return i.st !== "📦 Виданий"; }).length < 1 || its.length < 2) { toast("Немає що розділяти"); return; }
+    SP.dl = spDates()[1] || "Без терміну";
+    var ov = document.getElementById("split-order-modal");
+    if (!ov) { ov = document.createElement("div"); ov.id = "split-order-modal"; ov.className = "odm-bg"; document.body.appendChild(ov); }
+    ov.classList.add("open");
+    spRender();
+  };
+  window.closeSplitOrder = function () {
+    var ov = document.getElementById("split-order-modal"); if (ov) ov.classList.remove("open");
+    SP = null;
+  };
+  window.spTog = function (n) {
+    var it = spItems().find(function (i) { return i.num === n; });
+    if (!it || it.st === "📦 Виданий" || SP.busy) return;
+    SP.sel[n] = !SP.sel[n]; spRender();
+  };
+  window.spDl = function (v) { SP.dl = v; spRender(); };
+  window.spDlIso = function (iso) { if (iso) { var p = iso.split("-"); SP.dl = p[2] + "." + p[1] + "." + p[0]; spRender(); } };
+  window.spTr = function (el) { SP.tr = Math.max(0, parseInt(el.value) || 0); spUpd(); };
+  function spSums() {
+    var a = 0, b = 0, ca = 0, cb = 0;
+    spItems().forEach(function (i) { if (SP.sel[i.num]) { b += i.sum; cb++; } else { a += i.sum; ca++; } });
+    return { a: a, b: b, ca: ca, cb: cb };
+  }
+  function spValid(s) {
+    if (s.cb === 0) return "Позначте хоча б одну річ для нового замовлення";
+    if (s.ca === 0) return "У поточному замовленні має лишитися хоча б одна річ";
+    if (SP.prepay) {
+      if (SP.tr > SP.prepay) return "Передплата не може бути більшою за " + spF(SP.prepay);
+      if (SP.tr > s.b) return "Передплата не може бути більшою за суму нового замовлення";
+    }
+    return "";
+  }
+  function spNewNum() {
+    var base = SP.num.split("/")[0], mx = 1;
+    ORDERS.forEach(function (x) {
+      var n = gv(x, "Номер замовлення");
+      if (n.indexOf(base + "/") === 0) { var t = n.split("/")[1]; if (/^\d+$/.test(t)) mx = Math.max(mx, parseInt(t, 10)); }
+    });
+    return base + "/" + (mx + 1);
+  }
+  function spPay(amount) { return amount > 0 ? "Передплата: " + spF(amount) : "Післяплата"; }
+  function spPreview(s) {
+    var o = spOrder(SP.num), term = gv(o, "Термін") || "Без терміну";
+    var payA = SP.prepay ? spPay(SP.prepay - SP.tr) : (SP.pay || "Післяплата");
+    var payB = SP.prepay ? spPay(SP.tr) : (SP.pay || "Післяплата");
+    return "<div><h4>" + h(SP.num) + "</h4><span class='g'>Поточне</span><br>Речей: " + s.ca + " · " + spF(s.a) + "<br>" + h(payA) + "<br>Термін: " + h(dowDate(term)) + "</div>" +
+      "<div class='new'><h4>" + h(spNewNum()) + "</h4><span class='g'>Нове</span><br>Речей: " + s.cb + " · " + spF(s.b) + "<br>" + h(payB) + "<br>Термін: " + h(dowDate(SP.dl)) + "</div>";
+  }
+  function spUpd() {
+    var s = spSums(), v = spValid(s);
+    var pv = document.getElementById("sp-pv"); if (pv) pv.innerHTML = spPreview(s);
+    var er = document.getElementById("sp-err"); if (er) er.textContent = v;
+    var go = document.getElementById("sp-go"); if (go) go.disabled = !!v || SP.busy;
+  }
+  function spRender() {
+    var ov = document.getElementById("split-order-modal"); if (!ov || !SP) return;
+    var its = spItems(), body = "";
+    body += "<div class='detail-top'><span class='detail-title'>Розділити " + h(SP.num) + "</span></div>";
+    body += "<div class='sp-lab'>Що переносимо в нове замовлення</div>";
+    its.forEach(function (i) {
+      var d = i.st === "📦 Виданий", on = !!SP.sel[i.num];
+      body += "<div class='sp-item" + (on ? " sel" : "") + (d ? " dis" : "") + "' onclick=\"spTog('" + jq(i.num) + "')\"><span class='sp-chk'>" + (on ? "✓" : "") + "</span>" +
+        "<div class='sp-nm'><b>" + h(i.type) + (i.brand ? " · " + h(i.brand) : "") + "</b><small>" + h(i.svc) + (d ? " · виданий, не переноситься" : "") + "</small></div><b>" + spF(i.sum) + "</b></div>";
+    });
+    body += "<div class='sp-lab'>Термін нового замовлення</div><div class='sp-chips'>";
+    var ds = spDates();
+    ds.forEach(function (d) { body += "<span class='" + (SP.dl === d ? "on" : "") + "' onclick=\"spDl('" + jq(d) + "')\">" + h(d === "Без терміну" ? d : dowDate(d)) + "</span>"; });
+    if (ds.indexOf(SP.dl) === -1) body += "<span class='on'>" + h(dowDate(SP.dl)) + "</span>";
+    body += "<span class='sp-date'>Інша дата<input type='date' onchange='spDlIso(this.value)'></span></div>";
+    if (SP.prepay) {
+      body += "<div class='sp-row'><div class='sp-fld'><span>Передплата в поточному</span><b>" + spF(SP.prepay) + "</b></div>" +
+        "<div class='sp-fld'><span>Перенести в нове</span><span><input type='number' inputmode='numeric' value='" + SP.tr + "' oninput='spTr(this)'> ₴</span></div></div>";
+    }
+    body += "<div class='sp-lab'>Що вийде</div><div class='sp-pv' id='sp-pv'></div><div class='sp-err' id='sp-err'></div>";
+    body += "<div class='sp-btns'><button class='sp-c' onclick='closeSplitOrder()'>Скасувати</button><button class='sp-s' id='sp-go' onclick='spDo()'>" + (SP.busy ? "Розділення..." : "Розділити") + "</button></div>";
+    ov.innerHTML = "<div class='odm' style='width:600px'><div class='odm-close' onclick='closeSplitOrder()'>×</div><div class='odm-scroll'>" + body + "</div></div>";
+    spUpd();
+  }
+  window.spDo = async function () {
+    if (!SP || SP.busy) return;
+    var s = spSums(); if (spValid(s)) return;
+    SP.busy = true; spRender();
+    var move = spItems().filter(function (i) { return SP.sel[i.num]; }).map(function (i) { return i.num; });
+    var res;
+    try {
+      var r = await fetch(API_URL.replace("/order", "/order/split"), { method: "POST", mode: "cors", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ order_num: SP.num, item_nums: move, deadline: SP.dl, transfer_prepay: SP.prepay ? SP.tr : 0 }) });
+      res = await r.json();
+      if (!r.ok || res.status !== "ok") throw new Error(res.message || "error");
+    } catch (e) {
+      console.error("split failed", e);
+      var er = document.getElementById("sp-err");
+      SP.busy = false; spRender();
+      er = document.getElementById("sp-err"); if (er) er.textContent = "Не вдалося розділити. Нічого не змінено — спробуйте ще раз.";
+      return;
+    }
+    /* локально */
+    var oldNum = SP.num, newNum = res.new_num || spNewNum(), o = spOrder(oldNum);
+    var no = Object.assign({}, o);
+    no["Номер замовлення"] = newNum; no["Термін"] = SP.dl || "Без терміну"; no["Примітка"] = "Розділено з " + oldNum;
+    no["Сума доплати"] = ""; no["Спосіб доплати"] = ""; no["Сповіщено"] = ""; no["Нараховано бонусів"] = ""; no["Списано бонусів"] = ""; no["Нотатка майстра"] = "";
+    if (res.new_payment) no["Оплата"] = res.new_payment;
+    if (res.original_payment) o["Оплата"] = res.original_payment;
+    ORDERS.push(no);
+    ITEMS.forEach(function (i) { if (gv(i, "Номер замовлення") === oldNum && move.indexOf(gv(i, "Номер виробу")) !== -1) i["Номер замовлення"] = newNum; });
+    SERVICES.forEach(function (x) { if (gv(x, "Номер замовлення") === oldNum && move.indexOf(gv(x, "Номер виробу")) !== -1) x["Номер замовлення"] = newNum; });
+    closeSplitOrder();
+    openOrder(newNum);
+    toast("Замовлення розділено: " + newNum);
+  };
+
+  /* ═══════════ ПЛАН (нова версія: замовлення, фільтри-плитки, статистика) ═══════════ */
+  var PL = { tile: null, exp: {}, sm: "d", sp: "w", so: 0, st: "", sw: "" };
+  var PL_ISS = "📦 Виданий";
+  function plToday() { var d = new Date(); d.setHours(0, 0, 0, 0); return d; }
+  function plNm(o) { return gv(o, "Ім'я клієнта") || "Без імені"; }
+
+  function plModel(o) {
+    var num = gv(o, "Номер замовлення"); if (!num) return null;
+    var its = itemsOf(num);
+    var pend = its.filter(function (i) { return gv(i, "Статус") !== PL_ISS; });
+    if (!pend.length) return null;
+    var svcs = [];
+    pend.forEach(function (i) { svcs = svcs.concat(servicesOfItem(gv(i, "Номер виробу"))); });
+    var info = rcInfo(o);
+    var started = svcs.some(function (s) { return gv(s, "Статус") !== "🆕 Новий"; }) ||
+      pend.some(function (i) { var s = gv(i, "Статус"); return s === "⚙️ В роботі" || s === "✅ Готово"; });
+    var state = info.readyAll ? "ready" : (started ? "work" : "new");
+    return {
+      o: o, num: num, its: its, pend: pend, svcs: svcs, info: info, state: state,
+      mine: svcs.some(function (s) { return isMineAssignment(gv(s, "Призначено")); }),
+      unas: svcs.some(function (s) { return !gv(s, "Призначено"); }),
+      notify: pend.some(function (i) { return gv(i, "Статус") === "✅ Готово" && !gv(i, "Сповіщено"); }),
+      d: parseDeadline(info.term)
+    };
+  }
+  function plModels() {
+    var list = [];
+    ORDERS.forEach(function (o) {
+      if (typeof isOrderDeleted === "function" && isOrderDeleted(o)) return;
+      var m = plModel(o); if (m) list.push(m);
+    });
+    if (typeof planDateFilter !== "undefined" && planDateFilter) {
+      list = list.filter(function (m) { return m.d && fmtDateUA(m.d) === planDateFilter; });
+    }
+    list.sort(function (a, b) {
+      var ta = a.d ? a.d.getTime() : 9e15, tb = b.d ? b.d.getTime() : 9e15;
+      return ta - tb;
+    });
+    return list;
+  }
+  function plLists() {
+    var all = plModels(), mineOnly = (typeof planFilter !== "undefined" && planFilter === "mine");
+    var L = { work: [], neu: [], ready: [], notify: [], unasN: 0 };
+    all.forEach(function (m) {
+      if (m.state !== "ready" && m.unas) L.unasN++;
+      var okMine = !mineOnly || m.mine;
+      if (m.state === "work" && okMine) L.work.push(m);
+      if (m.state === "new" && m.mine) L.neu.push(m);
+      if (m.state === "ready" && okMine) L.ready.push(m);
+      if (m.notify && okMine) L.notify.push(m);
+    });
+    return L;
+  }
+
+  /* ───────── Кнопки з утриманням 2 с ───────── */
+  function plBtn(cls, label, call) {
+    return "<div class='pl-b pl-hold " + cls + "' onclick=\"event.stopPropagation();" + call + "\">" + label + "</div>";
+  }
+  var HOLD = { t: null, el: null };
+  function holdStop(hint) {
+    if (HOLD.t) { clearTimeout(HOLD.t); HOLD.t = null; if (HOLD.el) HOLD.el.classList.remove("holding"); if (hint) say("Утримуйте кнопку 2 секунди"); }
+    HOLD.el = null;
+  }
+  document.addEventListener("click", function (e) {
+    var b = e.target && e.target.closest ? e.target.closest(".pl-hold") : null;
+    if (b && !b.getAttribute("data-go")) { e.stopPropagation(); e.preventDefault(); }
+  }, true);
+  document.addEventListener("pointerdown", function (e) {
+    var b = e.target && e.target.closest ? e.target.closest(".pl-hold") : null;
+    if (!b) return;
+    holdStop(false);
+    HOLD.el = b; b.classList.add("holding");
+    HOLD.t = setTimeout(function () {
+      b.classList.remove("holding"); b.setAttribute("data-go", "1"); HOLD.t = null; HOLD.el = null;
+      b.click(); b.removeAttribute("data-go");
+    }, 2000);
+  }, true);
+  document.addEventListener("pointerup", function () { holdStop(true); }, true);
+  document.addEventListener("pointercancel", function () { holdStop(true); }, true);
+  document.addEventListener("contextmenu", function (e) { if (e.target && e.target.closest && e.target.closest(".pl-hold")) e.preventDefault(); }, true);
+
+  /* ───────── Дії ───────── */
+  function plRefresh() { if (currentPage === "todayplan") renderers.todayplan(); }
+  function plFind(num) { var o = ORDERS.filter(function (x) { return gv(x, "Номер замовлення") === num; })[0]; return o ? plModel(o) : null; }
+  window.plAct = async function (kind, num) {
+    var m = plFind(num); if (!m) return;
+    if (kind === "take") {
+      var todo = m.svcs.filter(function (s) { return gv(s, "Статус") === "🆕 Новий" && isMineAssignment(gv(s, "Призначено")); });
+      for (var i = 0; i < todo.length; i++) await confirmServiceStatus(gv(todo[i], "Номер послуги"), "⚙️ В роботі", gv(todo[i], "Призначено"));
+      say(num + " взято в роботу");
+    } else if (kind === "done") {
+      var td = m.svcs.filter(function (s) { return gv(s, "Статус") !== "✅ Готово"; });
+      if (!td.length) { say("Немає послуг для закриття"); return; }
+      for (var j = 0; j < td.length; j++) await confirmServiceStatus(gv(td[j], "Номер послуги"), "✅ Готово", gv(td[j], "Майстер") || gv(td[j], "Призначено"));
+      say(num + ": усі роботи готові");
+    } else if (kind === "give") {
+      plCloseOvl(); issueWholeOrder(num); return;
+    } else if (kind === "bell") {
+      var items = m.pend.filter(function (i2) { return gv(i2, "Статус") === "✅ Готово" && !gv(i2, "Сповіщено"); });
+      var recv = gv(m.o, "Приймальник");
+      if (recv) { for (var k = 0; k < items.length; k++) await confirmToggleNotified(gv(items[k], "Номер виробу"), recv); }
+      else if (items.length) { toggleNotified(gv(items[0], "Номер виробу"), 0); }
+    }
+    plRefresh(); if (document.getElementById("pl-ovl")) plOvlRerender();
+  };
+  window.plSvc = async function (svcNum, kind) {
+    var sv = SERVICES.filter(function (s) { return gv(s, "Номер послуги") === svcNum; })[0]; if (!sv) return;
+    if (kind === "go") {
+      var who = gv(sv, "Призначено") || (masterNamesForRole()[0] || "");
+      await confirmServiceStatus(svcNum, "⚙️ В роботі", who);
+    } else {
+      await confirmServiceStatus(svcNum, "✅ Готово", gv(sv, "Майстер") || gv(sv, "Призначено"));
+    }
+    plRefresh();
+  };
+  window.plExp = function (num) { PL.exp[num] = !PL.exp[num]; renderers.todayplan(); };
+  window.plTile = function (t) { PL.tile = (PL.tile === t) ? null : t; renderers.todayplan(); };
+  window.plOpen = function (num) { plCloseOvl(); openOrder(num); };
+  window.plUnassigned = function () { showPage("assign"); };
+
+  /* ───────── Рядки ───────── */
+  function plBar(n, k) { var s = ""; for (var b = 0; b < n; b++) s += "<b" + (b < k ? " class='f'" : "") + "></b>"; return "<div class='bar'>" + s + "</div>"; }
+  var PL_HEAD = "<div class='pl-r head'><div>№</div><div>Клієнт</div><div>Готовність</div><div style='text-align:center'>Термін</div><div style='text-align:right'>Сума</div><div></div></div>";
+  function plSvcLines(m) {
+    var out = "";
+    m.pend.forEach(function (it) {
+      var svs = servicesOfItem(gv(it, "Номер виробу"));
+      var nm = [gv(it, "Бренд"), gv(it, "Тип")].filter(Boolean).join(" · ") || "Виріб";
+      out += "<div class='pl-xi'><b>" + h(nm) + "</b>";
+      if (!svs.length) out += "<div class='pl-xs'><span>Послуги не розбито</span></div>";
+      svs.forEach(function (s) {
+        var st = gv(s, "Статус") || "🆕 Новий", sn = gv(s, "Номер послуги");
+        var tag = st === "✅ Готово" ? "<i class='dn'>Готово</i>" : st === "⚙️ В роботі" ? "<i class='wk'>В роботі</i>" : "<i>Не розпочато</i>";
+        var btn = st === "✅ Готово" ? "" : (st === "⚙️ В роботі" ? plBtn("pl-b-done pl-sm", "Готово", "plSvc('" + jq(sn) + "','done')") : plBtn("pl-b-new pl-sm", "Почати", "plSvc('" + jq(sn) + "','go')"));
+        out += "<div class='pl-xs'><span>" + h(gv(s, "Назва")) + "</span><em>" + money(extractAmt(gv(s, "Ціна"))) + "</em>" + tag + btn + "</div>";
+      });
+      out += "</div>";
+    });
+    return "<div class='pl-xp'>" + out + "</div>";
+  }
+  function plRow(m, kind) {
+    var i = m.info, n = m.its.length, k = doneCount(m.its), f = m.pend[0] || m.its[0];
+    var t1 = plNm(m.o);
+    var t2 = f ? ([gv(f, "Бренд"), gv(f, "Тип")].filter(Boolean).join(" · ") || "Виріб") : "—";
+    if (n > 1) t2 += " · +" + (n - 1) + " " + pluralUk(n - 1, "річ", "речі", "речей");
+    var cls = i.readyAll ? "rd" : (m.state === "new" ? "nw" : "wk");
+    var lab = i.readyAll ? "готово" : (m.state === "new" ? "не розпочато" : k + " з " + n + " готово");
+    var tm, late = false;
+    if (m.d) {
+      var td = plToday(), dl = Math.round((td - m.d) / 864e5);
+      late = dl > 0;
+      tm = p2(m.d.getDate()) + "." + p2(m.d.getMonth() + 1) + "<small>" + rcWd(m.d) + (late ? " · +" + dl + "д" : "") + "</small>";
+    } else if (String(i.term).indexOf("Терміново") !== -1) tm = "⚡<small>терміново</small>";
+    else tm = "—";
+    var sum = i.paid ? "<div class='pl-s ok'><span class='ck'>✓</span>" + money(i.total) + "</div>" : "<div class='pl-s'><i class='dot'></i>" + money(i.total) + "</div>";
+    var nu = String(m.num), btn;
+    if (kind === "new") btn = plBtn("pl-b-new", "Взяти", "plAct('take','" + jq(nu) + "')");
+    else if (kind === "ready") btn = plBtn("pl-b-give", "Видати", "plAct('give','" + jq(nu) + "')");
+    else if (kind === "notify") btn = plBtn("pl-b-bell", "🔔", "plAct('bell','" + jq(nu) + "')");
+    else btn = plBtn("pl-b-done", "Готово", "plAct('done','" + jq(nu) + "')");
+    var open = !!PL.exp[nu];
+    return "<div class='pl-r" + (late ? " late" : "") + (open ? " open" : "") + "' onclick=\"openOrder('" + jq(nu) + "')\">" +
+      "<div class='nu'>" + h(nu).replace("-", "-<br>") + "</div>" +
+      "<div class='tx'><div class='t1'>" + h(t1) + "</div><div class='t2'>" + h(t2) + "</div></div>" +
+      "<div class='pg " + cls + "'>" + plBar(n, k) + "<div class='lab'>" + lab + "</div></div>" +
+      "<div class='tm" + (late ? " late" : "") + "'>" + tm + "</div>" + sum + btn +
+      "<div class='pl-chv' onclick=\"event.stopPropagation();plExp('" + jq(nu) + "')\">" + (open ? "⌃" : "⌄") + "</div></div>" +
+      (open ? plSvcLines(m) : "");
+  }
+  function plCard(title, list, kind, extra) {
+    return "<div class='pl-card'><div class='pl-ch'><span>" + title + "<em>" + list.length + "</em></span></div>" + PL_HEAD +
+      (list.length ? list.map(function (m) { return plRow(m, kind); }).join("") : "<div class='pl-none'>Тут порожньо</div>") + (extra || "") + "</div>";
+  }
+
+  /* ───────── Правая колонка ───────── */
+  function plDebtRows() {
+    var rows = [];
+    ORDERS.forEach(function (o) {
+      if (isOrderDeleted(o)) return;
+      var num = gv(o, "Номер замовлення"); if (!num) return;
+      if (isOrderPaid(num)) return;
+      var total = orderTotal(num), payStr = gv(o, "Оплата");
+      var ps = computePayStatus(total, payStr, extractAmt(payStr), extractAmt(gv(o, "Сума доплати")));
+      if (!(ps.toPay > 0)) return;
+      var d = parseDeadline(gv(o, "Термін")), st = getStatus(num);
+      rows.push({ o: o, num: num, sum: ps.toPay, late: !!(d && d < plToday() && st !== "issued"), st: st, ready: st === "ready" });
+    });
+    rows.sort(function (a, b) { return (b.late ? 1 : 0) - (a.late ? 1 : 0) || b.sum - a.sum; });
+    return rows;
+  }
+  function plSideLists(L) {
+    var nt = L.notify, debts = plDebtRows(), dsum = 0, anyLate = false;
+    debts.forEach(function (r) { dsum += r.sum; if (r.late) anyLate = true; });
+    var ntRows = nt.slice(0, 3).map(function (m) {
+      var f = m.pend[0];
+      return "<div class='pl-lr'><span class='nm'>" + h(plNm(m.o)) + "<small>" + h(m.num) + (f ? " · " + h(gv(f, "Бренд") || gv(f, "Тип")) : "") + "</small></span>" +
+        plBtn("pl-b-bell pl-ico", "🔔", "plAct('bell','" + jq(m.num) + "')") + "</div>";
+    }).join("") + (nt.length > 3 ? "<div class='pl-more'>+ ще " + (nt.length - 3) + " ›</div>" : "") || "<div class='pl-lr dim'>Нікого сповіщати</div>";
+    var dbRows = debts.slice(0, 3).map(function (r) {
+      return "<div class='pl-lr'><span class='nm'>" + h(plNm(r.o)) + "<small>" + h(r.num) + (r.late ? " · прострочено" : "") + "</small></span><b class='red'>" + money(r.sum) + "</b></div>";
+    }).join("") + (debts.length > 3 ? "<div class='pl-more'>+ ще " + (debts.length - 3) + " ›</div>" : "") || "<div class='pl-lr dim'>Боргів немає</div>";
+    return "<div class='pl-ls pl-nt" + (nt.length ? " pulse" : "") + "' onclick=\"plOvl('notify')\"><h5>Повідомити<em>" + nt.length + " ›</em></h5>" + ntRows + "</div>" +
+      "<div class='pl-ls pl-db" + (anyLate ? " pulse" : "") + "' onclick=\"plOvl('debt')\"><h5>Борги<em>" + money(dsum) + " ›</em></h5>" + dbRows + "</div>";
+  }
+
+  /* ───────── Статистика ───────── */
+  function plParseDT(s) {
+    var m = String(s || "").match(/(\d{1,2})\.(\d{1,2})(?:\.(\d{4}))?/); if (!m) return null;
+    var now = new Date(), y = m[3] ? +m[3] : now.getFullYear(), d = new Date(y, +m[2] - 1, +m[1]);
+    if (!m[3] && d.getTime() > now.getTime() + 864e5) d = new Date(y - 1, +m[2] - 1, +m[1]);
+    return isNaN(d.getTime()) ? null : d;
+  }
+  function plUnits(mode) {
+    var res = [];
+    ORDERS.forEach(function (o) {
+      if (typeof isOrderDeleted === "function" && isOrderDeleted(o)) return;
+      var num = gv(o, "Номер замовлення"), od = (typeof orderDate === "function") ? orderDate(o) : null, recv = gv(o, "Приймальник");
+      itemsOf(num).forEach(function (it) {
+        var itn = gv(it, "Номер виробу"), type = gv(it, "Тип"), ist = gv(it, "Статус"), iss = ist === PL_ISS;
+        if (mode === "p") { if (od) res.push({ d: od, sum: extractAmt(gv(it, "Сума")), ord: num, item: itn, m: recv, t: type, iss: iss }); return; }
+        var got = false;
+        servicesOfItem(itn).forEach(function (s) {
+          if (gv(s, "Статус") !== "✅ Готово" && !iss) return;
+          var dd = plParseDT(gv(s, "Дата готово")); if (!dd) return;
+          got = true;
+          res.push({ d: dd, sum: extractAmt(gv(s, "Ціна")), ord: num, item: itn, m: gv(s, "Майстер") || gv(s, "Призначено"), t: type, iss: iss });
+        });
+        if (!got && (ist === "✅ Готово" || iss)) {
+          var d2 = plParseDT(gv(it, "Дата готово")) || plParseDT(gv(it, "Дата видачі"));
+          if (d2) res.push({ d: d2, sum: extractAmt(gv(it, "Сума")), ord: num, item: itn, m: gv(it, "Майстер") || "", t: type, iss: iss });
+        }
+      });
+    });
+    return res;
+  }
+  function plRange(per, off) {
+    var t = plToday(), s, n;
+    if (per === "w") { s = new Date(t); s.setDate(t.getDate() - ((t.getDay() + 6) % 7) + off * 7); n = 7; }
+    else if (per === "m") { s = new Date(t.getFullYear(), t.getMonth() + off, 1); n = new Date(s.getFullYear(), s.getMonth() + 1, 0).getDate(); }
+    else { s = new Date(t.getFullYear() + off, 0, 1); n = 12; }
+    return { s: s, n: n, per: per };
+  }
+  function plBin(r, d) {
+    if (r.per === "y") return d.getFullYear() === r.s.getFullYear() ? d.getMonth() : -1;
+    var df = Math.round((d - r.s) / 864e5); return (df >= 0 && df < r.n) ? df : -1;
+  }
+  function plAgg(units, r, f) {
+    var bins = [], i, ords = {}, items = {}, total = 0, iss = 0;
+    for (i = 0; i < r.n; i++) bins.push(0);
+    units.forEach(function (u) {
+      if (f && f.t && u.t !== f.t) return;
+      if (f && f.m && u.m !== f.m) return;
+      var b = plBin(r, u.d); if (b < 0) return;
+      bins[b] += u.sum; total += u.sum; ords[u.ord] = 1; items[u.item] = 1; if (u.iss) iss += u.sum;
+    });
+    var oc = Object.keys(ords).length;
+    return { bins: bins, total: total, orders: oc, items: Object.keys(items).length, issued: iss, avg: oc ? Math.round(total / oc / 10) * 10 : 0 };
+  }
+  var PL_MON = ["Січ", "Лют", "Бер", "Кві", "Тра", "Чер", "Лип", "Сер", "Вер", "Жов", "Лис", "Гру"];
+  var PL_MONF = ["Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"];
+  function plLabel(r) {
+    if (r.per === "y") return String(r.s.getFullYear());
+    if (r.per === "m") return PL_MONF[r.s.getMonth()] + " " + r.s.getFullYear();
+    var e = new Date(r.s); e.setDate(e.getDate() + 6);
+    return r.s.getDate() + (r.s.getMonth() !== e.getMonth() ? " " + PL_MON[r.s.getMonth()].toLowerCase() : "") + "–" + e.getDate() + " " + PL_MON[e.getMonth()].toLowerCase();
+  }
+  function plNow(r) {
+    var t = plToday(); if (t < r.s) return -2; var b = plBin(r, t); return b;
+  }
+  function plWeekCard() {
+    var r = plRange("w", 0), a = plAgg(plUnits(PL.sm), r, null), mx = Math.max.apply(null, a.bins.concat([1])), nb = plNow(r), days = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"], bars = "";
+    for (var i = 0; i < 7; i++) bars += "<div class='" + (i === nb ? "td" : (i > nb ? "fu" : "")) + "'><b style='height:" + Math.max(3, Math.round(a.bins[i] / mx * 30)) + "px'></b>" + days[i] + "</div>";
+    return "<div class='pl-wk' onclick='plOvl(\"stat\")'><span class='pl-ar'>›</span><h5>Тиждень</h5>" +
+      "<div class='pl-sw' onclick='event.stopPropagation()'><span class='" + (PL.sm === "p" ? "on" : "") + "' onclick='plSm(\"p\")'>Прийнято</span><span class='" + (PL.sm === "d" ? "on" : "") + "' onclick='plSm(\"d\")'>Зроблено</span></div>" +
+      "<div class='pl-big'>" + money(a.total) + "</div><div class='pl-sub'>" + a.orders + " " + pluralUk(a.orders, "замовлення", "замовлення", "замовлень") + " · чек " + money(a.avg) + "</div>" +
+      "<div class='pl-bars'>" + bars + "</div></div>";
+  }
+  window.plSm = function (m) { PL.sm = m; renderers.todayplan(); };
+  function plStatHTML() {
+    var units = plUnits(PL.sm), f = { t: PL.st, m: PL.sw }, r = plRange(PL.sp, PL.so), pr = plRange(PL.sp, PL.so - 1);
+    var a = plAgg(units, r, f), p = plAgg(units, pr, f), nb = (PL.so === 0) ? plNow(r) : (PL.so < 0 ? 999 : -2);
+    var mx = Math.max.apply(null, a.bins.concat(p.bins).concat([1])), H = 170, bars = "", i;
+    for (i = 0; i < r.n; i++) {
+      var lb = r.per === "w" ? ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"][i] : r.per === "m" ? ((i + 1) % 5 === 0 || i === 0 ? String(i + 1) : "") : PL_MON[i];
+      bars += "<div class='" + (i === nb ? "td" : (i > nb ? "fu" : "")) + "'><b style='height:" + Math.max(3, Math.round(a.bins[i] / mx * H)) + "px'></b><u style='bottom:" + (Math.round(p.bins[i] / mx * H) + 18) + "px'></u><span>" + lb + "</span></div>";
+    }
+    var best = 0; for (i = 1; i < r.n; i++) if (a.bins[i] > a.bins[best]) best = i;
+    var bl = a.total ? (r.per === "w" ? ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"][best] : r.per === "m" ? (best + 1) + " " + PL_MON[r.s.getMonth()].toLowerCase() : PL_MONF[best]) : "—";
+    var pc = p.total > 0 ? Math.round((a.total - p.total) / p.total * 100) : null;
+    var types = {}; units.forEach(function (u) { if (u.t) types[u.t] = (types[u.t] || 0) + 1; });
+    var tl = Object.keys(types).sort(function (x, y) { return types[y] - types[x]; }).slice(0, 4);
+    var ms = masterNames().slice();
+    if (!ms.length) { var seen = {}; units.forEach(function (u) { if (u.m && !seen[u.m]) { seen[u.m] = 1; ms.push(u.m); } }); }
+    PL.tl = [""].concat(tl); PL.ms = [""].concat(ms);
+    function chips(arr, cur, kind) { return arr.map(function (v, i) { return "<span class='pl-chip" + (cur === v ? " on" : "") + "' onclick=\"plStF('" + kind + "'," + i + ")\">" + h(v || "Всі") + "</span>"; }).join(""); }
+    var pn = { w: "минулий тиждень", m: "минулий місяць", y: "минулий рік" }[PL.sp];
+    var sub = (PL.sm === "d" ? "Зроблено " + money(a.total) + " · з них видано <b>" + money(a.issued) + "</b>" : "Прийнято " + money(a.total)) + " · " + pn + " " + money(p.total);
+    return "<div class='pl-md' onclick='event.stopPropagation()'><div class='pl-mh'><b>Статистика</b><div class='pl-x' onclick='plCloseOvl()'>✕</div></div>" +
+      "<div class='pl-seg'><span class='" + (PL.sm === "p" ? "on" : "") + "' onclick=\"plStSet('sm','p')\">Прийнято</span><span class='" + (PL.sm === "d" ? "on" : "") + "' onclick=\"plStSet('sm','d')\">Зроблено</span></div>" +
+      "<div class='pl-r1'><div class='pl-seg'>" + [["w", "Тиждень"], ["m", "Місяць"], ["y", "Рік"]].map(function (x) { return "<span class='" + (PL.sp === x[0] ? "on" : "") + "' onclick=\"plStSet('sp','" + x[0] + "')\">" + x[1] + "</span>"; }).join("") + "</div>" +
+      "<div class='pl-nv'><i onclick='plStGo(-1)'>‹</i><b>" + plLabel(r) + "</b><i onclick='plStGo(1)'>›</i></div><div class='pl-today' onclick='plStGo(0)'>Зараз</div></div>" +
+      "<div class='pl-chips'><small>Тип</small>" + chips(PL.tl, PL.st, "st") + "<small style='margin-left:10px'>Майстер</small>" + chips(PL.ms, PL.sw, "sw") + "</div>" +
+      "<div class='pl-hero'><div class='pl-big2'>" + money(a.total) + "</div>" + (pc === null ? "" : "<span class='pl-dl " + (pc >= 0 ? "up" : "dn") + "'>" + (pc >= 0 ? "+" : "−") + Math.abs(pc) + "%</span>") + "</div>" +
+      "<div class='pl-hs'>" + sub + "</div>" +
+      "<div class='pl-chart'><div class='pl-cb'>" + bars + "</div><div class='pl-lg'><span><i></i>цей період</span><span><i class='p'></i>минулий період</span></div></div>" +
+      "<div class='pl-kp'><div><small>Замовлень</small><b>" + a.orders + "</b></div><div><small>Середній чек</small><b>" + money(a.avg) + "</b></div><div><small>Найкращий " + (r.per === "y" ? "місяць" : "день") + "</small><b>" + bl + "</b></div><div><small>Виробів</small><b>" + a.items + "</b></div></div></div>";
+  }
+
+  window.plStSet = function (k, v) { PL[k] = v; if (k === "sp") PL.so = 0; plStRerender(); };
+  window.plStGo = function (d) { if (d === 0) PL.so = 0; else PL.so += d; plStRerender(); };
+  window.plStF = function (k, i) { if (k === "st") PL.st = PL.tl[i] || ""; else PL.sw = PL.ms[i] || ""; plStRerender(); };
+
+  /* ───────── Вікна ───────── */
+  var PL_OVL = "";
+  function plOvlBody() {
+    if (PL_OVL === "stat") return plStatHTML();
+    if (PL_OVL === "notify") return plNotifyHTML();
+    if (PL_OVL === "debt") return plDebtHTML();
+    return plTermsHTML();
+  }
+  function plStRerender() { plOvlRerender(); renderers.todayplan(); }
+  function plOvlRerender() {
+    var el = document.getElementById("pl-ovl"); if (!el) return;
+    var sc = el.querySelector(".pl-md"), top = sc ? sc.scrollTop : 0;
+    el.innerHTML = plOvlBody();
+    sc = el.querySelector(".pl-md"); if (sc) sc.scrollTop = top;
+  }
+  window.plOvl = function (kind) {
+    plCloseOvl(); PL_OVL = kind;
+    var el = document.createElement("div"); el.id = "pl-ovl"; el.className = "pl-ovl";
+    el.onclick = function () { plCloseOvl(); };
+    document.body.appendChild(el); plOvlRerender();
+  };
+  window.plCloseOvl = function () { var el = document.getElementById("pl-ovl"); if (el) el.remove(); };
+  function plHead(t, sub) { return "<div class='pl-mh'><b>" + t + "</b><div class='pl-x' onclick='plCloseOvl()'>✕</div></div>" + (sub ? "<div class='pl-hs'>" + sub + "</div>" : ""); }
+  function plNotifyHTML() {
+    var L = plLists().notify;
+    var rows = L.map(function (m) {
+      var f = m.pend[0], ph = gv(m.o, "Телефон");
+      var rd = m.pend.filter(function (i) { return gv(i, "Статус") === "✅ Готово"; }).length;
+      return "<div class='pl-dr' onclick=\"plOpen('" + jq(m.num) + "')\"><div class='l'><b>" + h(plNm(m.o)) + " <small>" + h(m.num) + "</small></b><div>" + h(f ? (gv(f, "Бренд") + " " + gv(f, "Тип")).trim() : "") + (m.its.length > 1 ? " · готово " + rd + " з " + m.pend.length : "") + "</div><small>" + h(ph ? fmtPhone(ph) : "без телефону") + "</small></div>" +
+        "<div class='s'>" + money(m.info.total) + "</div>" + plBtn("pl-b-bell", "🔔", "plAct('bell','" + jq(m.num) + "')") + "</div>";
+    }).join("") || "<div class='pl-none'>Нікого сповіщати</div>";
+    return "<div class='pl-md' onclick='event.stopPropagation()'>" + plHead("Повідомити клієнта", L.length + " " + pluralUk(L.length, "замовлення", "замовлення", "замовлень") + " готові, клієнт ще не знає") + rows + "</div>";
+  }
+  function plDebtHTML() {
+    var D = plDebtRows(), sum = 0; D.forEach(function (r) { sum += r.sum; });
+    var rows = D.map(function (r) {
+      var f = itemsOf(r.num)[0], pay = gv(r.o, "Оплата"), pre = extractAmt(pay), ph = gv(r.o, "Телефон");
+      var note = (r.late ? "прострочено" : (r.ready ? "готово, чекає видачі" : "в роботі")) + (pre > 0 ? " · передплата " + money(pre) : "");
+      var btn = r.ready ? plBtn("pl-b-give", "Видати", "plAct('give','" + jq(r.num) + "')") : "";
+      return "<div class='pl-dr' onclick=\"plOpen('" + jq(r.num) + "')\"><div class='l'><b>" + h(plNm(r.o)) + " <small>" + h(r.num) + "</small></b><div>" + h(f ? (gv(f, "Бренд") + " " + gv(f, "Тип")).trim() : "") + "</div><small>" + h(ph ? fmtPhone(ph) : "") + " · " + note + "</small></div><div class='s red'>" + money(r.sum) + "</div>" + btn + "</div>";
+    }).join("") || "<div class='pl-none'>Боргів немає</div>";
+    return "<div class='pl-md' onclick='event.stopPropagation()'>" + plHead("Борги клієнтів", "Загалом " + money(sum) + " · " + D.length + " " + pluralUk(D.length, "замовлення", "замовлення", "замовлень")) + rows + "</div>";
+  }
+  function plTermsHTML() {
+    var all = plModels().filter(function (m) { return m.d; }), map = {}, keys = [];
+    all.forEach(function (m) { var k = dKey(m.d); if (!map[k]) { map[k] = []; keys.push(k); } map[k].push(m); });
+    keys.sort();
+    var rows = keys.map(function (k) {
+      var d = dFromKey(k), late = d < plToday();
+      return "<div class='pl-dg" + (late ? " late" : "") + "'>" + rcWd(d) + " " + p2(d.getDate()) + "." + p2(d.getMonth() + 1) + (late ? " · прострочено" : "") + "</div>" +
+        map[k].map(function (m) { return "<div class='pl-dr' onclick=\"plOpen('" + jq(m.num) + "')\"><div class='l'><b>" + h(plNm(m.o)) + " <small>" + h(m.num) + "</small></b><div>" + h(orderItemName(m.num)) + "</div></div><div class='s'>" + (m.info.readyAll ? "готово" : doneCount(m.its) + " з " + m.its.length) + "</div></div>"; }).join("");
+    }).join("") || "<div class='pl-none'>Термінів немає</div>";
+    return "<div class='pl-md' onclick='event.stopPropagation()'>" + plHead("Терміни замовлень", all.length + " " + pluralUk(all.length, "замовлення", "замовлення", "замовлень") + " в роботі") + rows + "</div>";
+  }
+
+  /* ───────── Сторінка ───────── */
+  renderers.todayplan = function () {
+    var page = $("page-todayplan"); if (!page) return;
+    if (typeof dataLoaded !== "undefined" && !dataLoaded) { page.innerHTML = groupSwitcher("planning") + "<div class='pl-none'>Завантаження…</div>"; return; }
+    var L = plLists(), t = PL.tile;
+    var tiles = [["w", "В роботі", L.work.length, "t-work"], ["n", "Нові", L.neu.length, "t-new"], ["r", "Видати", L.ready.length, "t-ready"], ["k", "Повідомити", L.notify.length, "t-notify"]].map(function (x) {
+      return "<div class='plan-tile pl-tile " + x[3] + (t === x[0] ? " sel" : "") + "' onclick=\"plTile('" + x[0] + "')\"><div class='plan-tile-val'>" + x[2] + "</div><div class='plan-tile-lbl'>" + x[1] + "</div></div>";
+    }).join("");
+    var unas = "<div class='pl-quiet' onclick='plUnassigned()'>Не призначено: " + L.unasN + " ›</div>";
+    var body;
+    if (t === "w") body = plCard("В роботі", L.work, "work");
+    else if (t === "n") body = plCard("Нові · призначені мені", L.neu, "new", unas);
+    else if (t === "r") body = plCard("Готові до видачі", L.ready, "ready");
+    else if (t === "k") body = plCard("Потрібно повідомити клієнта", L.notify, "notify");
+    else body = plCard("В роботі", L.work, "work") + plCard("Нові · призначені мені", L.neu, "new", unas);
+    page.innerHTML = groupSwitcher("planning") +
+      "<div class='plan-wrap pl-wrap'><div class='plan-main'>" +
+      "<div class='plan-filter-row'><div class='plan-f-toggle'>" +
+        "<span class='plan-f-opt" + (planFilter === "all" ? " active" : "") + "' onclick=\"planSetFilter('all')\">Всі роботи</span>" +
+        "<span class='plan-f-opt" + (planFilter === "mine" ? " active" : "") + "' onclick=\"planSetFilter('mine')\">Мої роботи</span></div>" +
+        "<div class='plan-day-week'><span class='plan-dw-opt" + (planViewMode === "day" ? " active" : "") + "' onclick=\"planSetViewMode('day')\">День</span>" +
+        "<span class='plan-dw-opt" + (planViewMode === "week" ? " active" : "") + "' onclick=\"planSetViewMode('week')\">Тиждень</span></div></div>" +
+      "<div class='plan-tiles pl-tiles'>" + tiles + "</div>" + body + "</div>" +
+      "<div class='plan-side'><div class='pl-date'>" + planDateHeaderHTML() + "</div>" + planCalendarHTML() +
+      "<div class='pl-terms' onclick=\"plOvl('terms')\">Усі терміни ›</div>" + plWeekCard() + plSideLists(L) + "</div></div>";
   };
 
   /* стартова сторінка */
