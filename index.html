@@ -2099,7 +2099,7 @@ html,body,button,input,textarea,select,.page,.rc-body,.iw-ovl,.kp-key{touch-acti
 .nav-home .nh-ring circle{fill:none;stroke:#F0EBE3;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:232.5;stroke-dashoffset:232.5}
 .nav-home.holding{transform:scale(.94)}
 .nav-home.holding .nh-ring{opacity:1}
-.nav-home.holding .nh-ring circle{animation:nhfill 1.7s linear forwards}
+.nav-home.holding .nh-ring circle{animation:nhfill 1.2s linear forwards}
 @keyframes nhfill{to{stroke-dashoffset:0}}
 .nav-home.active{box-shadow:0 0 0 4px var(--nav-bg),0 0 0 5px rgba(240,235,227,.7),0 8px 22px rgba(0,0,0,.45),0 0 22px 3px rgba(240,235,227,.3),inset 0 2px 3px rgba(255,255,255,.9),inset 0 -4px 8px rgba(120,100,70,.25)}
 .nav-logo{display:none}
@@ -2107,7 +2107,7 @@ html,body,button,input,textarea,select,.page,.rc-body,.iw-ovl,.kp-key{touch-acti
   .nav .nav-grp{display:flex;flex:1;min-width:0;align-items:center}
   .nav .nav-home{width:64px;height:64px;margin:-40px 16px 0}
   .nav .nav-home .nh-r{font-size:20px}
-  .nav .nav-home .nh-ring{left:-9px;top:-9px}
+  .nav .nav-home .nh-ring{left:-5px;top:-5px}
   .nav .nav-home:after{inset:5px}
 }
 #page-reception .rc-body.narrow{max-width:420px;padding:0}
@@ -2175,9 +2175,9 @@ input.eo-nm{width:auto}
 .pl-ch em{font-style:normal;font-size:11px;font-weight:600;background:var(--hover);color:var(--txt-2);border-radius:10px;padding:2px 8px;margin-left:8px}
 .pl-none{padding:18px 16px;font-size:13px;color:var(--txt-3);text-align:center}
 .pl-quiet{font-size:12px;color:var(--txt-3);text-align:center;padding:6px 0 12px;cursor:pointer}
-.pl-r{position:relative;display:grid;grid-template-columns:44px minmax(0,1fr) 100px 50px 84px 64px;align-items:center;gap:8px;padding:11px 36px 11px 14px;border-top:1px solid var(--line-soft);cursor:pointer;min-height:56px}
+.pl-r{position:relative;display:grid;grid-template-columns:70px minmax(0,1.1fr) minmax(0,1fr) 66px 100px 76px;align-items:center;gap:10px;padding:11px 36px 11px 16px;border-top:1px solid var(--line-soft);cursor:pointer;min-height:56px}
 .pl-r.head{border-top:none;padding-top:10px;padding-bottom:4px;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--txt-2);font-weight:700;cursor:default;min-height:0}
-.pl-r .nu{font-size:12.5px;font-weight:700;color:var(--cognac);line-height:1.25}
+.pl-r .nu{font-size:12.5px;font-weight:700;color:var(--cognac);line-height:1.25;white-space:nowrap}
 .pl-r .tx{min-width:0}.pl-r .t1{font-size:14.5px;font-weight:600;color:var(--txt);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pl-r .t2{font-size:12px;color:var(--txt-2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pl-r .pg{display:flex;flex-direction:column;gap:5px;min-width:0}.pl-r .pg .bar{display:flex;gap:3px}.pl-r .pg .bar b{flex:1;height:7px;border-radius:3px;background:var(--line)}
@@ -2308,6 +2308,79 @@ input.eo-nm{width:auto}
 .pl-q .a{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--cognac);margin-top:10px}
 .pl-dr .s.grn{color:#4F8A2E}
 
+/* ═══ План: сітка колонок, шапка без перемикача, задачі ═══ */
+.pl-hdr{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;margin-top:22px}
+.pl-hdr .plan-f-toggle{justify-self:start}
+.pl-hdr .pl-date{justify-self:center}
+.pl-ck{width:19px;height:19px;border-radius:50%;border:1.5px solid var(--txt-3);flex:none;display:inline-block;cursor:pointer;position:relative}
+.pl-ck.on{background:var(--cognac);border-color:var(--cognac)}
+.pl-ck.on:after{content:"\2713";position:absolute;left:0;right:0;top:0;text-align:center;font-size:12px;line-height:16px;color:#fff}
+.pl-tk .nm small.red{color:#B3261E}
+.pl-ls.pl-tkc{--a:160,132,92}
+.pl-tr{display:flex;gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--line-soft);font-size:14px}
+.pl-tr .l{flex:1;min-width:0;color:var(--txt)}
+.pl-tr small{display:block;font-size:11.5px;color:var(--txt-3);margin-top:2px}
+.pl-tr small.red{color:#B3261E}
+.pl-tr small a{color:var(--cognac);cursor:pointer}
+.pl-tr.dn .l{text-decoration:line-through;color:var(--txt-3)}
+.pl-x2{color:var(--txt-3);font-size:22px;line-height:1;padding:0 6px;cursor:pointer}
+.pl-tadd{display:grid;grid-template-columns:1fr 128px 120px auto;gap:8px;margin-bottom:10px}
+.pl-tadd input{border:1px solid var(--line);border-radius:10px;padding:10px;font-size:13px;background:var(--surface);color:var(--txt);min-width:0;font-family:inherit}
+.pl-tadd button{border:1px solid rgba(160,132,92,.6);background:rgba(160,132,92,.12);color:var(--cognac);border-radius:10px;padding:0 14px;font-weight:600;font-family:inherit}
+
+/* ═══ Виконавці, сегмент, розподіл у стилі планера ═══ */
+.pl-hdr{display:flex!important;justify-content:center;margin:20px 0 14px}
+.pl-seg{display:flex;background:var(--line-soft);border-radius:11px;padding:3px}
+.pl-seg span{padding:8px 16px;font-size:13.5px;color:var(--cognac);border-radius:9px;cursor:pointer;display:flex;gap:7px;align-items:center;font-weight:500}
+.pl-seg span.on{background:var(--cognac);color:#fff}
+.pl-seg span.on .pl-o{background:#fff}
+.pl-o{width:19px;height:19px;border-radius:50%;font-size:10.5px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;flex:none;font-style:normal;margin-left:6px;vertical-align:middle;box-sizing:border-box}
+.pl-seg .pl-o{margin-left:0}
+.pl-o.s{background:rgba(163,134,92,.2);color:#7a5a2c;border:1px solid rgba(163,134,92,.55)}
+.pl-o.a{background:rgba(79,134,198,.15);color:#2f6db0;border:1px solid rgba(79,134,198,.55)}
+.pl-o.q{background:#fff;color:#a9a294;border:1px dashed #c9c1ae}
+.pl-who .pl-o{margin:0 6px 0 0}
+.pl-r .t1 .pl-o{margin-left:6px}
+/* розгорнуте замовлення: картка на виріб */
+.pl-xp{padding:10px 36px 12px 86px}
+.pl-ic{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.pl-ih{display:flex;justify-content:space-between;padding:9px 14px;background:rgba(163,134,92,.12);font-weight:600;font-size:13.5px;color:var(--txt)}
+.pl-ln{display:grid;grid-template-columns:minmax(0,1fr) 112px 84px 92px 76px;gap:10px;align-items:center;padding:8px 14px;border-top:1px solid var(--line-soft);font-size:13px;min-height:44px}
+.pl-ln.dim{opacity:.4}
+.pl-wn{min-width:0;color:var(--txt)}
+.pl-who{display:flex;align-items:center;font-size:12px;color:var(--txt-2);white-space:nowrap}.pl-who u{text-decoration:none;color:#a9a294}
+.pl-ln em{font-style:normal;font-weight:600;text-align:right;color:var(--txt)}
+.pl-ln i{font-style:normal;font-size:10.5px;border-radius:9px;padding:3px 9px;background:var(--line-soft);color:var(--txt-2);white-space:nowrap;text-align:center}
+.pl-ln i.dn{background:var(--st-ready-bg);color:var(--st-ready-fg)}.pl-ln i.wk{background:var(--st-work-bg);color:var(--st-work-fg)}
+.pl-bs{display:block;min-width:0}.pl-bs .pl-b{width:100%;box-sizing:border-box;text-align:center}
+.pl-tot{display:flex;justify-content:space-between;padding:4px 6px 0;font-size:13px;font-weight:600;color:var(--txt)}
+/* розподіл */
+.pl-ln.pl-la{grid-template-columns:minmax(0,1fr) 92px 230px}
+.pl-pp{display:flex;gap:6px}
+.pl-pill{flex:1;border:1px solid var(--line);background:var(--bg);border-radius:16px;padding:7px 0;font-size:12.5px;color:var(--txt-2);cursor:pointer;font-family:inherit}
+.pl-pill.on{background:var(--cognac);color:#fff;border-color:var(--cognac)}
+.pl-pill:disabled{opacity:.4}
+.pl-ln.un .pl-wn{font-weight:600}
+.pl-at{display:flex;gap:8px;margin:0 0 14px}
+.pl-at span{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 14px;font-size:13px;color:var(--txt-2);cursor:pointer}
+.pl-at span.on{background:var(--accent-soft);color:var(--cognac);border-color:var(--cognac)}
+.pl-at i{font-style:normal;color:var(--txt-3)}
+.pl-asr .lab.warn{color:#8a5a12}.pl-asr .lab.ok{color:#4f8a2e}
+.pl-asr .pl-s{text-align:right;font-weight:600;font-size:14px}
+/* нерозподілені: бігучий блик */
+.pl-quiet.pl-unas,.pl-nbd{position:relative;overflow:hidden}
+.pl-quiet.pl-unas{background:rgba(224,169,43,.16);border:1px solid rgba(224,169,43,.55);color:#8a5a12;font-weight:600;border-radius:10px;padding:10px 0;margin:6px 16px 14px;font-size:13px}
+.pl-quiet.pl-unas::after,.pl-nbd::after{content:"";position:absolute;top:0;bottom:0;left:0;width:40%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.75),rgba(255,255,255,0));transform:translateX(-120%) skewX(-18deg);animation:plShine 3s ease-in-out infinite;pointer-events:none}
+@keyframes plShine{0%{transform:translateX(-120%) skewX(-18deg)}55%,100%{transform:translateX(330%) skewX(-18deg)}}
+.nav-item{position:relative}
+.pl-nbd{position:absolute;top:2px;right:calc(50% - 30px);background:#d49a24;color:#fff;font-style:normal;font-size:10px;font-weight:700;min-width:17px;height:17px;border-radius:9px;line-height:17px;text-align:center;padding:0 4px;box-sizing:border-box}
+.pl-nbd::after{width:60%}
+.pl-wrap>.pl-card{flex:none}.pl-wrap>.page-header{margin-bottom:12px}
+
+/* нижня панель не «їде» разом зі скролом/відскоком сторінки */
+html,body{overscroll-behavior-y:none}
+.nav.has-home-bar{touch-action:none;-webkit-transform:translateZ(0);transform:translateZ(0);will-change:transform}
+
 </style>
 </head>
 <body data-theme="light">
@@ -2331,13 +2404,17 @@ input.eo-nm{width:auto}
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
     Створити
   </button>
+  <button class="nav-item" data-page="pricelist" onclick="showPage('pricelist')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+    Прайс
+  </button>
   <button class="nav-item active" data-page="worklist" onclick="showPage('worklist')">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>
     Замовлення
   </button>
-  <button class="nav-item" data-page="pricelist" onclick="showPage('pricelist')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
-    Прайс
+  <button class="nav-item mobile-hide" data-page="planning" onclick="showPage('planning')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="16" y1="3" x2="16" y2="7"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="3" y1="11" x2="21" y2="11"/></svg>
+    План
   </button>
   <div class="nav-div"></div>
   <button class="nav-item" data-page="clients" onclick="showPage('clients')">
@@ -2348,11 +2425,6 @@ input.eo-nm{width:auto}
   <button class="nav-item admin-only mobile-hide" data-page="analytics" onclick="showPage('analytics')">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="20" x2="6" y2="13"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="18" y1="20" x2="18" y2="9"/></svg>
     Аналітика
-  </button>
-  <div class="nav-div mobile-hide"></div>
-  <button class="nav-item mobile-hide" data-page="planning" onclick="showPage('planning')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="16" y1="3" x2="16" y2="7"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="3" y1="11" x2="21" y2="11"/></svg>
-    Планування
   </button>
   <div class="nav-div mobile-hide"></div>
   <button class="nav-item admin-only mobile-hide" data-page="archive" onclick="showPage('archive')">
@@ -2587,7 +2659,7 @@ function showPage(name) {
 /* Перемикач вкладок усередині об'єднаного розділу */
 function groupSwitcher(group) {
   const tabs = group === "worklist"
-    ? [["orders","Ремонт"],["tailor","Виготовлення"],["assign","Розподіл"]]
+    ? [["orders","Ремонт"],["assign","Розподіл"]]
     : group === "analytics"
     ? [["finance","Фінанси"],["stats","Статистика"]]
     : [["todayplan","План"],["myworks","Мої роботи"],["tasks","Задачі"],["calendar","Календар"]];
@@ -8129,7 +8201,7 @@ loadPrice();
 
   /* ───────── Диск RW на нижній панелі: тап = Головна, утримання 2 с = тема ───────── */
   var BAR_MQ = "(max-width: 768px), (orientation: portrait) and (max-width: 1180px), (orientation: landscape) and (max-height: 520px)";
-  var HOLD_MS = 2000, RING_DELAY = 300;
+  var HOLD_MS = 1500, RING_DELAY = 300;
   (function mountHome() {
     var nav = document.querySelector("nav.nav");
     if (!nav || $("nav-home")) return;
@@ -8165,7 +8237,7 @@ loadPrice();
     var seen = false;
     try { seen = !!localStorage.getItem("rw_home_hint"); } catch (e) {}
     if (!seen) setTimeout(function () {
-      say("Утримуйте RW 2 секунди, щоб змінити тему");
+      say("Утримуйте RW 1,5 секунди, щоб змінити тему");
       try { localStorage.setItem("rw_home_hint", "1"); } catch (e) {}
     }, 3500);
   })();
@@ -8871,8 +8943,22 @@ loadPrice();
   };
 
   /* ═══════════ ПЛАН (нова версія: замовлення, фільтри-плитки, статистика) ═══════════ */
-  var PL = { tile: null, exp: {}, sm: "d", sp: "w", so: 0, st: "", sw: "" };
+  var PL = { who: null, ax: {}, tile: null, exp: {}, sm: "d", sp: "w", so: 0, st: "", sw: "" };
   var PL_ISS = "📦 Виданий";
+  /* виконавці: s = Сергій (адмін), a = Олександр (інші), q = не призначено */
+  function plKey(as) { if (!as) return "q"; return RESTRICTED_MASTER_NAMES.indexOf(as) !== -1 ? "s" : "a"; }
+  function plMe() { return isAdmin() ? "s" : "a"; }
+  function plWhoCur() { return PL.who || plMe(); }
+  function plChip(k, nm) { return "<i class='pl-o " + k + "'" + (nm ? " title='" + h(nm) + "'" : "") + ">" + (k === "s" ? "С" : k === "a" ? "О" : "?") + "</i>"; }
+  function plChips(m) {
+    var seen = {}, out = "";
+    m.svcs.forEach(function (sv) { seen[plKey(gv(sv, "Призначено"))] = 1; });
+    ["s", "a", "q"].forEach(function (k) { if (seen[k]) out += plChip(k); });
+    return out;
+  }
+  function plHasWho(m, w) { return w === "all" || m.svcs.some(function (sv) { return plKey(gv(sv, "Призначено")) === w; }); }
+  function plWhoName(w) { return w === "s" ? "Сергій" : "Олександр"; }
+  window.plWho = function (w) { PL.who = w; PL.exp = {}; renderers.todayplan(); };
   function plToday() { var d = new Date(); d.setHours(0, 0, 0, 0); return d; }
   function plNm(o) { return gv(o, "Ім'я клієнта") || "Без імені"; }
 
@@ -8936,13 +9022,13 @@ loadPrice();
     return list;
   }
   function plLists() {
-    var all = plModels(), mineOnly = (typeof planFilter !== "undefined" && planFilter === "mine");
+    var all = plModels(), W = plWhoCur();
     var L = { work: [], neu: [], ready: [], notify: [], unasN: 0 };
     all.forEach(function (m) {
       if (m.state !== "ready" && m.unas) L.unasN++;
-      var okMine = !mineOnly || m.mine;
+      var okMine = plHasWho(m, W);
       if (m.state === "work" && okMine) L.work.push(m);
-      if (m.state === "new" && m.mine) L.neu.push(m);
+      if (m.state === "new" && okMine) L.neu.push(m);
       if (m.state === "ready" && okMine) L.ready.push(m);
       if (m.notify && okMine) L.notify.push(m);
     });
@@ -8979,15 +9065,19 @@ loadPrice();
   /* ───────── Дії ───────── */
   function plRefresh() { if (currentPage === "todayplan") renderers.todayplan(); }
   function plFind(num) { var o = ORDERS.filter(function (x) { return gv(x, "Номер замовлення") === num; })[0]; return o ? plModel(o) : null; }
+  function plActWho() { var w = plWhoCur(); return w === "all" ? plMe() : w; }
   window.plAct = async function (kind, num) {
     var m = plFind(num); if (!m) return;
     if (kind === "take") {
-      var todo = m.svcs.filter(function (s) { return gv(s, "Статус") === "🆕 Новий" && isMineAssignment(gv(s, "Призначено")); });
+      var AW = plActWho();
+      var todo = m.svcs.filter(function (s) { return gv(s, "Статус") === "🆕 Новий" && plKey(gv(s, "Призначено")) === AW; });
+      if (!todo.length) { say("Немає ваших робіт для старту"); return; }
       for (var i = 0; i < todo.length; i++) await confirmServiceStatus(gv(todo[i], "Номер послуги"), "⚙️ В роботі", gv(todo[i], "Призначено"));
       say(num + " взято в роботу");
     } else if (kind === "done") {
-      var td = m.svcs.filter(function (s) { return gv(s, "Статус") !== "✅ Готово"; });
-      if (!td.length) { say("Немає послуг для закриття"); return; }
+      var AW2 = plActWho();
+      var td = m.svcs.filter(function (s) { return gv(s, "Статус") !== "✅ Готово" && plKey(gv(s, "Призначено")) === AW2; });
+      if (!td.length) { say("Немає ваших послуг для закриття"); return; }
       for (var j = 0; j < td.length; j++) await confirmServiceStatus(gv(td[j], "Номер послуги"), "✅ Готово", gv(td[j], "Майстер") || gv(td[j], "Призначено"));
       say(num + ": усі роботи готові");
     } else if (kind === "give") {
@@ -9019,20 +9109,26 @@ loadPrice();
   function plBar(n, k) { var s = ""; for (var b = 0; b < n; b++) s += "<b" + (b < k ? " class='f'" : "") + "></b>"; return "<div class='bar'>" + s + "</div>"; }
   var PL_HEAD = "<div class='pl-r head'><div>№</div><div>Клієнт</div><div>Готовність</div><div style='text-align:center'>Термін</div><div style='text-align:right'>Сума</div><div></div></div>";
   function plSvcLines(m) {
-    var out = "";
+    var out = "", W = plWhoCur(), AW = plActWho();
     m.pend.forEach(function (it) {
-      var svs = servicesOfItem(gv(it, "Номер виробу"));
+      var svs = servicesOfItem(gv(it, "Номер виробу")), sum = 0;
       var nm = [gv(it, "Бренд"), gv(it, "Тип")].filter(Boolean).join(" · ") || "Виріб";
-      out += "<div class='pl-xi'><b>" + h(nm) + "</b>";
-      if (!svs.length) out += "<div class='pl-xs'><span>Послуги не розбито</span></div>";
+      svs.forEach(function (s) { sum += extractAmt(gv(s, "Ціна")); });
+      out += "<div class='pl-ic'><div class='pl-ih'><span>" + h(nm) + "</span><span>" + money(sum) + "</span></div>";
+      if (!svs.length) out += "<div class='pl-ln'><span class='pl-wn'>Послуги не розбито</span></div>";
       svs.forEach(function (s) {
-        var st = gv(s, "Статус") || "🆕 Новий", sn = gv(s, "Номер послуги");
+        var st = gv(s, "Статус") || "🆕 Новий", sn = gv(s, "Номер послуги"), as = gv(s, "Призначено"), k = plKey(as);
+        var dim = W !== "all" && k !== W;
         var tag = st === "✅ Готово" ? "<i class='dn'>Готово</i>" : st === "⚙️ В роботі" ? "<i class='wk'>В роботі</i>" : "<i>Не розпочато</i>";
-        var btn = st === "✅ Готово" ? "" : (st === "⚙️ В роботі" ? plBtn("pl-b-done pl-sm", "Закрити", "plSvc('" + jq(sn) + "','done')") : plBtn("pl-b-new pl-sm", "Почати", "plSvc('" + jq(sn) + "','go')"));
-        out += "<div class='pl-xs'><span>" + h(gv(s, "Назва")) + "</span><em>" + money(extractAmt(gv(s, "Ціна"))) + "</em>" + tag + btn + "</div>";
+        var btn = "";
+        if (st !== "✅ Готово" && k === AW && !dim) btn = st === "⚙️ В роботі" ? plBtn("pl-b-done pl-sm", "Закрити", "plSvc('" + jq(sn) + "','done')") : plBtn("pl-b-new pl-sm", "Взяти", "plSvc('" + jq(sn) + "','go')");
+        out += "<div class='pl-ln" + (dim ? " dim" : "") + "'><span class='pl-wn'>" + h(gv(s, "Назва")) + "</span>" +
+          "<span class='pl-who'>" + plChip(k, as) + (as ? h(as) : "<u>не призначено</u>") + "</span>" +
+          "<em>" + money(extractAmt(gv(s, "Ціна"))) + "</em>" + tag + "<span class='pl-bs'>" + btn + "</span></div>";
       });
       out += "</div>";
     });
+    out += "<div class='pl-tot'><span>Разом по замовленню</span><span>" + money(m.info.total) + "</span></div>";
     return "<div class='pl-xp'>" + out + "</div>";
   }
   function plRow(m, kind) {
@@ -9058,8 +9154,8 @@ loadPrice();
     else btn = plBtn("pl-b-done", "Закрити", "plAct('done','" + jq(nu) + "')");
     var open = !!PL.exp[nu];
     return "<div class='pl-r" + (late ? " late" : "") + (kind === "ready" && m.debt ? " debt" : "") + (open ? " open" : "") + "' onclick=\"openOrder('" + jq(nu) + "')\">" +
-      "<div class='nu'>" + h(nu).replace("-", "-<br>") + "</div>" +
-      "<div class='tx'><div class='t1'>" + h(t1) + "</div><div class='t2'>" + h(t2) + "</div></div>" +
+      "<div class='nu'>" + h(nu) + "</div>" +
+      "<div class='tx'><div class='t1'>" + h(t1) + plChips(m) + "</div><div class='t2'>" + h(t2) + "</div></div>" +
       "<div class='pg " + cls + "'>" + plBar(n, k) + "<div class='lab'>" + lab + "</div></div>" +
       "<div class='tm" + (late ? " late" : "") + "'>" + tm + "</div>" + sum + btn +
       "<div class='pl-chv' onclick=\"event.stopPropagation();plExp('" + jq(nu) + "')\">" + (open ? "⌃" : "⌄") + "</div></div>" +
@@ -9123,6 +9219,71 @@ loadPrice();
     }).join("") + (nt.length > 3 ? "<div class='pl-more'>+ ще " + (nt.length - 3) + " ›</div>" : "") || "<div class='pl-lr dim'>Нікого сповіщати</div>";
     return "<div class='pl-ls pl-nt" + (nt.length ? " pulse" : "") + "' onclick=\"plOvl('notify')\"><h5>Повідомити<em>" + nt.length + " ›</em></h5>" + rows + "</div>";
   }
+  /* ───────── Задачі ───────── */
+  function plTasksActive() {
+    var a = TASKS.filter(function (t) { return t["Статус"] !== "так"; });
+    a.sort(function (x, y) {
+      var dx = parseDeadline(x["Дедлайн"]), dy = parseDeadline(y["Дедлайн"]);
+      return (dx ? dx.getTime() : Infinity) - (dy ? dy.getTime() : Infinity);
+    });
+    return a;
+  }
+  function plTaskLate(t) {
+    if (t["Статус"] === "так") return false;
+    var d = parseDeadline(t["Дедлайн"]); return !!(d && d.getTime() < plToday().getTime());
+  }
+  function plTaskArgs(t) { return "'" + jq(t["Текст"] || "") + "','" + jq(t["Створено"] || "") + "'"; }
+  function plCardTasks() {
+    var a = plTasksActive(), late = a.filter(plTaskLate).length;
+    var rows = a.slice(0, 3).map(function (t) {
+      var lt = plTaskLate(t);
+      return "<div class='pl-lr pl-tk'><span class='pl-ck' onclick=\"event.stopPropagation();plTaskDone(" + plTaskArgs(t) + ",true)\"></span><span class='nm'>" + h(t["Текст"] || "") +
+        "<small" + (lt ? " class='red'" : "") + ">" + h((lt ? "прострочено · " : "") + (t["Дедлайн"] || "без терміну") + (t["Замовлення"] ? " · " + t["Замовлення"] : "")) + "</small></span></div>";
+    }).join("") + (a.length > 3 ? "<div class='pl-more'>+ ще " + (a.length - 3) + " ›</div>" : "") || "<div class='pl-lr dim'>Задач немає</div>";
+    return "<div class='pl-ls pl-tkc' onclick=\"plOvl('tasks')\"><h5>Задачі<em>" + a.length + " ›</em></h5>" + rows + "</div>";
+  }
+  window.plTaskDone = async function (text, created, done) {
+    var t = TASKS.filter(function (x) { return x["Текст"] === text && x["Створено"] === created; })[0];
+    if (t) t["Статус"] = done ? "так" : "ні";
+    plRefresh(); if (document.getElementById("pl-ovl")) plOvlRerender();
+    try {
+      await fetch(API_URL.replace("/order", "/task/toggle"), { method: "POST", mode: "cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text: text, created: created, done: done }) });
+    } catch (e) { console.error("task toggle failed", e); }
+  };
+  window.plTaskDel = async function (text, created) {
+    TASKS = TASKS.filter(function (x) { return !(x["Текст"] === text && x["Створено"] === created); });
+    plRefresh(); if (document.getElementById("pl-ovl")) plOvlRerender();
+    try {
+      await fetch(API_URL.replace("/order", "/task/delete"), { method: "POST", mode: "cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text: text, created: created }) });
+    } catch (e) { console.error("task delete failed", e); }
+  };
+  window.plTaskAdd = async function () {
+    var inp = document.getElementById("pl-tk-text"), dl = document.getElementById("pl-tk-date"), od = document.getElementById("pl-tk-ord");
+    var text = (inp.value || "").trim(), order = (od.value || "").trim();
+    if (!text) { if (order) text = "Нагадування по замовленню " + order; else { say("Введіть, що потрібно зробити"); return; } }
+    var deadline = dl.value ? formatDeadlineDate(dl.value) : "";
+    var created = new Date().toLocaleDateString("uk-UA", { day: "2-digit", month: "2-digit", year: "numeric" }) + " " + new Date().toLocaleTimeString("uk-UA", { hour: "2-digit", minute: "2-digit" });
+    TASKS.push({ "Текст": text, "Замовлення": order, "Статус": "ні", "Створено": created, "Виконано": "", "Дедлайн": deadline });
+    plRefresh(); plOvlRerender();
+    try {
+      await fetch(API_URL.replace("/order", "/task"), { method: "POST", mode: "cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text: text, order: order, deadline: deadline }) });
+    } catch (e) { console.error("task add failed", e); }
+  };
+  function plTasksHTML() {
+    var a = plTasksActive(), dn = TASKS.filter(function (t) { return t["Статус"] === "так"; });
+    function row(t, isDone) {
+      var lt = plTaskLate(t), num = t["Замовлення"];
+      return "<div class='pl-tr" + (isDone ? " dn" : "") + "'><span class='pl-ck" + (isDone ? " on" : "") + "' onclick=\"plTaskDone(" + plTaskArgs(t) + "," + (!isDone) + ")\"></span>" +
+        "<div class='l'>" + h(t["Текст"] || "") + "<small" + (lt ? " class='red'" : "") + ">" + h((lt ? "прострочено · " : "") + (t["Дедлайн"] || "без терміну")) +
+        (num ? " · <a onclick=\"plOpen('" + jq(num) + "')\">" + h(num) + "</a>" : "") + "</small></div>" +
+        "<span class='pl-x2' onclick=\"plTaskDel(" + plTaskArgs(t) + ")\">×</span></div>";
+    }
+    var dl = ORDERS.filter(function (o) { return !isOrderDeleted(o); }).map(function (o) { return "<option value='" + h(gv(o, "Номер замовлення")) + "'>" + h(gv(o, "Ім'я клієнта")) + "</option>"; }).join("");
+    return "<div class='pl-md' onclick='event.stopPropagation()'>" + plHead("Задачі", a.length + " " + pluralUk(a.length, "активна", "активні", "активних")) +
+      "<div class='pl-tadd'><input id='pl-tk-text' placeholder='Що потрібно зробити' onkeydown='if(event.key===\"Enter\")plTaskAdd()'><input id='pl-tk-date' type='date'><input id='pl-tk-ord' list='pl-tk-dl' placeholder='Замовлення'><datalist id='pl-tk-dl'>" + dl + "</datalist><button onclick='plTaskAdd()'>Додати</button></div>" +
+      (a.map(function (t) { return row(t, false); }).join("") || "<div class='pl-none'>Немає активних задач</div>") +
+      (dn.length ? "<div class='pl-dg'>Виконані</div>" + dn.map(function (t) { return row(t, true); }).join("") : "") + "</div>";
+  }
   function plCardCal() {
     return "<div class='pl-rc pl-cal'>" + planCalendarHTML() + "<div class='pl-terms' onclick=\"plOvl('terms')\">Усі терміни ›</div></div>";
   }
@@ -9135,9 +9296,9 @@ loadPrice();
     return "<div class='pl-rc pl-q'><h5>Фраза дня</h5><div class='t'>" + (t || "…") + "</div><div class='a'>Rewise Studio</div></div>";
   }
   var PLR = { iv: null, pause: 0 };
-  var PL_NCARDS = 6;
+  var PL_NCARDS = 7;
   function plRail(L) {
-    var cards = [plCardGive(), plCardDebt(), plCardNotify(L), plWeekCard(), plCardCal(), plCardQuote()], out = "";
+    var cards = [plCardGive(), plCardDebt(), plCardNotify(L), plCardTasks(), plWeekCard(), plCardCal(), plCardQuote()], out = "";
     for (var r = 0; r < 3; r++) out += cards.join("");
     return "<div class='pl-rail' id='pl-rail' data-n='" + PL_NCARDS + "'>" + out + "</div>" +
       "<div class='pl-dots' id='pl-dots'>" + cards.map(function () { return "<i></i>"; }).join("") + "</div>";
@@ -9172,7 +9333,7 @@ loadPrice();
       if (!el || currentPage !== "todayplan") { clearInterval(PLR.iv); PLR.iv = null; return; }
       if (Date.now() < PLR.pause || document.getElementById("pl-ovl")) return;
       el.scrollTo({ left: el.scrollLeft + step, behavior: "smooth" });
-    }, 2000);
+    }, 3000);
   }
 
   /* ───────── Статистика ───────── */
@@ -9242,7 +9403,7 @@ loadPrice();
   function plWeekCard() {
     var r = plRange("w", 0), a = plAgg(plUnits(PL.sm), r, null), mx = Math.max.apply(null, a.bins.concat([1])), nb = plNow(r), days = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"], bars = "";
     for (var i = 0; i < 7; i++) bars += "<div class='" + (i === nb ? "td" : (i > nb ? "fu" : "")) + "'><b style='height:" + Math.max(3, Math.round(a.bins[i] / mx * 30)) + "px'></b>" + days[i] + "</div>";
-    return "<div class='pl-wk' onclick='plOvl(\"stat\")'><span class='pl-ar'>›</span><h5>Тиждень</h5>" +
+    return "<div class='pl-wk' onclick='plOvl(\"stat\")'><span class='pl-asr'>›</span><h5>Тиждень</h5>" +
       "<div class='pl-sw' onclick='event.stopPropagation()'><span class='" + (PL.sm === "p" ? "on" : "") + "' onclick='plSm(\"p\")'>Прийнято</span><span class='" + (PL.sm === "d" ? "on" : "") + "' onclick='plSm(\"d\")'>Зроблено</span></div>" +
       "<div class='pl-big'>" + money(a.total) + "</div><div class='pl-sub'>" + a.orders + " " + pluralUk(a.orders, "замовлення", "замовлення", "замовлень") + " · чек " + money(a.avg) + "</div>" +
       "<div class='pl-bars'>" + bars + "</div></div>";
@@ -9289,6 +9450,7 @@ loadPrice();
     if (PL_OVL === "notify") return plNotifyHTML();
     if (PL_OVL === "debt") return plDebtHTML();
     if (PL_OVL === "give") return plGiveHTML();
+    if (PL_OVL === "tasks") return plTasksHTML();
     return plTermsHTML();
   }
   function plStRerender() { plOvlRerender(); renderers.todayplan(); }
@@ -9349,26 +9511,24 @@ loadPrice();
   /* ───────── Сторінка ───────── */
   renderers.todayplan = function () {
     var page = $("page-todayplan"); if (!page) return;
-    if (typeof dataLoaded !== "undefined" && !dataLoaded) { page.innerHTML = groupSwitcher("planning") + "<div class='pl-none'>Завантаження…</div>"; return; }
+    if (typeof dataLoaded !== "undefined" && !dataLoaded) { page.innerHTML = "<div class='pl-none'>Завантаження…</div>"; return; }
+    planViewMode = "day";
     var L = plLists(), t = PL.tile;
     var tiles = [["w", "В роботі", L.work.length, "t-work"], ["n", "Нові", L.neu.length, "t-new"], ["r", "Видати", L.ready.length, "t-ready"], ["k", "Повідомити", L.notify.length, "t-notify"]].map(function (x) {
       return "<div class='plan-tile pl-tile " + x[3] + (t === x[0] ? " sel" : "") + "' onclick=\"plTile('" + x[0] + "')\"><div class='plan-tile-val'>" + x[2] + "</div><div class='plan-tile-lbl'>" + x[1] + "</div></div>";
     }).join("");
-    var unas = "<div class='pl-quiet' onclick='plUnassigned()'>Не призначено: " + L.unasN + " ›</div>";
+    var unas = "<div class='pl-quiet" + (L.unasN ? " pl-unas" : "") + "' onclick='plUnassigned()'>Не призначено: " + L.unasN + " ›</div>";
     var body, dbt = L.ready.filter(function (m) { return m.debt; }), okr = L.ready.filter(function (m) { return !m.debt; });
     if (t === "w") body = plCard("В роботі", L.work, "work");
-    else if (t === "n") body = plCard("Нові · призначені мені", L.neu, "new", unas);
+    else if (t === "n") body = plCard((plWhoCur() === "all" ? "Нові" : "Нові · " + plWhoName(plWhoCur())), L.neu, "new", unas);
     else if (t === "r") body = (dbt.length ? plCard("Борги · не забрали понад " + PL_DEBT_DAYS + " днів", dbt, "ready").replace("class='pl-card'", "class='pl-card red'") : "") + plCard("Готові до видачі", okr, "ready");
     else if (t === "k") body = plCard("Потрібно повідомити клієнта", L.notify, "notify");
-    else body = plCard("В роботі", L.work, "work") + plCard("Нові · призначені мені", L.neu, "new", unas);
-    page.innerHTML = groupSwitcher("planning") +
+    else body = plCard("В роботі", L.work, "work") + plCard((plWhoCur() === "all" ? "Нові" : "Нові · " + plWhoName(plWhoCur())), L.neu, "new", unas);
+    page.innerHTML =
       "<div class='plan-wrap pl-wrap' id='pl-wrap'>" +
-      "<div class='pl-hdr'><div class='plan-f-toggle'>" +
-        "<span class='plan-f-opt" + (planFilter === "all" ? " active" : "") + "' onclick=\"planSetFilter('all')\">Всі роботи</span>" +
-        "<span class='plan-f-opt" + (planFilter === "mine" ? " active" : "") + "' onclick=\"planSetFilter('mine')\">Мої роботи</span></div>" +
-        "<div class='pl-date'>" + planDateHeaderHTML() + "</div>" +
-        "<div class='plan-day-week'><span class='plan-dw-opt" + (planViewMode === "day" ? " active" : "") + "' onclick=\"planSetViewMode('day')\">День</span>" +
-        "<span class='plan-dw-opt" + (planViewMode === "week" ? " active" : "") + "' onclick=\"planSetViewMode('week')\">Тиждень</span></div></div>" +
+      "<div class='pl-hdr'><div class='pl-seg'>" +
+        [["all", "Усі"], ["s", "Сергій"], ["a", "Олександр"]].map(function (x) { return "<span class='" + (plWhoCur() === x[0] ? "on" : "") + "' onclick=\"plWho('" + x[0] + "')\">" + (x[0] === "all" ? "" : plChip(x[0])) + x[1] + "</span>"; }).join("") +
+      "</div></div>" +
       "<div class='plan-tiles pl-tiles'>" + tiles + "</div><div class='pl-lists'>" + body + "</div>" +
       "<div class='pl-railw'>" + plRail(L) + "</div></div>";
     var w = $("pl-wrap");
@@ -9376,6 +9536,85 @@ loadPrice();
     plRailInit();
   };
 
+
+  /* ───────── Бейдж «Замовлення» ───────── */
+  function plUnasCount() {
+    var n = 0;
+    ORDERS.forEach(function (o) {
+      if (typeof isOrderDeleted === "function" && isOrderDeleted(o)) return;
+      var m = plModel(o); if (m && m.unas) n++;
+    });
+    return n;
+  }
+  function plBadge() {
+    var b = document.querySelector('.nav-item[data-page="worklist"]'); if (!b) return;
+    var n = (typeof dataLoaded !== "undefined" && dataLoaded) ? plUnasCount() : 0;
+    var e = b.querySelector(".pl-nbd");
+    if (!n) { if (e) e.remove(); return; }
+    if (!e) { e = document.createElement("em"); e.className = "pl-nbd"; b.appendChild(e); }
+    if (e.textContent !== String(n)) e.textContent = n;
+  }
+  setInterval(plBadge, 1500);
+
+  /* ───────── Розподіл у стилі планера ───────── */
+  window.plAsgExp = function (num) { PL.ax[num] = !PL.ax[num]; renderers.assign(); };
+  window.plAsgTab = function (t) { assignTab = t; renderers.assign(); };
+  function plAsgRow(m) {
+    var i = m.info, n = m.svcs.length, k = m.svcs.filter(function (s) { return gv(s, "Призначено"); }).length, un = n - k;
+    var f = m.pend[0] || m.its[0], nu = String(m.num), open = !!PL.ax[nu];
+    var t2 = f ? ([gv(f, "Бренд"), gv(f, "Тип")].filter(Boolean).join(" · ") || "Виріб") : "—";
+    if (m.its.length > 1) t2 += " · +" + (m.its.length - 1) + " " + pluralUk(m.its.length - 1, "річ", "речі", "речей");
+    var tm, late = false;
+    if (m.d) { var dl = Math.round((plToday() - m.d) / 864e5); late = dl > 0; tm = p2(m.d.getDate()) + "." + p2(m.d.getMonth() + 1) + "<small>" + rcWd(m.d) + (late ? " · +" + dl + "д" : "") + "</small>"; }
+    else tm = String(i.term).indexOf("Терміново") !== -1 ? "⚡<small>терміново</small>" : "—";
+    var bar = ""; m.svcs.forEach(function (s) { bar += "<b" + (gv(s, "Призначено") ? " class='f'" : "") + "></b>"; });
+    var lab = !n ? "—" : un ? un + " з " + n + " без виконавця" : "усе розподілено";
+    return "<div class='pl-r pl-asr" + (open ? " open" : "") + "' onclick=\"plAsgExp('" + jq(nu) + "')\">" +
+      "<div class='nu'>" + h(nu) + "</div>" +
+      "<div class='tx'><div class='t1'>" + h(plNm(m.o)) + plChips(m) + "</div><div class='t2'>" + h(t2) + "</div></div>" +
+      "<div class='pg wk'><div class='bar'>" + bar + "</div><div class='lab" + (un ? " warn" : " ok") + "'>" + lab + "</div></div>" +
+      "<div class='tm" + (late ? " late" : "") + "'>" + tm + "</div>" +
+      "<div class='pl-s'>" + money(i.total) + "</div><div></div>" +
+      "<div class='pl-chv'>" + (open ? "⌃" : "⌄") + "</div></div>" +
+      (open ? plAsgLines(m) : "");
+  }
+  function plAsgLines(m) {
+    var names = masterNamesForRole(), out = "";
+    m.pend.forEach(function (it) {
+      var svs = servicesOfItem(gv(it, "Номер виробу")), sum = 0;
+      var nm = [gv(it, "Бренд"), gv(it, "Тип")].filter(Boolean).join(" · ") || "Виріб";
+      svs.forEach(function (s) { sum += extractAmt(gv(s, "Ціна")); });
+      out += "<div class='pl-ic'><div class='pl-ih'><span>" + h(nm) + "</span><span>" + money(sum) + "</span></div>";
+      if (!svs.length) out += "<div class='pl-ln'><span class='pl-wn'>Послуги не розбито</span></div>";
+      svs.forEach(function (s) {
+        var sn = gv(s, "Номер послуги"), as = gv(s, "Призначено"), locked = as && !isAdmin();
+        var pills = names.map(function (n) {
+          var on = n === as, dis = locked && !on;
+          return "<button class='pl-pill" + (on ? " on" : "") + "'" + (dis ? " disabled" : " onclick=\"event.stopPropagation();assignService('" + jq(sn) + "','" + jq(n) + "')\"") + ">" + h(n) + "</button>";
+        }).join("");
+        out += "<div class='pl-ln pl-la" + (as ? "" : " un") + "'><span class='pl-wn'>" + h(gv(s, "Назва")) + "</span><em>" + money(extractAmt(gv(s, "Ціна"))) + "</em><span class='pl-pp'>" + pills + "</span></div>";
+      });
+      out += "</div>";
+    });
+    return "<div class='pl-xp'>" + out + "</div>";
+  }
+  renderers.assign = function () {
+    var page = $("page-assign"); if (!page) return;
+    if (typeof dataLoaded !== "undefined" && !dataLoaded) { page.innerHTML = "<div class='pl-none'>Завантаження…</div>"; return; }
+    var all = plModels(), un = all.filter(function (m) { return m.unas; }), mine = all.filter(function (m) { return m.mine; });
+    var list = assignTab === "unassigned" ? un : assignTab === "mine" ? mine : all;
+    var tabs = [["unassigned", "Не призначено", un.length], ["mine", "Моє", mine.length], ["all", "Усі", all.length]].map(function (x) {
+      return "<span class='" + (assignTab === x[0] ? "on" : "") + "' onclick=\"plAsgTab('" + x[0] + "')\">" + x[1] + " <i>(" + x[2] + ")</i></span>";
+    }).join("");
+    page.innerHTML = groupSwitcher("worklist") +
+      "<div class='plan-wrap pl-wrap'><div class='page-header'><div class='page-title'>Розподіл робіт</div></div>" +
+      "<div class='pl-at'>" + tabs + "</div>" +
+      "<div class='pl-card'>" + PL_HEAD.replace("Готовність", "Розподіл") +
+      (list.length ? list.map(plAsgRow).join("") : "<div class='pl-none'>" + (assignTab === "unassigned" ? "Усе розподілено" : "Тут порожньо") + "</div>") + "</div></div>";
+    plBadge();
+  };
+
+  groupTab.planning = "todayplan";
   /* стартова сторінка */
   showPage(START_PAGE);
 })();
