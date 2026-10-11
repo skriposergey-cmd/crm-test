@@ -2426,6 +2426,10 @@ html,body{overscroll-behavior-y:none}
 .wz-oc{background:#fff;border:1px solid #cdbf9f;color:#6b655b}.wz-oa{border:0;color:#fff;background:linear-gradient(180deg,#b3966b,#97784f)}
 @media (max-width:760px){.wz-tl{grid-template-columns:repeat(2,1fr)}}
 
+.grp-tab{position:relative}
+.pl-tbd{position:relative;overflow:hidden;display:inline-block;vertical-align:middle;margin-left:7px;background:#d49a24;color:#fff;font-style:normal;font-size:11px;font-weight:700;min-width:18px;height:18px;border-radius:9px;line-height:18px;text-align:center;padding:0 5px;box-sizing:border-box}
+.pl-tbd::after{content:"";position:absolute;top:0;bottom:0;left:0;width:60%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.75),rgba(255,255,255,0));transform:translateX(-120%) skewX(-18deg);animation:plShine 3s ease-in-out infinite;pointer-events:none}
+
 </style>
 </head>
 <body data-theme="light">
@@ -9644,9 +9648,21 @@ loadPrice();
     });
     return n;
   }
+  function plTabBadge(n) {
+    var tabs = document.querySelectorAll(".grp-tab");
+    for (var i = 0; i < tabs.length; i++) {
+      var t = tabs[i];
+      if ((t.getAttribute("onclick") || "").indexOf("showPage('assign')") === -1) continue;
+      var e = t.querySelector(".pl-tbd");
+      if (!n) { if (e) e.remove(); continue; }
+      if (!e) { e = document.createElement("em"); e.className = "pl-tbd"; t.appendChild(e); }
+      if (e.textContent !== String(n)) e.textContent = n;
+    }
+  }
   function plBadge() {
-    var b = document.querySelector('.nav-item[data-page="worklist"]'); if (!b) return;
     var n = (typeof dataLoaded !== "undefined" && dataLoaded) ? plUnasCount() : 0;
+    plTabBadge(n);
+    var b = document.querySelector('.nav-item[data-page="worklist"]'); if (!b) return;
     var e = b.querySelector(".pl-nbd");
     if (!n) { if (e) e.remove(); return; }
     if (!e) { e = document.createElement("em"); e.className = "pl-nbd"; b.appendChild(e); }
