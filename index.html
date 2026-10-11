@@ -2381,6 +2381,51 @@ input.eo-nm{width:auto}
 html,body{overscroll-behavior-y:none}
 .nav.has-home-bar{touch-action:none;-webkit-transform:translateZ(0);transform:translateZ(0);will-change:transform}
 
+/* блик на кнопці «Оформити замовлення» */
+#rc-go{position:relative;overflow:hidden}
+#rc-go:not([disabled])::after{content:"";position:absolute;top:0;bottom:0;left:0;width:34%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.55),rgba(255,255,255,0));transform:translateX(-130%) skewX(-18deg);animation:plShine 3s ease-in-out infinite;pointer-events:none}
+.rcc-cta{position:relative;overflow:hidden}
+.rcc-cta::after{content:"";position:absolute;top:0;bottom:0;left:0;width:34%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.55),rgba(255,255,255,0));transform:translateX(-130%) skewX(-18deg);animation:plShine 3s ease-in-out infinite;pointer-events:none}
+
+/* ═══ Крок 2 «Що робимо?» (нова версія) ═══ */
+.wz-h.c,.wz-sub.c{text-align:center}
+.wz-segs.c{max-width:460px;margin:0 auto 16px}
+.wz-sel{border:1px solid rgba(163,134,92,.45);border-radius:12px;background:rgba(163,134,92,.04);margin:16px 0 4px;overflow:hidden}
+.wz-selh{padding:9px 14px;background:rgba(163,134,92,.92);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#fff;font-weight:700;text-align:center;text-shadow:0 1px 1px rgba(90,65,30,.35)}
+.wz-sel .wz-sr{padding:10px 14px;background:none;border-bottom:none;border-top:1px solid rgba(163,134,92,.2)}
+.wz-stk{position:sticky;top:0;background:var(--surface);z-index:5;padding:2px 0 0}
+.wz-srch{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid #4a3b2c;border-radius:14px;padding:12px 16px;margin:16px 0;box-shadow:0 3px 10px rgba(74,59,44,.22);color:#8a8376}
+.wz-srch input{border:0;outline:0;flex:1;font:inherit;font-size:15.5px;background:none;color:var(--txt);min-width:0}
+.wz-dph{display:flex;gap:15px 8px;flex-wrap:wrap;justify-content:center;max-width:560px;margin:0 auto 16px}
+.wz-dph span{border:1px solid #cdbf9f;background:#fff;border-radius:16px;padding:9px 12px;font-size:13px;color:#6b655b;cursor:pointer;box-shadow:0 1px 2px rgba(74,59,44,.1)}
+.wz-dph span i{font-style:normal;color:#a9a294;margin-left:5px;font-size:11.5px}
+.wz-dph span.on{background:rgba(106,160,68,.11);color:#3f7a24;border-color:rgba(106,160,68,.7);font-weight:600}.wz-dph span.on i{color:#3f7a24}
+.wz-dph span b{background:#d49a24;color:#fff;border-radius:9px;font-size:10.5px;padding:1px 6px;margin-left:6px;font-weight:600}
+.wz-found{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--cognac);margin:6px 0 8px;text-align:center}
+.wz-pan{background:rgba(239,231,214,.57);border:1px solid #dccfb3;border-radius:14px;padding:9px;margin-top:6px}
+.wz-tl{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.wz-t{position:relative;min-height:82px;border:1.5px solid #cdbf9f;background:#fff;border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:6px;font-size:14px;line-height:1.25;color:var(--txt);cursor:pointer;box-shadow:0 1px 3px rgba(74,59,44,.14);min-width:0;overflow-wrap:anywhere}
+.wz-t>span{padding:0 10px}
+.wz-t em{font-style:normal;font-size:12px;color:#8a8376}
+.wz-t.on{background:rgba(106,160,68,.11);border-color:rgba(106,160,68,.7);color:#3f7a24;font-weight:600;box-shadow:none}.wz-t.on em{color:#3f7a24;opacity:.85}
+.wz-t .wz-st{position:absolute;top:0;right:0;width:40px;height:40px;display:flex;align-items:flex-start;justify-content:flex-end;padding:7px 9px;font-size:15px;line-height:1;color:#d8cdb4;font-weight:400}
+.wz-t .wz-st.f{color:#d49a24}
+.wz-t.own{border:1.5px dashed var(--cognac);background:transparent;color:var(--cognac);font-weight:500;box-shadow:none}
+.wz-go{position:relative;overflow:hidden;border:0;border-radius:9px;font-family:inherit;cursor:pointer;color:#fff;padding:9px 18px;font-size:13px;margin-left:auto;margin-right:10px;background:linear-gradient(180deg,#b3966b,#97784f)}
+.wz-go::after{content:"";position:absolute;top:0;bottom:0;left:0;width:36%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.6),rgba(255,255,255,0));transform:translateX(-130%) skewX(-18deg);animation:plShine 3s ease-in-out infinite;pointer-events:none}
+.wz-go.bump{animation:wzBump .5s ease-out}
+@keyframes wzBump{0%{box-shadow:0 0 0 0 rgba(179,150,107,.7)}100%{box-shadow:0 0 0 14px rgba(179,150,107,0)}}
+.iwin.wz2 .iw-foot .iw-done{display:none}
+.wz-ow{position:absolute;inset:0;background:rgba(43,39,34,.45);display:flex;align-items:center;justify-content:center;z-index:30;padding:16px}
+.wz-ob{width:100%;max-width:430px;background:var(--surface);border-radius:16px;padding:20px 22px;box-shadow:0 14px 44px rgba(0,0,0,.35)}
+.wz-oh{font-family:'Tenor Sans',serif;font-size:20px;margin-bottom:4px}
+.wz-os{font-size:12.5px;color:var(--txt-3);margin-bottom:14px;line-height:1.35}
+.wz-ob label{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--cognac);margin:12px 0 6px}
+.wz-ob .cr-input{margin:0}
+.wz-obt{display:flex;gap:10px;margin-top:14px}.wz-obt button{flex:1;padding:13px;border-radius:10px;font-size:14px;cursor:pointer;font-family:inherit}
+.wz-oc{background:#fff;border:1px solid #cdbf9f;color:#6b655b}.wz-oa{border:0;color:#fff;background:linear-gradient(180deg,#b3966b,#97784f)}
+@media (max-width:760px){.wz-tl{grid-template-columns:repeat(2,1fr)}}
+
 </style>
 </head>
 <body data-theme="light">
@@ -8345,7 +8390,7 @@ loadPrice();
     var it = wzItem(id), l = WZ_LIST[li]; if (!it || !l) return;
     var i = wzFindSvc(it, l.name);
     if (i >= 0) { it.services[i].qty = (it.services[i].qty || 1) + 1; wzSync(it.services[i]); }
-    else it.services.push({ kind: "other", name: l.name, baseName: l.name, base: parseInt(l.price) || 0, unit: parseInt(l.price) || 0, qty: 1, price: parseInt(l.price) || 0 });
+    else it.services.push({ kind: "other", name: l.name, baseName: l.name, base: parseInt(l.price) || 0, unit: parseInt(l.price) || 0, qty: 1, price: parseInt(l.price) || 0, u: wzUnitLbl(l.unit) });
     renderItems(); updateReceipt();
   };
   window.wzDec = function (id, li) {
@@ -8453,22 +8498,95 @@ loadPrice();
   }
 
   /* крок 2 */
-  function wzTile(it, li, withMinus) {
-    var l = WZ_LIST[li]; var i = wzFindSvc(it, l.name); var s = i >= 0 ? it.services[i] : null;
-    return "<button class='ic-op-tile" + (s ? " on" : "") + "' onclick='wzAdd(" + it.id + "," + li + ")'><span>" + h(l.name) + "</span><span class='ic-op-price'>" + (l.from ? "від " : "") + money(l.price) + (s ? "<span class='wz-bd'>×" + (s.qty || 1) + "</span>" : "") + "</span>" +
-      (s ? "<span class='wz-mn' onclick='event.stopPropagation();wzDec(" + it.id + "," + li + ")'>−</span>" : "") + "</button>";
+  var FAVKEY = "rw_wz_fav";
+  function favLoad() { try { var r = localStorage.getItem(FAVKEY); return r ? JSON.parse(r) : null; } catch (e) { return null; } }
+  function favSave(m) { try { localStorage.setItem(FAVKEY, JSON.stringify(m)); } catch (e) {} }
+  function wzUnitLbl(u) {
+    u = String(u || "").trim().toLowerCase(); if (!u) return "за 1";
+    if (u === "пара") return "за пару";
+    u = u.replace("место", "місце");
+    return "за " + (/^\d/.test(u) ? u : "1 " + u);
+  }
+  function wzCoreOp(name) { for (var k = 0; k < CORE_OPS.length; k++) if (name.indexOf(CORE_OPS[k] + " — ") === 0) return CORE_OPS[k]; return null; }
+  function wzCoreShown(it, s) {
+    var op = wzCoreOp(s.name); if (!op) return true;
+    var p = opPriceFor(it, op); return !!p && p.name === s.name;
+  }
+  function wzCareGroup(s) {
+    var n = wzNorm(s.name), d = String(s.department || "").toLowerCase();
+    if (/^(реставрац|усуненн|відновленн)/.test(n)) return "Реставрація";
+    if (/^(чищенн|базовий догляд|глясаж|хімчистк)/.test(n)) return "Чищення";
+    if ((d.indexOf("чищ") !== -1 || d.indexOf("догляд") !== -1) && d.indexOf("фарб") === -1) return "Чищення";
+    return "Фарбування";
+  }
+  var WZ_CARE_G = ["Чищення", "Фарбування", "Реставрація"];
+  /* пул послуг поточного режиму: [{i: індекс у WZ_LIST, g: відділ}] */
+  function wzPool(it) {
+    var careDept = {}, out = [];
+    WZ_LIST.forEach(function (s) { if (wzIsCoreLine(s.name)) careDept[s.department] = true; });
+    WZ_LIST.forEach(function (s, i) {
+      var isCareLine = !!careDept[s.department];
+      if (it.mode === "care") { if (isCareLine && wzCoreShown(it, s)) out.push({ i: i, g: wzCareGroup(s) }); }
+      else if (!isCareLine) out.push({ i: i, g: s.department });
+    });
+    return out;
+  }
+  function wzIsFav(it, i) {
+    var m = favLoad();
+    if (m) return !!m[wzNorm(WZ_LIST[i].name)];
+    return it.mode === "repair" && wzFreq(it).indexOf(i) !== -1;
+  }
+  function wzFavIdx(it) { return wzPool(it).filter(function (p) { return wzIsFav(it, p.i); }).map(function (p) { return p.i; }); }
+  window.wzFav = function (id, li) {
+    var it = wzItem(id), l = WZ_LIST[li]; if (!it || !l) return;
+    var m = favLoad();
+    if (!m) { m = {}; if (it.mode === "repair") wzFreq(it).forEach(function (i) { m[wzNorm(WZ_LIST[i].name)] = 1; }); }
+    var k = wzNorm(l.name); if (m[k]) delete m[k]; else m[k] = 1;
+    favSave(m); renderItems();
+  };
+  function wzDepts(it) {
+    var pool = wzPool(it), out = ["Обране"];
+    if (it.mode === "care") WZ_CARE_G.forEach(function (g) { if (pool.some(function (p) { return p.g === g; })) out.push(g); });
+    else pool.forEach(function (p) { if (out.indexOf(p.g) === -1) out.push(p.g); });
+    return out;
+  }
+  function wzDeptCur(it) {
+    var ds = wzDepts(it);
+    if (it.wzDept && ds.indexOf(it.wzDept) !== -1) return it.wzDept;
+    if (!wzFavIdx(it).length && ds.length > 1) return ds[1];
+    return "Обране";
+  }
+  function wzDeptIdx(it, d) {
+    if (d === "Обране") return wzFavIdx(it);
+    return wzPool(it).filter(function (p) { return p.g === d; }).map(function (p) { return p.i; });
+  }
+  window.wzTog = function (id, li) {
+    var it = wzItem(id), l = WZ_LIST[li]; if (!it || !l) return;
+    var i = wzFindSvc(it, l.name);
+    if (i >= 0) { it.services.splice(i, 1); it.wzPr = {}; }
+    else { var pr = parseInt(l.price) || 0; it.services.push({ kind: "other", name: l.name, baseName: l.name, base: pr, unit: pr, qty: 1, price: pr, u: wzUnitLbl(l.unit) }); window.__wzBump = 1; }
+    renderItems(); updateReceipt();
+  };
+  var _toggleOp0 = window.toggleOp;
+  window.toggleOp = function (id, op) { var n = (wzItem(id) || { services: [] }).services.length; _toggleOp0(id, op); var it = wzItem(id); if (it && it.services.some(function (x) { return x.kind === "core" && x.op === op; })) window.__wzBump = 1; };
+  function wzTile(it, li) {
+    var l = WZ_LIST[li], op = wzCoreOp(l.name), on, click;
+    if (op) { on = it.services.some(function (x) { return x.kind === "core" && x.op === op; }); click = "toggleOp(" + it.id + ",'" + jq(op) + "')"; }
+    else { on = wzFindSvc(it, l.name) >= 0; click = "wzTog(" + it.id + "," + li + ")"; }
+    var f = wzIsFav(it, li);
+    return "<div class='wz-t" + (on ? " on" : "") + "' onclick=\"" + click + "\"><b class='wz-st" + (f ? " f" : "") + "' onclick=\"event.stopPropagation();wzFav(" + it.id + "," + li + ")\">" + (f ? "★" : "☆") + "</b><span>" + (on ? "✓ " : "") + h(l.name) + "</span><em>" + (l.from ? "від " : "") + money(l.price) + "</em></div>";
   }
   function wzSelected(it) {
     if (!it.services.length) return "";
     var order = it.services.map(function (s, i) { return i; }).sort(function (a, b) { return ((it.services[b].kind === "core") ? 1 : 0) - ((it.services[a].kind === "core") ? 1 : 0) || a - b; });
-    var s = "<div class='wz-lbl'>Обрано <i>" + it.services.length + "</i></div><div class='wz-sel'>";
+    var s = "<div class='wz-sel'><div class='wz-selh'>Обрано " + it.services.length + "</div>";
     order.forEach(function (si) {
       var sv = it.services[si];
       var core = sv.kind === "core";
       var unit = core ? sv.price : sv.unit, qty = core ? 1 : (sv.qty || 1), base = wzFloor(it, sv);
       var raised = unit > base && base > 0;
       var nm = core ? sv.name : (sv.baseName || sv.name);
-      var sub = (qty > 1 ? qty + " × " + money(unit) : (core ? "рівень" : money(unit) + " за 1")) + (raised ? " · ціну підвищено" : "");
+      var sub = (qty > 1 ? qty + " × " + money(unit) : (core ? "рівень, включає попередні" : money(unit) + " " + (sv.u || "за 1"))) + (raised ? " · ціну підвищено" : "");
       s += "<div class='wz-sr'><div class='nm'>" + h(nm) + "<small>" + h(sub) + "</small></div>" +
         (core ? "" : "<span class='wz-step'><button onclick='wzQty(" + it.id + "," + si + ",-1)'>−</button><span class='n'>" + qty + "</span><button onclick='wzQty(" + it.id + "," + si + ",1)'>+</button></span>") +
         "<span class='wz-sum' onclick='wzPrToggle(" + it.id + "," + si + ")'>" + money(sv.price) + "</span><button class='wz-x' onclick='wzRm(" + it.id + "," + si + ")'>×</button></div>";
@@ -8478,75 +8596,50 @@ loadPrice();
     });
     return s + "</div>";
   }
+  function wzChipsHTML(it) {
+    if ((it.wzQ || "").trim()) return "";
+    var cur = wzDeptCur(it);
+    return "<div class='wz-dph'>" + wzDepts(it).map(function (d) {
+      var idx = wzDeptIdx(it, d);
+      var c = idx.filter(function (i) { var l = WZ_LIST[i], op = wzCoreOp(l.name); return op ? it.services.some(function (x) { return x.kind === "core" && x.op === op; }) : wzFindSvc(it, l.name) >= 0; }).length;
+      return "<span class='" + (d === cur ? "on" : "") + "' onclick=\"wzDept(" + it.id + ",'" + jq(d) + "')\">" + (d === "Обране" ? "★ " : "") + h(d) + "<i>" + idx.length + "</i>" + (c ? "<b>" + c + "</b>" : "") + "</span>";
+    }).join("") + "</div>";
+  }
+  function wzPaneHTML(it) {
+    var q = (it.wzQ || "").trim().toLowerCase(), own = "<div class='wz-t own' onclick='wzOwnOpen(" + it.id + ")'>＋ Своя послуга</div>";
+    if (q) {
+      var w = q.split(/\s+/).filter(Boolean);
+      var f = wzPool(it).filter(function (p) { var nm = WZ_LIST[p.i].name.toLowerCase(); return w.every(function (x) { return nm.indexOf(x) !== -1; }); });
+      return "<div class='wz-found'>Знайдено " + f.length + "</div><div class='wz-pan'><div class='wz-tl'>" + (f.map(function (p) { return wzTile(it, p.i); }).join("") || "<div class='wz-empty'>Нічого не знайдено</div>") + own + "</div></div>";
+    }
+    var cur = wzDeptCur(it), l = wzDeptIdx(it, cur);
+    return "<div class='wz-pan'><div class='wz-tl'>" + (l.length ? l.map(function (i) { return wzTile(it, i); }).join("") : "<div class='wz-empty'>Тут поки порожньо. Натисніть ☆ на плитці будь-якої послуги, щоб додати її в «Обране»</div>") + own + "</div></div>";
+  }
+  function wzDyn(it) { var c = $("wz-chips"), p = $("wz-pane"); if (c) c.innerHTML = wzChipsHTML(it); if (p) p.innerHTML = wzPaneHTML(it); }
+  window.wzSearch = function (id, v) { var it = wzItem(id); if (!it) return; it.wzQ = v; wzDyn(it); };
+  window.wzDept = function (id, d) { var it = wzItem(id); if (!it) return; it.wzDept = d; it.wzQ = ""; renderItems(); };
+  var _sim0 = window.setItemMode;
+  window.setItemMode = function (id, m) { var it = wzItem(id); if (it) { it.wzDept = null; it.wzQ = ""; } _sim0(id, m); };
+  window.wzOwnOpen = function (id) { var it = wzItem(id); if (!it) return; it.wzOwn = true; renderItems(); var e = $("wz-own-n"); if (e) e.focus(); };
+  window.wzOwnClose = function (id) { var it = wzItem(id); if (!it) return; it.wzOwn = false; renderItems(); };
+  function wzOwnHTML(it) {
+    return "<div class='wz-ow' onclick='if(event.target===this)wzOwnClose(" + it.id + ")'><div class='wz-ob'><div class='wz-oh'>Своя послуга</div><div class='wz-os'>Якщо послуги немає в прайсі. Вона додасться в «Обрано» з позначкою 📝. Якщо така вже є в прайсі, додасться за ціною прайсу.</div>" +
+      "<label>Назва послуги</label><input class='cr-input' id='wz-own-n' placeholder='Наприклад: Реставрація шва' autocomplete='off'>" +
+      "<label>Ціна, ₴</label><input class='cr-input' id='wz-own-p' type='number' inputmode='numeric' placeholder='0'>" +
+      "<div class='wz-os' style='margin:6px 0 0'>Вкажіть ціну за одну одиницю. Кількість можна змінити потім у списку.</div>" +
+      "<div class='wz-obt'><button class='wz-oc' onclick='wzOwnClose(" + it.id + ")'>Скасувати</button><button class='wz-oa' onclick='wzOwn(" + it.id + ")'>Додати послугу</button></div></div></div>";
+  }
   function wzStep2(it) {
     wzBuildList(it);
     if (!it.mode) it.mode = "care";
     var isCare = it.mode === "care";
-    var s = "<div class='wz-h'>Що робимо?</div><div class='wz-sub'>Торкніться послуги, щоб додати. Ще раз торкніться, щоб збільшити кількість</div>" +
-      "<div class='wz-segs'><button class='ic-seg" + (isCare ? " on" : "") + "' onclick=\"setItemMode(" + it.id + ",'care')\">Догляд / фарбування</button><button class='ic-seg" + (!isCare ? " on" : "") + "' onclick=\"setItemMode(" + it.id + ",'repair')\">Ремонт / інше</button></div>";
-    if (isCare) {
-      s += "<div class='wz-lbl'>Рівень <i>кожен наступний уже включає попередній</i></div><div class='wz-ops'>" + CORE_OPS.map(function (op) {
-        var added = it.services.some(function (x) { return x.kind === "core" && x.op === op; });
-        var p = it.model ? opPriceFor(it, op) : null;
-        var price = p ? ((p.from ? "від " : "") + (parseInt(p.price) || 0).toLocaleString("uk-UA") + " ₴") : "—";
-        return "<button class='ic-op-tile" + (added ? " on" : "") + ((!p && !added) ? " off" : "") + "' onclick=\"toggleOp(" + it.id + ",'" + jq(op) + "')\"><span class='ic-op-name'>" + h(op) + "</span><span class='ic-op-price'>" + price + "</span></button>";
-      }).join("") + "</div>";
-    }
-    s += wzSelected(it);
-    if (!isCare) {
-      var fr = wzFreq(it);
-      s += "<div class='wz-lbl'>Часті послуги <i>для виду «" + h(it.model || "") + "»</i></div>";
-      if (fr.length) s += "<div class='wz-tiles'>" + fr.map(function (li) { return wzTile(it, li); }).join("") + "</div>";
-      else s += "<div class='wz-empty'>Історії ремонтів для цього виду поки немає. Скористайтесь «Усі послуги»</div>";
-    }
-    s += "<button class='wz-all' onclick='wzSheetOpen(" + it.id + ")'>Усі послуги →</button>";
-    return s;
+    return "<div class='wz-h c'>Що робимо?</div><div class='wz-sub c'>Торкніться послуги, щоб додати. ☆ у куті плитки додає її в «Обране». Кількість змінюється у списку «Обрано»</div>" +
+      "<div class='wz-segs c'><button class='ic-seg" + (isCare ? " on" : "") + "' onclick=\"setItemMode(" + it.id + ",'care')\">Догляд / фарбування</button><button class='ic-seg" + (!isCare ? " on" : "") + "' onclick=\"setItemMode(" + it.id + ",'repair')\">Ремонт / інше</button></div>" +
+      wzSelected(it) +
+      "<div class='wz-stk'><div class='wz-srch'><svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'><circle cx='11' cy='11' r='7'/><path d='M20 20l-3.5-3.5'/></svg><input id='wz-q' autocomplete='off' placeholder='Знайти послугу…' value=\"" + h(it.wzQ || "") + "\" oninput='wzSearch(" + it.id + ",this.value)'></div><div id='wz-chips'>" + wzChipsHTML(it) + "</div></div>" +
+      "<div id='wz-pane'>" + wzPaneHTML(it) + "</div>";
   }
 
-  /* шторка «Усі послуги» */
-  window.wzSheetOpen = function (id) { var it = wzItem(id); if (!it) return; it.wzSheet = true; it.wzQ = ""; renderItems(); };
-  window.wzSheetClose = function (id) { var it = wzItem(id); if (!it) return; it.wzSheet = false; renderItems(); };
-  window.wzDept = function (id, d) { var it = wzItem(id); if (!it) return; it.wzDept = d; it.wzQ = ""; renderItems(); };
-  window.wzSearch = function (id, v) { var it = wzItem(id); if (!it) return; it.wzQ = v; wzSheetBody(it); };
-  function wzDeptCur(it) {
-    if (it.wzDept) return it.wzDept;
-    if (wzFreq(it).length) return "Часті";
-    var all = allDepartments(it.category);
-    return all.length ? all[0] : "Часті";
-  }
-  function wzSheetList(it) {
-    var q = (it.wzQ || "").trim().toLowerCase(), idxs = [];
-    var dept = wzDeptCur(it);
-    var fr = wzFreq(it);
-    WZ_LIST.forEach(function (s, i) {
-      if (q) {
-        var w = q.split(/\s+/).filter(Boolean), nm = s.name.toLowerCase();
-        if (w.every(function (x) { return nm.indexOf(x) !== -1; })) idxs.push(i);
-      } else if (dept === "Часті" ? fr.indexOf(i) !== -1 : s.department === dept) idxs.push(i);
-    });
-    return idxs;
-  }
-  function wzSheetBody(it) {
-    var pane = $("wz-grid"); if (!pane) return;
-    var l = wzSheetList(it);
-    pane.innerHTML = l.length ? l.map(function (li) { return wzTile(it, li); }).join("") : "<div class='wz-empty'>Нічого не знайдено</div>";
-  }
-  function wzSheet(it) {
-    var depts = (wzFreq(it).length ? ["Часті"] : []).concat(allDepartments(it.category));
-    var cur = wzDeptCur(it);
-    var q = (it.wzQ || "").trim();
-    var cnt = it.services.filter(function (x) { return x.kind !== "core"; }).length;
-    var rail = depts.map(function (d) {
-      var c = d === "Часті" ? wzFreq(it).length : WZ_LIST.filter(function (s) { return s.department === d; }).length;
-      return "<div class='d" + (d === cur && !q ? " on" : "") + "' onclick=\"wzDept(" + it.id + ",'" + jq(d) + "')\">" + h(d) + "<small>" + c + " послуг</small></div>";
-    }).join("");
-    var l = wzSheetList(it);
-    return "<div class='wz-sheet'><div class='wz-sh-h'><div class='t'>Усі послуги</div><input class='cr-input' id='wz-q' placeholder='Знайти' autocomplete='off' value=\"" + h(q) + "\" oninput='wzSearch(" + it.id + ",this.value)'><button class='iw-done' onclick='wzSheetClose(" + it.id + ")'>" + (cnt ? "Готово (" + cnt + ")" : "Готово") + "</button></div>" +
-      "<div class='wz-sh-b'><div class='wz-rail2'>" + rail + "</div><div class='wz-pane'><div class='wz-tiles' id='wz-grid'>" +
-      (l.length ? l.map(function (li) { return wzTile(it, li); }).join("") : "<div class='wz-empty'>Нічого не знайдено</div>") + "</div>" +
-      "<div class='wz-own'><div class='wz-lbl first'>Своя послуга</div><div class='wz-own-row'><input class='cr-input' id='wz-own-n' placeholder='Назва послуги' autocomplete='off'><input class='cr-input' id='wz-own-p' type='number' inputmode='numeric' placeholder='₴' style='width:96px;flex:none'><button class='rc-ghost-btn' onclick='wzOwn(" + it.id + ")'>Додати</button></div>" +
-      "<div class='rc-note'>Якщо така послуга вже є в прайсі, вона додасться за ціною з прайсу.</div></div></div></div></div>";
-  }
   window.wzOwn = function (id) {
     var it = wzItem(id); if (!it) return;
     var n = ($("wz-own-n").value || "").trim(), p = parseInt($("wz-own-p").value || "0");
@@ -8561,13 +8654,13 @@ loadPrice();
     if (hit) {
       var i = wzFindSvc(it, hit.name);
       if (i >= 0) { it.services[i].qty = (it.services[i].qty || 1) + 1; wzSync(it.services[i]); }
-      else it.services.push({ kind: "other", name: hit.name, baseName: hit.name, base: parseInt(hit.price) || 0, unit: parseInt(hit.price) || 0, qty: 1, price: parseInt(hit.price) || 0 });
+      else it.services.push({ kind: "other", name: hit.name, baseName: hit.name, base: parseInt(hit.price) || 0, unit: parseInt(hit.price) || 0, qty: 1, price: parseInt(hit.price) || 0, u: wzUnitLbl(hit.unit) });
       say("Така послуга є в прайсі: додано за ціною прайсу (" + money(hit.price) + ")");
     } else {
       if (!p) { say("Вкажіть ціну"); return; }
       it.services.push({ kind: "other", name: "📝 " + n, baseName: "📝 " + n, base: 0, unit: p, qty: 1, price: p, custom: true });
     }
-    renderItems(); updateReceipt();
+    it.wzOwn = false; renderItems(); updateReceipt();
   };
 
   /* крок 3 */
@@ -8629,19 +8722,24 @@ loadPrice();
     f += "<button class='iw-done' " + (dis ? "style='opacity:.4'" : "") + " onclick='wzNext(" + it.id + ")'>" + (step === 3 ? "Готово" : "Далі →") + "</button>";
     foot.innerHTML = f;
 
-    var old = win.querySelector(".wz-sheet"); if (old) old.parentNode.removeChild(old);
-    if (it.wzSheet && step === 2) {
-      wzBuildList(it);
-      var tmp = document.createElement("div"); tmp.innerHTML = wzSheet(it);
-      win.appendChild(tmp.firstChild);
+    var oldo = win.querySelector(".wz-ow"); if (oldo) oldo.parentNode.removeChild(oldo);
+    if (it.wzOwn && step === 2) { var tmp = document.createElement("div"); tmp.innerHTML = wzOwnHTML(it); win.appendChild(tmp.firstChild); }
+    win.classList.toggle("wz2", step === 2);
+    var head = win.querySelector(".iw-head"), gb = head.querySelector(".wz-go"); if (gb) gb.parentNode.removeChild(gb);
+    if (step === 2 && it.services.length) {
+      gb = document.createElement("button"); gb.className = "wz-go" + (window.__wzBump ? " bump" : "");
+      gb.textContent = "Далі · " + fmtUAH(itemSum(it)) + " ›";
+      gb.onclick = function () { wzNext(it.id); };
+      head.insertBefore(gb, head.querySelector(".iw-close"));
     }
+    window.__wzBump = 0;
   };
 
   /* При відкритті вікна речі — стартуємо з першого кроку для нової речі */
   var _origOpen = window.openItemModal;
   window.openItemModal = function (id) {
     var it = wzItem(id);
-    if (it) { it.wzSheet = false; it.wzMq = undefined; it.wzPr = {}; if (!(it.model && it.services && it.services.length)) it.wzStep = 1; else it.wzStep = it.wzStep || 2; }
+    if (it) { it.wzSheet = false; it.wzOwn = false; it.wzQ = ""; it.wzDept = null; it.wzMq = undefined; it.wzPr = {}; if (!(it.model && it.services && it.services.length)) it.wzStep = 1; else it.wzStep = it.wzStep || 2; }
     _origOpen(id);
   };
 
