@@ -2200,7 +2200,7 @@ input.eo-nm{width:auto}
 .pl-b{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;border-radius:9px;padding:8px 6px;font-size:12px;font-weight:600;text-align:center;white-space:nowrap;cursor:pointer;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;touch-action:none;min-height:34px}
 .pl-b.pl-sm{padding:6px 10px;min-height:30px;font-size:11.5px}
 .pl-b::after{content:"";position:absolute;left:0;top:0;bottom:0;width:0;pointer-events:none;background:rgba(160,132,92,.3)}
-.pl-b.holding::after{width:100%;transition:width 2s linear}
+.pl-b.holding::after{width:100%;transition:width 1s linear}
 .pl-b-new{background:rgba(79,134,198,.09);border:1px solid rgba(79,134,198,.4);color:var(--st-new-fg)}.pl-b-new::after{background:rgba(79,134,198,.3)}
 .pl-b-done{background:rgba(106,160,68,.09);border:1px solid rgba(106,160,68,.42);color:var(--st-ready-fg)}.pl-b-done::after{background:rgba(106,160,68,.3)}
 .pl-b-give{background:rgba(74,66,56,.07);border:1px solid rgba(74,66,56,.35);color:var(--txt)}.pl-b-give::after{background:rgba(74,66,56,.25)}
@@ -2255,6 +2255,58 @@ input.eo-nm{width:auto}
 .plan-tiles.pl-tiles{grid-template-columns:repeat(4,1fr)}
 .pl-tile{text-align:left;padding:10px 10px}
 .pl-tile .plan-tile-lbl{white-space:nowrap;letter-spacing:.02em}
+
+/* ═══ Головна: стрічка днів зі вільним скролом ═══ */
+.rcw-hd{display:flex;justify-content:space-between;align-items:center;height:30px;padding:0 4px;margin-bottom:2px}
+.rcw-mo{font-family:'Tenor Sans',serif;font-size:17px;color:var(--txt)}
+.rcw-mo em{font-style:normal;color:var(--txt-3);font-size:13px;margin-left:8px}
+.rcw-td{font-size:12.5px;color:var(--cognac);border:1px solid rgba(160,132,92,.5);border-radius:14px;padding:4px 12px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s}
+.rcw-td.show{opacity:1;pointer-events:auto}
+.rcw-box{position:relative;border-bottom:1px solid var(--line)}
+.rcw-sc{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.rcw-sc::-webkit-scrollbar{display:none}
+.rcw-trk{display:flex;width:1700%}
+.rcw-day{flex:0 0 calc(100% / 119);min-width:0;scroll-snap-align:center;user-select:none;-webkit-user-select:none}
+.rcw-day.we small,.rcw-day.we b{color:var(--txt-3)}
+.rcw-day.mo1{border-left:1px solid var(--line)}
+.rcw-day.sel:after{bottom:0}
+.rcw-fd{display:none}
+
+/* ═══ План: нижня стрічка карток, борги, видача ═══ */
+.plan-wrap.pl-wrap{width:100%;box-sizing:border-box;flex-direction:column!important;align-items:stretch!important;gap:0!important;padding:0 28px!important}
+.pl-wrap>*{min-width:0}
+.pl-hdr{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:12px 0 12px}
+.pl-hdr .pl-date{height:auto;margin:0}
+.pl-hdr .plan-cal-page-block{padding:0;margin:0;border:0}
+.pl-card.red{background:rgba(179,38,30,.05);border-color:rgba(179,38,30,.30)}
+.pl-card.red .pl-ch{color:#B3261E}
+.pl-card.red .pl-ch em{background:rgba(179,38,30,.14);color:#B3261E}
+.pl-r.debt .nu{color:#B3261E}
+.pl-railw{margin-top:auto;position:sticky;bottom:0;background:var(--bg);padding:10px 0 4px;z-index:6}
+@media (max-width:768px),(orientation:portrait) and (max-width:1180px),(orientation:landscape) and (max-height:520px){
+  .pl-railw{bottom:calc(86px + env(safe-area-inset-bottom))}
+}
+.pl-rail{display:flex;gap:10px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;position:relative}
+.pl-rail::-webkit-scrollbar{display:none}
+.pl-rail>*{flex:0 0 calc((100% - 20px) / 3);height:214px;margin:0!important;scroll-snap-align:start;overflow:hidden}
+.pl-dots{display:flex;justify-content:center;gap:6px;margin-top:8px}
+.pl-dots i{width:6px;height:6px;border-radius:50%;background:var(--line);transition:width .2s}
+.pl-dots i.on{background:var(--cognac);width:16px;border-radius:3px}
+.pl-ls.pl-gv{--a:106,160,68}
+.pl-lr b.grn{color:#4F8A2E;font-size:12.5px;white-space:nowrap}
+.pl-lr b.amb{color:#8A5A12;white-space:nowrap}
+.pl-note{font-size:12px;color:var(--txt-3);padding-top:6px;border-top:1px solid var(--line-soft)}
+.pl-rc{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:11px 13px;position:relative}
+.pl-rc h5{margin:0 0 6px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--cognac)}
+.pl-rc .plan-side-card{border:0;background:none;padding:0;margin:0}
+.pl-cal .plan-cal-head{margin-bottom:6px;font-size:12px}
+.pl-cal .plan-cal-day{padding:3px 0}
+.pl-cal .plan-cal-filter-note{margin-top:4px}
+.pl-cal .pl-terms{margin:3px 0 0;text-align:right}
+.pl-q{text-align:center}
+.pl-q .t{font-family:'Tenor Sans',serif;font-size:14px;color:var(--txt-2);line-height:1.4;padding-top:22px}
+.pl-q .a{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--cognac);margin-top:10px}
+.pl-dr .s.grn{color:#4F8A2E}
 
 </style>
 </head>
@@ -7768,18 +7820,45 @@ loadPrice();
     }).join("");
     return "<div class='rcw-pop-in'><div class='rcw-pop-h'><span>" + rcWd(d) + " " + p2(d.getDate()) + "." + p2(d.getMonth() + 1) + " · на видачу " + list.length + "</span><a onclick='rcDayClose()'>×</a></div>" + rows + "</div>";
   }
+  var RCW_BEFORE = 8, RCW_AFTER = 9, RCW_MONTHS = ["Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"];
+  function rcwMon() { var now = new Date(); now.setHours(0, 0, 0, 0); var m = new Date(now); m.setDate(now.getDate() - ((now.getDay() + 6) % 7)); return m; }
   function rcWeekInner() {
     var now = new Date(); now.setHours(0, 0, 0, 0);
-    var dow = (now.getDay() + 6) % 7, mon = new Date(now); mon.setDate(now.getDate() - dow);
-    var due = rcDue(), out = "";
-    for (var i = 0; i < 7; i++) {
-      var d = new Date(mon); d.setDate(mon.getDate() + i);
-      var k = dKey(d), has = due[k] && due[k].length;
-      out += "<div class='rcw-day" + (d.getTime() === now.getTime() ? " t" : "") + (RC.day === k ? " sel" : "") + "' onclick=\"rcDay('" + k + "')\"><small>" + rcWd(d) + "</small><b>" + d.getDate() + "</b><i class='" + (has ? "dd" : "nd") + "'></i></div>";
+    var mon = rcwMon(), due = rcDue(), out = "", total = (RCW_BEFORE + RCW_AFTER) * 7;
+    for (var i = 0; i < total; i++) {
+      var d = new Date(mon); d.setDate(mon.getDate() + i - RCW_BEFORE * 7);
+      var k = dKey(d), has = due[k] && due[k].length, wd = d.getDay();
+      out += "<div class='rcw-day" + (d.getTime() === now.getTime() ? " t" : "") + (RC.day === k ? " sel" : "") + (wd === 0 || wd === 6 ? " we" : "") + (d.getDate() === 1 ? " mo1" : "") + "' onclick=\"rcDay('" + k + "')\"><small>" + rcWd(d) + "</small><b>" + d.getDate() + "</b><i class='" + (has ? "dd" : "nd") + "'></i></div>";
     }
-    return "<div class='rcw'>" + out + "</div>" + (RC.day ? "<div class='rcw-pop'>" + rcPopHTML(RC.day) + "</div>" : "");
+    setTimeout(rcwInit, 0);
+    return "<div class='rcw-hd'><span class='rcw-mo' id='rcw-mo'></span><span class='rcw-td' id='rcw-td' onclick='rcwToday()'>Сьогодні</span></div>" +
+      "<div class='rcw-box'><div class='rcw-sc' id='rcw-sc'><div class='rcw-trk'>" + out + "</div></div><i class='rcw-fd l'></i><i class='rcw-fd r'></i></div>" +
+      (RC.day ? "<div class='rcw-pop'>" + rcPopHTML(RC.day) + "</div>" : "");
   }
-  function rcWeekRefresh() { var w = $("rcw-wrap"); if (w) w.innerHTML = rcWeekInner(); }
+  function rcwDW() { var sc = $("rcw-sc"); return sc ? sc.clientWidth / 7 : 100; }
+  function rcwTodayLeft() { return (RCW_BEFORE * 7 + ((new Date().getDay() + 6) % 7) - 3) * rcwDW(); }
+  function rcwPaint() {
+    var sc = $("rcw-sc"); if (!sc) return;
+    var W = rcwDW(), idx = Math.round(sc.scrollLeft / W) + 3, mon = rcwMon(), d = new Date(mon);
+    d.setDate(mon.getDate() + idx - RCW_BEFORE * 7);
+    var mo = $("rcw-mo"); if (mo) mo.innerHTML = RCW_MONTHS[d.getMonth()] + "<em>" + d.getFullYear() + "</em>";
+    var td = $("rcw-td"); if (td) td.classList.toggle("show", Math.abs(sc.scrollLeft - rcwTodayLeft()) > W * 1.5);
+  }
+  function rcwInit() {
+    var sc = $("rcw-sc"); if (!sc) return;
+    sc.scrollLeft = (typeof RC.wkLeft === "number") ? RC.wkLeft : rcwTodayLeft();
+    rcwPaint();
+  }
+  document.addEventListener("scroll", function (e) {
+    var sc = e.target && e.target.id === "rcw-sc" ? e.target : null; if (!sc) return;
+    RC.wkLeft = sc.scrollLeft; rcwPaint();
+  }, true);
+  window.rcwToday = function () { var sc = $("rcw-sc"); if (sc) sc.scrollTo({ left: rcwTodayLeft(), behavior: "smooth" }); };
+  function rcWeekRefresh() {
+    var w = $("rcw-wrap"); if (!w) return;
+    var sc = $("rcw-sc"); if (sc) RC.wkLeft = sc.scrollLeft;
+    w.innerHTML = rcWeekInner();
+  }
   window.rcDay = function (k) {
     if (RC.day === k) { RC.day = null; rcWeekRefresh(); return; }
     var list = rcDue()[k];
@@ -8797,6 +8876,24 @@ loadPrice();
   function plToday() { var d = new Date(); d.setHours(0, 0, 0, 0); return d; }
   function plNm(o) { return gv(o, "Ім'я клієнта") || "Без імені"; }
 
+  var PL_DEBT_DAYS = 5;
+  function plPayInfo(o, num) {
+    if (isOrderPaid(num)) return { toPay: 0, paid: true };
+    var total = orderTotal(num), payStr = gv(o, "Оплата");
+    var ps = computePayStatus(total, payStr, extractAmt(payStr), extractAmt(gv(o, "Сума доплати")));
+    return { toPay: ps.toPay > 0 ? ps.toPay : 0, paid: !(ps.toPay > 0) };
+  }
+  function plReadyAt(pend, svcs) {
+    var best = null;
+    pend.forEach(function (i) {
+      if (gv(i, "Статус") !== "✅ Готово") return;
+      var d = plParseDT(gv(i, "Дата готово")); if (d && (!best || d > best)) best = d;
+    });
+    if (!best) svcs.forEach(function (sv) {
+      var d = plParseDT(gv(sv, "Дата готово")); if (d && (!best || d > best)) best = d;
+    });
+    return best;
+  }
   function plModel(o) {
     var num = gv(o, "Номер замовлення"); if (!num) return null;
     var its = itemsOf(num);
@@ -8808,7 +8905,14 @@ loadPrice();
     var started = svcs.some(function (s) { return gv(s, "Статус") !== "🆕 Новий"; }) ||
       pend.some(function (i) { var s = gv(i, "Статус"); return s === "⚙️ В роботі" || s === "✅ Готово"; });
     var state = info.readyAll ? "ready" : (started ? "work" : "new");
+    var pay = plPayInfo(o, num), age = null;
+    if (state === "ready") {
+      var ra = plReadyAt(pend, svcs);
+      if (ra) { ra.setHours(0, 0, 0, 0); age = Math.max(0, Math.round((plToday() - ra) / 864e5)); }
+    }
     return {
+      toPay: pay.toPay, isPaid: pay.paid, age: age,
+      debt: state === "ready" && age !== null && age > PL_DEBT_DAYS && pay.toPay > 0,
       o: o, num: num, its: its, pend: pend, svcs: svcs, info: info, state: state,
       mine: svcs.some(function (s) { return isMineAssignment(gv(s, "Призначено")); }),
       unas: svcs.some(function (s) { return !gv(s, "Призначено"); }),
@@ -8845,13 +8949,13 @@ loadPrice();
     return L;
   }
 
-  /* ───────── Кнопки з утриманням 2 с ───────── */
+  /* ───────── Кнопки з утриманням 1 с ───────── */
   function plBtn(cls, label, call) {
     return "<div class='pl-b pl-hold " + cls + "' onclick=\"event.stopPropagation();" + call + "\">" + label + "</div>";
   }
   var HOLD = { t: null, el: null };
   function holdStop(hint) {
-    if (HOLD.t) { clearTimeout(HOLD.t); HOLD.t = null; if (HOLD.el) HOLD.el.classList.remove("holding"); if (hint) say("Утримуйте кнопку 2 секунди"); }
+    if (HOLD.t) { clearTimeout(HOLD.t); HOLD.t = null; if (HOLD.el) HOLD.el.classList.remove("holding"); if (hint) say("Утримуйте кнопку 1 секунду"); }
     HOLD.el = null;
   }
   document.addEventListener("click", function (e) {
@@ -8866,7 +8970,7 @@ loadPrice();
     HOLD.t = setTimeout(function () {
       b.classList.remove("holding"); b.setAttribute("data-go", "1"); HOLD.t = null; HOLD.el = null;
       b.click(); b.removeAttribute("data-go");
-    }, 2000);
+    }, 1000);
   }, true);
   document.addEventListener("pointerup", function () { holdStop(true); }, true);
   document.addEventListener("pointercancel", function () { holdStop(true); }, true);
@@ -8939,7 +9043,8 @@ loadPrice();
     var cls = i.readyAll ? "rd" : (m.state === "new" ? "nw" : "wk");
     var lab = i.readyAll ? "готово" : (m.state === "new" ? "не розпочато" : k + " з " + n + " готово");
     var tm, late = false;
-    if (m.d) {
+    if (kind === "ready" && m.debt) { late = true; tm = m.age + " дн.<small>лежить</small>"; }
+    else if (m.d) {
       var td = plToday(), dl = Math.round((td - m.d) / 864e5);
       late = dl > 0;
       tm = p2(m.d.getDate()) + "." + p2(m.d.getMonth() + 1) + "<small>" + rcWd(m.d) + (late ? " · +" + dl + "д" : "") + "</small>";
@@ -8952,7 +9057,7 @@ loadPrice();
     else if (kind === "notify") btn = plBtn("pl-b-bell", "🔔", "plAct('bell','" + jq(nu) + "')");
     else btn = plBtn("pl-b-done", "Закрити", "plAct('done','" + jq(nu) + "')");
     var open = !!PL.exp[nu];
-    return "<div class='pl-r" + (late ? " late" : "") + (open ? " open" : "") + "' onclick=\"openOrder('" + jq(nu) + "')\">" +
+    return "<div class='pl-r" + (late ? " late" : "") + (kind === "ready" && m.debt ? " debt" : "") + (open ? " open" : "") + "' onclick=\"openOrder('" + jq(nu) + "')\">" +
       "<div class='nu'>" + h(nu).replace("-", "-<br>") + "</div>" +
       "<div class='tx'><div class='t1'>" + h(t1) + "</div><div class='t2'>" + h(t2) + "</div></div>" +
       "<div class='pg " + cls + "'>" + plBar(n, k) + "<div class='lab'>" + lab + "</div></div>" +
@@ -8965,35 +9070,109 @@ loadPrice();
       (list.length ? list.map(function (m) { return plRow(m, kind); }).join("") : "<div class='pl-none'>Тут порожньо</div>") + (extra || "") + "</div>";
   }
 
-  /* ───────── Правая колонка ───────── */
+  /* ───────── Нижня стрічка карток ───────── */
   function plDebtRows() {
     var rows = [];
     ORDERS.forEach(function (o) {
       if (isOrderDeleted(o)) return;
-      var num = gv(o, "Номер замовлення"); if (!num) return;
-      if (isOrderPaid(num)) return;
-      var total = orderTotal(num), payStr = gv(o, "Оплата");
-      var ps = computePayStatus(total, payStr, extractAmt(payStr), extractAmt(gv(o, "Сума доплати")));
-      if (!(ps.toPay > 0)) return;
-      var d = parseDeadline(gv(o, "Термін")), st = getStatus(num);
-      rows.push({ o: o, num: num, sum: ps.toPay, late: !!(d && d < plToday() && st !== "issued"), st: st, ready: st === "ready" });
+      var m = plModel(o); if (!m || !m.debt) return;
+      rows.push({ o: o, num: m.num, sum: m.toPay, age: m.age, m: m });
     });
-    rows.sort(function (a, b) { return (b.late ? 1 : 0) - (a.late ? 1 : 0) || b.sum - a.sum; });
+    rows.sort(function (x, y) { return y.age - x.age || y.sum - x.sum; });
     return rows;
   }
-  function plSideLists(L) {
-    var nt = L.notify, debts = plDebtRows(), dsum = 0, anyLate = false;
-    debts.forEach(function (r) { dsum += r.sum; if (r.late) anyLate = true; });
-    var ntRows = nt.slice(0, 3).map(function (m) {
+  function plGiveRows() {
+    var rows = [];
+    ORDERS.forEach(function (o) {
+      if (isOrderDeleted(o)) return;
+      var m = plModel(o); if (!m || m.state !== "ready" || m.debt) return;
+      rows.push(m);
+    });
+    rows.sort(function (x, y) { return (y.age === null ? -1 : y.age) - (x.age === null ? -1 : x.age); });
+    return rows;
+  }
+  function plAgeTxt(m) {
+    if (m.age === null) return "";
+    if (m.age === 0) return "сьогодні";
+    return m.age > PL_DEBT_DAYS ? "лежить " + m.age + " дн." : m.age + " дн.";
+  }
+  function plCardGive() {
+    var g = plGiveRows();
+    var rows = g.slice(0, 3).map(function (m) {
+      var f = m.pend[0], at = plAgeTxt(m);
+      return "<div class='pl-lr'><span class='nm'>" + h(plNm(m.o)) + "<small>" + h(m.num) + (at ? " · " + at : "") + "</small></span>" +
+        (m.isPaid ? "<b class='grn'>✓ сплач.</b>" : "<b class='amb'>" + money(m.toPay) + "</b>") + "</div>";
+    }).join("") + (g.length > 3 ? "<div class='pl-more'>+ ще " + (g.length - 3) + " ›</div>" : "") || "<div class='pl-lr dim'>Нічого видавати</div>";
+    return "<div class='pl-ls pl-gv' onclick=\"plOvl('give')\"><h5>Видати<em>" + g.length + " ›</em></h5>" + rows + "</div>";
+  }
+  function plCardDebt() {
+    var debts = plDebtRows(), dsum = 0;
+    debts.forEach(function (r) { dsum += r.sum; });
+    var rows = debts.slice(0, 3).map(function (r) {
+      return "<div class='pl-lr'><span class='nm'>" + h(plNm(r.o)) + "<small>" + h(r.num) + " · " + r.age + " дн.</small></span><b class='red'>" + money(r.sum) + "</b></div>";
+    }).join("") + (debts.length > 3 ? "<div class='pl-more'>+ ще " + (debts.length - 3) + " ›</div>" : "") || "<div class='pl-lr dim'>Боргів немає</div>";
+    return "<div class='pl-ls pl-db" + (debts.length ? " pulse" : "") + "' onclick=\"plOvl('debt')\"><h5>Борги<em>" + money(dsum) + " ›</em></h5>" + rows +
+      (debts.length ? "<div class='pl-note'>понад " + PL_DEBT_DAYS + " днів, не оплачено</div>" : "") + "</div>";
+  }
+  function plCardNotify(L) {
+    var nt = L.notify;
+    var rows = nt.slice(0, 3).map(function (m) {
       var f = m.pend[0];
       return "<div class='pl-lr'><span class='nm'>" + h(plNm(m.o)) + "<small>" + h(m.num) + (f ? " · " + h(gv(f, "Бренд") || gv(f, "Тип")) : "") + "</small></span>" +
         plBtn("pl-b-bell pl-ico", "🔔", "plAct('bell','" + jq(m.num) + "')") + "</div>";
     }).join("") + (nt.length > 3 ? "<div class='pl-more'>+ ще " + (nt.length - 3) + " ›</div>" : "") || "<div class='pl-lr dim'>Нікого сповіщати</div>";
-    var dbRows = debts.slice(0, 3).map(function (r) {
-      return "<div class='pl-lr'><span class='nm'>" + h(plNm(r.o)) + "<small>" + h(r.num) + (r.late ? " · прострочено" : "") + "</small></span><b class='red'>" + money(r.sum) + "</b></div>";
-    }).join("") + (debts.length > 3 ? "<div class='pl-more'>+ ще " + (debts.length - 3) + " ›</div>" : "") || "<div class='pl-lr dim'>Боргів немає</div>";
-    return "<div class='pl-ls pl-nt" + (nt.length ? " pulse" : "") + "' onclick=\"plOvl('notify')\"><h5>Повідомити<em>" + nt.length + " ›</em></h5>" + ntRows + "</div>" +
-      "<div class='pl-ls pl-db" + (anyLate ? " pulse" : "") + "' onclick=\"plOvl('debt')\"><h5>Борги<em>" + money(dsum) + " ›</em></h5>" + dbRows + "</div>";
+    return "<div class='pl-ls pl-nt" + (nt.length ? " pulse" : "") + "' onclick=\"plOvl('notify')\"><h5>Повідомити<em>" + nt.length + " ›</em></h5>" + rows + "</div>";
+  }
+  function plCardCal() {
+    return "<div class='pl-rc pl-cal'>" + planCalendarHTML() + "<div class='pl-terms' onclick=\"plOvl('terms')\">Усі терміни ›</div></div>";
+  }
+  function plCardQuote() {
+    var t = "";
+    try {
+      var st = qEnsureToday(), q = QUOTES.filter(function (x) { return x.id === st.currentId; })[0];
+      if (q) t = "«" + h(q.text) + "»";
+    } catch (e) { t = ""; }
+    return "<div class='pl-rc pl-q'><h5>Фраза дня</h5><div class='t'>" + (t || "…") + "</div><div class='a'>Rewise Studio</div></div>";
+  }
+  var PLR = { iv: null, pause: 0 };
+  var PL_NCARDS = 6;
+  function plRail(L) {
+    var cards = [plCardGive(), plCardDebt(), plCardNotify(L), plWeekCard(), plCardCal(), plCardQuote()], out = "";
+    for (var r = 0; r < 3; r++) out += cards.join("");
+    return "<div class='pl-rail' id='pl-rail' data-n='" + PL_NCARDS + "'>" + out + "</div>" +
+      "<div class='pl-dots' id='pl-dots'>" + cards.map(function () { return "<i></i>"; }).join("") + "</div>";
+  }
+  function plRailInit() {
+    if (PLR.iv) { clearInterval(PLR.iv); PLR.iv = null; }
+    var r = document.getElementById("pl-rail"); if (!r) return;
+    var n = PL_NCARDS, cs = r.children; if (cs.length < n * 3) return;
+    var step = cs[1].offsetLeft - cs[0].offsetLeft; if (step < 50) return;
+    var set = step * n, dots = document.getElementById("pl-dots");
+    r.scrollLeft = set + (PL.rpos || 0) * step;
+    function paintDots() {
+      var i = Math.round(r.scrollLeft / step) % n; PL.rpos = i;
+      if (dots) for (var k = 0; k < dots.children.length; k++) dots.children[k].className = k === i ? "on" : "";
+    }
+    function user() { PLR.pause = Date.now() + 9000; }
+    ["touchstart", "pointerdown", "wheel", "mousedown"].forEach(function (ev) { r.addEventListener(ev, user, { passive: true }); });
+    var t;
+    r.addEventListener("scroll", function () {
+      paintDots(); clearTimeout(t);
+      t = setTimeout(function () {
+        var x = r.scrollLeft;
+        if (x < set * 0.5 || x > set * 1.5) {
+          r.style.scrollSnapType = "none"; r.scrollLeft = x < set * 0.5 ? x + set : x - set;
+          requestAnimationFrame(function () { r.style.scrollSnapType = ""; });
+        }
+      }, 140);
+    });
+    paintDots();
+    PLR.iv = setInterval(function () {
+      var el = document.getElementById("pl-rail");
+      if (!el || currentPage !== "todayplan") { clearInterval(PLR.iv); PLR.iv = null; return; }
+      if (Date.now() < PLR.pause || document.getElementById("pl-ovl")) return;
+      el.scrollTo({ left: el.scrollLeft + step, behavior: "smooth" });
+    }, 2000);
   }
 
   /* ───────── Статистика ───────── */
@@ -9109,6 +9288,7 @@ loadPrice();
     if (PL_OVL === "stat") return plStatHTML();
     if (PL_OVL === "notify") return plNotifyHTML();
     if (PL_OVL === "debt") return plDebtHTML();
+    if (PL_OVL === "give") return plGiveHTML();
     return plTermsHTML();
   }
   function plStRerender() { plOvlRerender(); renderers.todayplan(); }
@@ -9136,15 +9316,23 @@ loadPrice();
     }).join("") || "<div class='pl-none'>Нікого сповіщати</div>";
     return "<div class='pl-md' onclick='event.stopPropagation()'>" + plHead("Повідомити клієнта", L.length + " " + pluralUk(L.length, "замовлення", "замовлення", "замовлень") + " готові, клієнт ще не знає") + rows + "</div>";
   }
+  function plDrow(m, tag) {
+    var f = m.pend[0] || m.its[0], ph = gv(m.o, "Телефон"), at = plAgeTxt(m);
+    var pre = extractAmt(gv(m.o, "Оплата"));
+    var note = [ph ? fmtPhone(ph) : "", at, pre > 0 && !m.isPaid ? "передплата " + money(pre) : ""].filter(Boolean).join(" · ");
+    return "<div class='pl-dr' onclick=\"plOpen('" + jq(m.num) + "')\"><div class='l'><b>" + h(plNm(m.o)) + " <small>" + h(m.num) + "</small></b><div>" + h(f ? (gv(f, "Бренд") + " " + gv(f, "Тип")).trim() : "") + "</div><small>" + h(note) + "</small></div>" +
+      "<div class='s " + (tag === "debt" ? "red" : (m.isPaid ? "grn" : "")) + "'>" + (m.isPaid ? "✓ сплачено" : money(m.toPay)) + "</div>" + plBtn("pl-b-give", "Видати", "plAct('give','" + jq(m.num) + "')") + "</div>";
+  }
   function plDebtHTML() {
     var D = plDebtRows(), sum = 0; D.forEach(function (r) { sum += r.sum; });
-    var rows = D.map(function (r) {
-      var f = itemsOf(r.num)[0], pay = gv(r.o, "Оплата"), pre = extractAmt(pay), ph = gv(r.o, "Телефон");
-      var note = (r.late ? "прострочено" : (r.ready ? "готово, чекає видачі" : "в роботі")) + (pre > 0 ? " · передплата " + money(pre) : "");
-      var btn = r.ready ? plBtn("pl-b-give", "Видати", "plAct('give','" + jq(r.num) + "')") : "";
-      return "<div class='pl-dr' onclick=\"plOpen('" + jq(r.num) + "')\"><div class='l'><b>" + h(plNm(r.o)) + " <small>" + h(r.num) + "</small></b><div>" + h(f ? (gv(f, "Бренд") + " " + gv(f, "Тип")).trim() : "") + "</div><small>" + h(ph ? fmtPhone(ph) : "") + " · " + note + "</small></div><div class='s red'>" + money(r.sum) + "</div>" + btn + "</div>";
-    }).join("") || "<div class='pl-none'>Боргів немає</div>";
-    return "<div class='pl-md' onclick='event.stopPropagation()'>" + plHead("Борги клієнтів", "Загалом " + money(sum) + " · " + D.length + " " + pluralUk(D.length, "замовлення", "замовлення", "замовлень")) + rows + "</div>";
+    var rows = D.map(function (r) { return plDrow(r.m, "debt"); }).join("") || "<div class='pl-none'>Боргів немає</div>";
+    return "<div class='pl-md' onclick='event.stopPropagation()'>" + plHead("Борги клієнтів", "Загалом " + money(sum) + " · " + D.length + " " + pluralUk(D.length, "замовлення", "замовлення", "замовлень") + " · не забрали понад " + PL_DEBT_DAYS + " днів, не оплачено") + rows + "</div>";
+  }
+  function plGiveHTML() {
+    var D = plDebtRows(), G = plGiveRows(), n = D.length + G.length;
+    var red = D.length ? "<div class='pl-dg late'>Борги · не забрали понад " + PL_DEBT_DAYS + " днів</div>" + D.map(function (r) { return plDrow(r.m, "debt"); }).join("") : "";
+    var ok = G.length ? "<div class='pl-dg'>Готові до видачі</div>" + G.map(function (m) { return plDrow(m, "ok"); }).join("") : "";
+    return "<div class='pl-md' onclick='event.stopPropagation()'>" + plHead("Видача", n + " " + pluralUk(n, "замовлення", "замовлення", "замовлень") + " чекають клієнта") + (red + ok || "<div class='pl-none'>Нічого видавати</div>") + "</div>";
   }
   function plTermsHTML() {
     var all = plModels().filter(function (m) { return m.d; }), map = {}, keys = [];
@@ -9167,22 +9355,25 @@ loadPrice();
       return "<div class='plan-tile pl-tile " + x[3] + (t === x[0] ? " sel" : "") + "' onclick=\"plTile('" + x[0] + "')\"><div class='plan-tile-val'>" + x[2] + "</div><div class='plan-tile-lbl'>" + x[1] + "</div></div>";
     }).join("");
     var unas = "<div class='pl-quiet' onclick='plUnassigned()'>Не призначено: " + L.unasN + " ›</div>";
-    var body;
+    var body, dbt = L.ready.filter(function (m) { return m.debt; }), okr = L.ready.filter(function (m) { return !m.debt; });
     if (t === "w") body = plCard("В роботі", L.work, "work");
     else if (t === "n") body = plCard("Нові · призначені мені", L.neu, "new", unas);
-    else if (t === "r") body = plCard("Готові до видачі", L.ready, "ready");
+    else if (t === "r") body = (dbt.length ? plCard("Борги · не забрали понад " + PL_DEBT_DAYS + " днів", dbt, "ready").replace("class='pl-card'", "class='pl-card red'") : "") + plCard("Готові до видачі", okr, "ready");
     else if (t === "k") body = plCard("Потрібно повідомити клієнта", L.notify, "notify");
     else body = plCard("В роботі", L.work, "work") + plCard("Нові · призначені мені", L.neu, "new", unas);
     page.innerHTML = groupSwitcher("planning") +
-      "<div class='plan-wrap pl-wrap'><div class='plan-main'>" +
-      "<div class='plan-filter-row'><div class='plan-f-toggle'>" +
+      "<div class='plan-wrap pl-wrap' id='pl-wrap'>" +
+      "<div class='pl-hdr'><div class='plan-f-toggle'>" +
         "<span class='plan-f-opt" + (planFilter === "all" ? " active" : "") + "' onclick=\"planSetFilter('all')\">Всі роботи</span>" +
         "<span class='plan-f-opt" + (planFilter === "mine" ? " active" : "") + "' onclick=\"planSetFilter('mine')\">Мої роботи</span></div>" +
+        "<div class='pl-date'>" + planDateHeaderHTML() + "</div>" +
         "<div class='plan-day-week'><span class='plan-dw-opt" + (planViewMode === "day" ? " active" : "") + "' onclick=\"planSetViewMode('day')\">День</span>" +
         "<span class='plan-dw-opt" + (planViewMode === "week" ? " active" : "") + "' onclick=\"planSetViewMode('week')\">Тиждень</span></div></div>" +
-      "<div class='plan-tiles pl-tiles'>" + tiles + "</div>" + body + "</div>" +
-      "<div class='plan-side'><div class='pl-date'>" + planDateHeaderHTML() + "</div>" + planCalendarHTML() +
-      "<div class='pl-terms' onclick=\"plOvl('terms')\">Усі терміни ›</div>" + plWeekCard() + plSideLists(L) + "</div></div>";
+      "<div class='plan-tiles pl-tiles'>" + tiles + "</div><div class='pl-lists'>" + body + "</div>" +
+      "<div class='pl-railw'>" + plRail(L) + "</div></div>";
+    var w = $("pl-wrap");
+    if (w) { var top = w.getBoundingClientRect().top + (window.pageYOffset || 0); w.style.minHeight = Math.max(300, window.innerHeight - top - 92) + "px"; }
+    plRailInit();
   };
 
   /* стартова сторінка */
