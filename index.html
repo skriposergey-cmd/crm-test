@@ -8924,7 +8924,7 @@ loadPrice();
       svs.forEach(function (s) {
         var st = gv(s, "Статус") || "🆕 Новий", sn = gv(s, "Номер послуги");
         var tag = st === "✅ Готово" ? "<i class='dn'>Готово</i>" : st === "⚙️ В роботі" ? "<i class='wk'>В роботі</i>" : "<i>Не розпочато</i>";
-        var btn = st === "✅ Готово" ? "" : (st === "⚙️ В роботі" ? plBtn("pl-b-done pl-sm", "Готово", "plSvc('" + jq(sn) + "','done')") : plBtn("pl-b-new pl-sm", "Почати", "plSvc('" + jq(sn) + "','go')"));
+        var btn = st === "✅ Готово" ? "" : (st === "⚙️ В роботі" ? plBtn("pl-b-done pl-sm", "Закрити", "plSvc('" + jq(sn) + "','done')") : plBtn("pl-b-new pl-sm", "Почати", "plSvc('" + jq(sn) + "','go')"));
         out += "<div class='pl-xs'><span>" + h(gv(s, "Назва")) + "</span><em>" + money(extractAmt(gv(s, "Ціна"))) + "</em>" + tag + btn + "</div>";
       });
       out += "</div>";
@@ -8950,7 +8950,7 @@ loadPrice();
     if (kind === "new") btn = plBtn("pl-b-new", "Взяти", "plAct('take','" + jq(nu) + "')");
     else if (kind === "ready") btn = plBtn("pl-b-give", "Видати", "plAct('give','" + jq(nu) + "')");
     else if (kind === "notify") btn = plBtn("pl-b-bell", "🔔", "plAct('bell','" + jq(nu) + "')");
-    else btn = plBtn("pl-b-done", "Готово", "plAct('done','" + jq(nu) + "')");
+    else btn = plBtn("pl-b-done", "Закрити", "plAct('done','" + jq(nu) + "')");
     var open = !!PL.exp[nu];
     return "<div class='pl-r" + (late ? " late" : "") + (open ? " open" : "") + "' onclick=\"openOrder('" + jq(nu) + "')\">" +
       "<div class='nu'>" + h(nu).replace("-", "-<br>") + "</div>" +
