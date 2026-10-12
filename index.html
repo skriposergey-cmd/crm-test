@@ -2447,7 +2447,7 @@ html,body{overscroll-behavior-y:none}
 .wz-dph{gap:5px}.wz-dph span{padding:9px 8px;font-size:12px}
 
 /* ═══ Майстер речі v3: 2 кроки, вкладки, плитки, широкий чек ═══ */
-.iwin.wz{--w-bg:#f0ebe3;--w-card:#f8f5f0;--w-hd:#e6dfd2;--w-bd:#ddd4c6;--w-tx:#3a3228;--w-tx2:#7d7366;--w-ac:#a0845c;--w-acd:#6b4f3a;--w-tab:#ebe3d4;--w-tab2:#f4efe6;--w-tile:#faf7f2}
+.iwin.wz{--w-bg:#ffffff;--w-card:#ffffff;--w-hd:#f1ede6;--w-bd:#e6e0d6;--w-tx:#3a3228;--w-tx2:#7d7366;--w-ac:#a0845c;--w-acd:#6b4f3a;--w-tab:#ebe3d4;--w-tab2:#f4efe6;--w-tile:#faf7f2}
 [data-theme="dark"] .iwin.wz{--w-bg:var(--surface);--w-card:var(--surface-2);--w-hd:#1c1917;--w-bd:var(--line);--w-tx:var(--txt);--w-tx2:var(--txt-2);--w-acd:#c9ad82;--w-tab:#34302b;--w-tab2:#2c2824;--w-tile:var(--surface-2)}
 .iwin.wz .iw-head{justify-content:flex-start;gap:10px;padding:9px 16px}
 .iwin.wz .iw-title{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -2460,24 +2460,22 @@ html,body{overscroll-behavior-y:none}
 .w1-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px}
 .w1-chips::-webkit-scrollbar{display:none}
 .w1-chips>*{flex:none;white-space:nowrap}
-.w1-col{display:flex;gap:16px;align-items:flex-start}
-.w1-cl{flex:1;min-width:0}
-.w1-sws{display:flex;flex-wrap:wrap;gap:12px 10px}
-.w1-sw{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:5px;width:58px;cursor:pointer;font:inherit;font-size:10.5px;color:var(--txt-2);padding:0}
+.w1-sws{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:10px;padding:2px 2px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.w1-sws::-webkit-scrollbar{display:none}
+.w1-sw{flex:none;border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:5px;width:58px;cursor:pointer;font:inherit;font-size:10.5px;color:var(--txt-2);padding:0}
 .w1-sw u{width:34px;height:34px;border-radius:50%;box-shadow:0 0 0 1px #cdbf9f;border:2px solid #fff;display:block}
 .w1-sw.on u{box-shadow:0 0 0 2.5px #2b2722}.w1-sw.on{color:var(--txt);font-weight:600}
-.w1-svs{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
-.w1-sv{display:inline-flex;align-items:center;border:1px solid var(--field-border);border-radius:20px;overflow:hidden;font-size:13px;color:var(--txt-2)}
+.w1-row2{display:flex;gap:10px;align-items:center;margin-top:10px}
+.w1-svs{flex:1;display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;min-width:0}.w1-svs::-webkit-scrollbar{display:none}
+.w1-sv{flex:none;display:inline-flex;align-items:center;border:1px solid var(--field-border);border-radius:20px;overflow:hidden;font-size:13px;color:var(--txt-2)}
 .w1-sv b{font-weight:300;padding:7px 4px 7px 13px;cursor:pointer}.w1-sv i{font-style:normal;padding:7px 11px 7px 6px;color:var(--txt-3);cursor:pointer}
 .w1-sv b:last-child{padding-right:13px}
 .w1-sv.on{background:var(--cognac);border-color:var(--cognac);color:#fff}.w1-sv.on i{color:#fff}
-.w1-cadd{width:210px;flex:none;border:1px dashed #cdbf9f;border-radius:12px;padding:12px}
-.w1-cadd .cr-input{margin:0 0 8px}
-.w1-cadd button{width:100%;padding:11px;border:0;border-radius:9px;color:#fff;font:inherit;font-size:13px;cursor:pointer;background:linear-gradient(180deg,#b3966b,#97784f)}
-.w1-cadd p{font-size:11px;color:var(--txt-3);margin-top:8px;line-height:1.35}
-.w1-more{margin-top:18px;border-top:1px solid var(--line-soft);padding-top:12px}
-.w1-mh{display:flex;justify-content:space-between;cursor:pointer;font-size:13px;color:var(--txt-2)}.w1-mh em{font-style:normal}
-@media (max-width:620px){.w1-col{flex-direction:column}.w1-cadd{width:100%;box-sizing:border-box}}
+.w1-cin{width:230px;flex:none;margin:0;border-style:dashed;border-color:#cdbf9f}
+.w1-hint{font-size:11px;color:var(--txt-3);margin-top:6px}
+.w1-more{margin-top:18px}
+.w1-mh{border:1.5px solid #cdbf9f;border-radius:9px;padding:11px 14px;text-align:center;font-size:12.5px;color:var(--txt-2);cursor:pointer}
+.w1-mh b{font-weight:500;color:var(--leather)}
 /* крок 2 */
 .iwin.wz2{background:var(--w-bg);height:min(860px,calc(100dvh - 56px))}
 .iwin.wz2 .iw-head{border-bottom:1px solid var(--w-bd);background:var(--w-bg)}
@@ -8643,13 +8641,17 @@ loadPrice();
   function colLoad() { try { var r = localStorage.getItem(COLKEY), a = r ? JSON.parse(r) : []; return Array.isArray(a) ? a : []; } catch (e) { return []; } }
   function colSave(a) { try { localStorage.setItem(COLKEY, JSON.stringify(a)); } catch (e) {} }
   function colKnown(v) { var l = String(v).toLowerCase(); return W1_COLS.some(function (c) { return c[0].toLowerCase() === l; }); }
-  window.wzColAdd = function (id) {
-    var it = wzItem(id), e = $("w1-cin"); if (!it || !e) return;
-    var v = (e.value || "").trim(); if (!v) { say("Впишіть назву кольору"); return; }
+  /* ручний колір зберігається сам: Enter (з перемальовуванням) або вихід з поля (без перемальовування, щоб не з'їсти тап) */
+  window.wzColAdd = function (id, el, quiet) {
+    var it = wzItem(id); if (!it) return;
+    el = el || $("w1-cin"); if (!el) return;
+    var v = (el.value || "").trim(); if (!v) return;
+    el.onblur = null; el.value = "";
     var sv = colLoad();
     var has = colKnown(v) || sv.some(function (x) { return x.toLowerCase() === v.toLowerCase(); });
     if (!has) { sv.push(v); colSave(sv); }
-    it.color = v; renderItems();
+    it.color = v;
+    if (!quiet) renderItems();
   };
   window.wzColDel = function (id, name) {
     var it = wzItem(id); if (!it) return;
@@ -8666,8 +8668,9 @@ loadPrice();
       return "<span class='w1-sv" + (it.color === n ? " on" : "") + "'><b onclick=\"wzSet(" + it.id + ",'color','" + jq(n) + "')\">" + h(n) + "</b><i onclick=\"wzColDel(" + it.id + ",'" + jq(n) + "')\">✕</i></span>";
     }).join("");
     if (it.color && !colKnown(it.color) && sv.indexOf(it.color) === -1) chips += "<span class='w1-sv on'><b onclick=\"wzSet(" + it.id + ",'color','" + jq(it.color) + "')\">" + h(it.color) + "</b></span>";
-    return "<div class='w1-col'><div class='w1-cl'><div class='w1-sws'>" + sw + "</div>" + (chips ? "<div class='w1-svs'>" + chips + "</div>" : "") + "</div>" +
-      "<div class='w1-cadd'><input class='cr-input' id='w1-cin' autocomplete='off' placeholder='Свій колір'><button onclick='wzColAdd(" + it.id + ")'>Додати і зберегти</button><p>Збережені кольори з'являються в списку зліва для наступних замовлень</p></div></div>";
+    return "<div class='w1-sws'>" + sw + "</div><div class='w1-row2'><div class='w1-svs'>" + chips + "</div>" +
+      "<input class='cr-input w1-cin' id='w1-cin' autocomplete='off' placeholder='Свій колір' onkeydown=\"if(event.key==='Enter'){wzColAdd(" + it.id + ",this)}\" onblur=\"wzColAdd(" + it.id + ",this,true)\"></div>" +
+      "<div class='w1-hint'>Свій колір зберігається сам і з'являється в списку для наступних замовлень</div>";
   }
   function wzStep1(it) {
     var isBag = it.category === "bags";
@@ -8692,7 +8695,7 @@ loadPrice();
       "<div class='wz-chips w1-chips' id='wz-brands'>" + wzBrandChips(it) + "</div>" +
       "<div class='wz-lbl'>Колір</div>" + wzColorsHTML(it);
     var filled = (it.matNote ? 1 : 0) + (it.condition ? 1 : 0) + ((it.note || "").trim() ? 1 : 0);
-    s += "<div class='w1-more'><div class='w1-mh' onclick='wzMoreTog(" + it.id + ")'><span>Додатково: матеріал, стан, коментар" + (filled ? " · " + filled : "") + "</span><em>" + (it.wzMore ? "▴" : "▾") + "</em></div>";
+    s += "<div class='w1-more'><div class='w1-mh' onclick='wzMoreTog(" + it.id + ")'><b>Додатково:</b> матеріал, стан, коментар" + (filled ? " · " + filled : "") + "</div>";
     if (it.wzMore) {
       s += "<div class='wz-lbl'>Матеріал</div>" + wzChips(it, MATERIALS, "matNote") +
         "<div class='wz-lbl'>Стан</div>" + wzChips(it, CONDITIONS, "condition") +
