@@ -2430,6 +2430,150 @@ html,body{overscroll-behavior-y:none}
 .pl-tbd{position:relative;overflow:hidden;display:inline-block;vertical-align:middle;margin-left:7px;background:#d49a24;color:#fff;font-style:normal;font-size:11px;font-weight:700;min-width:18px;height:18px;border-radius:9px;line-height:18px;text-align:center;padding:0 5px;box-sizing:border-box}
 .pl-tbd::after{content:"";position:absolute;top:0;bottom:0;left:0;width:60%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.75),rgba(255,255,255,0));transform:translateX(-120%) skewX(-18deg);animation:plShine 3s ease-in-out infinite;pointer-events:none}
 
+.icard-dup{flex:none;height:26px;min-width:26px;padding:0 8px;border-radius:7px;border:1px solid var(--cognac);background:rgba(163,134,92,.08);color:#7a5a2c;font-size:14px;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;margin-left:auto}
+.icard-dup i{font-style:normal;font-size:11px;font-weight:700;color:#3f7a24;margin-left:4px}
+.icard-dup+.icard-edit{margin-left:0}
+.icard-cp{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#3f7a24;background:rgba(106,160,68,.12);border-radius:8px;padding:2px 7px;flex:none}
+.dup-snack{position:fixed;left:50%;bottom:110px;transform:translate(-50%,20px);background:#2b2722;color:#fff;border-radius:10px;padding:11px 16px;font-size:13.5px;display:flex;gap:14px;align-items:center;opacity:0;pointer-events:none;transition:.25s;z-index:9999}
+.dup-snack.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.dup-snack u{color:#e8c98a;cursor:pointer;text-decoration:none;font-weight:600}
+
+/* усі відділи в один рядок; якщо не влізли, рядок гортається */
+.wz-dph{flex-wrap:nowrap;justify-content:flex-start;gap:6px;max-width:none;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.wz-dph::-webkit-scrollbar{display:none}
+.wz-dph span{flex:none;white-space:nowrap;padding:9px 11px;font-size:12.5px}
+.wz-dph span i{display:none}
+.wz-dph span:first-child{margin-left:auto}.wz-dph span:last-child{margin-right:auto}
+.wz-dph{gap:5px}.wz-dph span{padding:9px 8px;font-size:12px}
+
+/* ═══ Майстер речі v3: 2 кроки, вкладки, плитки, широкий чек ═══ */
+.iwin.wz{--w-bg:#f0ebe3;--w-card:#f8f5f0;--w-hd:#e6dfd2;--w-bd:#ddd4c6;--w-tx:#3a3228;--w-tx2:#7d7366;--w-ac:#a0845c;--w-acd:#6b4f3a;--w-tab:#ebe3d4;--w-tab2:#f4efe6;--w-tile:#faf7f2}
+[data-theme="dark"] .iwin.wz{--w-bg:var(--surface);--w-card:var(--surface-2);--w-hd:#1c1917;--w-bd:var(--line);--w-tx:var(--txt);--w-tx2:var(--txt-2);--w-acd:#c9ad82;--w-tab:#34302b;--w-tab2:#2c2824;--w-tile:var(--surface-2)}
+.iwin.wz .iw-head{justify-content:flex-start;gap:10px;padding:9px 16px}
+.iwin.wz .iw-title{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.iwin.wz .wz-go{margin:0}
+.wz-go.off{opacity:.4}.wz-go.off::after{display:none}
+.w2-back{border:0;background:none;color:var(--txt-2);font:inherit;font-size:13px;cursor:pointer;padding:6px 4px;flex:none}
+.iwin.wz .iw-foot .iw-sum,.iwin.wz .iw-foot .iw-done{display:none}
+.iwin.wz .iw-foot{justify-content:flex-start}
+/* крок 1 */
+.w1-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.w1-chips::-webkit-scrollbar{display:none}
+.w1-chips>*{flex:none;white-space:nowrap}
+.w1-col{display:flex;gap:16px;align-items:flex-start}
+.w1-cl{flex:1;min-width:0}
+.w1-sws{display:flex;flex-wrap:wrap;gap:12px 10px}
+.w1-sw{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:5px;width:58px;cursor:pointer;font:inherit;font-size:10.5px;color:var(--txt-2);padding:0}
+.w1-sw u{width:34px;height:34px;border-radius:50%;box-shadow:0 0 0 1px #cdbf9f;border:2px solid #fff;display:block}
+.w1-sw.on u{box-shadow:0 0 0 2.5px #2b2722}.w1-sw.on{color:var(--txt);font-weight:600}
+.w1-svs{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.w1-sv{display:inline-flex;align-items:center;border:1px solid var(--field-border);border-radius:20px;overflow:hidden;font-size:13px;color:var(--txt-2)}
+.w1-sv b{font-weight:300;padding:7px 4px 7px 13px;cursor:pointer}.w1-sv i{font-style:normal;padding:7px 11px 7px 6px;color:var(--txt-3);cursor:pointer}
+.w1-sv b:last-child{padding-right:13px}
+.w1-sv.on{background:var(--cognac);border-color:var(--cognac);color:#fff}.w1-sv.on i{color:#fff}
+.w1-cadd{width:210px;flex:none;border:1px dashed #cdbf9f;border-radius:12px;padding:12px}
+.w1-cadd .cr-input{margin:0 0 8px}
+.w1-cadd button{width:100%;padding:11px;border:0;border-radius:9px;color:#fff;font:inherit;font-size:13px;cursor:pointer;background:linear-gradient(180deg,#b3966b,#97784f)}
+.w1-cadd p{font-size:11px;color:var(--txt-3);margin-top:8px;line-height:1.35}
+.w1-more{margin-top:18px;border-top:1px solid var(--line-soft);padding-top:12px}
+.w1-mh{display:flex;justify-content:space-between;cursor:pointer;font-size:13px;color:var(--txt-2)}.w1-mh em{font-style:normal}
+@media (max-width:620px){.w1-col{flex-direction:column}.w1-cadd{width:100%;box-sizing:border-box}}
+/* крок 2 */
+.iwin.wz2{background:var(--w-bg);height:min(860px,calc(100dvh - 56px))}
+.iwin.wz2 .iw-head{border-bottom:1px solid var(--w-bd);background:var(--w-bg)}
+.iwin.wz2 .iw-foot{display:none}
+.iwin.wz.wz2 .iw-body{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.w2{flex:1;min-height:0;display:flex;flex-direction:column;color:var(--w-tx)}
+.w2-pick{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 40px}
+.w2-pick h3{font-family:'Tenor Sans',serif;font-weight:400;font-size:20px;color:var(--w-tx)}
+.w2-pick p{color:var(--w-tx2);font-size:13px;margin:6px 0 22px}
+.w2-pk{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:470px}
+.w2-pk>div{border:2px solid var(--w-ac);border-radius:14px;background-color:var(--w-card);padding:20px 14px;text-align:center;cursor:pointer;
+ background-image:linear-gradient(112deg,transparent 28%,rgba(255,170,190,.20) 38%,rgba(255,236,170,.40) 46%,rgba(255,255,255,.95) 50%,rgba(170,215,255,.28) 55%,rgba(200,170,255,.16) 60%,transparent 70%);
+ background-size:280% 100%;background-repeat:no-repeat;background-position:105% 0;animation:w2cd 9s ease-in-out infinite}
+.w2-pk>div:nth-child(2){animation-delay:4.5s}
+.w2-pk b{display:block;font-family:'Tenor Sans',serif;font-weight:400;font-size:19px;color:var(--w-acd)}
+.w2-pk small{display:block;margin-top:6px;font-size:11.5px;color:var(--w-tx2);line-height:1.4}
+@keyframes w2cd{0%{background-position:105% 0}40%{background-position:-5% 0}100%{background-position:-5% 0}}
+@keyframes w2disc{0%{background-position:105% 0,0 0}55%{background-position:-5% 0,0 0}100%{background-position:-5% 0,0 0}}
+.w2-tabs{flex:none;display:flex;align-items:stretch;background:var(--w-hd);border-bottom:1px solid var(--w-bd);padding:12px 0 0;position:relative}
+.w2-tab{flex:1;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;font-family:'Tenor Sans',serif;font-size:18px;
+ color:rgba(58,50,40,.5);padding:11px 0 13px;margin:6px 0 -1px;background:rgba(58,50,40,.07);box-shadow:inset 0 -7px 9px -7px rgba(58,50,40,.28);border-radius:10px 10px 0 0;min-height:50px}
+[data-theme="dark"] .w2-tab{color:rgba(240,235,227,.5)}
+.w2-tab:first-child{margin-left:24px}.w2-tab:last-child{margin-right:24px}
+.w2-tab i{position:absolute;top:6px;right:12px;min-width:20px;height:20px;border-radius:10px;background:var(--w-acd);color:#fff;font-style:normal;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;padding:0 5px;font-family:'Commissioner',sans-serif}
+.w2-tab.on{margin-top:0;padding:11px 0 14px;color:var(--w-acd);border:1px solid var(--w-bd);border-bottom:1px solid var(--w-bg);border-top:3px solid var(--w-ac);border-radius:14px 14px 0 0;z-index:2;
+ box-shadow:0 -5px 12px rgba(58,50,40,.16);
+ background-image:linear-gradient(112deg,transparent 34%,rgba(255,255,255,.9) 50%,transparent 66%),linear-gradient(180deg,var(--w-tab) 0%,var(--w-tab2) 60%,var(--w-bg) 96%);
+ background-size:280% 100%,100% 100%;background-repeat:no-repeat;background-position:105% 0,0 0;animation:w2disc 10s ease-in-out infinite}
+.w2-tab.on i{background:var(--w-ac)}
+.w2-tab.on::before,.w2-tab.on::after{content:"";position:absolute;bottom:0;width:14px;height:14px;background:transparent}
+.w2-tab.on::before{left:-15px;border-bottom-right-radius:14px;box-shadow:6px 6px 0 6px var(--w-bg)}
+.w2-tab.on::after{right:-15px;border-bottom-left-radius:14px;box-shadow:-6px 6px 0 6px var(--w-bg)}
+.w2-tb{flex:1;min-height:0;display:flex;flex-direction:column;background:var(--w-bg)}
+.w2-sr{flex:none;padding:12px 24px 2px}
+.w2-srch{display:flex;align-items:center;background:#fff;border:2px solid #4a3b2c;border-radius:14px;padding:11px 16px;box-shadow:0 3px 10px rgba(74,59,44,.18)}
+.w2-srch input{border:0;outline:0;flex:1;font:inherit;font-size:15px;background:none;color:#2a2621;min-width:0}
+#wz-chips{flex:none}
+.w2-ct{display:grid;gap:7px;padding:10px 24px 10px}
+.w2-ct.sc{display:flex;overflow-x:auto;scrollbar-width:none}.w2-ct.sc::-webkit-scrollbar{display:none}.w2-ct.sc>div{flex:none;min-width:104px}
+.w2-ct>div{position:relative;border:1px solid var(--w-bd);background:var(--w-tile);border-radius:11px;padding:10px 6px 9px;text-align:center;cursor:pointer;min-width:0}
+.w2-ct b{display:block;font-family:'Tenor Sans',serif;font-weight:400;font-size:13.5px;line-height:1.15;color:var(--w-tx);overflow-wrap:anywhere}
+.w2-ct small{display:block;font-size:10px;color:var(--w-tx2);margin-top:3px}
+.w2-ct>div.on{background:var(--w-card);border:2px solid var(--w-ac);padding:9px 5px 8px}
+.w2-ct i.bd{position:absolute;top:-6px;right:-4px;min-width:17px;height:17px;border-radius:9px;background:var(--w-acd);color:#fff;font-style:normal;font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center;padding:0 4px}
+.w2-dots{display:flex;justify-content:center;gap:3px;margin-top:4px}
+.w2-dots i{width:11px;height:3px;border-radius:2px;background:var(--w-bd)}.w2-dots i.f{background:var(--w-ac)}
+.w2-it .w2-dots{margin:0}
+.w2-ls{flex:1;min-height:0;overflow-y:auto;padding:0 56px 12px;-webkit-overflow-scrolling:touch}
+.w2-in{padding:10px 6px 8px;border-bottom:1px solid var(--w-bd)}
+.w2-it{display:flex;align-items:center;gap:10px}.w2-it b{font-family:'Tenor Sans',serif;font-weight:400;font-size:15px;color:var(--w-tx)}
+.w2-in p.inc{font-size:12px;color:var(--w-acd);font-weight:500;margin-top:4px}
+.w2-sec{display:flex;align-items:baseline;gap:8px;padding:10px 6px 4px;border-bottom:1px solid var(--w-bd)}
+.w2-sec b{font-family:'Tenor Sans',serif;font-weight:400;font-size:14.5px;color:var(--w-tx)}.w2-sec small{font-size:10.5px;color:var(--w-tx2)}
+.w2-row{display:flex;align-items:center;gap:9px;padding:0 6px;min-height:42px;border-bottom:1px solid var(--w-bd);position:relative;cursor:pointer;color:var(--w-tx)}
+.w2-row.core{min-height:46px}
+.w2-st{width:16px;color:#cbbfa6;font-size:13px;text-align:center;flex:none}.w2-st.f{color:#d49a24}
+.w2-row .nm{flex:1;min-width:0;font-size:13px;line-height:1.25}.w2-row .nm small{display:block;font-size:10.5px;color:var(--w-tx2);margin-top:1px}
+.w2-row .pr{font-family:'Tenor Sans',serif;font-size:13px;color:var(--w-acd);min-width:58px;text-align:right}
+.w2-pl,.w2-rad{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--w-ac);color:var(--w-ac);display:flex;align-items:center;justify-content:center;font-size:16px;flex:none}
+.w2-rad{color:#fff;font-size:15px}
+.w2-pl.ck{background:var(--w-acd);border-color:var(--w-acd);color:#fff;font-size:15px}
+.w2-row.on{background:rgba(160,132,92,.10)}
+.w2-row.on::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--w-ac)}
+.w2-row.on .nm{font-weight:600;color:var(--w-acd)}
+.w2-row.core.on .w2-rad{background:var(--w-ac)}
+.w2-row.own{color:var(--w-ac);font-size:12.5px;border-bottom:0}
+.w2-found{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--w-ac);padding:10px 6px 6px}
+.w2-empty{padding:26px 16px;color:var(--w-tx2);font-size:12.5px;text-align:center}
+.w2-rc{flex:none;background:#fff;color:#2a2621;border-top:1px dashed var(--w-ac);padding:8px 24px 10px;box-shadow:0 -8px 22px rgba(58,50,40,.08);font-size:12.5px;position:relative;z-index:3}
+[data-theme="dark"] .w2-rc{background:var(--surface-2);color:var(--txt)}
+.w2-rh{display:flex;align-items:center;gap:8px;cursor:pointer;padding:2px 0 4px}
+.w2-rh b{font-family:'Tenor Sans',serif;font-weight:400;letter-spacing:.14em;text-transform:uppercase;font-size:11.5px;color:var(--w-acd)}
+.w2-rh span{color:var(--w-tx2);font-size:11.5px;flex:1}.w2-rh em{font-style:normal;color:var(--w-tx2)}
+.w2-rcol,.w2-rl{display:grid;grid-template-columns:minmax(0,1fr) 62px 80px 72px;column-gap:28px;align-items:center}
+.w2-rcol{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--w-tx2);padding:4px 0}
+.w2-rcol span:nth-child(2){text-align:right}.w2-rcol span:nth-child(3){text-align:center}
+.w2-rb{max-height:150px;overflow-y:auto;border-top:1px dashed var(--w-bd);scrollbar-width:none}.w2-rb::-webkit-scrollbar{display:none}
+.w2-rl{padding:4px 0;border-bottom:1px dashed var(--w-bd)}
+.w2-rl .n{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:8px}
+.w2-rl .pc1{text-align:right;font-family:'Tenor Sans',serif;color:var(--w-tx2);font-size:12.5px;cursor:pointer;font-variant-numeric:tabular-nums}.w2-rl .pc1.up{color:var(--w-acd);font-weight:600}
+.w2-rl .s{text-align:left;font-family:'Tenor Sans',serif;font-variant-numeric:tabular-nums}
+.w2-q{display:inline-flex;align-items:center;border:1px solid var(--w-ac);border-radius:15px;background:var(--w-card);overflow:hidden;width:80px}
+.w2-q u{text-decoration:none;width:26px;height:26px;display:flex;align-items:center;justify-content:center;color:var(--w-acd);font-size:16px;cursor:pointer}.w2-q u.ph{visibility:hidden}
+.w2-q em{flex:1;min-width:0;text-align:center;font-style:normal;font-weight:600;color:var(--w-acd);font-size:12.5px}
+.w2-re{padding:10px 0;color:var(--w-tx2);text-align:center;font-size:12px}
+.w2-rt{display:flex;justify-content:space-between;align-items:baseline;padding-top:7px;border-top:1px dashed var(--w-bd)}
+.w2-rt span{color:var(--w-tx2);letter-spacing:.08em;text-transform:uppercase;font-size:11px}.w2-rt b{font-family:'Tenor Sans',serif;font-weight:400;font-size:19px}
+.w2-rc .wz-prw{background:transparent;padding:6px 0 8px}
+/* нижня панель і диск RW лишаються видимими під вікном */
+@media (max-width:768px),(orientation:portrait) and (max-width:1180px),(orientation:landscape) and (max-height:520px){
+  .iw-ovl{padding-bottom:calc(112px + env(safe-area-inset-bottom))}
+  body.iw-open .nav.has-home-bar{z-index:210}
+  .iwin.wz{height:min(780px,calc(100dvh - 140px - env(safe-area-inset-top) - env(safe-area-inset-bottom)))}
+  .iwin.wz2{height:min(860px,calc(100dvh - 140px - env(safe-area-inset-top) - env(safe-area-inset-bottom)))}
+}
+
 </style>
 </head>
 <body data-theme="light">
@@ -7902,10 +8046,18 @@ loadPrice();
     var m = (typeof STATUS_META !== "undefined" && STATUS_META[st]) || ["", ""];
     return "<span class='badge " + m[1] + "'>" + h(m[0]) + "</span>";
   }
+  /* Приймальник за замовчуванням: за роллю облікового запису. Адмін = Сергій, приймальник = Олександр. */
+  function rcDefMgr() {
+    var list = (typeof PARTNERS !== "undefined" && PARTNERS.length) ? PARTNERS : [];
+    if (!list.length) return "";
+    var adm = isAdmin();
+    var hit = list.filter(function (p) { return (RESTRICTED_MASTER_NAMES.indexOf(p) !== -1) === adm; })[0];
+    return hit || list[0];
+  }
   function rcMgrPills() {
     var list = (typeof PARTNERS !== "undefined" && PARTNERS.length) ? PARTNERS : [];
     if (!list.length) return "";
-    if (!NO.manager) NO.manager = list[0];
+    if (!RC.mgrTouched || !NO.manager) NO.manager = rcDefMgr();
     return "<div class='rc-mgr'>Хто приймає: <div class='cr-pills'>" + list.map(function (p) {
       return "<button class='cr-pill" + (NO.manager === p ? " active" : "") + "' onclick=\"rcMgr('" + jq(p) + "')\">" + h(p) + "</button>";
     }).join("") + "</div></div>";
@@ -8163,7 +8315,7 @@ loadPrice();
   window.rcQ = function (v) { RC.q = v; var b = $("rc-results"); if (b) b.innerHTML = rcResultsHTML(); };
   window.rcKey = function (k) { if (RC.digits.length < 9) { RC.digits += k; RC.day = null; _rcRender(); } };
   window.rcDel = function () { RC.digits = RC.digits.slice(0, -1); _rcRender(); };
-  window.rcMgr = function (p) { NO.manager = p; _rcRender(); };
+  window.rcMgr = function (p) { NO.manager = p; RC.mgrTouched = true; _rcRender(); };
   window.rcPick = function (key) {
     var c = rcClients().filter(function (x) { return x.key === key; })[0];
     if (!c) return;
@@ -8183,7 +8335,7 @@ loadPrice();
     if (typeof priceLoaded !== "undefined" && !priceLoaded) { say("Прайс ще завантажується, зачекайте секунду"); return; }
     var hasWork = NO.items && NO.items.some(function (i) { return i.services && i.services.length; });
     if (hasWork && !confirm("Є незавершене замовлення. Почати нове? Введені дані зникнуть.")) return;
-    var mgr = NO.manager || ((typeof PARTNERS !== "undefined" && PARTNERS.length) ? PARTNERS[0] : "");
+    var mgr = (RC.mgrTouched && NO.manager) ? NO.manager : rcDefMgr(); RC.mgrTouched = false;
     var phone = c.isNew ? fmtPhone(c.key) : c.phone;
     var msg = c.isNew ? RC.newMsg : clientMessenger(c.phone);
     NO = { manager: mgr, client: name, phone: phone, messenger: msg || "", items: [], payment: "", prepay: "", prepayMethod: "", deadline: "", delivery: "Самовивіз" };
@@ -8325,6 +8477,7 @@ loadPrice();
 
   var _sp = window.showPage;
   window.showPage = function (name) {
+    if (typeof MODAL_ITEM !== "undefined" && MODAL_ITEM != null) closeItemModal();
     _sp(name);
     var d = $("nav-home");
     if (d) d.classList.toggle("active", currentPage === "reception");
@@ -8409,7 +8562,7 @@ loadPrice();
     var it = wzItem(id); if (!it || !it.services[si]) return;
     var s = it.services[si]; if (s.kind === "core") return;
     s.qty = (s.qty || 1) + d;
-    if (s.qty <= 0) { it.services.splice(si, 1); } else wzSync(s);
+    if (s.qty <= 0) { it.services.splice(si, 1); it.wzPr = {}; } else wzSync(s);
     renderItems(); updateReceipt();
   };
   window.wzRm = function (id, si) { var it = wzItem(id); if (!it) return; it.services.splice(si, 1); it.wzPr = {}; renderItems(); updateReceipt(); };
@@ -8435,13 +8588,21 @@ loadPrice();
   };
 
   /* кроки */
+  /* кроки: 1 «Виріб», 2 «Послуги» */
   window.wzGo = function (id, n) { var it = wzItem(id); if (!it) return; it.wzStep = n; it.wzSheet = false; renderItems(); };
   window.wzNext = function (id) {
     var it = wzItem(id); if (!it) return;
-    if (it.wzStep === 1 && !it.model) { say("Оберіть вид виробу"); return; }
-    if (it.wzStep === 2 && !it.services.length) { say("Додайте хоча б одну послугу"); return; }
-    if (it.wzStep < 3) { it.wzStep++; renderItems(); } else { closeItemModal(); }
+    if (it.wzStep === 1) { if (!it.model) { say("Оберіть вид виробу"); return; } it.wzStep = 2; renderItems(); return; }
+    if (!it.services.length) { say("Додайте хоча б одну послугу"); return; }
+    closeItemModal();
   };
+  window.wzMode = function (id, m) {
+    var it = wzItem(id); if (!it) return;
+    it.wzMc = true;
+    if (it.mode === m) { it.wzDept = null; it.wzQ = ""; renderItems(); } else window.setItemMode(id, m);
+  };
+  window.wzRcpTog = function (id) { var it = wzItem(id); if (!it) return; it.wzRo = (it.wzRo === false); renderItems(); };
+  window.wzMoreTog = function (id) { var it = wzItem(id); if (!it) return; it.wzMore = !it.wzMore; renderItems(); };
   window.wzSet = function (id, key, val) { var it = wzItem(id); if (!it) return; it[key] = (it[key] === val ? "" : val); renderItems(); };
 
   /* крок 1 */
@@ -8477,6 +8638,37 @@ loadPrice();
   }
   window.wzBrandPick = function (id, b) { var it = wzItem(id); if (!it) return; it.brand = (it.brand === b ? "" : b); renderItems(); updateReceipt(); };
 
+  var W1_COLS = [["Білий", "#ffffff"], ["Чорний", "#222222"], ["Бежевий", "#d9c3a0"], ["Сірий", "#9b9b9b"], ["Коричневий", "#6b4a2f"], ["Синій", "#2f5d9b"], ["Червоний", "#b83a3a"], ["Зелений", "#4a7f4a"], ["Рожевий", "#e7a7b8"], ["Коньяк", "#a0845c"], ["Бордовий", "#6f1f2e"], ["Мультиколор", "linear-gradient(135deg,#e04a4a,#e8c03a,#4aa05a,#3a78d0,#9a4ac8)"]];
+  var COLKEY = "rw_wz_colors";
+  function colLoad() { try { var r = localStorage.getItem(COLKEY), a = r ? JSON.parse(r) : []; return Array.isArray(a) ? a : []; } catch (e) { return []; } }
+  function colSave(a) { try { localStorage.setItem(COLKEY, JSON.stringify(a)); } catch (e) {} }
+  function colKnown(v) { var l = String(v).toLowerCase(); return W1_COLS.some(function (c) { return c[0].toLowerCase() === l; }); }
+  window.wzColAdd = function (id) {
+    var it = wzItem(id), e = $("w1-cin"); if (!it || !e) return;
+    var v = (e.value || "").trim(); if (!v) { say("Впишіть назву кольору"); return; }
+    var sv = colLoad();
+    var has = colKnown(v) || sv.some(function (x) { return x.toLowerCase() === v.toLowerCase(); });
+    if (!has) { sv.push(v); colSave(sv); }
+    it.color = v; renderItems();
+  };
+  window.wzColDel = function (id, name) {
+    var it = wzItem(id); if (!it) return;
+    colSave(colLoad().filter(function (x) { return x !== name; }));
+    if (it.color === name) it.color = "";
+    renderItems();
+  };
+  function wzColorsHTML(it) {
+    var sw = W1_COLS.map(function (c) {
+      var on = it.color === c[0];
+      return "<button class='w1-sw" + (on ? " on" : "") + "' onclick=\"wzSet(" + it.id + ",'color','" + jq(c[0]) + "')\"><u style='background:" + c[1] + "'></u><span>" + h(c[0]) + "</span></button>";
+    }).join("");
+    var sv = colLoad(), chips = sv.map(function (n) {
+      return "<span class='w1-sv" + (it.color === n ? " on" : "") + "'><b onclick=\"wzSet(" + it.id + ",'color','" + jq(n) + "')\">" + h(n) + "</b><i onclick=\"wzColDel(" + it.id + ",'" + jq(n) + "')\">✕</i></span>";
+    }).join("");
+    if (it.color && !colKnown(it.color) && sv.indexOf(it.color) === -1) chips += "<span class='w1-sv on'><b onclick=\"wzSet(" + it.id + ",'color','" + jq(it.color) + "')\">" + h(it.color) + "</b></span>";
+    return "<div class='w1-col'><div class='w1-cl'><div class='w1-sws'>" + sw + "</div>" + (chips ? "<div class='w1-svs'>" + chips + "</div>" : "") + "</div>" +
+      "<div class='w1-cadd'><input class='cr-input' id='w1-cin' autocomplete='off' placeholder='Свій колір'><button onclick='wzColAdd(" + it.id + ")'>Додати і зберегти</button><p>Збережені кольори з'являються в списку зліва для наступних замовлень</p></div></div>";
+  }
   function wzStep1(it) {
     var isBag = it.category === "bags";
     if (!it.mode) it.mode = "care";
@@ -8484,10 +8676,10 @@ loadPrice();
     var cats = Object.keys(PRICE).map(function (k) {
       return "<button class='ic-seg" + (k === it.category ? " on" : "") + "' onclick=\"changeCategory(" + it.id + ",'" + jq(k) + "')\">" + h(PRICE[k].label) + "</button>";
     }).join("");
-    var s = "<div class='wz-h'>Що приймаємо?</div><div class='wz-sub'>Оберіть тип і вид, бренд за бажанням</div>" +
-      "<div class='wz-lbl first'>Вид виробу</div><div class='wz-segs'>" + cats + "</div>" +
+    var s = "<div class='wz-h'>Що приймаємо?</div><div class='wz-sub'>Вид, бренд і колір. Решта за потреби</div>" +
+      "<div class='wz-segs'>" + cats + "</div>" +
       "<div class='wz-lbl'>Вид</div><input class='cr-input' autocomplete='off' placeholder='Оберіть або впишіть' value=\"" + h(it.wzMq != null ? it.wzMq : (it.model || "")) + "\" oninput='wzModelInput(" + it.id + ",this.value)'>" +
-      "<div class='wz-chips' id='wz-models'>" + wzModelChips(it) + "</div>";
+      "<div class='wz-chips w1-chips' id='wz-models'>" + wzModelChips(it) + "</div>";
     if (isBag && isCare && it.model && it.model !== "Поясний ремінь") {
       s += "<div class='wz-lbl'>Розмір і матеріал <i>впливає на ціну чищення</i></div><div class='wz-segs'>" +
         ["S", "M", "L"].map(function (z) { return "<button class='ic-seg" + (it.size === z ? " on" : "") + "' onclick=\"setItemSize(" + it.id + ",'" + z + "')\">" + z + "</button>"; }).join("") +
@@ -8497,8 +8689,16 @@ loadPrice();
         shoeSizeGroups().map(function (g) { return "<button class='cr-pill" + (it.size === g ? " active" : "") + "' onclick=\"setItemSize(" + it.id + ",'" + jq(g) + "')\">" + h(g) + "</button>"; }).join("") + "</div>";
     }
     s += "<div class='wz-lbl'>Бренд <i>необов'язково</i></div><input class='cr-input' autocomplete='off' placeholder='Впишіть або оберіть' value=\"" + h(it.brand || "") + "\" oninput='wzBrandInput(" + it.id + ",this.value)'>" +
-      "<div class='wz-chips' id='wz-brands'>" + wzBrandChips(it) + "</div>";
-    return s;
+      "<div class='wz-chips w1-chips' id='wz-brands'>" + wzBrandChips(it) + "</div>" +
+      "<div class='wz-lbl'>Колір</div>" + wzColorsHTML(it);
+    var filled = (it.matNote ? 1 : 0) + (it.condition ? 1 : 0) + ((it.note || "").trim() ? 1 : 0);
+    s += "<div class='w1-more'><div class='w1-mh' onclick='wzMoreTog(" + it.id + ")'><span>Додатково: матеріал, стан, коментар" + (filled ? " · " + filled : "") + "</span><em>" + (it.wzMore ? "▴" : "▾") + "</em></div>";
+    if (it.wzMore) {
+      s += "<div class='wz-lbl'>Матеріал</div>" + wzChips(it, MATERIALS, "matNote") +
+        "<div class='wz-lbl'>Стан</div>" + wzChips(it, CONDITIONS, "condition") +
+        "<div class='wz-lbl'>Коментар <i>видно клієнту</i></div><textarea class='cr-input' rows='3' placeholder='Напр.: без шнурків, без устілок, пильник у комплекті…' oninput='setItemNote(" + it.id + ",this.value)' style='resize:none'>" + h(it.note || "") + "</textarea>";
+    }
+    return s + "</div>";
   }
 
   /* крок 2 */
@@ -8516,14 +8716,18 @@ loadPrice();
     var op = wzCoreOp(s.name); if (!op) return true;
     var p = opPriceFor(it, op); return !!p && p.name === s.name;
   }
+  /* Рівні догляду. Включення не лінійні: догляд = чищення + крем, фарбування = чищення, реставрація = чищення + фарбування */
+  var WZ_CARE_G = ["Чищення", "Базовий догляд", "Фарбування", "Реставрація"];
+  var W2_INC = { "Чищення": [], "Базовий догляд": ["Чищення"], "Фарбування": ["Чищення"], "Реставрація": ["Чищення", "Фарбування"] };
   function wzCareGroup(s) {
+    var op = wzCoreOp(s.name); if (op) return op;
     var n = wzNorm(s.name), d = String(s.department || "").toLowerCase();
     if (/^(реставрац|усуненн|відновленн)/.test(n)) return "Реставрація";
-    if (/^(чищенн|базовий догляд|глясаж|хімчистк)/.test(n)) return "Чищення";
+    if (/^глясаж/.test(n)) return "Базовий догляд";
+    if (/^(чищенн|базовий догляд|хімчистк)/.test(n)) return "Чищення";
     if ((d.indexOf("чищ") !== -1 || d.indexOf("догляд") !== -1) && d.indexOf("фарб") === -1) return "Чищення";
     return "Фарбування";
   }
-  var WZ_CARE_G = ["Чищення", "Фарбування", "Реставрація"];
   /* пул послуг поточного режиму: [{i: індекс у WZ_LIST, g: відділ}] */
   function wzPool(it) {
     var careDept = {}, out = [];
@@ -8549,14 +8753,19 @@ loadPrice();
     favSave(m); renderItems();
   };
   function wzDepts(it) {
-    var pool = wzPool(it), out = ["Обране"];
+    var pool = wzPool(it), out = [];
     if (it.mode === "care") WZ_CARE_G.forEach(function (g) { if (pool.some(function (p) { return p.g === g; })) out.push(g); });
-    else pool.forEach(function (p) { if (out.indexOf(p.g) === -1) out.push(p.g); });
+    else { out.push("Обране"); pool.forEach(function (p) { if (out.indexOf(p.g) === -1) out.push(p.g); }); }
     return out;
   }
   function wzDeptCur(it) {
     var ds = wzDepts(it);
     if (it.wzDept && ds.indexOf(it.wzDept) !== -1) return it.wzDept;
+    if (it.mode === "care") {
+      var c = it.services.filter(function (x) { return x.kind === "core"; })[0];
+      if (c && ds.indexOf(c.op) !== -1) return c.op;
+      return ds.indexOf("Чищення") !== -1 ? "Чищення" : ds[0];
+    }
     if (!wzFavIdx(it).length && ds.length > 1) return ds[1];
     return "Обране";
   }
@@ -8573,51 +8782,100 @@ loadPrice();
   };
   var _toggleOp0 = window.toggleOp;
   window.toggleOp = function (id, op) { var n = (wzItem(id) || { services: [] }).services.length; _toggleOp0(id, op); var it = wzItem(id); if (it && it.services.some(function (x) { return x.kind === "core" && x.op === op; })) window.__wzBump = 1; };
-  function wzTile(it, li) {
-    var l = WZ_LIST[li], op = wzCoreOp(l.name), on, click;
-    if (op) { on = it.services.some(function (x) { return x.kind === "core" && x.op === op; }); click = "toggleOp(" + it.id + ",'" + jq(op) + "')"; }
-    else { on = wzFindSvc(it, l.name) >= 0; click = "wzTog(" + it.id + "," + li + ")"; }
-    var f = wzIsFav(it, li);
-    return "<div class='wz-t" + (on ? " on" : "") + "' onclick=\"" + click + "\"><b class='wz-st" + (f ? " f" : "") + "' onclick=\"event.stopPropagation();wzFav(" + it.id + "," + li + ")\">" + (f ? "★" : "☆") + "</b><span>" + (on ? "✓ " : "") + h(l.name) + "</span><em>" + (l.from ? "від " : "") + money(l.price) + "</em></div>";
+  function wzIdxSel(it, i) {
+    var l = WZ_LIST[i], op = wzCoreOp(l.name);
+    return op ? it.services.some(function (x) { return x.kind === "core" && x.op === op; }) : wzFindSvc(it, l.name) >= 0;
   }
-  function wzSelected(it) {
-    if (!it.services.length) return "";
-    var order = it.services.map(function (s, i) { return i; }).sort(function (a, b) { return ((it.services[b].kind === "core") ? 1 : 0) - ((it.services[a].kind === "core") ? 1 : 0) || a - b; });
-    var s = "<div class='wz-sel'><div class='wz-selh'>Обрано " + it.services.length + "</div>";
-    order.forEach(function (si) {
-      var sv = it.services[si];
-      var core = sv.kind === "core";
-      var unit = core ? sv.price : sv.unit, qty = core ? 1 : (sv.qty || 1), base = wzFloor(it, sv);
-      var raised = unit > base && base > 0;
-      var nm = core ? sv.name : (sv.baseName || sv.name);
-      var sub = (qty > 1 ? qty + " × " + money(unit) : (core ? "рівень, включає попередні" : money(unit) + " " + (sv.u || "за 1"))) + (raised ? " · ціну підвищено" : "");
-      s += "<div class='wz-sr'><div class='nm'>" + h(nm) + "<small>" + h(sub) + "</small></div>" +
-        (core ? "" : "<span class='wz-step'><button onclick='wzQty(" + it.id + "," + si + ",-1)'>−</button><span class='n'>" + qty + "</span><button onclick='wzQty(" + it.id + "," + si + ",1)'>+</button></span>") +
-        "<span class='wz-sum' onclick='wzPrToggle(" + it.id + "," + si + ")'>" + money(sv.price) + "</span><button class='wz-x' onclick='wzRm(" + it.id + "," + si + ")'>×</button></div>";
-      if (it.wzPr && it.wzPr[si]) {
-        s += "<div class='wz-prw'>Ціна за 1" + (base ? " (не нижче прайсу " + money(base) + ")" : "") + "<span class='wz-step'><button " + (unit <= base ? "disabled" : "") + " onclick='wzPrStep(" + it.id + "," + si + ",-50)'>−</button><span class='n' style='min-width:56px' onclick='wzPrKeypad(" + it.id + "," + si + ")'>" + unit + "</span><button onclick='wzPrStep(" + it.id + "," + si + ",50)'>+</button></span></div>";
-      }
-    });
-    return s + "</div>";
+  function wzCareDepts() { var cd = {}; WZ_LIST.forEach(function (s) { if (wzIsCoreLine(s.name)) cd[s.department] = true; }); return cd; }
+  function wzIsCareSvc(s, cd) {
+    if (s.kind === "core") return true;
+    if (s.custom) return false;
+    for (var i = 0; i < WZ_LIST.length; i++) if (WZ_LIST[i].name === s.baseName) return !!cd[WZ_LIST[i].department];
+    return false;
+  }
+  function wzModeCnt(it, md) {
+    var cd = wzCareDepts(), n = 0;
+    it.services.forEach(function (s) { if ((wzIsCareSvc(s, cd) ? "care" : "repair") === md) n++; });
+    return n;
+  }
+  function w2Dots(g) {
+    var f = (W2_INC[g] || []).length + 1, s = "";
+    for (var k = 0; k < 3; k++) s += "<i" + (k < f ? " class='f'" : "") + "></i>";
+    return "<span class='w2-dots'>" + s + "</span>";
   }
   function wzChipsHTML(it) {
     if ((it.wzQ || "").trim()) return "";
-    var cur = wzDeptCur(it);
-    return "<div class='wz-dph'>" + wzDepts(it).map(function (d) {
-      var idx = wzDeptIdx(it, d);
-      var c = idx.filter(function (i) { var l = WZ_LIST[i], op = wzCoreOp(l.name); return op ? it.services.some(function (x) { return x.kind === "core" && x.op === op; }) : wzFindSvc(it, l.name) >= 0; }).length;
-      return "<span class='" + (d === cur ? "on" : "") + "' onclick=\"wzDept(" + it.id + ",'" + jq(d) + "')\">" + (d === "Обране" ? "★ " : "") + h(d) + "<i>" + idx.length + "</i>" + (c ? "<b>" + c + "</b>" : "") + "</span>";
+    var cur = wzDeptCur(it), ds = wzDepts(it), care = it.mode === "care";
+    return "<div class='w2-ct" + (ds.length > 5 ? " sc" : "") + "' style='grid-template-columns:repeat(" + ds.length + ",1fr)'>" + ds.map(function (d) {
+      var idx = wzDeptIdx(it, d), c = idx.filter(function (i) { return wzIdxSel(it, i); }).length;
+      var sub = care ? w2Dots(d) : "<small>" + idx.length + " посл.</small>";
+      var nm = d === "Обране" ? "★ Обране" : h(care ? d : d.split(/\s+(?:та|\/)\s+/)[0]);
+      return "<div class='" + (d === cur ? "on" : "") + "' onclick=\"wzDept(" + it.id + ",'" + jq(d) + "')\"><b>" + nm + "</b>" + sub + (c ? "<i class='bd'>" + c + "</i>" : "") + "</div>";
     }).join("") + "</div>";
   }
+  function wzRowHTML(it, li) {
+    var l = WZ_LIST[li], op = wzCoreOp(l.name), on, click;
+    if (op) { on = it.services.some(function (x) { return x.kind === "core" && x.op === op; }); click = "toggleOp(" + it.id + ",'" + jq(op) + "')"; }
+    else { on = wzFindSvc(it, l.name) >= 0; click = "wzTog(" + it.id + "," + li + ")"; }
+    var f = wzIsFav(it, li), star = !op && it.mode === "repair";
+    var unit = op ? "основна послуга, один рівень на виріб" : wzUnitLbl(l.unit);
+    return "<div class='w2-row" + (on ? " on" : "") + (op ? " core" : "") + "' onclick=\"" + click + "\">" +
+      (op ? "<span class='w2-rad'>" + (on ? "✓" : "") + "</span>" : (star ? "<span class='w2-st" + (f ? " f" : "") + "' onclick=\"event.stopPropagation();wzFav(" + it.id + "," + li + ")\">" + (f ? "★" : "☆") + "</span>" : "")) +
+      "<div class='nm'>" + h(op ? op : l.name) + "<small>" + h(unit) + "</small></div>" +
+      "<span class='pr'>" + (l.from ? "від " : "") + money(l.price) + "</span>" +
+      (op ? "" : "<span class='w2-pl" + (on ? " ck" : "") + "'>" + (on ? "✓" : "+") + "</span>") + "</div>";
+  }
   function wzPaneHTML(it) {
-    var q = (it.wzQ || "").trim().toLowerCase(), own = "<div class='wz-t own' onclick='wzOwnOpen(" + it.id + ")'>＋ Своя послуга</div>";
+    var q = (it.wzQ || "").trim().toLowerCase();
+    var own = "<div class='w2-row own' onclick='wzOwnOpen(" + it.id + ")'><span class='w2-pl'>＋</span>Своя послуга</div>";
     if (q) {
       var w = q.split(/\s+/).filter(Boolean);
       var f = wzPool(it).filter(function (p) { var nm = WZ_LIST[p.i].name.toLowerCase(); return w.every(function (x) { return nm.indexOf(x) !== -1; }); });
-      return "<div class='wz-found'>Знайдено " + f.length + "</div><div class='wz-pan'><div class='wz-tl'>" + (f.map(function (p) { return wzTile(it, p.i); }).join("") || "<div class='wz-empty'>Нічого не знайдено</div>") + own + "</div></div>";
+      return "<div class='w2-found'>Знайдено " + f.length + "</div>" + (f.map(function (p) { return wzRowHTML(it, p.i); }).join("") || "<div class='w2-empty'>Нічого не знайдено</div>") + own;
     }
-    var cur = wzDeptCur(it), l = wzDeptIdx(it, cur);
-    return "<div class='wz-pan'><div class='wz-tl'>" + (l.length ? l.map(function (i) { return wzTile(it, i); }).join("") : "<div class='wz-empty'>Тут поки порожньо. Натисніть ☆ на плитці будь-якої послуги, щоб додати її в «Обране»</div>") + own + "</div></div>";
+    var cur = wzDeptCur(it), l = wzDeptIdx(it, cur), s = "";
+    if (it.mode === "care") {
+      var inc = W2_INC[cur] || [];
+      var core = l.filter(function (i) { return !!wzCoreOp(WZ_LIST[i].name); }), add = l.filter(function (i) { return !wzCoreOp(WZ_LIST[i].name); });
+      s += "<div class='w2-in'><div class='w2-it'><b>" + h(cur) + "</b>" + w2Dots(cur) + "</div><p class='inc'>" + (inc.length ? "Включає: " + inc.map(h).join(" + ") : "Початковий рівень") + "</p></div>";
+      s += core.map(function (i) { return wzRowHTML(it, i); }).join("");
+      if (add.length) s += "<div class='w2-sec'><b>Додатково</b><small>до обраного рівня</small></div>" + add.map(function (i) { return wzRowHTML(it, i); }).join("");
+    } else {
+      s += l.length ? l.map(function (i) { return wzRowHTML(it, i); }).join("") : "<div class='w2-empty'>Тут поки порожньо. Натисніть ☆ біля послуги в іншому розділі, щоб додати її в «Обране»</div>";
+    }
+    return s + own;
+  }
+  function wzReceipt(it) {
+    var n = it.services.length, open = it.wzRo !== false, rows = "";
+    it.services.forEach(function (sv, si) {
+      var core = sv.kind === "core", unit = core ? sv.price : sv.unit, qty = core ? 1 : (sv.qty || 1), base = wzFloor(it, sv);
+      var raised = unit > base && base > 0, nm = core ? sv.name : (sv.baseName || sv.name);
+      rows += "<div class='w2-rl'><span class='n'>" + h(nm) + "</span><span class='pc1" + (raised ? " up" : "") + "' onclick='wzPrToggle(" + it.id + "," + si + ")'>" + money(unit) + "</span>" +
+        "<span class='w2-q'>" + (core ? "<u onclick='wzRm(" + it.id + "," + si + ")'>×</u><em>1</em><u class='ph'>+</u>" :
+          "<u onclick='wzQty(" + it.id + "," + si + ",-1)'>" + (qty === 1 ? "×" : "−") + "</u><em>" + qty + "</em><u onclick='wzQty(" + it.id + "," + si + ",1)'>+</u>") + "</span>" +
+        "<span class='s'>" + money(sv.price) + "</span></div>";
+      if (it.wzPr && it.wzPr[si]) {
+        rows += "<div class='wz-prw'>Ціна за 1" + (base ? " (не нижче прайсу " + money(base) + ")" : "") + "<span class='wz-step'><button " + (unit <= base ? "disabled" : "") + " onclick='wzPrStep(" + it.id + "," + si + ",-50)'>−</button><span class='n' style='min-width:56px' onclick='wzPrKeypad(" + it.id + "," + si + ")'>" + unit + "</span><button onclick='wzPrStep(" + it.id + "," + si + ",50)'>+</button></span></div>";
+      }
+    });
+    return "<div class='w2-rc'><div class='w2-rh' onclick='wzRcpTog(" + it.id + ")'><b>Чек</b><span>" + (n ? n + " " + (n === 1 ? "послуга" : (n < 5 ? "послуги" : "послуг")) : "порожній") + "</span><em>" + (open ? "▾" : "▴") + "</em></div>" +
+      (open ? "<div class='w2-rcol'><span>Послуга</span><span>Ціна</span><span>К-сть</span><span>Сума</span></div><div class='w2-rb'>" + (n ? rows : "<div class='w2-re'>Торкніться послуги, щоб додати до чека</div>") + "</div>" : "") +
+      "<div class='w2-rt'><span>Разом</span><b>" + fmtUAH(itemSum(it)) + "</b></div></div>";
+  }
+  function wzStep2(it) {
+    wzBuildList(it);
+    if (!it.mode) it.mode = "care";
+    if (!it.wzMc && !it.services.length) {
+      return "<div class='w2'><div class='w2-pick'><h3>Що робимо з виробом?</h3><p>Оберіть тип робіт, щоб побачити послуги</p><div class='w2-pk'>" +
+        "<div onclick=\"wzMode(" + it.id + ",'care')\"><b>Догляд</b><small>Чищення, базовий догляд, фарбування, реставрація</small></div>" +
+        "<div onclick=\"wzMode(" + it.id + ",'repair')\"><b>Ремонт</b><small>Підошва, каблуки, блискавки, пошив, розтяжка</small></div></div></div>" + wzReceipt(it) + "</div>";
+    }
+    var tabs = "<div class='w2-tabs'>" + [["care", "Догляд"], ["repair", "Ремонт"]].map(function (t) {
+      var n = wzModeCnt(it, t[0]);
+      return "<div class='w2-tab" + (it.mode === t[0] ? " on" : "") + "' onclick=\"wzMode(" + it.id + ",'" + t[0] + "')\"><span>" + t[1] + "</span>" + (n ? "<i>" + n + "</i>" : "") + "</div>";
+    }).join("") + "</div>";
+    return "<div class='w2'>" + tabs + "<div class='w2-tb'><div class='w2-sr'><div class='w2-srch'><input id='wz-q' autocomplete='off' placeholder='Знайти послугу…' value=\"" + h(it.wzQ || "") + "\" oninput='wzSearch(" + it.id + ",this.value)'></div></div>" +
+      "<div id='wz-chips'>" + wzChipsHTML(it) + "</div><div class='w2-ls' id='wz-pane'>" + wzPaneHTML(it) + "</div></div>" + wzReceipt(it) + "</div>";
   }
   function wzDyn(it) { var c = $("wz-chips"), p = $("wz-pane"); if (c) c.innerHTML = wzChipsHTML(it); if (p) p.innerHTML = wzPaneHTML(it); }
   window.wzSearch = function (id, v) { var it = wzItem(id); if (!it) return; it.wzQ = v; wzDyn(it); };
@@ -8632,16 +8890,6 @@ loadPrice();
       "<label>Ціна, ₴</label><input class='cr-input' id='wz-own-p' type='number' inputmode='numeric' placeholder='0'>" +
       "<div class='wz-os' style='margin:6px 0 0'>Вкажіть ціну за одну одиницю. Кількість можна змінити потім у списку.</div>" +
       "<div class='wz-obt'><button class='wz-oc' onclick='wzOwnClose(" + it.id + ")'>Скасувати</button><button class='wz-oa' onclick='wzOwn(" + it.id + ")'>Додати послугу</button></div></div></div>";
-  }
-  function wzStep2(it) {
-    wzBuildList(it);
-    if (!it.mode) it.mode = "care";
-    var isCare = it.mode === "care";
-    return "<div class='wz-h c'>Що робимо?</div><div class='wz-sub c'>Торкніться послуги, щоб додати. ☆ у куті плитки додає її в «Обране». Кількість змінюється у списку «Обрано»</div>" +
-      "<div class='wz-segs c'><button class='ic-seg" + (isCare ? " on" : "") + "' onclick=\"setItemMode(" + it.id + ",'care')\">Догляд / фарбування</button><button class='ic-seg" + (!isCare ? " on" : "") + "' onclick=\"setItemMode(" + it.id + ",'repair')\">Ремонт / інше</button></div>" +
-      wzSelected(it) +
-      "<div class='wz-stk'><div class='wz-srch'><svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'><circle cx='11' cy='11' r='7'/><path d='M20 20l-3.5-3.5'/></svg><input id='wz-q' autocomplete='off' placeholder='Знайти послугу…' value=\"" + h(it.wzQ || "") + "\" oninput='wzSearch(" + it.id + ",this.value)'></div><div id='wz-chips'>" + wzChipsHTML(it) + "</div></div>" +
-      "<div id='wz-pane'>" + wzPaneHTML(it) + "</div>";
   }
 
   window.wzOwn = function (id) {
@@ -8694,56 +8942,65 @@ loadPrice();
     var it = wzItem(id);
     if (!it) { closeItemModal(); return; }
     ensureItemModal();
-    if (!it.wzStep) it.wzStep = (it.model && it.services && it.services.length) ? 2 : 1;
-    var ovl = $("iw-ovl"), win = ovl.querySelector(".iwin"), body = $("iw-body"), foot = win.querySelector(".iw-foot");
+    if (!it.wzStep || it.wzStep > 2) it.wzStep = (it.model && it.services && it.services.length) ? 2 : 1;
+    var ovl = $("iw-ovl"), win = ovl.querySelector(".iwin"), body = $("iw-body"), foot = win.querySelector(".iw-foot"), head = win.querySelector(".iw-head");
     win.classList.add("wz");
-    var prevScroll = body ? body.scrollTop : 0;
+    document.body.classList.add("iw-open");
+    var step = it.wzStep;
+    var oldLs = body.querySelector(".w2-ls"), oldRb = body.querySelector(".w2-rb");
+    var lsTop = oldLs ? oldLs.scrollTop : 0, rbTop = oldRb ? oldRb.scrollTop : 0, prevScroll = body.scrollTop;
+    var lk = it.id + "|" + step + "|" + it.mode + "|" + (it.wzDept || "") + "|" + ((it.wzQ || "").trim() ? "q" : "");
+    var sameView = body.getAttribute("data-lk") === lk;
     var t = $("iw-title"); if (t) t.innerHTML = wzTitle(it);
 
-    var step = it.wzStep;
-    var L = ["Виріб", "Послуги", "Деталі"], rail = "<div class='cr-rail'>";
-    for (var n = 1; n <= 3; n++) {
-      var done = n < step, cls = (n === step ? "active " : "") + (done ? "done" : "");
-      rail += "<div class='cr-rstep " + cls + "' " + (done ? "onclick='wzGo(" + it.id + "," + n + ")'" : "") + "><div class='cr-rdot'>" + (done ? "✓" : n) + "</div><div class='cr-rlbl'>" + L[n - 1] + "</div></div>";
-      if (n < 3) rail += "<div class='cr-rline " + (done ? "done" : "") + "'></div>";
-    }
-    rail += "</div>";
-    var railEl = $("wz-rail");
+    var rail = "", railEl = $("wz-rail");
     if (!railEl) { railEl = document.createElement("div"); railEl.id = "wz-rail"; railEl.className = "wz-rail"; win.insertBefore(railEl, body); }
-    railEl.innerHTML = rail;
+    if (step === 1) {
+      rail = "<div class='cr-rail'><div class='cr-rstep active'><div class='cr-rdot'>1</div><div class='cr-rlbl'>Виріб</div></div><div class='cr-rline'></div><div class='cr-rstep'><div class='cr-rdot'>2</div><div class='cr-rlbl'>Послуги</div></div></div>";
+    }
+    railEl.innerHTML = rail; railEl.style.display = step === 1 ? "" : "none";
 
-    var recap = "";
-    if (step > 1) recap = "<div class='wz-recap'><span><b>" + h(it.model || wzCatLabel(it)) + "</b>" + (it.brand && it.brand.trim() ? " · " + h(it.brand.trim()) : "") + (step === 3 ? " &nbsp;·&nbsp; послуг: <b>" + it.services.length + "</b>" : "") + "</span><a onclick='wzGo(" + it.id + ",1)'>Змінити</a></div>";
-    var content = step === 1 ? wzStep1(it) : (step === 2 ? wzStep2(it) : wzStep3(it));
-    body.innerHTML = recap + content;
+    body.innerHTML = step === 1 ? wzStep1(it) : wzStep2(it);
+    body.setAttribute("data-lk", lk);
     body.scrollTop = prevScroll;
+    var ls = body.querySelector(".w2-ls"), rb = body.querySelector(".w2-rb");
+    if (ls && sameView) ls.scrollTop = lsTop;
+    if (rb) rb.scrollTop = rbTop;
 
-    var dis = (step === 1 && !it.model) || (step === 2 && !it.services.length);
-    var f = "";
-    if (step === 1) f += "<button class='iw-del' onclick='removeItem(" + it.id + "); closeItemModal();'>Видалити річ</button>";
-    else f += "<button class='cr-head-btn' onclick='wzGo(" + it.id + "," + (step - 1) + ")'>← Назад</button>";
-    f += "<span class='iw-sum'>" + (step >= 2 ? fmtUAH(itemSum(it)) : "") + "</span>";
-    f += "<button class='iw-done' " + (dis ? "style='opacity:.4'" : "") + " onclick='wzNext(" + it.id + ")'>" + (step === 3 ? "Готово" : "Далі →") + "</button>";
-    foot.innerHTML = f;
+    foot.innerHTML = step === 1 ? "<button class='iw-del' onclick='removeItem(" + it.id + "); closeItemModal();'>Видалити річ</button>" : "";
 
     var oldo = win.querySelector(".wz-ow"); if (oldo) oldo.parentNode.removeChild(oldo);
     if (it.wzOwn && step === 2) { var tmp = document.createElement("div"); tmp.innerHTML = wzOwnHTML(it); win.appendChild(tmp.firstChild); }
     win.classList.toggle("wz2", step === 2);
-    var head = win.querySelector(".iw-head"), gb = head.querySelector(".wz-go"); if (gb) gb.parentNode.removeChild(gb);
-    if (step === 2 && it.services.length) {
-      gb = document.createElement("button"); gb.className = "wz-go" + (window.__wzBump ? " bump" : "");
-      gb.textContent = "Далі · " + fmtUAH(itemSum(it)) + " ›";
-      gb.onclick = function () { wzNext(it.id); };
-      head.insertBefore(gb, head.querySelector(".iw-close"));
+
+    var gb = head.querySelector(".wz-go"); if (gb) gb.parentNode.removeChild(gb);
+    var bk = head.querySelector(".w2-back"); if (bk) bk.parentNode.removeChild(bk);
+    if (step === 2) {
+      bk = document.createElement("button"); bk.className = "w2-back"; bk.textContent = "‹ Назад";
+      bk.onclick = function () { wzGo(it.id, 1); };
+      head.insertBefore(bk, head.firstChild);
     }
+    var off = step === 1 ? !it.model : !it.services.length;
+    gb = document.createElement("button"); gb.className = "wz-go" + (off ? " off" : "") + (window.__wzBump ? " bump" : "");
+    gb.textContent = step === 1 ? "Далі ›" : "Готово ›";
+    gb.onclick = function () { wzNext(it.id); };
+    head.insertBefore(gb, head.querySelector(".iw-close"));
     window.__wzBump = 0;
   };
 
-  /* При відкритті вікна речі — стартуємо з першого кроку для нової речі */
+  var _cim0 = window.closeItemModal;
+  window.closeItemModal = function () { document.body.classList.remove("iw-open"); _cim0(); };
+
+  /* При відкритті вікна речі: нова річ починає з першого кроку, річ з послугами одразу з другого */
   var _origOpen = window.openItemModal;
   window.openItemModal = function (id) {
     var it = wzItem(id);
-    if (it) { it.wzSheet = false; it.wzOwn = false; it.wzQ = ""; it.wzDept = null; it.wzMq = undefined; it.wzPr = {}; if (!(it.model && it.services && it.services.length)) it.wzStep = 1; else it.wzStep = it.wzStep || 2; }
+    if (it) {
+      it.wzSheet = false; it.wzOwn = false; it.wzQ = ""; it.wzDept = null; it.wzMq = undefined; it.wzPr = {};
+      var has = !!(it.model && it.services && it.services.length);
+      if (it.services && it.services.length) it.wzMc = true;
+      it.wzStep = has ? 2 : 1;
+    }
     _origOpen(id);
   };
 
@@ -9731,6 +9988,72 @@ loadPrice();
   groupTab.planning = "todayplan";
   /* стартова сторінка */
   showPage(START_PAGE);
+})();
+
+/* Підказка при створенні замовлення: приймальник не збігається з обліковим записом */
+(function () {
+  var _so = window.submitOrder;
+  if (typeof _so !== "function") return;
+  window.submitOrder = function () {
+    try {
+      var def = (function () {
+        var list = (typeof PARTNERS !== "undefined" && PARTNERS.length) ? PARTNERS : [];
+        var adm = isAdmin();
+        return list.filter(function (p) { return (RESTRICTED_MASTER_NAMES.indexOf(p) !== -1) === adm; })[0] || "";
+      })();
+      if (def && NO.manager && NO.manager !== def && NO._mgrOk !== NO.manager) {
+        if (!confirm("Приймає: " + NO.manager + ". Ви увійшли як " + (isAdmin() ? "адміністратор" : "приймальник") + " (зазвичай " + def + "). Залишити " + NO.manager + "?")) return;
+        NO._mgrOk = NO.manager;
+      }
+    } catch (e) {}
+    return _so.apply(this, arguments);
+  };
+})();
+
+/* ═══ Дублювання речі: одне натискання = одна копія ═══ */
+(function () {
+  function it(id) { return NO.items.find(function (i) { return i.id === id; }); }
+  function root(x) { return x.dupFrom || x.id; }
+  function groupCount(x) { var r = root(x); return NO.items.filter(function (y) { return root(y) === r; }).length - 1; }
+  var snack = null, snackT = 0;
+  function say2(msg, undoFn) {
+    if (!snack) { snack = document.createElement("div"); snack.className = "dup-snack"; document.body.appendChild(snack); }
+    snack.innerHTML = "";
+    var t = document.createElement("span"); t.textContent = msg; snack.appendChild(t);
+    if (undoFn) { var u = document.createElement("u"); u.textContent = "Скасувати"; u.onclick = function () { undoFn(); snack.classList.remove("on"); }; snack.appendChild(u); }
+    snack.classList.add("on"); clearTimeout(snackT); snackT = setTimeout(function () { snack.classList.remove("on"); }, 4500);
+  }
+  window.itemDup = function (id) {
+    var src = it(id); if (!src) return;
+    itemCounter++;
+    var c = JSON.parse(JSON.stringify(src));
+    c.id = itemCounter; c.dupFrom = root(src); c.color = ""; c.note = ""; c.wzStep = 2; c.wzMc = true; c.wzPr = {}; c.wzOwn = false; c.wzQ = ""; c.detailsOpen = false;
+    var r = root(src), last = -1;
+    NO.items.forEach(function (y, i) { if (root(y) === r) last = i; });
+    NO.items.splice(last + 1, 0, c);
+    renderItems(); updateReceipt();
+    var newId = c.id;
+    say2("Копію додано, речей: " + NO.items.length, function () { NO.items = NO.items.filter(function (y) { return y.id !== newId; }); renderItems(); updateReceipt(); });
+  };
+  function decorate() {
+    var box = document.getElementById("cr-items"); if (!box) return;
+    var cards = box.querySelectorAll(".icard");
+    for (var i = 0; i < cards.length; i++) {
+      var x = NO.items[i], card = cards[i]; if (!x) continue;
+      var head = card.querySelector(".icard-head"), edit = card.querySelector(".icard-edit"); if (!head || head.querySelector(".icard-dup")) continue;
+      if (x.dupFrom) {
+        var ri = -1; NO.items.forEach(function (y, q) { if (y.id === x.dupFrom) ri = q; });
+        if (ri >= 0) { var cp = document.createElement("span"); cp.className = "icard-cp"; cp.textContent = "копія №" + (ri + 1); var nm = head.querySelector(".icard-name"); if (nm && nm.nextSibling) head.insertBefore(cp, nm.nextSibling); else head.appendChild(cp); }
+      }
+      var n = groupCount(x), b = document.createElement("button");
+      b.className = "icard-dup"; b.title = "Дублювати річ";
+      b.innerHTML = "⧉" + (n ? "<i>+" + n + "</i>" : "");
+      (function (id) { b.onclick = function (e) { e.stopPropagation(); window.itemDup(id); }; })(x.id);
+      head.insertBefore(b, edit);
+    }
+  }
+  var _ril = window.renderItemList;
+  window.renderItemList = function () { _ril.apply(this, arguments); try { decorate(); } catch (e) {} };
 })();
 
 </script>
